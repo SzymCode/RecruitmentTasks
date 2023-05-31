@@ -1,38 +1,54 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container-fluid {
+  min-height: 400px;
+  width: 400px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
+  margin-top: 5%;
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+}
+.header {
+  font-size: 50px;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.dishNameLabel, .preparationTimeLabel, .dishTypeLabel, .noOfSlicesLabel, .diameterLabel, .spicinessScaleLabel, .slicesOfBreadLabel {
+  font-size: 20px;
+  margin-right: 10px;
+  margin-bottom: 2px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dishName, .dishType, .preparationTime {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.dishType {
+  margin-bottom: 15px;
+  padding: 0;
+}
+
+.noOfSlices, .diameter, .spicinessScale, .slicesOfBread {
+  display: inline;
+  width: 60px;
+  padding-right: 4px;
+  padding-left: 8px;
+}
+.noOfSlicesLabel, .diameterLabel, .spicinessScaleLabel, .slicesOfBreadLabel {
+  font-size: 15px;
+}
+.noOfSlicesLabel {
+  margin-bottom: 15px;
+}
+.card-title {
+  margin-bottom: 20px;
+}
+
+.btn {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  width: 100%;
 }
