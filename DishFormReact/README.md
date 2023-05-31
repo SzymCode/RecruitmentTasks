@@ -11,6 +11,8 @@
 # DishFormReact
 This is a recruitment exercise project that focuses on building a Dish Form application. 
 The Dish Form allows users to create and submit information about various dishes, including their names, preparation time, types, and additional details specific to each type of dish.
+</br>
+[Preview](https://dishform.herokuapp.com/)
 
 <details><summary> <h2>  📖 Problem description  </summary>
 <b> Create a form that will contain the following fields: </b> </br>
