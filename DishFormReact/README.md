@@ -7,7 +7,7 @@
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)\
 <img src="https://img.shields.io/badge/node-18.15.0-blue"/>
 <img src="https://img.shields.io/badge/npm-9.6.5-brightgreen"/>
-</div>
+![ts](https://flat.badgen.net/badge/-/TypeScript/blue?icon=typescript&label)</div>
 
 # DishFormReact
 This is a recruitment exercise project that focuses on building a Dish Form application. 
@@ -84,4 +84,22 @@ npm start
 • **localhost:3000** - Dish Form page
 
 </details>  
+
+
+
+<details><summary> <h2> ✅ Solved Problems  </summary>
+
+- [X] Completed dish form with variations
+
+- [X] Modern form library - Formik
+
+- [X] Validation handling
+
+- [X] MUI
+
+- [X] TypeScript
+
+- [X] Live preview
+
+</details>
 
