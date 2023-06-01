@@ -25,7 +25,11 @@
   height: 30px;
   margin-bottom: 10px;
 }
-
+.info {
+  position: absolute;
+  left: 50px;
+  top: 450px
+}
 .dishType {
   margin-bottom: 25px;
   padding: 0;

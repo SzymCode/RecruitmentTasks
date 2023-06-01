@@ -81,7 +81,7 @@ const Home = () => {
             <MenuItem value="soup">
               Soup
             </MenuItem>
-            <MenuItem value="sandwich">
+            <MenuItem value="sandwich" >
               Sandwich
             </MenuItem>
           </Select>
@@ -92,18 +92,30 @@ const Home = () => {
             <InputLabel htmlFor="noOfSlices" className="noOfSlicesLabel">
               Number of Slices:
             </InputLabel>
+
+            {/* I used slider because I think it fits better */}
+
             <Slider type="number" name="noOfSlices" id="noOfSlices" className="form-control noOfSlices" value={Number(formik.values.noOfSlices)} onChange={formik.handleChange} required
-                    marks step={1} min={1} max={8} defaultValue={1} valueLabelDisplay="auto"
-            />
+                    marks step={1} min={1} max={8} defaultValue={1} valueLabelDisplay="auto"/>
+
+            {/* "for pizza: no_of_slices - # of slices (number field)" - here is "number field" what you asked for
+            <input type="number" name="noOfSlices" id="noOfSlices" className="form-control noOfSlices" value={formik.values.diameter} onChange={formik.handleChange} required
+                   step={1}/>
+            */}
+
           </div>
         )}
 
         {formik.values.dishType === 'pizza' && (
           <div>
+
+            <p className="info">I used slider because I think it fits better. You can find "number field" option in source code :)</p>
+
             <InputLabel htmlFor="diameter" className="diameterLabel">
               Diameter:
             </InputLabel>
-            <input type="number" step="0.1" name="diameter" id="diameter" className="form-control diameter" value={formik.values.diameter} onChange={formik.handleChange} required/>
+            <input type="number" name="diameter" id="diameter" className="form-control diameter" value={formik.values.diameter} onChange={formik.handleChange} required
+                   step={0.1} min={0}/>
           </div>
         )}
 
@@ -113,7 +125,7 @@ const Home = () => {
               Spiciness Scale (1-10):
             </InputLabel>
             <Slider type="number" name="spicinessScale" id="spicinessScale" className="form-control spicinessScale" value={Number(formik.values.spicinessScale)} onChange={formik.handleChange} required
-            marks step={1} min={1} max={10} defaultValue={1} valueLabelDisplay="auto"/>
+                    marks step={1} min={1} max={10} defaultValue={1} valueLabelDisplay="auto"/>
           </div>
         )}
 
@@ -122,7 +134,8 @@ const Home = () => {
             <InputLabel htmlFor="slicesOfBread" className="slicesOfBreadLabel">
               Slices of Bread:
             </InputLabel>
-            <input type="number" name="slicesOfBread" id="slicesOfBread" className="form-control slicesOfBread" value={formik.values.slicesOfBread} onChange={formik.handleChange} required/>
+            <input type="number" name="slicesOfBread" id="slicesOfBread" className="form-control slicesOfBread" value={formik.values.slicesOfBread} onChange={formik.handleChange} required
+                   step={1} min={1}/>
           </div>
         )}
 
