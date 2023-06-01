@@ -1,6 +1,10 @@
 import React from 'react';
 import { useFormik } from 'formik';
-
+import Button from '@mui/material/Button';
+import InputLabel from '@mui/material/InputLabel';
+import Slider from '@mui/material/Slider';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 const Home = () => {
   const formik = useFormik({
@@ -49,74 +53,82 @@ const Home = () => {
       <form onSubmit={formik.handleSubmit}>
 
         <div>
-          <label htmlFor="dishName" className="dishNameLabel">
+          <InputLabel htmlFor="dishName" className="dishNameLabel">
             Dish Name:
-          </label>
-          <input type="text" id="dishName" className="form-control dishName" value={formik.values.dishName} onChange={formik.handleChange} required/>
+          </InputLabel>
+          <input type="text" name="dishName" id="dishName" className="form-control dishName" value={formik.values.dishName} onChange={formik.handleChange} required/>
         </div>
 
         <div>
-          <label htmlFor="preparationTime" className="preparationTimeLabel">
+          <InputLabel htmlFor="preparationTime" className="preparationTimeLabel">
             Preparation Time (HH:MM:SS):
-          </label>
-          <input type="text" id="preparationTime" className="form-control preparationTime" value={formik.values.preparationTime} onChange={formik.handleChange} required/>
+          </InputLabel>
+          <input type="text" name="preparationTime" id="preparationTime" className="form-control preparationTime" value={formik.values.preparationTime} onChange={formik.handleChange} required/>
         </div>
 
         <div>
-          <label htmlFor="dishType" className="dishTypeLabel">
+          <InputLabel htmlFor="dishType" className="dishTypeLabel">
             Dish Type:
-          </label>
-          <select id="dishType" className="form-control dishType" value={formik.values.dishType} onChange={formik.handleChange} required>
-            <option value="">
+          </InputLabel>
+
+          <Select id="dishType" name="dishType" className="form-control dishType" value={formik.values.dishType} onChange={formik.handleChange} required>
+            <MenuItem value="">
               Select Type
-            </option>
-            <option value="pizza">
+            </MenuItem>
+            <MenuItem value="pizza">
               Pizza
-            </option>
-            <option value="soup">
+            </MenuItem>
+            <MenuItem value="soup">
               Soup
-            </option>
-            <option value="sandwich">
+            </MenuItem>
+            <MenuItem value="sandwich">
               Sandwich
-            </option>
-          </select>
+            </MenuItem>
+          </Select>
         </div>
 
         {formik.values.dishType === 'pizza' && (
           <div>
-            <label htmlFor="noOfSlices" className="noOfSlicesLabel">
+            <InputLabel htmlFor="noOfSlices" className="noOfSlicesLabel">
               Number of Slices:
-            </label>
-            <input type="number" id="noOfSlices" className="form-control noOfSlices" value={formik.values.noOfSlices} onChange={formik.handleChange} required/>
+            </InputLabel>
+            <Slider type="number" name="noOfSlices" id="noOfSlices" className="form-control noOfSlices" value={Number(formik.values.noOfSlices)} onChange={formik.handleChange} required
+                    marks step={1} min={1} max={8} defaultValue={1} valueLabelDisplay="auto"
+            />
           </div>
         )}
+
         {formik.values.dishType === 'pizza' && (
           <div>
-            <label htmlFor="diameter" className="diameterLabel">
+            <InputLabel htmlFor="diameter" className="diameterLabel">
               Diameter:
-            </label>
-            <input type="number" step="0.1" id="diameter" className="form-control diameter" value={formik.values.diameter} onChange={formik.handleChange} required/>
+            </InputLabel>
+            <input type="number" step="0.1" name="diameter" id="diameter" className="form-control diameter" value={formik.values.diameter} onChange={formik.handleChange} required/>
           </div>
         )}
+
         {formik.values.dishType === 'soup' && (
           <div>
-            <label htmlFor="spicinessScale" className="spicinessScaleLabel">
+            <InputLabel htmlFor="spicinessScale" className="spicinessScaleLabel">
               Spiciness Scale (1-10):
-            </label>
-            <input type="number" id="spicinessScale" className="form-control spicinessScale" value={formik.values.spicinessScale} onChange={formik.handleChange} min="1" max="10" required/>
+            </InputLabel>
+            <Slider type="number" name="spicinessScale" id="spicinessScale" className="form-control spicinessScale" value={Number(formik.values.spicinessScale)} onChange={formik.handleChange} required
+            marks step={1} min={1} max={10} defaultValue={1} valueLabelDisplay="auto"/>
           </div>
         )}
+
         {formik.values.dishType === 'sandwich' && (
           <div>
-            <label htmlFor="slicesOfBread" className="slicesOfBreadLabel">
+            <InputLabel htmlFor="slicesOfBread" className="slicesOfBreadLabel">
               Slices of Bread:
-            </label>
-            <input type="number" id="slicesOfBread" className="form-control slicesOfBread" value={formik.values.slicesOfBread} onChange={formik.handleChange} required/>
+            </InputLabel>
+            <input type="number" name="slicesOfBread" id="slicesOfBread" className="form-control slicesOfBread" value={formik.values.slicesOfBread} onChange={formik.handleChange} required/>
           </div>
         )}
 
-        <button className="btn btn-outline-dark">Submit</button>
-
+        <Button variant="contained" className="submitButton" type="submit">
+          Submit
+        </Button>
       </form>
     </div>
   );
