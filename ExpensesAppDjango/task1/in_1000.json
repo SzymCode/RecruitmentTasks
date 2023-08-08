@@ -1,0 +1,84 @@
+ {
+    "items": [
+        {
+            "package": "FLEXIBLE",
+            "created": "2019-03-10T00:00:00",
+            "summary": [
+                {
+                    "period": "2023-12",
+                    "documents": {
+                        "incomes": 30,
+                        "expenses": 50
+                    }
+                },
+                {
+                    "period": "2023-02",
+                    "documents": {
+                        "incomes": 35,
+                        "expenses": 50
+                    }
+                }
+            ]
+        },
+        {
+            "package": "ENTERPRISE",
+            "created": "2020-03-19T00:00:00",
+            "summary": [
+                {
+                    "period": "2020-01",
+                    "documents": {
+                        "incomes": 10,
+                        "expenses": 20
+                    }
+                },
+                {
+                    "period": "2020-02",
+                    "documents": {
+                        "incomes": 10,
+                        "expenses": 20
+                    }
+                }
+            ]
+        },
+        {
+            "package": "ENTERPRISE",
+            "created": "2020-03-19T00:00:00",
+            "summary": [
+                {
+                    "period": "2020-01",
+                    "documents": {
+                        "incomes": 10,
+                        "expenses": 20
+                    }
+                },
+                {
+                    "period": "2020-02",
+                    "documents": {
+                        "incomes": 10,
+                        "expenses": 20
+                    }
+                }
+            ]
+        },
+        {
+            "package": "ENTERPRISE",
+            "created": "2020-03-19T00:00:00",
+            "summary": [
+                {
+                    "period": "2020-01",
+                    "documents": {
+                        "incomes": 10,
+                        "expenses": 100
+                    }
+                },
+                {
+                    "period": "2020-02",
+                    "documents": {
+                        "incomes": 10,
+                        "expenses": 50
+                    }
+                }
+            ]
+        }
+    ]
+   }
