@@ -1,0 +1,150 @@
+[
+    {
+        "model": "expenses.category",
+        "pk": 1,
+        "fields": {
+            "name": "food"
+        }
+    },
+    {
+        "model": "expenses.category",
+        "pk": 2,
+        "fields": {
+            "name": "home (utilities)"
+        }
+    },
+    {
+        "model": "expenses.category",
+        "pk": 3,
+        "fields": {
+            "name": "clothes"
+        }
+    },
+    {
+        "model": "expenses.category",
+        "pk": 4,
+        "fields": {
+            "name": "transport"
+        }
+    },
+    {
+        "model": "expenses.expense",
+        "pk": 1,
+        "fields": {
+            "category": 1,
+            "name": "apples",
+            "amount": "2.40",
+            "date": "2021-02-03"
+        }
+    },
+    {
+        "model": "expenses.expense",
+        "pk": 2,
+        "fields": {
+            "category": 1,
+            "name": "bread",
+            "amount": "2.00",
+            "date": "2021-02-03"
+        }
+    },
+    {
+        "model": "expenses.expense",
+        "pk": 3,
+        "fields": {
+            "category": 1,
+            "name": "salami",
+            "amount": "4.30",
+            "date": "2021-02-02"
+        }
+    },
+    {
+        "model": "expenses.expense",
+        "pk": 4,
+        "fields": {
+            "category": 1,
+            "name": "butter",
+            "amount": "5.20",
+            "date": "2021-02-02"
+        }
+    },
+    {
+        "model": "expenses.expense",
+        "pk": 5,
+        "fields": {
+            "category": 1,
+            "name": "butter",
+            "amount": "5.20",
+            "date": "2020-12-27"
+        }
+    },
+    {
+        "model": "expenses.expense",
+        "pk": 6,
+        "fields": {
+            "category": 2,
+            "name": "rent",
+            "amount": "800.00",
+            "date": "2021-02-04"
+        }
+    },
+    {
+        "model": "expenses.expense",
+        "pk": 7,
+        "fields": {
+            "category": 2,
+            "name": "rent",
+            "amount": "800.00",
+            "date": "2020-12-27"
+        }
+    },
+    {
+        "model": "expenses.expense",
+        "pk": 8,
+        "fields": {
+            "category": 2,
+            "name": "electricity",
+            "amount": "42.00",
+            "date": "2021-02-04"
+        }
+    },
+    {
+        "model": "expenses.expense",
+        "pk": 9,
+        "fields": {
+            "category": 2,
+            "name": "electricity",
+            "amount": "42.00",
+            "date": "2020-12-07"
+        }
+    },
+    {
+        "model": "expenses.expense",
+        "pk": 10,
+        "fields": {
+            "category": 3,
+            "name": "trousers",
+            "amount": "110.00",
+            "date": "2021-02-04"
+        }
+    },
+    {
+        "model": "expenses.expense",
+        "pk": 11,
+        "fields": {
+            "category": 3,
+            "name": "shirt",
+            "amount": "60.00",
+            "date": "2021-01-16"
+        }
+    },
+    {
+        "model": "expenses.expense",
+        "pk": 12,
+        "fields": {
+            "category": 3,
+            "name": "shirt",
+            "amount": "60.00",
+            "date": "2020-12-25"
+        }
+    }
+]

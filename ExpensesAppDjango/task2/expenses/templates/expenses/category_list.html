@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="{% url 'expenses:category-create' %}">add</a>
+
+<table border="1">
+	<thead>
+		<tr>
+			<th>name</th>
+			<th>expenses count</th>
+			<th>actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for obj in object_list %}
+		<tr>
+			<td>
+				{{obj.name}}
+			</td>
+			<td>
+				{{ obj.expense_count }}
+			</td>
+			<td>
+				<a href="{% url 'expenses:category-update' obj.id %}">edit</a>
+				<a href="{% url 'expenses:category-delete' obj.id %}">delete</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

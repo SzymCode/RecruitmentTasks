@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block meta_title %}Expenses app{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+	<a href="{% url 'expenses:expense-list' %}">Expenses</a> | 
+	<a href="{% url 'expenses:category-list' %}">Categories</a> | 
+	<hr>
+    {% block content %}{% endblock %}
+  </body>
+</html>
