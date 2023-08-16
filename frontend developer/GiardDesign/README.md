@@ -2,7 +2,7 @@
 
 # GiardDesign
 
-This is a recruitment task project for adRespect company. 
+This is a recruitment task project for adRespect company.  [Preview](https://szymcode.github.io/RecruitmentTasks/)
 
 
 <details><summary> <h2>  📖 Problem description  </summary>
@@ -43,3 +43,19 @@ Zadanie powinno zostać umieszczone na:
 
 
 </details>
+
+
+<details><summary> <h2>  🚀 Installation & Run  </summary>
+
+• Clone this repository from giard-design branch.
+
+```
+git clone -b giard-design https://github.com/SzymCode/RecruitmentTasks.git
+```
+
+• Open index.html in your browser.
+
+</details>
+
+
+
