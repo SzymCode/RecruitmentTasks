@@ -8,23 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagoss TRIAL:wght@400&display=swap"/>
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/tailwind.css" />
+    <link rel="stylesheet" href="src/styles/style.css" />
+    <link rel="stylesheet" href="src/styles/tailwind.css" />
 
-    <script src="scripts/carousel.js">plusSlides(-1)</script>
-    <script src="scripts/copy.js"></script>
-    <script src="scripts/handleScroll.js"></script>
+    <script src="src/scripts/carousel.js">plusSlides(-1)</script>
+    <script src="src/scripts/copy.js"></script>
+    <script src="src/scripts/handleScroll.js"></script>
   </head>
   <body>
     <header class="flex justify-around py-6 bg-white">
-      <img src="public/giarddesign.svg" alt="logo" />
+      <img src="src/public/giarddesign.svg" alt="logo" />
       <div class="flex md:hidden sm:w-4/5">
         <nav>
           <ul class="flex gap-12 sm:gap-4 whitespace-nowrap">
             <li class="flex cursor-pointer hover:text-underline">
               Oferta
               <span class="inline-block ml-2 h-6 w-6">
-                <img class="h-6 " src="public/icon.svg" alt="more"/>
+                <img class="h-6 " src="src/public/icon.svg" alt="more"/>
               </span>
             </li>
             <li class="hover:text-underline"><a href="#about" class="nav-link" onclick="handleScroll()">
@@ -38,7 +38,7 @@
             </a></li>
           </ul>
         </nav>
-        <img class="ml-12 h-6 cursor-pointer sm:ml-6 hover:scale-80 duration-300" src="public/search.svg" alt="search"/>
+        <img class="ml-12 h-6 cursor-pointer sm:ml-6 hover:scale-80 duration-300" src="src/public/search.svg" alt="search"/>
       </div>
     </header>
     <section class="flex items-center bg-beige sm:justify-center">
@@ -62,13 +62,13 @@
 
           <!-- stylize it in future -->
           <div class="mySlides fade">
-            <img src="public/photo.png" alt="" height="653.5" width="653.5">
+            <img src="src/public/photo.png" alt="" height="653.5" width="653.5">
           </div>
           <div class="mySlides fade">
-            <img src="public/photo-8.png" alt="" height="700" width="700">
+            <img src="src/public/photo-8.png" alt="" height="700" width="700">
           </div>
           <div class="mySlides fade">
-            <img src="public/photo-5.png" alt="" height="523.5" width="523.5">
+            <img src="src/public/photo-5.png" alt="" height="523.5" width="523.5">
           </div>
 
           <script>showSlides(slideIndex)</script>
@@ -96,7 +96,7 @@
       <div class="flex gap-16 lg:flex-col mx-20 md:mx-0">
 
         <div class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
-          <img src="public/icon-1.png" alt="pen" class="h-12 p-1 cursor-pointer mb-8"/>
+          <img src="src/public/icon-1.png" alt="pen" class="h-12 p-1 cursor-pointer mb-8"/>
           <h3 class="mb-3">
             Projekty
           </h3>
@@ -106,12 +106,12 @@
           </p>
           <a href="#" class="flex text-green border-b border-b-green w-fit">
             Dowiedz się więcej
-            <img class="h-6 ml-2" src="public/arrow2.svg" alt="more"/>
+            <img class="h-6 ml-2" src="src/public/arrow2.svg" alt="more"/>
           </a>
         </div>
 
         <div class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
-          <img src="public/icon-2.png" alt="pen" class="h-12 p-1 cursor-pointer mb-8"/>
+          <img src="src/public/icon-2.png" alt="pen" class="h-12 p-1 cursor-pointer mb-8"/>
           <h3 class="mb-3">
             Wizualizacje
           </h3>
@@ -121,12 +121,12 @@
           </p>
           <a href="#" class="flex text-green border-b border-b-green w-fit">
             Dowiedz się więcej
-            <img class="h-6 ml-2" src="public/arrow2.svg" alt="more"/>
+            <img class="h-6 ml-2" src="src/public/arrow2.svg" alt="more"/>
           </a>
         </div>
 
         <div class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
-          <img src="public/icon-3.png" alt="pen" class="h-12 p-1 cursor-pointer mb-8"/>
+          <img src="src/public/icon-3.png" alt="pen" class="h-12 p-1 cursor-pointer mb-8"/>
           <h3 class="mb-3">
             Realizacje
           </h3>
@@ -135,7 +135,7 @@
           </p>
           <a href="#" class="flex text-green border-b border-b-green w-fit ">
             Zobacz nasze realizacje
-            <img class="h-6 ml-2" src="public/arrow2.svg" alt="more"/>
+            <img class="h-6 ml-2" src="src/public/arrow2.svg" alt="more"/>
           </a>
         </div>
 
@@ -144,7 +144,7 @@
 
     <section id="about" class="flex items-center bg-green sm:justify-center text-white">
       <div class=" inline-block min-h-[700px] w-full md:hidden">
-        <img class="inline-block md:hidden" alt="" src="./public/photo-1.png" />
+        <img class="inline-block md:hidden" alt="" src="src/public/photo-1.png" />
       </div>
       <div class="px-20 w-full sm:px-10 sm:text-center md:py-20">
         <h6 class="mb-8 md:ml-0 md:text-center">
@@ -169,15 +169,15 @@
       </h6>
       <h2 class="mb-8 px-20 md:ml-0">Nasze projekty</h2>
       <div class="photos">
-        <img class="photo-icon1" alt="" src="./public/photo-2.png" />
-        <img class="photo-icon2" alt="" src="./public/photo-3.png" />
-        <img class="photo-icon3" alt="" src="./public/photo-4.png" />
-        <img class="photo-icon4" alt="" src="./public/photo-5.png" />
-        <img class="photo-icon5" alt="" src="./public/photo-6.png" />
-        <img class="photo-icon6" alt="" src="./public/photo-7.png" />
-        <img class="photo-icon7" alt="" src="./public/photo-8.png" />
-        <img class="photo-icon8" alt="" src="./public/photo-9.png" />
-        <img class="photo-icon9" alt="" src="./public/photo-10.png" />
+        <img class="photo-icon1" alt="" src="src/public/photo-2.png" />
+        <img class="photo-icon2" alt="" src="src/public/photo-3.png" />
+        <img class="photo-icon3" alt="" src="src/public/photo-4.png" />
+        <img class="photo-icon4" alt="" src="src/public/photo-5.png" />
+        <img class="photo-icon5" alt="" src="src/public/photo-6.png" />
+        <img class="photo-icon6" alt="" src="src/public/photo-7.png" />
+        <img class="photo-icon7" alt="" src="src/public/photo-8.png" />
+        <img class="photo-icon8" alt="" src="src/public/photo-9.png" />
+        <img class="photo-icon9" alt="" src="src/public/photo-10.png" />
 
         <div class="gradient"></div>
 
@@ -201,7 +201,7 @@
 
     <footer class="text-white bg-black px-20 py-24 flex flex-col gap-16 sm:items-center">
       <div class="flex justify-between lg:flex-col sm:items-center sm:gap-4">
-        <img class="w-[115px]"  src="public/giarddesign-1.svg" alt="logo" />
+        <img class="w-[115px]"  src="src/public/giarddesign-1.svg" alt="logo" />
         <div class="flex items-center sm:flex-col sm:gap-4">
           <span class="mr-6 sm:text-center">Daj znać, co możemy dla Ciebie zrobić!</span>
           <button class="btn bg-green hover:bg-lightgreen duration-300">Skontaktuj się z nami</button>
@@ -228,7 +228,7 @@
       </div>
       <div class="flex justify-between lg:flex-col">
         <span>Prawa zastrzeżone © 2022</span>
-        <span class="flex lg:flex-col">made by <a href="https://github.com/SzymCode" class="hover:text-lightgreen duration-300">&ensp;<b>SzymCode</b>&ensp;</a> and&ensp;<img class="w-[115px]"  src="public/logo-full-light.svg" alt="logo" /></span>
+        <span class="flex lg:flex-col">made by <a href="https://github.com/SzymCode" class="hover:text-lightgreen duration-300">&ensp;<b>SzymCode</b>&ensp;</a> and&ensp;<img class="w-[115px]"  src="src/public/logo-full-light.svg" alt="logo" /></span>
       </div>
     </footer>
   </body>
