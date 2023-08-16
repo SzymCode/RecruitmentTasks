@@ -55,7 +55,11 @@ Example response:
 
 • First make sure u have installed latest versions of [ReactJS, NodeJS,](https://www.tutorialspoint.com/reactjs/reactjs_environment_setup.htm)
 
-• Clone this repository.
+• Clone this repository from dish-form branch.
+
+```
+git clone -b dish-form https://github.com/SzymCode/RecruitmentTasks.git
+```
 
 • Install modules using npm install in **dish-form** directory.
 
