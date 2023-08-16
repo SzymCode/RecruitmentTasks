@@ -1,27 +1,45 @@
-# RecruitmentTasks
-This repository contains my solutions for the recruitment tasks. Each task is organized in a separate folder, categorized by job position.
 
-<table>
-  <tr>
-    <td align="center">backend developer</td>
-    <td align="center">frontend developer</td>
-  </tr>
-  <tr>
-    <td>
-      1. 
-      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/backend%20developer/ExpensesApp">	
-        ExpensesApp
-      </a>	
-    </td>
-    <td> 
-      1.
-      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/DishForm">
-        DishForm
-      </a> <br/>
-      2.  
-      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/GiardDesign">
-        GiardDesign
-      </a>  
-    </td>
-  </tr>
-</table>
+
+# GiardDesign
+
+This is a recruitment task project for adRespect company. 
+
+
+<details><summary> <h2>  📖 Problem description  </summary>
+
+```
+Informacje:
+  - Projekt powinien zostać oparty o bootstrap'a lub tailwinda,
+  - Projekt powinien się składać na tablet i mobile (złóż to według swojego gustu, chociaż zwykle projektujemy widoki mobilne),
+  - Projekt oprócz dokładnego odwzorowania powinien mieć w sobie trochę życia (zaproponuj jakieś ciekawe animacje),
+  - Nie używaj w projekcie reacta czy innego frameworka JS - chcemy zobaczyć Twój czysty kod.
+
+
+Sekcja: Intro
+Informacje: 
+  - Sekcja po lewej stronie, powinna trzymać się siatki,
+  - Sekcja po prawej stronie powinna wyjść poza siatkę i zostać przyklejona do krawędzi ekranu,
+  - Cały sekcja powinna być slajderem.
+  
+Sekcja: Nawigacja
+Informacje:
+  - Oferta powinna się rozwijać zaproponuj swoje rozwiązanie,
+  - Wyszukiwarka po kliknięciu powinna się wysunąć, zaproponuj swoje rozwiązanie.
+  
+Sekcja: Oferta
+Informacje:
+  - Elementy oferty powinny być klikalne i mieć efekt hover, zaproponuj swoje rozwiązanie.
+  
+Sekcja: O firmie
+Informacje:
+  - Sekcja po lewej stornie powinna wyjść poza siatkę i zostać przyklejona do krawędzi ekranu,
+  - Sekcja po prawej stronie, powinna trzymać się siatki.
+  
+  
+Zadanie powinno zostać umieszczone na:
+  - Hostingu pod publicznym adresem url,
+  - Profilu github.
+```
+
+
+</details>
