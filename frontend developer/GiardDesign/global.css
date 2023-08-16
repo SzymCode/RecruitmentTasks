@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --inter-body: Inter;
+  --montserrat-h-3: Montserrat;
+  --bagoss-trial-body: "Bagoss TRIAL";
+
+  /* font sizes */
+  --inter-body-size: 16px;
+  --inter-body-small-size: 14px;
+  --font-size-29xl: 48px;
+  --font-size-xs: 12px;
+  --montserrat-h-3-size: 28px;
+
+  /* Colors */
+  --white: #fff;
+  --black: #111;
+  --grey: #f5f0ec;
+  --green: #1b5b31;
+  --beige: #dcc1ab;
+
+  /* Gaps */
+  --gap-base: 16px;
+  --gap-29xl: 48px;
+  --gap-5xl: 24px;
+  --gap-45xl: 64px;
+  --gap-77xl: 96px;
+  --gap-5xs: 8px;
+  --gap-53xl: 72px;
+  --gap-3xs: 10px;
+  --gap-13xl: 32px;
+  --gap-xs: 12px;
+
+  /* Paddings */
+  --padding-xs: 12px;
+  --padding-5xl: 24px;
+  --padding-sm: 14px;
+  --padding-101xl: 120px;
+  --padding-3xl: 22px;
+  --padding-141xl: 160px;
+  --padding-29xl: 48px;
+  --padding-21xl: 40px;
+  --padding-9xs: 4px;
+
+  /* border radiuses */
+  --br-181xl: 200px;
+  --br-9xl: 28px;
+}
