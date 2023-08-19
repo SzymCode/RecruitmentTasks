@@ -1,8 +1,11 @@
 module.exports = {
-  content: ["./src/**/*.html", "./src/**/*.js"], // Update the paths to match your project structure
+  content: [
+    "./src/**/*.html",
+    "./src/**/*.js"
+  ],
   mode: "jit",
   theme: {
-    extend: {},
+    extend: {}
   },
-  plugins: [],
+  plugins: []
 };
