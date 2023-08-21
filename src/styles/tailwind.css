@@ -739,6 +739,9 @@ body {
 .top-1 {
   top: 0.25rem;
 }
+.top-3 {
+  top: 0.75rem;
+}
 .top-10 {
   top: 2.5rem;
 }
@@ -1371,6 +1374,9 @@ h3 {
 }
 
 @media (max-width: 1023px) {
+  .lg\:top-0 {
+    top: 0px;
+  }
   .lg\:ml-0 {
     margin-left: 0px;
   }
@@ -1427,6 +1433,9 @@ h3 {
   margin-right: auto;
 }
 @media (max-width: 767px) {
+  .md\:top-0 {
+    top: 0px;
+  }
   .md\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
@@ -1482,6 +1491,9 @@ h3 {
 }
 
 @media (max-width: 650px) {
+  .sm\:top-0 {
+    top: 0px;
+  }
   .sm\:ml-6 {
     margin-left: 1.5rem;
   }
