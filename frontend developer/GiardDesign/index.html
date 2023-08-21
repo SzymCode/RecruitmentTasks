@@ -19,35 +19,97 @@
     <script src="src/scripts/handleImages.js"></script>
     <script src="src/scripts/handleMasonry.js"></script>
     <script src="src/scripts/handleScroll.js"></script>
+    <script src="src/scripts/handleSearch.js"></script>
+    <script src="src/scripts/handleMobileMenu.js"></script>
   </head>
   <body>
-    <header class="flex justify-around py-6 bg-white">
-      <img src="src/img/giarddesign.svg" alt="logo" />
-      <div class="flex">
-        <nav class="md:hidden">
+    <!-- NAVBAR -->
+    <header class="flex justify-around py-4 h-20 bg-white">
+      <img src="src/img/giarddesign.svg" class="h-6 mt-1" alt="logo" />
+      <div class="flex relative left-20 lg:left-0">
+        <nav class="lg:hidden ">
           <ul class="flex gap-12 sm:gap-4 whitespace-nowrap">
-            <li class="flex cursor-pointer hover:text-underline">
+            <a href="#offer" class="nav-link h-12 flex cursor-pointer hover:text-underline top-1 relative group" onclick="handleScroll()">
               Oferta
               <span class="inline-block ml-2 h-6 w-6">
                 <img class="h-6 " src="src/img/icon.svg" alt="more"/>
               </span>
+              <div class="absolute justify-around top-10 z-10 bg-white strong-hidden group-hover:visible border w-[200px]">
+                <div class="p-1 pt-0375rem text-center hover:bg-lightbrown duration-300">
+                  Projekty
+                </div>
+                <div class="p-1 text-center hover:bg-lightbrown duration-300">
+                  Wizualizacje
+                </div>
+                <div class="p-1 pb-2 text-center hover:bg-lightbrown duration-300">
+                  Realizacje
+                </div>
+              </div>
+            </a>
+
+            <li class="hover:text-underline top-1 relative">
+              <a href="#about" class="nav-link" onclick="handleScroll()">
+                O firmie
+              </a>
             </li>
-            <li class="hover:text-underline"><a href="#about" class="nav-link" onclick="handleScroll()">
-              O firmie
-            </a></li>
-            <li class="hover:text-underline"><a href="#realisation" class="nav-link" onclick="handleScroll()" >
-              Realizacje
-            </a></li>
-            <li class="hover:text-underline"><a href="#contakt" class="nav-link" onclick="handleScroll()">
-              Kontakt
-            </a></li>
+            <li class="hover:text-underline top-1 relative">
+              <a href="#realisation" class="nav-link" onclick="handleScroll()" >
+                Realizacje
+              </a>
+            </li>
+            <li class="hover:text-underline top-1 relative">
+              <a href="#contact" class="nav-link" onclick="handleScroll()">
+                Kontakt
+              </a>
+            </li>
           </ul>
         </nav>
-        <i class="fas fa-bars cursor-pointer hidden md:visible relative left-2 text-2xl"></i>
-        <img class="ml-12 h-6 cursor-pointer sm:ml-6 hover:scale-80 duration-300 header-search-icon" src="src/img/search.svg" alt="search" onclick="toggleSearch()"/>
-      </div>
+        <img class="ml-12 h-6 cursor-pointer sm:ml-6 hover:scale-80 duration-300 header-search-icon relative top-1 lg:hidden" src="src/img/search.svg" alt="search" onclick="toggleSearch()"/>
+        <input type="search" id="searchInput" placeholder="Search . . ." class="pl-2 border-r-2 w-[200px] xl:w-[115px] h-8 my-0 border opacity-0 relative transition-all lg:hidden" />
+        <i id="mobileMenuIcon" class="fas fa-bars cursor-pointer hidden lg:visible relative left-15 mt-1 lg:px-20 text-2xl"></i>
       </div>
     </header>
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="w-full h-full bg-white hidden lg:pt-3 pb-3 lg:text-center">
+      <div class="nav-link cursor-pointer mb-1 py-1" onclick="toggleOfferDivs()">
+        <span class="ml-3">Oferta</span>
+        <span class="inline-block ml-1 w-6">
+          <img class="h-6 pt-2 " src="src/img/icon.svg" alt="more"/>
+        </span>
+      </div>
+      <a href="#projects" class="nav-link cursor-pointer group" onclick="handleScroll()">
+        <div id="projectsDiv" class="mt-1 p-1 pt-0.375rem text-center hidden hover:bg-lightbrown duration-300">
+          <hr class="relative bottom-1"/>
+          Projekty
+        </div>
+      </a>
+
+      <a href="#visualizations" class="nav-link cursor-pointer group" onclick="handleScroll()">
+        <div id="visualizationsDiv" class="p-1 text-center hidden hover:bg-lightbrown duration-300">
+          Wizualizacje
+        </div>
+      </a>
+
+      <a href="#realizations" class="nav-link cursor-pointer group" onclick="handleScroll()">
+        <div id="realizationsDiv" class="p-1 text-center hidden hover:bg-lightbrown duration-300">
+          Realizacje
+          <hr class="relative top-1"/>
+          </div>
+      </a>
+      <a href="#about" class="nav-link mb-1 py-1 hover:text-underline" onclick="handleScroll()">
+        O firmie
+      </a>
+      <a href="#realisation" class="nav-link mb-1 py-1 hover:text-underline" onclick="handleScroll()" >
+        Realizacje
+      </a>
+      <a href="#contact" class="nav-link pb-1 py-1 hover:text-underline" onclick="handleScroll()">
+        Kontakt
+      </a>
+      <input type="search" placeholder="Search . . ." class="pl-2 border-r-2 w-[200px] h-8 my-0 border my-2 mt-3" />
+    </div>
+
+
+    <!-- CAROUSEL -->
     <section class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner bg-beige items-center">
         <div class="carousel-item max-h-[737px] active">
@@ -106,15 +168,17 @@
         </div>
 
         <script>showSlides(slideIndex)</script>
-        <div class="flex absolute bottom-0 right-0">
+        <div class="flex absolute bottom-0 right-0 z-10">
           <i data-bs-target=".carousel" data-bs-slide="prev" class="h-14 bg-lightBeige cursor-pointer hover:bg-brown duration-300 fas fa-arrow-left px-4 py-3 cursor-pointer text-3xl" onclick="plusSlides(-1)"></i>
           <i data-bs-target=".carousel" data-bs-slide="next" class="h-14 bg-lightBeige cursor-pointer hover:bg-brown duration-300 fas fa-arrow-right px-4 py-3 cursor-pointer text-3xl" onclick="plusSlides(1)"></i>
         </div>
       </div>
     </section>
 
-    <section class="bg-lightBeige py-40 lg:px-20 sm:px-10">
-      <div class="mb-20 ml-52 lg:text-center lg:ml-0">
+
+    <!-- OFFER -->
+    <section id="offer" class="bg-lightBeige py-40 lg:px-20 sm:px-10">
+      <div class="mb-20 ml-52 lg:text-center lg:ml-0 ">
         <h6 class="mb-8 md:ml-0 md:text-center">
           Oferta
         </h6>
@@ -126,7 +190,7 @@
           etapie posłużymy radą i wieloletnim doświadczeniem.
         </p>
       </div>
-      <div class="flex gap-16 lg:flex-col mx-20 md:mx-0">
+      <section id="projects" class="flex gap-16 lg:flex-col mx-20 md:mx-0">
         <div class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
           <img src="src/img/icon-1.png" alt="pen" class="h-12 p-1 mb-8"/>
           <h3 class="mb-3 text-[28px]">
@@ -142,7 +206,7 @@
           </a>
         </div>
 
-        <div class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
+        <section id="visualizations" class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
           <img src="src/img/icon-2.png" alt="pen" class="h-12 p-1 mb-8"/>
           <h3 class="mb-3">
             Wizualizacje
@@ -155,9 +219,9 @@
             Dowiedz się więcej
             <i class="fas fa-arrow-right ml-2 mt-1 group-hover:ml-1 duration-300"></i>
           </a>
-        </div>
+        </section>
 
-        <div class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
+        <section id="realizations" class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
           <img src="src/img/icon-3.png" alt="pen" class="h-12 p-1 mb-8"/>
           <h3 class="mb-3">
             Realizacje
@@ -169,10 +233,12 @@
             Zobacz nasze realizacje
             <i class="fas fa-arrow-right ml-2 mt-1 group-hover:ml-1 duration-300"></i>
           </a>
-        </div>
-      </div>
+        </section>
+      </section>
     </section>
 
+
+    <!-- ABOUT -->
     <section id="about" class="flex items-center bg-green sm:justify-center text-white">
       <div class=" inline-block min-h-[700px] w-full md:hidden">
         <img class="inline-block md:hidden" alt="" src="src/img/photo-1.png" />
@@ -206,8 +272,8 @@
       </div>
       <div class="gradient"></div>
     </section>
-    <section id="contakt" class="bg-lightBeige py-10 text-white">
-      <div class="flex justify-between bg-green py-32 px-28 mx-20 sm:mx-10 sm:px-10 md:flex-col sm:items-center sm:text-center">
+    <section id="contact" class="bg-lightBeige py-10 text-white">
+      <div class="flex justify-between bg-green py-32 px-28 mx-20 sm:mx-10 sm:px-10 md:flex-col">
         <h2 class="font-normal sm:mb-6">Zostańmy w kontakcie! <br> Znajdziesz nas na <em class="font-medium">Instagramie</em>.</h2>
         <div>
           <p class="mb-6">Śledź nasze <br> najnowsze realizacje!</p>
@@ -217,6 +283,7 @@
     </section>
 
 
+    <!-- FOOTER -->
     <footer class="text-white bg-primary-black px-20 py-24 flex flex-col gap-16 sm:items-center">
       <div class="flex justify-between lg:flex-col sm:items-center sm:gap-4">
         <img class="w-[115px]" src="src/img/giarddesign-1.svg" alt="logo" />
@@ -236,10 +303,10 @@
         </div>
 
         <div class="flex gap-12 lg:flex-col lg:gap-1 sm:items-center">
-          <span class="resize-none w-[130px] h-6 group cursor-pointer mb-11" onclick="handleCopy(this)">
-            000-000-000<span class="relative  top-0 ml-2 fa-solid fa-copy hidden group-hover:visible"></span>
+          <span class="w-[135px] h-6 group cursor-pointer mb-11 lg:ml-7 " onclick="handleCopy(this)">
+            000-000-000<span class="relative top-0 ml-2 fa-solid fa-copy hidden group-hover:visible"></span>
           </span>
-          <span class="resize-none w-[135px] h-6 group cursor-pointer mb-11" onclick="handleCopy(this)">
+          <span class="w-[200px] h-6 group cursor-pointer mb-11 lg:ml-7 pl-4 lg:pl-0" onclick="handleCopy(this)">
             giarddesign@kontakt.pl<span class="relative top-0 ml-2 fa-solid fa-copy hidden group-hover:visible"></span>
           </span>
         </div>
@@ -250,5 +317,4 @@
       </div>
     </footer>
   </body>
-
 </html>
