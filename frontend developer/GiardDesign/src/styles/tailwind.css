@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .group:hover .group-hover\:visible {
   visibility: visible;
 }
@@ -701,7 +697,9 @@ body {
   border-radius: 9999px;
   padding: 0.75rem 1.25rem;
 }
-
+.z-2 {
+  z-index: 2;
+}
 .static {
   position: static;
 }
@@ -726,8 +724,8 @@ body {
 .left-0 {
   left: 0px;
 }
-.left-4 {
-  left: 1rem;
+.left-2 {
+  left: 0.5rem;
 }
 .left-54 {
   left: 54%;
@@ -863,6 +861,10 @@ body {
 
 .-rotate-90 {
   --tw-rotate: -90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.rotate-180 {
+  --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1083,6 +1085,9 @@ body {
 .py-32 {
   padding-top: 8rem;
   padding-bottom: 8rem;
+}
+.pt-33 {
+  padding-top: 8.25rem;
 }
 .py-33 {
   padding-top: 8.25rem;

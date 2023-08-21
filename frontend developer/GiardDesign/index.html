@@ -16,6 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/macy@2"></script>
     <script src="src/scripts/handleCarousel.js">plusSlides(-1)</script>
     <script src="src/scripts/handleCopy.js"></script>
+    <script src="src/scripts/handleImages.js"></script>
     <script src="src/scripts/handleMasonry.js"></script>
     <script src="src/scripts/handleScroll.js"></script>
   </head>
@@ -42,7 +43,7 @@
             </a></li>
           </ul>
         </nav>
-        <i class="fas fa-bars cursor-pointer hidden md:visible relative left-4 text-2xl"></i>
+        <i class="fas fa-bars cursor-pointer hidden md:visible relative left-2 text-2xl"></i>
         <img class="ml-12 h-6 cursor-pointer sm:ml-6 hover:scale-80 duration-300 header-search-icon" src="src/img/search.svg" alt="search" onclick="toggleSearch()"/>
       </div>
       </div>
@@ -127,7 +128,7 @@
       </div>
       <div class="flex gap-16 lg:flex-col mx-20 md:mx-0">
         <div class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
-          <img src="src/img/icon-1.png" alt="pen" class="h-12 p-1 cursor-pointer mb-8"/>
+          <img src="src/img/icon-1.png" alt="pen" class="h-12 p-1 mb-8"/>
           <h3 class="mb-3 text-[28px]">
             Projekty
           </h3>
@@ -142,7 +143,7 @@
         </div>
 
         <div class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
-          <img src="src/img/icon-2.png" alt="pen" class="h-12 p-1 cursor-pointer mb-8"/>
+          <img src="src/img/icon-2.png" alt="pen" class="h-12 p-1 mb-8"/>
           <h3 class="mb-3">
             Wizualizacje
           </h3>
@@ -157,7 +158,7 @@
         </div>
 
         <div class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
-          <img src="src/img/icon-3.png" alt="pen" class="h-12 p-1 cursor-pointer mb-8"/>
+          <img src="src/img/icon-3.png" alt="pen" class="h-12 p-1 mb-8"/>
           <h3 class="mb-3">
             Realizacje
           </h3>
@@ -192,78 +193,19 @@
         </div>
       </div>
     </section>
-
-    <section id="realisation" class="bg-beige md:text-center item py-33">
+    <section id="realisation" class="bg-beige md:text-center item pt-33">
       <h6 class="mb-8 px-20 md:ml-0">
         Realizacje
       </h6>
       <h2 class="mb-8 px-20 md:ml-0">Nasze projekty</h2>
-      <div class="photos w-full mb-6 overflow-hidden">
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-2.png" onclick="showPopup('src/img/photo-2.png')" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-3.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-4.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-5.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-6.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-7.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-8.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-9.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-10.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-2.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-3.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-4.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-5.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-6.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-7.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-8.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-9.png" />
-        </div>
-        <div class="overflow-hidden">
-          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-10.png" />
-        </div>
-
+      <div class="photos w-full mb-6 overflow-hidden" id="imageContainer">
+        <!-- IMAGES RENDERED FROM handleImages.js -->
       </div>
       <div id="expandButton" class="button6 btn border-0 text-green outline-green hover:bg-green cursor-pointer hover:text-white duration-300 mx-auto" onclick="togglePhotos()">
         <div id="ctaText" class="cta">Rozwiń</div>
-        <i class="fas fa-arrow-down cursor-pointer ml-1.5 py-1 text-lg"></i>
       </div>
-      <div class="gradient-container">
-        <div class="gradient"></div>
-      </div>
+      <div class="gradient"></div>
     </section>
-
     <section id="contakt" class="bg-lightBeige py-10 text-white">
       <div class="flex justify-between bg-green py-32 px-28 mx-20 sm:mx-10 sm:px-10 md:flex-col sm:items-center sm:text-center">
         <h2 class="font-normal sm:mb-6">Zostańmy w kontakcie! <br> Znajdziesz nas na <em class="font-medium">Instagramie</em>.</h2>
@@ -308,4 +250,5 @@
       </div>
     </footer>
   </body>
+
 </html>
