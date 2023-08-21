@@ -777,6 +777,10 @@ body {
   transform: translateY(-5rem);
   transition: transform 0.3s ease-in;
 }
+.-translate-y-5rem {
+  transform: translateY(-5rem);
+  transition: transform 0.3s ease-in;
+}
 .opacity-0 {
   opacity: 0;
 }

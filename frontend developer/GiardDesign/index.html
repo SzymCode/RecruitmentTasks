@@ -22,9 +22,9 @@
     <script src="src/scripts/handleSearch.js"></script>
     <script src="src/scripts/handleMobileMenu.js"></script>
   </head>
-  <body>
+  <body class="bg-lightBeige">
     <!-- NAVBAR -->
-    <header class="flex justify-around py-4 h-20 bg-white">
+    <header class="flex justify-around py-4 h-20 bg-white navbarFade">
       <img src="src/img/giarddesign.svg" class="h-6 mt-1" alt="logo" />
       <div class="flex relative left-20 lg:left-0">
         <nav class="lg:hidden ">
@@ -70,7 +70,7 @@
       </div>
     </header>
     <!-- MOBILE MENU -->
-    <div id="mobileMenu" class="w-full h-full bg-white hidden lg:pt-3 pb-3 lg:text-center">
+    <div id="mobileMenu" class="w-full h-full bg-white hidden lg:pt-3 pb-3 lg:text-center navbarFade">
       <div class="nav-link cursor-pointer mb-1 py-1" onclick="toggleOfferDivs()">
         <span class="ml-3">Oferta</span>
         <span class="inline-block ml-1 w-6">
@@ -99,7 +99,7 @@
       <a href="#about" class="nav-link mb-1 py-1 hover:text-underline" onclick="handleScroll()">
         O firmie
       </a>
-      <a href="#realisation" class="nav-link mb-1 py-1 hover:text-underline" onclick="handleScroll()" >
+      <a href="#realization" class="nav-link mb-1 py-1 hover:text-underline" onclick="handleScroll()" >
         Realizacje
       </a>
       <a href="#contact" class="nav-link pb-1 py-1 hover:text-underline" onclick="handleScroll()">
@@ -114,7 +114,7 @@
       <div class="carousel-inner bg-beige items-center">
         <div class="carousel-item max-h-[737px] active">
           <img src="src/img/photo.png" class="absolute xl:hidden left-54 top-0 w-1/2 min-h-[737px] min-w-[737px]" alt="" width="900">
-          <div class="w-[60rem] px-40 md:px-10 xl:px-20 py-40 xl:pt-10 xl:pb-25 xl:w-full">
+          <div class="carousel-content w-[60rem] px-40 md:px-10 xl:px-20 py-40 xl:pt-10 xl:pb-25 xl:w-full">
             <h1 class="mb-11">Nowoczesna <br> aranżacja <br> Twojego ogrodu</h1>
             <p class="mb-20 xl:mb-15">
               Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka
@@ -131,7 +131,7 @@
           </div>
         </div>
         <div class="carousel-item max-h-[737px]">
-          <img src="src/img/photo-8.png" class="absolute xl:hidden left-54 top-0 w-1/2 min-h-[737px] min-w-[737px]" alt="" width="900">
+          <img src="src/img/photo-8.png" class="carousel-photo absolute xl:hidden left-54 top-0 w-1/2 min-h-[737px] min-w-[737px]" alt="" width="900">
           <div class="w-[60rem] px-40 md:px-10 xl:px-20 py-40 xl:pt-10 xl:pb-25 xl:w-full">
             <h1 class="mb-11">Nowoczesna <br> aranżacja <br> Twojego ogrodu</h1>
             <p class="mb-20 xl:mb-15">
@@ -169,8 +169,8 @@
 
         <script>showSlides(slideIndex)</script>
         <div class="flex absolute bottom-0 right-0 z-10">
-          <i data-bs-target=".carousel" data-bs-slide="prev" class="h-14 bg-lightBeige cursor-pointer hover:bg-brown duration-300 fas fa-arrow-left px-4 py-3 cursor-pointer text-3xl" onclick="plusSlides(-1)"></i>
-          <i data-bs-target=".carousel" data-bs-slide="next" class="h-14 bg-lightBeige cursor-pointer hover:bg-brown duration-300 fas fa-arrow-right px-4 py-3 cursor-pointer text-3xl" onclick="plusSlides(1)"></i>
+          <i data-bs-target=".carousel" data-bs-slide="prev" class="h-14 bg-lightBeige hover:bg-brown duration-300 fas fa-arrow-left px-4 py-3 cursor-pointer text-3xl" onclick="plusSlides(-1)"></i>
+          <i data-bs-target=".carousel" data-bs-slide="next" class="h-14 bg-lightBeige hover:bg-brown fas fa-arrow-right px-4 py-3 cursor-pointer text-3xl" onclick="plusSlides(1)"></i>
         </div>
       </div>
     </section>
@@ -178,7 +178,7 @@
 
     <!-- OFFER -->
     <section id="offer" class="bg-lightBeige py-40 lg:px-20 sm:px-10">
-      <div class="mb-20 ml-52 lg:text-center lg:ml-0 ">
+      <div class="offer-content mb-20 ml-52 lg:text-center lg:ml-0">
         <h6 class="mb-8 md:ml-0 md:text-center">
           Oferta
         </h6>
@@ -190,7 +190,7 @@
           etapie posłużymy radą i wieloletnim doświadczeniem.
         </p>
       </div>
-      <section id="projects" class="flex gap-16 lg:flex-col mx-20 md:mx-0">
+      <section id="projects" class="projectsFade flex gap-16 lg:flex-col mx-20 md:mx-0">
         <div class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
           <img src="src/img/icon-1.png" alt="pen" class="h-12 p-1 mb-8"/>
           <h3 class="mb-3 text-[28px]">
@@ -206,7 +206,7 @@
           </a>
         </div>
 
-        <section id="visualizations" class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
+        <section id="visualizations" class="visualizationFade px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
           <img src="src/img/icon-2.png" alt="pen" class="h-12 p-1 mb-8"/>
           <h3 class="mb-3">
             Wizualizacje
@@ -221,7 +221,7 @@
           </a>
         </section>
 
-        <section id="realizations" class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
+        <section id="realizations" class="realizationsFade px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
           <img src="src/img/icon-3.png" alt="pen" class="h-12 p-1 mb-8"/>
           <h3 class="mb-3">
             Realizacje
@@ -239,11 +239,11 @@
 
 
     <!-- ABOUT -->
-    <section id="about" class="flex items-center bg-green sm:justify-center text-white">
-      <div class=" inline-block min-h-[700px] w-full md:hidden">
+    <section id="about" class="about flex items-center bg-green sm:justify-center text-white">
+      <div class="inline-block min-h-[700px] w-full md:hidden">
         <img class="inline-block md:hidden" alt="" src="src/img/photo-1.png" />
       </div>
-      <div class="px-20 w-full sm:px-10 sm:text-center py-20">
+      <div class="aboutContent px-20 w-full sm:px-10 sm:text-center py-20">
         <h6 class="mb-8 md:ml-0 md:text-center">
           O firmie
         </h6>
@@ -259,7 +259,10 @@
         </div>
       </div>
     </section>
-    <section id="realisation" class="bg-beige md:text-center item pt-33">
+
+
+    <!-- REALISATION -->
+    <section id="realization" class="realizationContent bg-beige md:text-center item pt-33">
       <h6 class="mb-8 px-20 md:ml-0">
         Realizacje
       </h6>
@@ -272,7 +275,9 @@
       </div>
       <div class="gradient"></div>
     </section>
-    <section id="contact" class="bg-lightBeige py-10 text-white">
+
+    <!-- CONTACT -->
+    <section id="contact" class="contactContent bg-lightBeige py-10 text-white">
       <div class="flex justify-between bg-green py-32 px-28 mx-20 sm:mx-10 sm:px-10 md:flex-col">
         <h2 class="font-normal sm:mb-6">Zostańmy w kontakcie! <br> Znajdziesz nas na <em class="font-medium">Instagramie</em>.</h2>
         <div>
