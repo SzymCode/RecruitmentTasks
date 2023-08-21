@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const isExpanded = isSmallWidth ? viewMoreContainer.style.maxHeight === "600px" : viewMoreContainer.style.maxHeight === "2000px";
 
     if (isExpanded) {
-      const newMaxHeight = isSmallWidth ? "1200px" : "7000px";
+      const newMaxHeight = isSmallWidth ? "2000px" : "7000px";
       viewMoreContainer.style.maxHeight = newMaxHeight;
       expandButton.querySelector("#ctaText").textContent = "Zwiń";
     } else {

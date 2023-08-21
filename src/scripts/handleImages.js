@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     imgDiv.className = 'overflow-hidden';
 
     const img = document.createElement('img');
-    img.className = 'hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in';
+    img.className = 'hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in hover-dark' ;
     img.src = imgSrc;
     img.alt = '';
     imgDiv.appendChild(img);

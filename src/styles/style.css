@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .btn {
+    @apply px-5 py-3 rounded-full w-max;
+  }
+}
+
 body {
   background-color: gray;
   color: black;
@@ -44,12 +50,15 @@ h3 {
   margin: auto;
 }
 
-
-@layer components {
-  .btn {
-    @apply px-5 py-3 rounded-full w-max;
+@media (min-width: 992px) {
+  #mobileMenu {
+    display: none;
   }
 }
+.pt-0375rem {
+  padding-top: 0.375rem;
+}
+
 
 @media (max-width: 750px) {
   h1 {
@@ -66,7 +75,13 @@ h3 {
   }
 }
 
-
+.carousel-item {
+  z-index: 2;
+}
+.image {
+  position: absolute;
+  z-index: 2;
+}
 .photos {
   max-height: 2000px;
 }
