@@ -9,20 +9,21 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagoss TRIAL:wght@400&display=swap"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <link rel="stylesheet" href="src/styles/style.css" />
     <link rel="stylesheet" href="src/styles/tailwind.css" />
 
-    <script src="src/scripts/carousel.js">plusSlides(-1)</script>
-    <script src="src/scripts/copy.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/macy@2"></script>
+    <script src="src/scripts/handleCarousel.js">plusSlides(-1)</script>
+    <script src="src/scripts/handleCopy.js"></script>
+    <script src="src/scripts/handleMasonry.js"></script>
     <script src="src/scripts/handleScroll.js"></script>
   </head>
   <body>
     <header class="flex justify-around py-6 bg-white">
       <img src="src/img/giarddesign.svg" alt="logo" />
-      <div class="flex md:hidden sm:w-4/5">
-        <nav>
+      <div class="flex">
+        <nav class="md:hidden">
           <ul class="flex gap-12 sm:gap-4 whitespace-nowrap">
             <li class="flex cursor-pointer hover:text-underline">
               Oferta
@@ -41,23 +42,23 @@
             </a></li>
           </ul>
         </nav>
-        <img class="ml-12 h-6 cursor-pointer sm:ml-6 hover:scale-80 duration-300" src="src/img/search.svg" alt="search"/>
+        <i class="fas fa-bars cursor-pointer hidden md:visible relative left-4 text-2xl"></i>
+        <img class="ml-12 h-6 cursor-pointer sm:ml-6 hover:scale-80 duration-300 header-search-icon" src="src/img/search.svg" alt="search" onclick="toggleSearch()"/>
+      </div>
       </div>
     </header>
     <section class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner bg-beige items-center">
-        <div class="carousel-item min-h-[737px] active">
-          <div class="absolute right-0 top-0">
-            <img src="src/img/photo.png" alt="" width="900">
-          </div>
-          <div class="md:ml-0 md:px-0 md:py-0 ml-20 px-40 w-[60rem] sm:px-10 sm:text-center py-40">
+        <div class="carousel-item max-h-[737px] active">
+          <img src="src/img/photo.png" class="absolute xl:hidden left-54 top-0 w-1/2 min-h-[737px] min-w-[737px]" alt="" width="900">
+          <div class="w-[60rem] px-40 md:px-10 xl:px-20 py-40 xl:pt-10 xl:pb-25 xl:w-full">
             <h1 class="mb-11">Nowoczesna <br> aranżacja <br> Twojego ogrodu</h1>
-            <p class="mb-20">
+            <p class="mb-20 xl:mb-15">
               Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka
               realizacji. Oferujemy kompleksowy zakres usług z indywidualnym
               podejściem do każdego projektu.
             </p>
-            <div class="flex gap-9 sm:flex-col sm:items-center">
+            <div class="flex gap-9 xl:gap-4 sm:flex-col sm:items-center">
               <button class="btn text-white bg-green hover:bg-lightgreen duration-300">Skontaktuj się z nami</button>
               <button class="flex btn text-green outline-green hover:text-white hover:bg-green duration-300">
                 Zobacz nasze realizacje
@@ -66,18 +67,16 @@
             </div>
           </div>
         </div>
-        <div class="carousel-item min-h-[737px]">
-          <div class="ml-20 px-40 w-[60rem] sm:px-10 sm:text-center py-40">
-            <div class="absolute right-0 top-0">
-              <img src="src/img/photo-8.png" alt="" width="900">
-            </div>
+        <div class="carousel-item max-h-[737px]">
+          <img src="src/img/photo-8.png" class="absolute xl:hidden left-54 top-0 w-1/2 min-h-[737px] min-w-[737px]" alt="" width="900">
+          <div class="w-[60rem] px-40 md:px-10 xl:px-20 py-40 xl:pt-10 xl:pb-25 xl:w-full">
             <h1 class="mb-11">Nowoczesna <br> aranżacja <br> Twojego ogrodu</h1>
-            <p class="mb-20">
+            <p class="mb-20 xl:mb-15">
               Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka
               realizacji. Oferujemy kompleksowy zakres usług z indywidualnym
               podejściem do każdego projektu.
             </p>
-            <div class="flex gap-9 sm:flex-col sm:items-center">
+            <div class="flex gap-9 xl:gap-4 sm:flex-col sm:items-center">
               <button class="btn text-white bg-green hover:bg-lightgreen duration-300">Skontaktuj się z nami</button>
               <button class="flex btn text-green outline-green hover:text-white hover:bg-green duration-300">
                 Zobacz nasze realizacje
@@ -86,18 +85,16 @@
             </div>
           </div>
         </div>
-        <div class="carousel-item min-h-[737px]">
-          <div class="ml-20 px-40 w-[60rem] sm:px-10 sm:text-center py-40">
-            <div class="absolute right-0 top-0">
-              <img src="src/img/photo-7.png" alt="" width="900">
-            </div>
+        <div class="carousel-item max-h-[737px]">
+          <img src="src/img/photo-7.png" class="absolute xl:hidden left-54 top-0 w-1/2 min-h-[737px] min-w-[737px]" alt="" width="900">
+          <div class="w-[60rem] px-40 md:px-10 xl:px-20 py-40 xl:pt-10 xl:pb-25 xl:w-full">
             <h1 class="mb-11">Nowoczesna <br> aranżacja <br> Twojego ogrodu</h1>
-            <p class="mb-20">
+            <p class="mb-20 xl:mb-15">
               Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka
               realizacji. Oferujemy kompleksowy zakres usług z indywidualnym
               podejściem do każdego projektu.
             </p>
-            <div class="flex gap-9 sm:flex-col sm:items-center">
+            <div class="flex gap-9 xl:gap-4 sm:flex-col sm:items-center">
               <button class="btn text-white bg-green hover:bg-lightgreen duration-300">Skontaktuj się z nami</button>
               <button class="flex btn text-green outline-green hover:text-white hover:bg-green duration-300">
                 Zobacz nasze realizacje
@@ -108,7 +105,7 @@
         </div>
 
         <script>showSlides(slideIndex)</script>
-        <div class="flex absolute bottom-0 right-0 sm:top-0">
+        <div class="flex absolute bottom-0 right-0">
           <i data-bs-target=".carousel" data-bs-slide="prev" class="h-14 bg-lightBeige cursor-pointer hover:bg-brown duration-300 fas fa-arrow-left px-4 py-3 cursor-pointer text-3xl" onclick="plusSlides(-1)"></i>
           <i data-bs-target=".carousel" data-bs-slide="next" class="h-14 bg-lightBeige cursor-pointer hover:bg-brown duration-300 fas fa-arrow-right px-4 py-3 cursor-pointer text-3xl" onclick="plusSlides(1)"></i>
         </div>
@@ -179,7 +176,7 @@
       <div class=" inline-block min-h-[700px] w-full md:hidden">
         <img class="inline-block md:hidden" alt="" src="src/img/photo-1.png" />
       </div>
-      <div class="px-20 w-full sm:px-10 sm:text-center md:py-20">
+      <div class="px-20 w-full sm:px-10 sm:text-center py-20">
         <h6 class="mb-8 md:ml-0 md:text-center">
           O firmie
         </h6>
@@ -196,33 +193,79 @@
       </div>
     </section>
 
-    <section id="realisation" class="bg-beige py-40 md:text-center">
+    <section id="realisation" class="bg-beige md:text-center item py-33">
       <h6 class="mb-8 px-20 md:ml-0">
         Realizacje
       </h6>
       <h2 class="mb-8 px-20 md:ml-0">Nasze projekty</h2>
-      <div class="photos">
-        <img class="photo-icon1" alt="" src="src/img/photo-2.png" />
-        <img class="photo-icon2" alt="" src="src/img/photo-3.png" />
-        <img class="photo-icon3" alt="" src="src/img/photo-4.png" />
-        <img class="photo-icon4" alt="" src="src/img/photo-5.png" />
-        <img class="photo-icon5" alt="" src="src/img/photo-6.png" />
-        <img class="photo-icon6" alt="" src="src/img/photo-7.png" />
-        <img class="photo-icon7" alt="" src="src/img/photo-8.png" />
-        <img class="photo-icon8" alt="" src="src/img/photo-9.png" />
-        <img class="photo-icon9" alt="" src="src/img/photo-10.png" />
-
-        <div class="gradient"></div>
-
-        <div class="button6 flex btn border-0 text-green outline-green hover:bg-green cursor-pointer hover:text-white duration-300">
-          <div class="cta">Rozwiń</div>
-          <i class="fas fa-arrow-down cursor-pointer ml-1.5 py-1 text-lg"></i>
+      <div class="photos w-full mb-6 overflow-hidden">
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-2.png" onclick="showPopup('src/img/photo-2.png')" />
         </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-3.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-4.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-5.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-6.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-7.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-8.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-9.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-10.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-2.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-3.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-4.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-5.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-6.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-7.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-8.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-9.png" />
+        </div>
+        <div class="overflow-hidden">
+          <img alt="" class="hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in" src="src/img/photo-10.png" />
+        </div>
+
+      </div>
+      <div id="expandButton" class="button6 btn border-0 text-green outline-green hover:bg-green cursor-pointer hover:text-white duration-300 mx-auto" onclick="togglePhotos()">
+        <div id="ctaText" class="cta">Rozwiń</div>
+        <i class="fas fa-arrow-down cursor-pointer ml-1.5 py-1 text-lg"></i>
+      </div>
+      <div class="gradient-container">
+        <div class="gradient"></div>
       </div>
     </section>
 
     <section id="contakt" class="bg-lightBeige py-10 text-white">
-      <div class="flex justify-between bg-green py-32 px-28 mx-20 md:flex-col sm:items-center sm:text-center">
+      <div class="flex justify-between bg-green py-32 px-28 mx-20 sm:mx-10 sm:px-10 md:flex-col sm:items-center sm:text-center">
         <h2 class="font-normal sm:mb-6">Zostańmy w kontakcie! <br> Znajdziesz nas na <em class="font-medium">Instagramie</em>.</h2>
         <div>
           <p class="mb-6">Śledź nasze <br> najnowsze realizacje!</p>
@@ -251,10 +294,10 @@
         </div>
 
         <div class="flex gap-12 lg:flex-col lg:gap-1 sm:items-center">
-          <span class="resize-none w-[130px] h-6 group cursor-pointer mb-11" onclick="copy(this)">
+          <span class="resize-none w-[130px] h-6 group cursor-pointer mb-11" onclick="handleCopy(this)">
             000-000-000<span class="relative  top-0 ml-2 fa-solid fa-copy hidden group-hover:visible"></span>
           </span>
-          <span class="resize-none w-[135px] h-6 group cursor-pointer mb-11" onclick="copy(this)">
+          <span class="resize-none w-[135px] h-6 group cursor-pointer mb-11" onclick="handleCopy(this)">
             giarddesign@kontakt.pl<span class="relative top-0 ml-2 fa-solid fa-copy hidden group-hover:visible"></span>
           </span>
         </div>
