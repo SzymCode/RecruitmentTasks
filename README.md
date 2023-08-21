@@ -57,5 +57,36 @@ git clone -b giard-design https://github.com/SzymCode/RecruitmentTasks.git
 
 </details>
 
+<details><summary>  <h2>  📁 Tree View  </summary>
+
+<br/>
+
+
+```bash
+  GiardDesign
+  ├── src
+  │   ├── img
+  │   │   └── { images }
+  │   ├── scripts
+  │   │   ├── handleCarousel.js
+  │   │   ├── handleCopy.js
+  │   │   ├── handleImages.js
+  │   │   ├── handleMasonry.js
+  │   │   ├── handleMobileMenu.js
+  │   │   ├── handleScroll.js
+  │   │   └── handleSearch.js    
+  │   └── styles
+  │       ├── style.css
+  │       └── tailwind.css
+  ├── .gitignore
+  ├── README.md 
+  ├── index.html
+  ├── package-lock.json  
+  ├── package.json
+  └── tailwind.config.js
+```
+
+</details>
+
 
 
