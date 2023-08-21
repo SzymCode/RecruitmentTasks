@@ -68,36 +68,31 @@ h3 {
 
 
 .photos {
-  max-height: 100rem;
+  max-height: 2000px;
 }
 .button6 {
+  position: relative;
+  bottom: 100px;
   border: 1px solid green;
   display: flex;
   gap: 10px;
+  z-index: 100;
 }
 .gradient {
+  margin-top: -850px;
   position: relative;
   left: 0;
   background: linear-gradient(0deg, #dcc1ab, rgba(214, 183, 158, 0));
   width: 100%;
-  height: 1000px;
+  height: 800px;
 }
-.gradient-container {
-  margin-top: -1060px;
-  margin-bottom: 850px;
-  height: 100px;
-}
-@media (max-width: 1440px) {
+@media (max-width: 900px) {
   .photos {
-    max-height: 35rem;
+    max-height: 600px;
   }
   .gradient {
-    height: 500px;
-  }
-  .gradient-container {
-    margin-top: -560px;
-    margin-bottom: 350px;
-    height: 100px;
+    margin-top: -300px;
+    height: 250px;
   }
   .button6 {
     border: 1px solid green;
