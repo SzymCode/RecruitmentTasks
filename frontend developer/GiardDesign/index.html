@@ -24,7 +24,7 @@
   </head>
   <body class="bg-lightBeige">
     <!-- NAVBAR -->
-    <header class="flex justify-around py-4 h-20 bg-white navbarFade">
+    <header class="flex justify-around py-4 h-20 bg-white">
       <img src="src/img/giarddesign.svg" class="h-6 mt-1" alt="logo" />
       <div class="flex relative left-20 lg:left-0">
         <nav class="lg:hidden ">
@@ -190,51 +190,55 @@
           etapie posłużymy radą i wieloletnim doświadczeniem.
         </p>
       </div>
-      <section id="projects" class="projectsFade flex gap-16 lg:flex-col mx-20 md:mx-0">
-        <div class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
-          <img src="src/img/icon-1.png" alt="pen" class="h-12 p-1 mb-8"/>
-          <h3 class="mb-3 text-[28px]">
-            Projekty
-          </h3>
-          <p class="mb-16 line-clamp-3 text-[14px]">
-            Zaprojektujemy Twój ogród w nowoczesnym stylu i z najlepszym
-            wykorzystaniem istniejącej przestrzeni.
-          </p>
-          <a href="#" class="flex text-green hover:text-lightgreen border-b border-b-green w-fit group duration-300 hover:border-transparent">
-            Dowiedz się więcej
-            <i class="fas fa-arrow-right ml-2 mt-1 group-hover:ml-1 duration-300"></i>
-          </a>
-        </div>
-
-        <section id="visualizations" class="visualizationFade px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
-          <img src="src/img/icon-2.png" alt="pen" class="h-12 p-1 mb-8"/>
-          <h3 class="mb-3">
-            Wizualizacje
-          </h3>
-          <p class="mb-16 line-clamp-3 text-[14px]">
-            Przedstawimy Ci projekty koncepcyjne w postaci wirtualnego spaceru
-            animowanego w technologii 3D.
-          </p>
-          <a href="#" class="flex text-green hover:text-lightgreen border-b border-b-green w-fit group duration-300 hover:border-transparent">
-            Dowiedz się więcej
-            <i class="fas fa-arrow-right ml-2 mt-1 group-hover:ml-1 duration-300"></i>
-          </a>
+      <div class="flex gap-16 lg:flex-col mx-20 md:mx-0">
+        <section id="projects" class="projectsFade">
+          <div class="px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
+            <img src="src/img/icon-1.png" alt="pen" class="h-12 p-1 mb-8"/>
+            <h3 class="mb-3 text-[28px]">
+              Projekty
+            </h3>
+            <p class="mb-16 line-clamp-3 text-[14px]">
+              Zaprojektujemy Twój ogród w nowoczesnym stylu i z najlepszym
+              wykorzystaniem istniejącej przestrzeni.
+            </p>
+            <a href="#" class="flex text-green hover:text-lightgreen border-b border-b-green w-fit group duration-300 hover:border-transparent">
+              Dowiedz się więcej
+              <i class="fas fa-arrow-right ml-2 mt-1 group-hover:ml-1 duration-300"></i>
+            </a>
+          </div>
         </section>
-
-        <section id="realizations" class="realizationsFade px-10 py-12 bg-white rounded-3xl hover:translate-y-3 duration-300 ease-in-out">
-          <img src="src/img/icon-3.png" alt="pen" class="h-12 p-1 mb-8"/>
-          <h3 class="mb-3">
-            Realizacje
-          </h3>
-          <p class="mb-16 line-clamp-3 text-[14px]">
-            Zrealizujemy Twoje marzenie przy użyciu najnowszych rozwiązań i zaawansowanych technologii.
-          </p>
-          <a href="#" class="flex text-green hover:text-lightgreen border-b border-b-green w-fit group duration-300 hover:border-transparent">
-            Zobacz nasze realizacje
-            <i class="fas fa-arrow-right ml-2 mt-1 group-hover:ml-1 duration-300"></i>
-          </a>
+        <section id="visualizations" class="visualizationFade">
+          <div class="px-10 py-12 bg-white rounded-3xl duration-300 ease-in-out hover:translate-y-3">
+            <img src="src/img/icon-2.png" alt="pen" class="h-12 p-1 mb-8"/>
+            <h3 class="mb-3">
+              Wizualizacje
+            </h3>
+            <p class="mb-16 line-clamp-3 text-[14px]">
+              Przedstawimy Ci projekty koncepcyjne w postaci wirtualnego spaceru
+              animowanego w technologii 3D.
+            </p>
+            <a href="#" class="flex text-green hover:text-lightgreen border-b border-b-green w-fit group duration-300 hover:border-transparent">
+              Dowiedz się więcej
+              <i class="fas fa-arrow-right ml-2 mt-1 group-hover:ml-1 duration-300"></i>
+            </a>
+          </div>
         </section>
-      </section>
+        <section id="realizations" class="realizationsFade">
+          <div class="px-10 py-12 bg-white rounded-3xl duration-300 ease-in-out hover:translate-y-3">
+            <img src="src/img/icon-3.png" alt="pen" class="h-12 p-1 mb-8"/>
+            <h3 class="mb-3">
+              Realizacje
+            </h3>
+            <p class="mb-16 line-clamp-3 text-[14px]">
+              Zrealizujemy Twoje marzenie przy użyciu najnowszych rozwiązań i zaawansowanych technologii.
+            </p>
+            <a href="#" class="flex text-green hover:text-lightgreen border-b border-b-green w-fit group duration-300 hover:border-transparent">
+              Zobacz nasze realizacje
+              <i class="fas fa-arrow-right ml-2 mt-1 group-hover:ml-1 duration-300"></i>
+            </a>
+          </div>
+        </section>
+      </div>
     </section>
 
 
@@ -275,6 +279,7 @@
       </div>
       <div class="gradient"></div>
     </section>
+
 
     <!-- CONTACT -->
     <section id="contact" class="contactContent bg-lightBeige py-10 text-white">
