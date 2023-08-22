@@ -64,7 +64,9 @@
 .hover\:bg-lightbrown:hover {
   background: #F5EAE1;
 }
-
+.hover\:bg-lightbrown2:hover {
+  background: #E3D6CC;
+}
 .hover\:text-white:hover {
   color: white;
 }
@@ -1354,6 +1356,12 @@ h3 {
   .xl\:ml-0 {
     margin-left: 0px;
   }
+  .xl\:ml-4 {
+    margin-left: 1rem;
+  }
+  .xl\:mb-10 {
+    margin-bottom: 2.5rem;
+  }
   .xl\:mb-15 {
     margin-bottom: 3.75rem;
   }
@@ -1407,12 +1415,22 @@ h3 {
     padding-left: 2.5rem;
     padding-right: 2.5em;
   }
+  .xl\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
   .xl\:py-5 {
     padding-left: 1.25rem;
     padding-right: 1.25em;
   }
   .xl\:pt-10 {
     padding-top: 2.5rem;
+  }
+  .xl\:pt-50 {
+    padding-top: 12.5rem;
+  }
+  .xl\:mt-30 {
+    margin-top: 7.5rem;
   }
   .xl\:pt-15 {
     padding-top: 3.75rem;
@@ -1446,6 +1464,9 @@ h3 {
   .xl\:right-0 {
     right: 0px;
   }
+  .xl\:h-\[1000px\] {
+    height: 1000px;
+  }
   .xl\:h-\[737px\] {
     height: 737px;
   }
@@ -1458,11 +1479,18 @@ h3 {
   .xl\:mt-51 {
     margin-top: 12.75rem;
   }
+
+  .xl\:mt-30 {
+    margin-top: 7.5rem;
+  }
   .xl\:mt-52 {
     margin-top: 13rem;
   }
   .xl\:-mt-52 {
     margin-top: -13rem;
+  }
+  .xl\:-mt-90 {
+    margin-top: -22.5rem;
   }
   .xl\:bottom-125 {
     bottom: 31.5rem;
@@ -1479,6 +1507,9 @@ h3 {
   .lg\:top-0 {
     top: 0px;
   }
+  .lg\:mb-20 {
+    bottom: 10rem;
+  }
   .lg\:ml-0 {
     margin-left: 0px;
   }
@@ -1489,7 +1520,7 @@ h3 {
     height: 0px;
   }
   .lg\:absolute {
-    position: relative;
+    position: absolute;
   }
   .lg\:left-0 {
     left: 0px;
@@ -1603,6 +1634,9 @@ h3 {
 @media (max-width: 650px) {
   .sm\:h-1-2 {
     height: 50%;
+  }
+  .sm\:absolute {
+    position: absolute;
   }
   .sm\:mt-10 {
     margin-top: 5rem;
