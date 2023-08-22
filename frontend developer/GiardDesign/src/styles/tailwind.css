@@ -725,7 +725,9 @@ body {
 .static {
   position: static;
 }
-
+.sticky {
+  position: sticky;
+}
 .absolute {
   position: absolute;
 }
@@ -738,6 +740,9 @@ body {
 
 .bottom-0 {
   bottom: 0px;
+}
+.top-0 {
+  top: 0px;
 }
 .top-1 {
   top: 0.25rem;
@@ -848,6 +853,9 @@ body {
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.h-screen {
+  height: 100vh;
 }
 .line-clamp-3 {
   overflow: hidden;
@@ -1203,6 +1211,10 @@ body {
   padding-bottom: 0.25rem;
 }
 
+.px-100 {
+    padding-left: 25rem;
+    padding-right: 25rem;
+  }
 .px-28 {
   padding-left: 7rem;
   padding-right: 7rem;
@@ -1345,8 +1357,14 @@ h3 {
   .xl\:bottom-20 {
     bottom: 20px;
   }
+  .xl\:w-4-5 {
+    width: 80%;
+  }
   .xl\:w-full {
     width: 100%;
+  }
+  .xl\:h-full {
+    height: 70%;
   }
   .xl\:relative {
     position: relative;
@@ -1357,10 +1375,15 @@ h3 {
   .xl\:flex-col {
     flex-direction: column;
   }
+  .xl\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
   .xl\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
+
   .xl\:py-20 {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -1410,8 +1433,8 @@ h3 {
   .xl\:h-\[192px\] {
     height: 192px;
   }
-  .xl\:ml-4 {
-    margin-left: 1rem;
+  .xl\:-ml-4 {
+    margin-left: -1rem;
   }
   .xl\:mt-51 {
     margin-top: 12.75rem;
@@ -1422,8 +1445,8 @@ h3 {
   .xl\:-mt-52 {
     margin-top: -13rem;
   }
-  .xl\:bottom-130 {
-    bottom: 32.5rem;
+  .xl\:bottom-125 {
+    bottom: 31.5rem;
   }
   .xl\:min-h-0 {
     min-height: 0px;
@@ -1544,6 +1567,14 @@ h3 {
   .md\:mt-0 {
     margin-top: 0;
   }
+  .md\:py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  .md\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
 
   .md\:text-center {
     text-align: center;
@@ -1551,6 +1582,12 @@ h3 {
 }
 
 @media (max-width: 650px) {
+  .sm\:h-1-2 {
+    height: 50%;
+  }
+  .sm\:mt-10 {
+    margin-top: 5rem;
+  }
   .sm\:top-0 {
     top: 0px;
   }
@@ -1566,6 +1603,10 @@ h3 {
   }
   .sm\:ml-4 {
     margin-left: 1rem;
+  }
+  .sm\:py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 
   .sm\:mr-4 {

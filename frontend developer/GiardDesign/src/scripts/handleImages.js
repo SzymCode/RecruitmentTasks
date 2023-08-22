@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   const imageDisplay = document.getElementById('imageContainer');
+  const popupDiv = document.getElementById('popupDiv');
+  const popupImg = document.getElementById('popupImg');
 
   imageLinks.forEach(imgSrc => {
     const imgDiv = document.createElement('div');
@@ -17,8 +19,17 @@ document.addEventListener("DOMContentLoaded", function () {
     img.className = 'hover:scale-125 duration-1000 w-full h-full ease-out cursor-zoom-in hover-dark' ;
     img.src = imgSrc;
     img.alt = '';
-    imgDiv.appendChild(img);
 
+    img.addEventListener('click', () => {
+      popupImg.src = imgSrc;
+      popupDiv.classList.remove('hidden');
+    });
+
+    imgDiv.appendChild(img);
     imageDisplay.appendChild(imgDiv);
+  });
+
+  popupDiv.addEventListener('click', () => {
+    popupDiv.classList.add('hidden');
   });
 });
