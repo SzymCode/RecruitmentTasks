@@ -25,9 +25,9 @@
   <body class="bg-lightBeige">
     <!-- NAVBAR -->
     <header class="flex justify-around py-4 h-20 bg-white">
-      <img src="src/img/giarddesign.svg" class="h-6 mt-1" alt="logo" />
+      <img src="src/img/giarddesign.svg" class="h-6 mt-1 xl:ml-4" alt="logo" />
       <div class="flex relative left-20 lg:left-0">
-        <nav class="lg:hidden ">
+        <nav class="lg:hidden">
           <ul class="flex gap-12 sm:gap-4 whitespace-nowrap">
             <a href="#offer" class="nav-link h-12 flex cursor-pointer hover:text-underline top-1 relative group" onclick="handleScroll()">
               Oferta
@@ -53,7 +53,7 @@
               </a>
             </li>
             <li class="hover:text-underline top-1 relative">
-              <a href="#realisation" class="nav-link" onclick="handleScroll()" >
+              <a href="#realization" class="nav-link" onclick="handleScroll()" >
                 Realizacje
               </a>
             </li>
@@ -111,12 +111,12 @@
 
     <!-- CAROUSEL -->
     <section class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner bg-beige items-center">
+      <div class="carousel-inner bg-beige items-center max-h-[737px]">
         <div class="carousel-item max-h-[737px] active">
-          <img src="src/img/photo.png" class="absolute xl:hidden left-54 top-0 w-1/2 min-h-[737px] min-w-[737px]" alt="" width="900">
-          <div class="carousel-content w-[60rem] px-40 md:px-10 xl:px-20 py-40 xl:pt-10 xl:pb-25 xl:w-full">
+          <img src="src/img/photo.png" class="absolute xl:left-0 left-54 top-0 w-1/2 min-w-[737px] xl:w-full" alt="" width="900">
+          <div class="carousel-content w-[60rem] px-40 md:px-10 xl:px-20 py-40 xl:pt-15 xl:pb-25 xl:w-full bg-beige xl:mt-52 z-20">
             <h1 class="mb-11">Nowoczesna <br> aranżacja <br> Twojego ogrodu</h1>
-            <p class="mb-20 xl:mb-15">
+            <p class="mb-20 sm:mb-10">
               Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka
               realizacji. Oferujemy kompleksowy zakres usług z indywidualnym
               podejściem do każdego projektu.
@@ -131,10 +131,10 @@
           </div>
         </div>
         <div class="carousel-item max-h-[737px]">
-          <img src="src/img/photo-8.png" class="carousel-photo absolute xl:hidden left-54 top-0 w-1/2 min-h-[737px] min-w-[737px]" alt="" width="900">
-          <div class="w-[60rem] px-40 md:px-10 xl:px-20 py-40 xl:pt-10 xl:pb-25 xl:w-full">
+          <img src="src/img/photo-8.png" class="absolute xl:left-0 left-54 top-0 w-1/2 min-w-[737px] xl:w-full" alt="" width="900">
+          <div class="carousel-content w-[60rem] px-40 md:px-10 xl:px-20 py-40 xl:pt-15 xl:pb-25 xl:w-full bg-beige xl:mt-52 z-20">
             <h1 class="mb-11">Nowoczesna <br> aranżacja <br> Twojego ogrodu</h1>
-            <p class="mb-20 xl:mb-15">
+            <p class="mb-20 sm:mb-10">
               Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka
               realizacji. Oferujemy kompleksowy zakres usług z indywidualnym
               podejściem do każdego projektu.
@@ -149,10 +149,28 @@
           </div>
         </div>
         <div class="carousel-item max-h-[737px]">
-          <img src="src/img/photo-7.png" class="absolute xl:hidden left-54 top-0 w-1/2 min-h-[737px] min-w-[737px]" alt="" width="900">
-          <div class="w-[60rem] px-40 md:px-10 xl:px-20 py-40 xl:pt-10 xl:pb-25 xl:w-full">
+          <img src="src/img/photo-7.png" class="absolute xl:left-0 left-54 top-0 w-1/2 min-w-[737px] xl:w-full" alt="" width="900">
+          <div class="carousel-content w-[60rem] px-40 md:px-10 xl:px-20 py-40 xl:pt-15 xl:w-full bg-beige xl:mt-52 z-20">
             <h1 class="mb-11">Nowoczesna <br> aranżacja <br> Twojego ogrodu</h1>
-            <p class="mb-20 xl:mb-15">
+            <p class="mb-20 sm:mb-10">
+              Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka
+              realizacji. Oferujemy kompleksowy zakres usług z indywidualnym
+              podejściem do każdego projektu.
+            </p>
+            <div class="flex gap-9 xl:gap-4 sm:flex-col sm:items-center">
+              <button class="btn text-white bg-green hover:bg-lightgreen duration-300">Skontaktuj się z nami</button>
+              <button class="flex btn text-green outline-green hover:text-white hover:bg-green duration-300">
+                Zobacz nasze realizacje
+                <i class="fas fa-arrow-down p-1 ml-2 cursor-pointer"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item max-h-[737px] overflow-hidden">
+          <img src="src/img/photo-10.png" class="absolute xl:left-0 left-54 top-0 min-w-[737px]  min-w-0 xl:w-full xl:-mt-50" alt="" width="880">
+          <div class="carousel-content w-[60rem] px-40 md:px-10 xl:px-20 py-40 xl:pt-15 xl:w-full bg-beige xl:mt-52 z-20">
+            <h1 class="mb-11">Nowoczesna <br> aranżacja <br> Twojego ogrodu</h1>
+            <p class="mb-20 sm:mb-10">
               Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka
               realizacji. Oferujemy kompleksowy zakres usług z indywidualnym
               podejściem do każdego projektu.
@@ -168,9 +186,9 @@
         </div>
 
         <script>showSlides(slideIndex)</script>
-        <div class="flex absolute bottom-0 right-0 z-10">
-          <i data-bs-target=".carousel" data-bs-slide="prev" class="h-14 bg-lightBeige hover:bg-brown duration-300 fas fa-arrow-left px-4 py-3 cursor-pointer text-3xl" onclick="plusSlides(-1)"></i>
-          <i data-bs-target=".carousel" data-bs-slide="next" class="h-14 bg-lightBeige hover:bg-brown fas fa-arrow-right px-4 py-3 cursor-pointer text-3xl" onclick="plusSlides(1)"></i>
+        <div class="flex absolute bottom-0 xl:left-0 xL:right-0 right-0 z-10 lg:relative">
+          <i data-bs-target=".carousel" data-bs-slide="prev" class="xl:absolute xl: xl:bottom-130 xl:left-0 h-14 bg-lightBeige hover:bg-brown duration-300 fas fa-arrow-left px-4 py-3 cursor-pointer text-3xl" onclick="plusSlides(-1)"></i>
+          <i data-bs-target=".carousel" data-bs-slide="next" class="xl:absolute xl: xl:bottom-130 xl:right-0 h-14 bg-lightBeige hover:bg-brown fas fa-arrow-right px-4 py-3 cursor-pointer text-3xl" onclick="plusSlides(1)"></i>
         </div>
       </div>
     </section>
