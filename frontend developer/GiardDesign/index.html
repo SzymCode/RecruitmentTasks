@@ -22,9 +22,9 @@
     <script src="src/scripts/handleSearch.js"></script>
     <script src="src/scripts/handleMobileMenu.js"></script>
   </head>
-  <body class="bg-lightBeige">
+  <body class="bg-lightBeige overflow-x-hidden w-full">
     <!-- NAVBAR -->
-    <header class="flex justify-around py-4 h-20 bg-white">
+    <header class="flex justify-around py-4 h-20 bg-white w-full">
       <img src="src/img/giarddesign.svg" class="h-6 mt-1 xl:ml-4" alt="logo" />
       <div class="flex relative left-20 lg:left-0">
         <nav class="lg:hidden">
@@ -300,9 +300,15 @@
 
 
     <!-- POPUP -->
-    <div id="popupDiv" class="popup hidden h-full fixed z-20 bottom-0 top-0 left-0 right-0 sm:px-10 xl:py-10 xl:px-20 bg-black bg-opacity-75">
-      <img id="popupImg" class="xl:-ml-4 xl:min-h-0 w-full h-full bg-opacity-75 px-20 xl:px-10 py-20 px-100 sm:h-1-2 sm:mt-10" src="" alt="" width="600" height="600">
-    </div>
+    <div id="popupDiv" class="popup hidden h-full fixed z-20 bottom-0 top-0 left-0 right-0 sm:px-10 xl:px-20 bg-black bg-opacity-75">
+      <button id="prevButton" class="text-white hover:text-lightgray transition ease-in-out duration-300 p-3 relative left-0 top-1/2 transform -translate-y-1/2">
+        <i class="fas fa-chevron-left text-3xl left-0-5 relative sm:text-xl"></i>
+      </button>
+      <img id="popupImg" class="max-w-full max-h-full bg-lightBeige p-1" src="" alt="">
+      <button id="nextButton" class="text-white hover:text-lightgray transition ease-in-out duration-300 p-3 relative right-0 top-1/2 transform -translate-y-1/2">
+        <i class="fas fa-chevron-right text-3xl right-0-5 relative sm:text-xl"></i>
+      </button>
+   </div>
 
 
     <!-- CONTACT -->

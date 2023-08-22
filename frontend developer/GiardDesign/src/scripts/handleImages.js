@@ -10,8 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const imageDisplay = document.getElementById('imageContainer');
   const popupDiv = document.getElementById('popupDiv');
   const popupImg = document.getElementById('popupImg');
+  const prevButton = document.getElementById('prevButton');
+  const nextButton = document.getElementById('nextButton');
+  let currentImageIndex = 0;
 
-  imageLinks.forEach(imgSrc => {
+  imageLinks.forEach((imgSrc, index) => {
     const imgDiv = document.createElement('div');
     imgDiv.className = 'overflow-hidden';
 
@@ -21,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     img.alt = '';
 
     img.addEventListener('click', () => {
+      currentImageIndex = index;
       popupImg.src = imgSrc;
       popupDiv.classList.remove('hidden');
     });
@@ -29,7 +33,23 @@ document.addEventListener("DOMContentLoaded", function () {
     imageDisplay.appendChild(imgDiv);
   });
 
-  popupDiv.addEventListener('click', () => {
-    popupDiv.classList.add('hidden');
+  prevButton.addEventListener('click', () => {
+    if (currentImageIndex > 0) {
+      currentImageIndex--;
+      popupImg.src = imageLinks[currentImageIndex];
+    }
+  });
+
+  nextButton.addEventListener('click', () => {
+    if (currentImageIndex < imageLinks.length - 1) {
+      currentImageIndex++;
+      popupImg.src = imageLinks[currentImageIndex];
+    }
+  });
+
+  popupDiv.addEventListener('click', (event) => {
+    if (event.target === popupDiv || event.target === popupImg) {
+      popupDiv.classList.add('hidden');
+    }
   });
 });
