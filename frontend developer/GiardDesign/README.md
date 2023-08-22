@@ -2,7 +2,7 @@
 
 # GiardDesign
 
-This is a recruitment task project for adRespect company.  [Preview](https://szymcode.github.io/RecruitmentTasks/)
+This is a recruitment task project for adRespect company. &emsp;[Preview](https://szymcode.github.io/RecruitmentTasks/)
 
 
 <details><summary> <h2>  📖 Problem description  </summary>
@@ -88,5 +88,47 @@ git clone -b giard-design https://github.com/SzymCode/RecruitmentTasks.git
 
 </details>
 
+<details><summary> <h2> ✅ Solved Problems  </summary>
+
+<h2> Informacje</h5>
+  
+  - [X] Na zadanie masz tydzień czasu, (15.08.2023 -> 22.08.2023) - Done: 22.08.2023,
+  - [X] Projekt powinien zostać oparty o bootstrap'a lub tailwinda,
+  - [X] Projekt powinien się składać na tablet i mobile (złóż to według swojego gustu),
+  - [X] Projekt oprócz dokładnego odwzorowania powinien mieć w sobie trochę życia (zaproponuj jakieś ciekawe animacje),
+  - [X] Nie używaj w projekcie reacta czy innego frameworka JS,
+  - [X] Demo zadania pod publicznym adresem url,
+  - [X] Github repo.
+  <br><br>
+  
+<h2> Intro</h5>
+
+  - [X] Sekcja po lewej stronie, powinna trzymać się siatki,
+  - [X] Sekcja po prawej stronie powinna wyjść poza siatkę i zostać przyklejona do krawędzi ekranu,
+  - [X] Cały sekcja powinna być slajderem.
+  <br><br>
+  
+<h2> Nawigacja</h5>
+
+  - [X] Oferta powinna się rozwijać zaproponuj swoje rozwiązanie,
+  - [X] Wyszukiwarka po kliknięciu powinna się wysunąć, zaproponuj swoje rozwiązanie.
+  <br><br>
+  
+<h2> Oferta</h5>
+
+  - [X] Elementy oferty powinny być klikalne i mieć efekt hover, zaproponuj swoje rozwiązanie.
+  <br><br>
+  
+<h2> O firmie</h5>
+
+  - [X] Sekcja po lewej stornie powinna wyjść poza siatkę i zostać przyklejona do krawędzi ekranu,
+  - [X] Sekcja po prawej stronie, powinna trzymać się siatki.
+ <br><br>
+
+<h2> Bonus: Footer</h5>
+
+  - [X] Copy email and phone number onclick.
+<br/>
+</details>
 
 
