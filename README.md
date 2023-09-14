@@ -9,6 +9,10 @@ This repository contains my solutions for the recruitment tasks. Each task is or
   <tr>
     <td>
       1. 
+      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/backend%20developer/AdminPanel">	
+        AdminPanel
+      </a> <br/>
+      2. 
       <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/backend%20developer/ExpensesApp">	
         ExpensesApp
       </a>	
