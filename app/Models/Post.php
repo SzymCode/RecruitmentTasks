@@ -17,7 +17,8 @@ class Post extends Model
     protected $fillable = [
         'title',
         'description',
-        'post_date',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -26,7 +27,8 @@ class Post extends Model
      * @var array
      */
     protected $casts = [
-        'post_date' => 'date',
+        'created_at' => 'date:Y-m-d', 
+        'updated_at' => 'date:Y-m-d',
     ];
 
     /**
