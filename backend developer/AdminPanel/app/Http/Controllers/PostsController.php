@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Post;
 
-class DashboardController extends Controller
+class PostsController extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+        return response()->json(['results' => Post::latest()->paginate(20)]);
     }
 }

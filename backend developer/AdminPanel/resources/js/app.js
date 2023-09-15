@@ -16,9 +16,11 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+import UsersManagementDashboard from './components/users/UsersManagementDashboard.vue';
+import PostsManagementDashboard from './components/posts/PostsManagementDashboard.vue';
 
+app.component('users-management-dashboard', UsersManagementDashboard);
+app.component('posts-management-dashboard', PostsManagementDashboard);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
