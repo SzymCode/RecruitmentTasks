@@ -1,4 +1,10 @@
+<div align="center">
 
+![PHP](https://img.shields.io/badge/PHP-%234F5B93.svg?style=for-the-badge&logo=php&logoColor=white)
+![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)
+![Vue.js](https://img.shields.io/badge/vue.js-%234FC08D.svg?style=for-the-badge&logo=vue.js&logoColor=white)
+
+</div>
 
 # AdminPanel
 
@@ -57,5 +63,56 @@ Twoje rozwiązanie będzie oceniane pod kątem:
 • Sposób na testowanie aplikacji ( szczególna uwagę przywiązujemy do testów)
 ```
 
+<br/>
 </details>
 
+
+<details><summary> <h2>  🛠️ Installation  </summary>
+
+- First make sure u have installed latest versions of [Laravel](https://laravel.com/), [Vue.js](https://vuejs.org/), [XAMPP](https://www.apachefriends.org/pl/index.html) and [Composer](https://getcomposer.org/).
+
+- Clone this repository from admin-panel branch.
+
+```
+git clone -b admin-panel https://github.com/SzymCode/RecruitmentTasks.git
+```
+
+- Install modules in **AdminPanel** directory.
+
+```bash
+npm install
+composer update
+```
+
+### **Make sure u have installed all modules!**
+
+
+- Change *.env.example* file to *.env* in **AdminPanel** directory, run XAMPP mysql server and create database.
+```bash
+mysql -u root -p
+create database adminpanel
+```
+
+- Migrate and seed database.
+```bash
+php artisan migrate:fresh --seed
+```
+
+<br/>
+</details>
+
+
+<details><summary> <h2>  🚀 Run  </summary>
+
+<br/>
+
+- root directory:
+
+```bash
+npm run dev
+php artisan serve
+```
+
+<br/>
+
+</details>  
