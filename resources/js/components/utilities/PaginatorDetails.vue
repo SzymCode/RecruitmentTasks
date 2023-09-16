@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h5>
-            Showing {{ results.from }} to {{ results.to }} of {{ results.total }} | Page {{ results.current_page }} of {{ results.last_page }}
+        <h5 class="details">
+            Showing {{ results.from }} to {{ results.to }} of {{ results.total }}
         </h5>
     </div>
 </template>
@@ -12,3 +12,8 @@
         props: ['results']
     }
 </script>
+
+
+<style scoped>
+    @import '../../../css/app.css';
+</style>
