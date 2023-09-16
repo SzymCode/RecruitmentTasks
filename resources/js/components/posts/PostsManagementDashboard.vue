@@ -1,8 +1,13 @@
 <template>
     <div class="card mt-3">
         <div class="card-body pt-4">
-            <h3>Manage Posts</h3>
-
+            <div class="header">
+                <h3>Manage Posts</h3>
+                <PaginatorDetails
+                    v-if="results !== null"
+                    v-bind:results="results">
+                </PaginatorDetails>
+            </div>
             <table class="table table-hover" v-if="results && results.data">
                 <thead>
                     <tr>
@@ -38,9 +43,13 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import Paginator from "@/components/utilities/Paginator.vue"
+import PaginatorDetails from "@/components/utilities/PaginatorDetails.vue"
 
 export default {
-    components: {Paginator},
+    components: {
+        Paginator,
+        PaginatorDetails
+    },
     setup() {
         const results = ref(null)
         const params = { page: 1 }
