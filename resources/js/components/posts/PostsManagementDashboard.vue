@@ -24,35 +24,49 @@
             <div v-else>
                 Loading data or no data available...
             </div>
+            <Paginator
+                v-if="results !== null"
+                v-bind:results="results"
+                v-on:get-page="getPage">
+            </Paginator>
         </div>
     </div>
 </template>
 
+
 <script>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import Paginator from "@/components/utilities/Paginator.vue"
 
 export default {
+    components: {Paginator},
     setup() {
-        const results = ref(null);
-        const params = { page: 1 };
+        const results = ref(null)
+        const params = { page: 1 }
 
         function getPosts() {
             axios.get('/data/posts', {params: params})
                 .then(response => {
-                    results.value = response.data.results;
+                    results.value = response.data.results
                 })
                 .catch(error => {
-                    console.log(error);
-                });
-        };
+                    console.log(error)
+                })
+        }
 
-        onMounted(getPosts);
+        onMounted(getPosts)
+
+        function getPage(event) {
+            params.page = event
+            getPosts()
+        }
 
         return {
             results,
-            getPosts
-        };
+            getPosts,
+            getPage
+        }
     }
 }
 </script>

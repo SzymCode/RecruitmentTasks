@@ -12,7 +12,7 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody v-if="results !==null">
+                <tbody v-if="results !== null">
                     <tr v-for="user in results.data" key="user.id">
                         <td> {{ user.name }} </td>
                         <td> {{ user.email }} </td>
@@ -24,35 +24,49 @@
             <div v-else>
                 Loading data or no data available...
             </div>
+            <Paginator
+                v-if="results !== null"
+                v-bind:results="results"
+                v-on:get-page="getPage">
+            </Paginator>
         </div>
-     </div>   
+     </div>
 </template>
 
+
 <script>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import Paginator from "@/components/utilities/Paginator.vue"
 
 export default {
+    components: {Paginator},
     setup() {
-        const results = ref(null);
-        const params = { page: 1 };
+        const results = ref(null)
+        const params = { page: 1 }
 
         function getUsers() {
             axios.get('/data/users', {params: params})
                 .then(response => {
-                    results.value = response.data.results;
+                    results.value = response.data.results
                 })
                 .catch(error => {
-                    console.log(error);
-                });
-        };
+                    console.log(error)
+                })
+        }
 
-        onMounted(getUsers);
+        onMounted(getUsers)
+
+        function getPage(event) {
+            params.page = event
+            getUsers()
+        }
 
         return {
             results,
-            getUsers
-        };
+            getUsers,
+            getPage
+        }
     }
 }
 </script>
