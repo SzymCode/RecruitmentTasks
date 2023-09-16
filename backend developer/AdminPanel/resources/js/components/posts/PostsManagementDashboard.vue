@@ -1,12 +1,11 @@
 <template>
-    <div class="card mt-3">
+    <div class="card mt-3 p-3">
         <div class="card-body pt-4">
             <div class="header">
                 <h3>Manage Posts</h3>
-                <PaginatorDetails
-                    v-if="results !== null"
-                    v-bind:results="results">
-                </PaginatorDetails>
+                <button type="button" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#postModal">
+                    New post <i class="fas fa-plus"></i>
+                </button>
             </div>
             <table class="table table-hover" v-if="results && results.data">
                 <thead>
@@ -34,8 +33,13 @@
                 v-bind:results="results"
                 v-on:get-page="getPage">
             </Paginator>
+            <PaginatorDetails
+                v-if="results !== null"
+                v-bind:results="results">
+            </PaginatorDetails>
         </div>
     </div>
+    <CreatePost></CreatePost>
 </template>
 
 
@@ -44,11 +48,13 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import Paginator from "@/components/utilities/Paginator.vue"
 import PaginatorDetails from "@/components/utilities/PaginatorDetails.vue"
+import CreatePost from "@/components/posts/CreatePost.vue"
 
 export default {
     components: {
         Paginator,
-        PaginatorDetails
+        PaginatorDetails,
+        CreatePost
     },
     setup() {
         const results = ref(null)
@@ -79,3 +85,8 @@ export default {
     }
 }
 </script>
+
+
+<style scoped>
+    @import '../../../css/app.css';
+</style>

@@ -1,16 +1,16 @@
 <template>
     <nav class="paginator">
-        <ul class="pagination">
+        <ul class="pagination" :style="{ opacity: results.current_page > 1 ? 1 : 0.4, cursor: results.current_page > 1 ? 'pointer' : 'default' }">
             <!-- First page -->
             <li class="page-item" @click.prevent="$emit('get-page', results.first_page)">
-                <a class="page-link" href="#">
+                <a class="page-link">
                     <i class="fas fa-chevron-left"></i>
                     <i class="fas fa-chevron-left"></i>
                 </a>
             </li>
             <!-- Previous page -->
-            <li class="page-item" v-if="results.current_page > 1" @click.prevent="$emit('get-page', results.current_page - 1)">
-                <a class="page-link" href="#">
+            <li class="page-item" @click.prevent="$emit('get-page', results.current_page - 1)">
+                <a class="page-link">
                     <i class="fas fa-chevron-left"></i>
                 </a>
             </li>
@@ -36,17 +36,18 @@
         </ul>
 
 
-        <ul class="pagination">
+        <ul class="pagination" :style="{ opacity: results.current_page < results.last_page ? 1 : 0.4, cursor: results.current_page < results.last_page ? 'pointer' : 'default' }">
             <!-- Next page -->
-            <li class="page-item" v-if="results.current_page < results.last_page" @click.prevent="$emit('get-page', results.current_page + 1)">
-                <a class="page-link" href="#">
+            <li class="page-item"
+                @click.prevent="results.current_page < results.last_page && $emit('get-page', results.current_page + 1)">
+                <a class="page-link">
                     <i class="fas fa-chevron-right"></i>
                 </a>
             </li>
 
             <!-- Last page -->
             <li class="page-item" @click.prevent="$emit('get-page', results.last_page)">
-                <a class="page-link" href="#">
+                <a class="page-link">
                     <i class="fas fa-chevron-right"></i>
                     <i class="fas fa-chevron-right"></i>
                 </a>
@@ -56,17 +57,14 @@
 </template>
 
 
-<style>
-    .paginator {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 35px;
-    }
-</style>
-
-
 <script>
     export default {
         props: ['results'],
     }
 </script>
+
+
+<style scoped>
+    @import '../../../css/app.css';
+</style>
+
