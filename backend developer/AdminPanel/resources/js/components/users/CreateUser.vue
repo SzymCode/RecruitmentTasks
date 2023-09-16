@@ -35,10 +35,7 @@
                         <div class="form-group row">
                             <label class="col-3">Role</label>
                             <div class="col-9">
-                                <select class="form-control" v-model="data.role">
-                                    <option :value="user">User</option>
-                                    <option :value="admin">Admin</option>
-                                </select>
+                                <input type="text" class="form-control" v-model="data.role">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -57,7 +54,7 @@
 
                         <div class="modal-footer">
                             <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" @click.prevent="this.storeUser">Save changes</button>
+                            <button class="btn btn-primary" data-bs-dismiss="modal" @click.prevent="this.storeUser">Save changes</button>
                         </div>
                     </form>
                 </div>

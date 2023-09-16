@@ -13,8 +13,17 @@ class PostsController extends Controller
     {
         return response()->json(['results' => Post::latest()->paginate(20)]);
     }
-    public function store(StorePostRequest $request) 
+
+    public function store(StorePostRequest $request)
     {
-        return $request->all();
+        $data = $request->validated();
+
+        $post = Post::create([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'created_at' => $data['created_at'],
+        ]);
+
+        return response()->json(['message' => 'Post created successfully', 'data' => $post], 201);
     }
 }

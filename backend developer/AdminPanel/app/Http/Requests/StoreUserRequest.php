@@ -25,7 +25,7 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => 'required|min:3|regex:/[a-zA-Z]/',
             'email' => 'required|email|unique:users',
-            'role' => '',
+            'role' => 'required',
             'password' => [
                 'required',
                 'string',
@@ -33,7 +33,7 @@ class StoreUserRequest extends FormRequest
                 'regex:/[a-z]/',
                 'regex:/[A-Z]/',
                 'regex:/[0-9]/',
-                'regex:/[@$!#%^&*]/'
+                'regex:/[@$!#%^&*:_]/'
             ],
             'confirm_password' => 'required|same:password'
         ];

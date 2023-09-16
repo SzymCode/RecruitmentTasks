@@ -12,7 +12,7 @@
                 <!-- TODO: sometimes errors are not displayed. Fix later. -->
                 <div class="alert alert-warning" role="alert" v-if="errors.length > 0">
                     <ul>
-                        <li v-for="error in errors">
+                        <li v-for="error in errors"> 
                             {{ error }}
                         </li>
                     </ul>
@@ -41,7 +41,7 @@
 
                         <div class="modal-footer">
                             <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" @click.prevent="this.storePost">Save changes</button>
+                            <button class="btn btn-primary" data-bs-dismiss="modal" @click.prevent="this.storePost">Save changes</button>
                         </div>
                     </form>
                 </div>
@@ -57,7 +57,7 @@
             const data = {
                 title: '',
                 description: '',
-                created_at: ''
+                created_at: '',
             }
             const errors = []
 
@@ -73,7 +73,7 @@
                 })
             }
 
-
+            
             function flashErrors(errors) {
                 for(const [value] of Object.entries(errors)) {
                     for(let item in value) {
