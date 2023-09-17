@@ -44,47 +44,48 @@
 
 
 <script>
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
-import Paginator from "@/components/utilities/Paginator.vue"
-import PaginatorDetails from "@/components/utilities/PaginatorDetails.vue"
-import CreatePost from "@/components/posts/CreatePost.vue"
+    import axios from 'axios'
+    import { ref, onMounted } from 'vue'
+    import Paginator from "@/components/utilities/Paginator.vue"
+    import PaginatorDetails from "@/components/utilities/PaginatorDetails.vue"
+    import CreatePost from "@/components/posts/CreatePost.vue"
 
-export default {
-    components: {
-        Paginator,
-        PaginatorDetails,
-        CreatePost
-    },
-    setup() {
-        const results = ref(null)
-        const params = { page: 1 }
+    export default {
+        components: {
+            Paginator,
+            PaginatorDetails,
+            CreatePost
+        },
+        setup() {
+            const results = ref(null)
+            const params = ref({ page: 1 })
 
-        function getPosts() {
-            axios.get('/data/posts', {params: params})
-                .then(response => {
-                    results.value = response.data.results
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-        }
+            function getPosts() {
+                axios.get('/data/posts', { params: params.value })
+                    .then((response) => {
+                        results.value = response.data.results
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            }
 
-        onMounted(getPosts)
+            onMounted(getPosts)
 
-        function getPage(event) {
-            params.page = event
-            getPosts()
-        }
+            function getPage(event) {
+                params.value.page = event
+                getPosts()
+            }
 
-        return {
-            results,
-            getPosts,
-            getPage
+            return {
+                results,
+                getPosts,
+                getPage
+            }
         }
     }
-}
 </script>
+
 
 
 <style scoped>

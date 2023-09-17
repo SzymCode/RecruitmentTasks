@@ -2,6 +2,7 @@
     <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+                <!-- Modal header -->
                 <div class="modal-header">
                     <h3 class="modal-title" id="postModalLabel">Create new post!</h3>
                     <a href="#" aria-hidden="true" class="close" data-bs-dismiss="modal" aria-label="Close">
@@ -9,15 +10,16 @@
                     </a>
                 </div>
 
-                <!-- TODO: sometimes errors are not displayed. Fix later. -->
+                <!-- Display errors -->
                 <div class="alert alert-warning" role="alert" v-if="errors.length > 0">
                     <ul>
-                        <li v-for="error in errors"> 
+                        <li v-for="error in errors">
                             {{ error }}
                         </li>
                     </ul>
                 </div>
 
+                <!-- Post form -->
                 <div class="modal-body">
                     <form action="#">
                         <div class="form-group row">
@@ -39,9 +41,10 @@
                             </div>
                         </div>
 
+                        <!-- Buttons -->
                         <div class="modal-footer">
                             <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" data-bs-dismiss="modal" @click.prevent="this.storePost">Save changes</button>
+                            <button class="btn btn-primary" @click.prevent="storePost">Save changes</button>
                         </div>
                     </form>
                 </div>
@@ -52,44 +55,42 @@
 
 
 <script>
-    export default {
-        setup() {
-            const data = {
-                title: '',
-                description: '',
-                created_at: '',
-            }
-            const errors = []
+import { ref } from 'vue'
+import axios from 'axios'
 
-            function storePost() {
-                axios.post('/data/posts', {
-                    title: this.data.title,
-                    description: this.data.description,
-                    created_at: this.data.created_at,
-                })
-                .then(response => console.log(response))
-                .catch(errors => {
-                    this.flashErrors(errors.response.data.errors)
-                })
-            }
+export default {
+    setup() {
+        const data = ref({
+            title: '',
+            description: '',
+            created_at: ''
+        })
+        const errors = ref([])
 
-            
-            function flashErrors(errors) {
-                for(const [value] of Object.entries(errors)) {
-                    for(let item in value) {
-                        this.errors.push(value[item])
+        function storePost() {
+            errors.value = []
+            axios.post('/data/posts', {
+                title: data.value.title,
+                description: data.value.description,
+                created_at: data.value.created_at
+            })
+                .then((response) => {
+                    console.log(response)
+                })
+                .catch((error) => {
+                    for (const key in error.response.data.errors) {
+                        errors.value.push(error.response.data.errors[key][0])
                     }
-                }
-            }
+                })
+        }
 
-            return {
-                data,
-                errors,
-                storePost,
-                flashErrors
-            }
+        return {
+            data,
+            errors,
+            storePost
         }
     }
+}
 </script>
 
 

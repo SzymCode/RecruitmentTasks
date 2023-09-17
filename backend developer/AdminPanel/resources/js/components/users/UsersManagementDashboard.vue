@@ -43,48 +43,49 @@
 </template>
 
 
-
 <script>
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
-import Paginator from "@/components/utilities/Paginator.vue"
-import PaginatorDetails from "@/components/utilities/PaginatorDetails.vue"
-import CreateUser from "@/components/users/CreateUser.vue"
+    import axios from 'axios'
+    import Paginator from "@/components/utilities/Paginator.vue"
+    import PaginatorDetails from "@/components/utilities/PaginatorDetails.vue"
+    import CreateUser from "@/components/users/CreateUser.vue"
+    import { ref, onMounted } from 'vue'
 
-export default {
-    components: {
-        Paginator,
-        PaginatorDetails,
-        CreateUser
-    },
-    setup() {
-        const results = ref(null)
-        const params = { page: 1 }
+    export default {
+        components: {
+            Paginator,
+            PaginatorDetails,
+            CreateUser
+        },
+        setup() {
+            const results = ref(null)
+            const params = ref({
+                page: 1
+            })
 
-        function getUsers() {
-            axios.get('/data/users', {params: params})
-                .then(response => {
-                    results.value = response.data.results
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-        }
+            function getUsers() {
+                axios.get('/data/users', { params: params.value })
+                    .then(response => {
+                        results.value = response.data.results
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            }
 
-        onMounted(getUsers)
+            onMounted(getUsers)
 
-        function getPage(event) {
-            params.page = event
-            getUsers()
-        }
+            function getPage(event) {
+                params.value.page = event
+                getUsers()
+            }
 
-        return {
-            results,
-            getUsers,
-            getPage
+            return {
+                results,
+                getUsers,
+                getPage
+            }
         }
     }
-}
 </script>
 
 
