@@ -2,6 +2,7 @@
     <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+                <!-- Modal header -->
                 <div class="modal-header">
                     <h3 class="modal-title" id="userModalLabel">Create new user!</h3>
                     <a href="#" aria-hidden="true" class="close" data-bs-dismiss="modal" aria-label="Close">
@@ -9,7 +10,7 @@
                     </a>
                 </div>
 
-                <!-- TODO: sometimes errors are not displayed. Fix later. -->
+                <!-- Display errors -->
                 <div class="alert alert-warning" role="alert" v-if="errors.length > 0">
                     <ul>
                         <li v-for="error in errors">
@@ -18,6 +19,7 @@
                     </ul>
                 </div>
 
+                <!-- User form -->
                 <div class="modal-body">
                     <form action="#">
                         <div class="form-group row">
@@ -44,7 +46,6 @@
                                 <input type="password" class="form-control" v-model="data.password">
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label class="col-3">Confirm Password</label>
                             <div class="col-9">
@@ -52,9 +53,10 @@
                             </div>
                         </div>
 
+                        <!-- Buttons -->
                         <div class="modal-footer">
                             <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" data-bs-dismiss="modal" @click.prevent="this.storeUser">Save changes</button>
+                            <button class="btn btn-primary" @click.prevent="storeUser">Save changes</button>
                         </div>
                     </form>
                 </div>
@@ -63,47 +65,44 @@
     </div>
 </template>
 
-
 <script>
+    import axios from 'axios'
+    import { ref } from 'vue'
+
     export default {
         setup() {
-            const data = {
+            const data = ref({
                 name: '',
                 email: '',
                 role: '',
                 password: '',
                 confirm_password: ''
-            }
-            const errors = []
+            })
+            const errors = ref([])
 
             function storeUser() {
+                errors.value = []
                 axios.post('/data/users', {
-                    name: this.data.name,
-                    email: this.data.email,
-                    role: this.data.role,
-                    password: this.data.password,
-                    confirm_password: this.data.confirm_password
+                    name: data.value.name,
+                    email: data.value.email,
+                    role: data.value.role,
+                    password: data.value.password,
+                    confirm_password: data.value.confirm_password
                 })
-                .then(response => console.log(response))
-                .catch(errors => {
-                    this.flashErrors(errors.response.data.errors)
+                .then((response) => {
+                    console.log(response)
                 })
-            }
-
-
-            function flashErrors(errors) {
-                for(const [value] of Object.entries(errors)) {
-                    for(let item in value) {
-                        this.errors.push(value[item])
+                .catch((error) => {
+                    for (const key in error.response.data.errors) {
+                        errors.value.push(error.response.data.errors[key][0])
                     }
-                }
+                })
             }
 
             return {
                 data,
                 errors,
-                storeUser,
-                flashErrors
+                storeUser
             }
         }
     }
