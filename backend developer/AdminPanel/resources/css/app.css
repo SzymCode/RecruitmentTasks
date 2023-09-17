@@ -40,6 +40,9 @@
     margin-bottom: -10px;
     padding-bottom: 0;
 }
+.alert-success {
+    padding: 10px 17px 9px;
+}
 @media (max-width: 650px) {
     .col-3 {
         font-size: 12px;

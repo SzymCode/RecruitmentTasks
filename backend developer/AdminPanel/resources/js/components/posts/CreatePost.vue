@@ -10,6 +10,11 @@
                     </a>
                 </div>
 
+                <!-- Display success messages-->
+                <div class="alert-success alert" role="alert" v-if="success_message !== null">
+                    {{ success_message }}
+                </div>
+
                 <!-- Display errors -->
                 <div class="alert alert-warning" role="alert" v-if="errors.length > 0">
                     <ul>
@@ -55,42 +60,51 @@
 
 
 <script>
-import { ref } from 'vue'
-import axios from 'axios'
+    import { ref } from 'vue'
+    import axios from 'axios'
 
-export default {
-    setup() {
-        const data = ref({
-            title: '',
-            description: '',
-            created_at: ''
-        })
-        const errors = ref([])
-
-        function storePost() {
-            errors.value = []
-            axios.post('/data/posts', {
-                title: data.value.title,
-                description: data.value.description,
-                created_at: data.value.created_at
+    export default {
+        setup() {
+            const data = ref({
+                title: '',
+                description: '',
+                created_at: ''
             })
-                .then((response) => {
-                    console.log(response)
-                })
-                .catch((error) => {
-                    for (const key in error.response.data.errors) {
-                        errors.value.push(error.response.data.errors[key][0])
-                    }
-                })
-        }
+            const errors = ref([])
+            const success_message = ref(null)
 
-        return {
-            data,
-            errors,
-            storePost
+            function flashSuccess(message) {
+                success_message.value = message
+                setTimeout(() => {
+                    location.reload()
+                }, 2000)
+            }
+
+            function storePost() {
+                errors.value = []
+                axios.post('/data/posts', {
+                    title: data.value.title,
+                    description: data.value.description,
+                    created_at: data.value.created_at
+                })
+                    .then((response) => {
+                        flashSuccess('Successfully created post: ' + response.data.post.title)
+                    })
+                    .catch((error) => {
+                        for (const key in error.response.data.errors) {
+                            errors.value.push(error.response.data.errors[key][0])
+                        }
+                    })
+            }
+
+            return {
+                data,
+                errors,
+                storePost,
+                success_message,
+            }
         }
     }
-}
 </script>
 
 

@@ -10,6 +10,11 @@
                     </a>
                 </div>
 
+                <!-- Display success messages-->
+                <div class="alert-success alert" role="alert" v-if="success_message !== null">
+                    {{ success_message }}
+                </div>
+    
                 <!-- Display errors -->
                 <div class="alert alert-warning" role="alert" v-if="errors.length > 0">
                     <ul>
@@ -79,7 +84,16 @@
                 confirm_password: ''
             })
             const errors = ref([])
+            const success_message = ref(null)
+            
 
+            function flashSuccess(message) {
+                success_message.value = message
+                setTimeout(() => {
+                    location.reload()
+                }, 2000)
+            }
+            
             function storeUser() {
                 errors.value = []
                 axios.post('/data/users', {
@@ -89,20 +103,21 @@
                     password: data.value.password,
                     confirm_password: data.value.confirm_password
                 })
-                .then((response) => {
-                    console.log(response)
-                })
-                .catch((error) => {
-                    for (const key in error.response.data.errors) {
-                        errors.value.push(error.response.data.errors[key][0])
-                    }
-                })
+                    .then((response) => {
+                        flashSuccess('Successfully created user: ' + response.data.user.name)
+                    })
+                    .catch((error) => {
+                        for (const key in error.response.data.errors) {
+                            errors.value.push(error.response.data.errors[key][0])
+                        }
+                    })
             }
 
             return {
                 data,
                 errors,
-                storeUser
+                storeUser,
+                success_message
             }
         }
     }
