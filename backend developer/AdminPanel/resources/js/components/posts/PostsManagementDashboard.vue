@@ -7,6 +7,19 @@
                     New post <i class="fas fa-plus"></i>
                 </button>
             </div>
+
+            <!-- Display success messages -->
+            <div class="alert-success alert" role="alert" v-if="success_message !== null">
+                {{ success_message }}
+            </div>
+
+            <!-- Display danger messages -->
+            <div class="alert-danger alert" role="alert" v-if="danger_message !== null">
+                {{ danger_message }}
+            </div>
+            <br>
+
+            <!-- Table -->
             <table class="table table-hover" v-if="results && results.data">
                 <thead>
                     <tr>
@@ -21,7 +34,12 @@
                         <td> {{ post.title }} </td>
                         <td> {{ post.description }} </td>
                         <td> {{ post.created_at }} </td>
-                        <td> <i class="fas fa-edit"></i> </td>
+                        <td> 
+                            <i class="fas fa-edit edit-icon"></i>
+                            <a href='#' @click.prevent="deletePost(post)">
+                                <i class="fas fa-trash-can trash-icon"></i>  
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -59,6 +77,9 @@
         setup() {
             const results = ref(null)
             const params = ref({ page: 1 })
+            const success_message = ref(null)
+            const danger_message = ref(null)
+
 
             function getPosts() {
                 axios.get('/data/posts', { params: params.value })
@@ -70,17 +91,42 @@
                     })
             }
 
-            onMounted(getPosts)
-
             function getPage(event) {
                 params.value.page = event
                 getPosts()
             }
 
+            function deletePost(post) {
+                let confirm = window.confirm("Are you sure you want to delete " + post.title + " from the system?")
+                if (confirm) {
+                    axios.post('/data/posts/' + post.id, { _method: 'DELETE'})
+                        .then(response => {
+                            getPosts()
+                            success_message.value = "Successfully deleted post: " + post.title
+                            setTimeout(() => {
+                                success_message.value = null
+                            }, 1500)
+                        })
+                        .catch(errors => {
+                            if(errors.response.status === 403) {
+                                danger_message.value = "Unauthorized to access"
+                                setTimeout(() => {
+                                    danger_message.value = null
+                                }, 1500)
+                            }
+                        })
+                }
+            }
+
+            onMounted(getPosts)
+
             return {
                 results,
                 getPosts,
-                getPage
+                getPage,
+                success_message,
+                danger_message,
+                deletePost
             }
         }
     }
