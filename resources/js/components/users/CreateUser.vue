@@ -14,7 +14,7 @@
                 <div class="alert-success alert" role="alert" v-if="success_message !== null">
                     {{ success_message }}
                 </div>
-    
+
                 <!-- Display errors -->
                 <div class="alert alert-warning" role="alert" v-if="errors.length > 0">
                     <ul>
@@ -85,15 +85,8 @@
             })
             const errors = ref([])
             const success_message = ref(null)
-            
 
-            function flashSuccess(message) {
-                success_message.value = message
-                setTimeout(() => {
-                    location.reload()
-                }, 2000)
-            }
-            
+
             function storeUser() {
                 errors.value = []
                 axios.post('/data/users', {
@@ -104,7 +97,11 @@
                     confirm_password: data.value.confirm_password
                 })
                     .then((response) => {
-                        flashSuccess('Successfully created user: ' + response.data.user.name)
+                        success_message.value = "Successfully created user: " + response.data.user.name
+                        setTimeout(() => {
+                            success_message.value = null
+                            location.reload()
+                        }, 1500)
                     })
                     .catch((error) => {
                         for (const key in error.response.data.errors) {

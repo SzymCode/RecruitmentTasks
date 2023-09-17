@@ -73,12 +73,6 @@
             const errors = ref([])
             const success_message = ref(null)
 
-            function flashSuccess(message) {
-                success_message.value = message
-                setTimeout(() => {
-                    location.reload()
-                }, 2000)
-            }
 
             function storePost() {
                 errors.value = []
@@ -88,7 +82,11 @@
                     created_at: data.value.created_at
                 })
                     .then((response) => {
-                        flashSuccess('Successfully created post: ' + response.data.post.title)
+                        success_message.value = "Successfully created post: " + response.data.post.title
+                        setTimeout(() => {
+                            success_message.value = null
+                            location.reload()
+                        }, 1500)
                     })
                     .catch((error) => {
                         for (const key in error.response.data.errors) {
@@ -101,7 +99,7 @@
                 data,
                 errors,
                 storePost,
-                success_message,
+                success_message
             }
         }
     }

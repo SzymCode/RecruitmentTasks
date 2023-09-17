@@ -7,6 +7,19 @@
                     New user <i class="fas fa-plus"></i>
                 </button>
             </div>
+
+            <!-- Display success messages-->
+            <div class="alert-success alert" role="alert" v-if="success_message !== null">
+                {{ success_message }}
+            </div>
+
+            <!-- Display danger messages-->
+            <div class="alert-danger alert" role="alert" v-if="danger_message !== null">
+                {{ danger_message }}
+            </div>
+            <br>
+
+            <!-- Table -->
             <table class="table table-hover" v-if="results && results.data">
                 <thead>
                     <tr>
@@ -21,7 +34,12 @@
                         <td> {{ user.name }} </td>
                         <td> {{ user.email }} </td>
                         <td> {{ user.created_at }} </td>
-                        <td> <i class="fas fa-edit"></i> </td>
+                        <td> 
+                            <i class="fas fa-edit edit-icon"></i>
+                            <a href='#' @click.prevent="deleteUser(user)">
+                                <i class="fas fa-trash-can trash-icon"></i>  
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -44,11 +62,11 @@
 
 
 <script>
+    import { ref, onMounted } from 'vue'
     import axios from 'axios'
     import Paginator from "@/components/utilities/Paginator.vue"
     import PaginatorDetails from "@/components/utilities/PaginatorDetails.vue"
     import CreateUser from "@/components/users/CreateUser.vue"
-    import { ref, onMounted } from 'vue'
 
     export default {
         components: {
@@ -61,6 +79,9 @@
             const params = ref({
                 page: 1
             })
+            const success_message = ref(null)
+            const danger_message = ref(null)
+
 
             function getUsers() {
                 axios.get('/data/users', { params: params.value })
@@ -72,19 +93,45 @@
                     })
             }
 
-            onMounted(getUsers)
-
             function getPage(event) {
                 params.value.page = event
                 getUsers()
             }
 
+            function deleteUser(user) {
+                let confirm = window.confirm("Are you sure you want to delete " + user.name + " from the system?")
+                if (confirm) {
+                    axios.post('/data/users/' + user.id, { _method: 'DELETE'})
+                        .then(response => {
+                            getUsers()
+                            success_message.value = "Successfully deleted user: " + user.name
+                            setTimeout(() => {
+                                success_message.value = null
+                            }, 1500)
+                        })
+                        .catch(errors => {
+                            if(errors.response.status === 403) {
+                                danger_message.value = "Unauthorized to access"
+                                setTimeout(() => {
+                                    danger_message.value = null
+                                }, 1500)
+                            }
+                        })
+                }
+            }
+            
+            onMounted(getUsers)
+
             return {
                 results,
                 getUsers,
-                getPage
+                getPage,
+                success_message,
+                danger_message,
+                deleteUser
             }
         }
+        
     }
 </script>
 
