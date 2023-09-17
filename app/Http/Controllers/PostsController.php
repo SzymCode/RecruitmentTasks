@@ -24,6 +24,6 @@ class PostsController extends Controller
             'created_at' => $data['created_at'],
         ]);
 
-        return response()->json(['message' => 'Post created successfully', 'data' => $post], 201);
+        return response()->json(['post' => $post], 201);
     }
 }
