@@ -41,7 +41,7 @@
 
                         <div class="modal-footer">
                             <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" @click.prevent="this.storePost">Save changes</button>
+                            <button class="btn btn-primary" data-bs-dismiss="modal" @click.prevent="this.storePost">Save changes</button>
                         </div>
                     </form>
                 </div>
