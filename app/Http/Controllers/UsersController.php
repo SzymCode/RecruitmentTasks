@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +25,7 @@ class UsersController extends Controller
                 throw new AuthorizationException('Unauthorized', 403);
             }
             return $next($request);
-        })->only('delete', 'index', 'store');
+        })->only('index', 'store', 'update', 'delete');
     }
 
     public function index()
@@ -42,6 +43,17 @@ class UsersController extends Controller
         ]);
 
         return response()->json(['user' => $user], 201);
+    }
+
+    public function update(UpdateUserRequest $request, User $user) 
+    {
+        $user->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'role' => $request->input('role'),
+        ]);
+    
+        return response()->json(['user' => $user->only('id', 'name', 'email', 'role')]);
     }
 
     public function delete(User $user)

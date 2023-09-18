@@ -1,6 +1,6 @@
 <template>
-    <div class="card mt-3 p-3">
-        <div class="card-body pt-4">
+    <div class="card">
+        <div class="card-body">
             <div class="header">
                 <h3>Manage Users</h3>
                 <button type="button" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#userModal">
@@ -21,6 +21,12 @@
 
             <!-- Table -->
             <table class="table table-hover" v-if="results && results.data">
+                <colgroup>
+                    <col style="width: 30%;" />
+                    <col style="width: 40%;" />
+                    <col style="width: 20%;" />
+                    <col style="width: 8%; min-width: 100px;" />
+                </colgroup>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -30,15 +36,20 @@
                     </tr>
                 </thead>
                 <tbody v-if="results !== null">
-                    <tr v-for="user in results.data" key="user.id">
-                        <td> {{ user.name }} </td>
-                        <td> {{ user.email }} </td>
-                        <td> {{ user.created_at }} </td>
-                        <td> 
-                            <i class="fas fa-edit edit-icon"></i>
-                            <a href='#' @click.prevent="deleteUser(user)">
-                                <i class="fas fa-trash-can trash-icon"></i>  
-                            </a>
+                    <tr v-for="user in results.data" key="user.id" class="tableData">
+                        <td class="tableData"> {{ user.name }} </td>
+                        <td class="tableData"> {{ user.email }} </td>
+                        <td class="tableData"> {{ user.created_at }} </td>
+                        <td class="actions"> 
+                            <div class="icons">
+                                <i class="fas fa-eye eyeIcon"></i>
+                                <a href='#' class="editIcon" data-bs-toggle="modal" data-bs-target="#editUserModal" @click="selectedUser = user">
+                                    <i class="fas fa-edit"></i>  
+                                </a>
+                                <a href='#' class="trashIcon" @click.prevent="deleteUser(user)">
+                                    <i class="fas fa-trash-can"></i>  
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
@@ -56,8 +67,13 @@
                 v-bind:results="results">
             </PaginatorDetails>
         </div>
-     </div>
+    </div>
     <CreateUser></CreateUser>
+    <EditUser
+        v-if="user !== null"
+        v-bind:user="selectedUser"
+        @user-updated="success_message = 'Successfully edited user: ' + $event">
+    </EditUser>
 </template>
 
 
@@ -67,20 +83,21 @@
     import Paginator from "@/components/utilities/Paginator.vue"
     import PaginatorDetails from "@/components/utilities/PaginatorDetails.vue"
     import CreateUser from "@/components/users/CreateUser.vue"
+    import EditUser from './EditUser.vue'
 
     export default {
         components: {
             Paginator,
             PaginatorDetails,
-            CreateUser
+            CreateUser,
+            EditUser
         },
         setup() {
             const results = ref(null)
-            const params = ref({
-                page: 1
-            })
+            const params = ref({ page: 1 })
             const success_message = ref(null)
             const danger_message = ref(null)
+            const selectedUser = ref(null)
 
 
             function getUsers() {
@@ -104,14 +121,14 @@
                     axios.post('/data/users/' + user.id, { _method: 'DELETE'})
                         .then(response => {
                             getUsers()
-                            success_message.value = "Successfully deleted user: " + user.name
+                            success_message.value = "Successfully deleted user: " + user.name + "."
                             setTimeout(() => {
                                 success_message.value = null
                             }, 1500)
                         })
                         .catch(errors => {
                             if(errors.response.status === 403) {
-                                danger_message.value = "Unauthorized to access"
+                                danger_message.value = "Unauthorized access."
                                 setTimeout(() => {
                                     danger_message.value = null
                                 }, 1500)
@@ -128,14 +145,14 @@
                 getPage,
                 success_message,
                 danger_message,
+                selectedUser,
                 deleteUser
             }
         }
-        
     }
 </script>
 
 
-<style scoped>
+<style>
     @import '../../../css/app.css';
 </style>

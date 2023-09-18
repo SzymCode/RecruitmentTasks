@@ -1,7 +1,32 @@
+.contentContainer {
+    max-width: 80%;
+    padding-top: 2%;
+}
+.card {
+    margin: 16px 0;
+}
+.card-body {
+    padding: 35px 20px;
+}
+.modal-header {
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 20px;
+}
 .header {
     justify-content: space-between;
     display: flex;
     margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.table {
+    white-space: nowrap;
+    table-layout: fixed;
+    width: 100%;
+}
+.tableData {
+    overflow: hidden;
 }
 .paginator {
     display: flex;
@@ -43,17 +68,30 @@
 .alert-success, .alert-danger {
     padding: 10px 17px 9px;
 }
-
-.edit-icon, .trash-icon {
-    margin-left: 10px;
+.icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.eyeIcon, .editIcon, .trashIcon {
     color: black;
     font-size: 19px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
-.trash-icon {
-    margin-top: 5px;
-}
+
 @media (max-width: 650px) {
     .col-3 {
         font-size: 12px;
+    }
+    .contentContainer {
+        max-width: 99%;
+        padding-top: 0;
+    }
+    .card-body {
+        padding: 25px 10px;
+    }
+    .modal-content {
+        padding: 0;
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePostRequest extends FormRequest
+class UpdatePostRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -14,7 +14,7 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|min:5|regex:/[a-zA-Z]|unique:posts/',
+            'title' => 'required|min:5|regex:/[a-zA-Z]/',
             'description' => 'required|min:20',
             'created_at' => 'required|regex:/^\d{4}-\d{2}-\d{2}/'
         ];
