@@ -62,9 +62,3 @@
         props: ['results'],
     }
 </script>
-
-
-<style scoped>
-    @import '../../../css/app.css';
-</style>
-

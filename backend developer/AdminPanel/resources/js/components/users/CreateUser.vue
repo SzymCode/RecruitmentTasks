@@ -5,14 +5,16 @@
                 <!-- Modal header -->
                 <div class="modal-header">
                     <h3 class="modal-title" id="userModalLabel">Create new user!</h3>
-                    <a href="#" aria-hidden="true" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="fas fa-close"></i>
-                    </a>
                 </div>
 
                 <!-- Display success messages-->
                 <div class="alert-success alert" role="alert" v-if="success_message !== null">
                     {{ success_message }}
+                </div>
+    
+                <!-- Display danger messages -->
+                <div class="alert-danger alert" role="alert" v-if="danger_message !== null">
+                    {{ danger_message }}
                 </div>
 
                 <!-- Display errors -->
@@ -85,7 +87,7 @@
             })
             const errors = ref([])
             const success_message = ref(null)
-
+            const danger_message = ref(null)
 
             function storeUser() {
                 errors.value = []
@@ -97,13 +99,19 @@
                     confirm_password: data.value.confirm_password
                 })
                     .then((response) => {
-                        success_message.value = "Successfully created user: " + response.data.user.name
+                        success_message.value = "Successfully created user: " + response.data.user.name + "."
                         setTimeout(() => {
                             success_message.value = null
                             location.reload()
                         }, 1500)
                     })
                     .catch((error) => {
+                        if(error.response.status === 403) {
+                            danger_message.value = "Unauthorized access."
+                            setTimeout(() => {
+                                danger_message.value = null
+                            }, 1500)
+                         }
                         for (const key in error.response.data.errors) {
                             errors.value.push(error.response.data.errors[key][0])
                         }
@@ -113,14 +121,11 @@
             return {
                 data,
                 errors,
-                storeUser,
-                success_message
+                success_message,
+                danger_message,
+                storeUser
             }
         }
     }
 </script>
 
-
-<style scoped>
-    @import '../../../css/app.css';
-</style>
