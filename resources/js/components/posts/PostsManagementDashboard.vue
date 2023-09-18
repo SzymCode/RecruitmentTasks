@@ -22,25 +22,34 @@
             <!-- Table -->
             <table class="table table-hover" v-if="results && results.data">
                 <colgroup>
-                    <col style="width: 30%;" />
-                    <col style="width: 40%;" />
-                    <col style="width: 20%;" />
-                    <col style="width: 8%; min-width: 100px;" />
+                    <col class="titleCol" />
+                    <col class="descriptionCol" />
+                    <col class="tagsCol" />
+                    <col class="postDateCol" />
+                    <col class="actionsCol" />
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Post Date</th>
-                        <th>Actions</th>
+                        <th class="titleCol">Title</th>
+                        <th class="descriptionCol">Description</th>
+                        <th class="tagsCol">Tags</th>
+                        <th class="postDateCol">Post Date</th>
+                        <th class="actionsCol"></th>
                     </tr>
                 </thead>
                 <tbody v-if="results !==null">
                     <tr v-for="post in results.data" :key="post.id">
-                        <td class="tableData"> {{ post.title }} </td>
-                        <td class="tableData"> {{ post.description }} </td>
-                        <td class="tableData"> {{ post.created_at }} </td>
-                        <td> 
+                        <td class="tableData titleCol"> {{ post.title }} </td>
+                        <td class="tableData descriptionCol"> {{ post.description }} </td>
+                        <td class="tableData tagsCol"> 
+                            <div class="tags">
+                                <div v-for="tag in post.tags.split(', ')" :key="tag" class="tag">
+                                    {{ tag }}
+                                </div>
+                            </div> 
+                        </td>
+                        <td class="tableData postDateCol"> {{ post.created_at }} </td>
+                        <td class="tableData actionsCol"> 
                             <div class="icons">
                                 <i class="fas fa-eye eyeIcon"></i>
                                 <a href='#' class="editIcon" data-bs-toggle="modal" data-bs-target="#editPostModal" @click="selectedPost = post">
@@ -49,6 +58,7 @@
                                 <a href='#' class="trashIcon" @click.prevent="deletePost(post)">
                                     <i class="fas fa-trash-can"></i>  
                                 </a>
+                                <i class="fas fa-ellipsis ellipsisIcon"></i>
                             </div>
                         </td>
                     </tr>

@@ -47,6 +47,12 @@
                                 <input type="date" class="form-control" v-model="data.created_at">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-3">Tags</label>
+                            <div class="col-9">
+                                <input type="text" class="form-control" v-model="data.tags">
+                            </div>
+                        </div>
 
                         <!-- Buttons -->
                         <div class="modal-footer">
@@ -70,6 +76,7 @@
             const data = ref({
                 title: '',
                 description: '',
+                tags: '',
                 created_at: ''
             })
 
@@ -82,7 +89,8 @@
                 axios.post('/data/posts', {
                     title: data.value.title,
                     description: data.value.description,
-                    created_at: data.value.created_at
+                    tags: data.value.tags,
+                    created_at: data.value.created_at,
                 })
                     .then((response) => {
                         success_message.value = "Successfully created post: " + response.data.post.title + "."
@@ -92,9 +100,6 @@
                         }, 1500)
                     })
                     .catch((error) => {
-                        if (error.response.status === 500) {
-                            errors.value = ["Post with this title has already been taken."]
-                        }
                         if(error.response.status === 403) {
                             danger_message.value = "Unauthorized access."
                             setTimeout(() => {

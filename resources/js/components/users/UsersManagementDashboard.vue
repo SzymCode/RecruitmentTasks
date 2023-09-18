@@ -22,25 +22,25 @@
             <!-- Table -->
             <table class="table table-hover" v-if="results && results.data">
                 <colgroup>
-                    <col style="width: 30%;" />
-                    <col style="width: 40%;" />
-                    <col style="width: 20%;" />
-                    <col style="width: 8%; min-width: 100px;" />
+                    <col class="nameCol" />
+                    <col class="emailCol" />
+                    <col class="createdAtCol" />
+                    <col class="actionsCol" />
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>User Since</th>
-                        <th>Actions</th>
+                        <th class="nameCol">Name</th>
+                        <th class="emailCol">Email</th>
+                        <th class="createdAtCol">User Since</th>
+                        <th class="actionsCol"></th>
                     </tr>
                 </thead>
                 <tbody v-if="results !== null">
                     <tr v-for="user in results.data" key="user.id" class="tableData">
-                        <td class="tableData"> {{ user.name }} </td>
-                        <td class="tableData"> {{ user.email }} </td>
-                        <td class="tableData"> {{ user.created_at }} </td>
-                        <td class="actions"> 
+                        <td class="tableData nameCol"> {{ user.name }} </td>
+                        <td class="tableData emailCol"> {{ user.email }} </td>
+                        <td class="tableData createdAtCol"> {{ user.created_at }} </td>
+                        <td class="tableData actionsCol"> 
                             <div class="icons">
                                 <i class="fas fa-eye eyeIcon"></i>
                                 <a href='#' class="editIcon" data-bs-toggle="modal" data-bs-target="#editUserModal" @click="selectedUser = user">
@@ -49,6 +49,7 @@
                                 <a href='#' class="trashIcon" @click.prevent="deleteUser(user)">
                                     <i class="fas fa-trash-can"></i>  
                                 </a>
+                                <i class="fas fa-ellipsis ellipsisIcon"></i>
                             </div>
                         </td>
                     </tr>

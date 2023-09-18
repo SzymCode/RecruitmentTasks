@@ -42,10 +42,16 @@
                                 <input type="text" class="form-control" v-model="data.description">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" v-if="isWideScreen">
                             <label class="col-3">Post Date</label>
                             <div class="col-9">
                                 <input type="text" class="form-control" v-model="data.created_at">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-3">Tags</label>
+                            <div class="col-9">
+                                <input type="text" class="form-control" v-model="data.tags">
                             </div>
                         </div>
 
@@ -65,7 +71,7 @@
 
 <script>
     import axios from 'axios'
-    import { ref, toRefs, watch } from 'vue'
+    import { onMounted, ref, toRefs, watch } from 'vue'
 
     export default {
         props: ['post'],
@@ -75,10 +81,10 @@
             const data = ref({
                 title: '',
                 description: '',
+                tags: '',
                 created_at: '',
                 display_title: ''
             })
-
             const errors = ref([])
             const success_message = ref(null)
             const danger_message = ref(null)
@@ -94,6 +100,7 @@
                     _method: 'PUT',
                     title: data.value.title,
                     description: data.value.description,
+                    tags: data.value.tags,
                     created_at: data.value.created_at,
                     display_title: data.value.title
                 })
