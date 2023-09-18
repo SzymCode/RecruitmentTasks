@@ -16,7 +16,7 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:3',
+            'name' => 'required|min:3|regex:/[a-zA-Z]/',
             'email' => 'required',
             'role' => ['required', Rule::in(['user', 'admin'])],
         ];

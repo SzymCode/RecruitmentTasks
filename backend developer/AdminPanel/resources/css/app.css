@@ -27,7 +27,9 @@
 }
 .tableData {
     overflow: hidden;
+    padding-bottom: 0px;
 }
+
 .paginator {
     display: flex;
     justify-content: space-between;
@@ -37,6 +39,16 @@
     text-align: center;
     margin-top: 10px;
     margin-bottom: -8px;
+}
+.tags {
+    display: flex;
+}
+.tag {
+    background-color: rgb(54, 137, 245);
+    color: white;
+    border-radius: 8px;
+    padding: 1px 12px;
+    margin-right: 5px;
 }
 .btn {
     padding: 0 10px;
@@ -68,19 +80,56 @@
 .alert-success, .alert-danger {
     padding: 10px 17px 9px;
 }
+
 .icons {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-.eyeIcon, .editIcon, .trashIcon {
+.eyeIcon, .editIcon, .trashIcon, .ellipsisIcon {
     color: black;
     font-size: 19px;
     margin-top: auto;
     margin-bottom: auto;
 }
+.ellipsisIcon {
+    display: none;
+}
 
-@media (max-width: 650px) {
+
+
+.nameCol {
+    width: 30%;
+}
+.emailCol {
+    width: 40%;
+}
+.createdAtCol {
+    width: 20%;
+}
+
+
+.titleCol {
+    width: 25%;
+}
+.descriptionCol {
+    width: 35%;
+    text-overflow: ellipsis;
+}
+.tagsCol {
+    width: 22%;
+}
+.postDateCol {
+    width: 10%;
+}
+.actionsCol {
+    width: 8%; 
+    min-width: 100px;
+}
+
+
+
+@media (max-width: 640px) {
     .col-3 {
         font-size: 12px;
     }
@@ -91,7 +140,46 @@
     .card-body {
         padding: 25px 10px;
     }
-    .modal-content {
-        padding: 0;
+}
+@media (max-width: 1280px) {
+    .postDateCol {
+        display: none;
+    }
+    .trashIcon, .editIcon, .eyeIcon {
+        display: none;
+    }
+    .ellipsisIcon {
+        display: inherit;
+    }
+    .descriptionCol {
+        width: 50%;
+    }
+    .tagsCol {
+        width: 40%;
+    }
+    .actionsCol {
+        min-width: 45px;
+    }
+    .icons {
+        justify-content: inherit;
+        align-items: center;
+        padding: 3px 7px;
+    }
+}
+@media (max-width: 800px) {
+    .descriptionCol, .createdAtCol {
+        display: none;
+    }
+    .titleCol {
+        width: 30%;
+    }
+    .tagsCol {
+        width: 50%;
+    }
+    .nameCol {
+        width: 40%;
+    }
+    .emailCol {
+        width: 50%;
     }
 }

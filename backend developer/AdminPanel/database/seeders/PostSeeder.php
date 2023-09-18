@@ -16,7 +16,8 @@ class PostSeeder extends Seeder
     {
         Post::create([
             'title' => 'First post',
-            'description' => 'Lorem ipsum dolor',
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            'tags' => implode(', ', ['PHP', 'Laravel', 'Vue.js', 'Bootstrap']),
             'updated_at' => '14.09.2023',
             'created_at' => '14.09.2023'
         ]);

@@ -37,6 +37,7 @@ class PostsController extends Controller
         $post = Post::create([
             'title' => $request['title'],
             'description' => $request['description'],
+            'tags' => $request['tags'],
             'created_at' => $request['created_at'],
         ]);
 
@@ -48,10 +49,11 @@ class PostsController extends Controller
         $post->update([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
+            'tags' => $request->input(['tags']),
             'created_at' => $request->input('created_at'),
         ]);
     
-        return response()->json(['post' => $post->only('id', 'title', 'description', 'created_at')]);
+        return response()->json(['post' => $post->only('id', 'title', 'description',  'tags', 'created_at')]);
     }
 
     public function delete(Post $post)

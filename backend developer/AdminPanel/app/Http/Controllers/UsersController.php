@@ -14,12 +14,12 @@ use App\Models\User;
 
 class UsersController extends Controller
 {
-    public function __construct()
+    public function __construct() 
     {
         $this->middleware(function($request, $next) {
-            /**
+            /**  
              *  You can check if it works without '!' before Auth:
-             *  if(Auth::user()->isAdmin())
+             *  if(Auth::user()->isAdmin()) 
             */
             if(!Auth::user()->isAdmin()) {
                 throw new AuthorizationException('Unauthorized', 403);
@@ -45,14 +45,14 @@ class UsersController extends Controller
         return response()->json(['user' => $user], 201);
     }
 
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request, User $user) 
     {
         $user->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'role' => $request->input('role'),
         ]);
-
+    
         return response()->json(['user' => $user->only('id', 'name', 'email', 'role')]);
     }
 
