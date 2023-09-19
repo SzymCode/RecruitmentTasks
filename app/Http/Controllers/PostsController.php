@@ -28,7 +28,7 @@ class PostsController extends Controller
 
     public function index()
     {
-        return response()->json(['results' => Post::latest()->paginate(20)]);
+        return response()->json(['results' => Post::latest()->paginate(10)]);
     }
 
     public function store(StorePostRequest $request)

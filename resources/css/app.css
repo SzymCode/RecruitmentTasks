@@ -1,3 +1,4 @@
+/* Home styles */
 .contentContainer {
     max-width: 80%;
     padding-top: 2%;
@@ -7,11 +8,6 @@
 }
 .card-body {
     padding: 35px 20px;
-}
-.modal-header {
-    white-space: nowrap;
-    overflow: hidden;
-    margin-right: 20px;
 }
 .header {
     justify-content: space-between;
@@ -27,28 +23,15 @@
 }
 .tableData {
     overflow: hidden;
-    padding-bottom: 0px;
+    padding-bottom: -5px;
 }
-
+td.tableData {
+    vertical-align: middle;
+}
 .paginator {
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
-}
-.details {
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: -8px;
-}
-.tags {
-    display: flex;
-}
-.tag {
-    background-color: rgb(54, 137, 245);
-    color: white;
-    border-radius: 8px;
-    padding: 1px 12px;
-    margin-right: 5px;
 }
 .btn {
     padding: 0 10px;
@@ -56,11 +39,21 @@
 .fa-plus {
     margin-left: 10px;
 }
+
+/* Modal styles */
+.modal-body {
+    padding-top: 12px;
+}
 .modal-dialog {
     width: auto;
 }
 .modal-content {
     padding: 0 10px;
+}
+.modal-header {
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 20px;
 }
 .modal-footer {
     margin-bottom: -15px;
@@ -80,24 +73,53 @@
 .alert-success, .alert-danger {
     padding: 10px 17px 9px;
 }
+.modalDetails {
+    margin-bottom: 10px;
+}
+.details {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: -8px;
+}
+.tags {
+    display: flex;
+}
+.tagsDetailsModal {
+    display: flex;
+    flex-wrap: wrap;
+}
+.tag, .tagDetailsModal {
+    background-color: rgb(54, 137, 245);
+    color: white;
+    border-radius: 8px;
+    padding: 1px 12px;
+    margin-right: 5px;
+}
+.tagDetailsModal {
+    margin-top: 5px;
+}
 
+/* Icons styles */
 .icons {
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-between;
+    margin-top: 2px;
 }
 .eyeIcon, .editIcon, .trashIcon, .ellipsisIcon {
+    cursor: pointer;
     color: black;
     font-size: 19px;
-    margin-top: auto;
-    margin-bottom: auto;
 }
 .ellipsisIcon {
     display: none;
 }
+.eyeIcon {
+    margin-top: 1px;
+}
 
 
-
+/* User columns styles */
 .nameCol {
     width: 30%;
 }
@@ -107,13 +129,12 @@
 .createdAtCol {
     width: 20%;
 }
-
-
+/* Post columns styles */
 .titleCol {
-    width: 25%;
+    width: 20%;
 }
 .descriptionCol {
-    width: 35%;
+    width: 40%;
     text-overflow: ellipsis;
 }
 .tagsCol {
@@ -122,11 +143,14 @@
 .postDateCol {
     width: 10%;
 }
+td.tableData.postDateCol {
+    padding-left: 12px;
+}
+/* Actions column styles */
 .actionsCol {
-    width: 8%; 
+    width: 8%;
     min-width: 100px;
 }
-
 
 
 @media (max-width: 640px) {
@@ -141,7 +165,27 @@
         padding: 25px 10px;
     }
 }
-@media (max-width: 1280px) {
+@media (max-width: 800px) {
+    .descriptionCol, .emailCol, .tagsCol, .createdAtCol {
+        display: none;
+    }
+    .titleCol {
+        width: 25%;
+    }
+    .tagsCol {
+        width: 50%;
+    }
+    .nameCol {
+        width: 25%;
+    }
+    .createdAtCol {
+        width: 30%;
+    }
+    .emailCol {
+        width: 50%;
+    }
+}
+@media (max-width: 1400px) {
     .postDateCol {
         display: none;
     }
@@ -158,28 +202,12 @@
         width: 40%;
     }
     .actionsCol {
+        width: 4%;
         min-width: 45px;
     }
     .icons {
         justify-content: inherit;
         align-items: center;
         padding: 3px 7px;
-    }
-}
-@media (max-width: 800px) {
-    .descriptionCol, .createdAtCol {
-        display: none;
-    }
-    .titleCol {
-        width: 30%;
-    }
-    .tagsCol {
-        width: 50%;
-    }
-    .nameCol {
-        width: 40%;
-    }
-    .emailCol {
-        width: 50%;
     }
 }

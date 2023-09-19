@@ -51,7 +51,8 @@
 
                         <!-- Buttons -->
                         <div class="modal-footer">
-                            <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                            <!-- @click.prevent="" prevents scrolling up after close modal -->
+                            <button class="btn btn-dark" @click.prevent="" data-bs-dismiss="modal">Close</button>
                             <button class="btn btn-primary" @click.prevent="updateUser">Save changes</button>
                         </div>
                     </form>
@@ -72,12 +73,7 @@
         setup(props) {
             const { user } = toRefs(props)
 
-            const data = ref({
-                name: '',
-                email: '',
-                role: '',
-                display_name: ''
-            })
+            const data = ref({ })
 
             const errors = ref([])
             const success_message = ref(null)

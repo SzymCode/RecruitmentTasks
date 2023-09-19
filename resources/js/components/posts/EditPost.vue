@@ -42,7 +42,7 @@
                                 <input type="text" class="form-control" v-model="data.description">
                             </div>
                         </div>
-                        <div class="form-group row" v-if="isWideScreen">
+                        <div class="form-group row">
                             <label class="col-3">Post Date</label>
                             <div class="col-9">
                                 <input type="text" class="form-control" v-model="data.created_at">
@@ -57,7 +57,8 @@
 
                         <!-- Buttons -->
                         <div class="modal-footer">
-                            <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                            <!-- @click.prevent="" prevents scrolling up after close modal -->
+                            <button class="btn btn-dark" @click.prevent="" data-bs-dismiss="modal">Close</button>
                             <button class="btn btn-primary" @click.prevent="updatePost">Save changes</button>
                         </div>
                     </form>
@@ -71,20 +72,14 @@
 
 <script>
     import axios from 'axios'
-    import { onMounted, ref, toRefs, watch } from 'vue'
+    import { ref, toRefs, watch } from 'vue'
 
     export default {
         props: ['post'],
         setup(props) {
             const { post } = toRefs(props)
 
-            const data = ref({
-                title: '',
-                description: '',
-                tags: '',
-                created_at: '',
-                display_title: ''
-            })
+            const data = ref({})
             const errors = ref([])
             const success_message = ref(null)
             const danger_message = ref(null)

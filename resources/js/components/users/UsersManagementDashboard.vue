@@ -7,7 +7,7 @@
                     New user <i class="fas fa-plus"></i>
                 </button>
             </div>
-
+        
             <!-- Display success messages-->
             <div class="alert-success alert" role="alert" v-if="success_message !== null">
                 {{ success_message }}
@@ -42,14 +42,26 @@
                         <td class="tableData createdAtCol"> {{ user.created_at }} </td>
                         <td class="tableData actionsCol"> 
                             <div class="icons">
-                                <i class="fas fa-eye eyeIcon"></i>
-                                <a href='#' class="editIcon" data-bs-toggle="modal" data-bs-target="#editUserModal" @click="selectedUser = user">
-                                    <i class="fas fa-edit"></i>  
+                                <!-- @media (min-width: 1280px) -->
+                                <a data-bs-toggle="modal" data-bs-target="#showUserModal" @click="selectedUser = user">
+                                    <i class="fas fa-eye eyeIcon"></i>
                                 </a>
-                                <a href='#' class="trashIcon" @click.prevent="deleteUser(user)">
-                                    <i class="fas fa-trash-can"></i>  
+                                <a data-bs-toggle="modal" data-bs-target="#editUserModal" @click="selectedUser = user">
+                                    <i class="fas fa-edit editIcon"></i>  
                                 </a>
-                                <i class="fas fa-ellipsis ellipsisIcon"></i>
+                                <a href="#navbar" @click="deleteUser(user)">
+                                    <i class="fas fa-trash-can trashIcon"></i>  
+                                </a>
+                                
+                                <!-- @media (max-width: 1280px) -->
+                                <div class="dropdown show">
+                                    <a class="ellipsisIcon" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis ellipsisIcon"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        
+                                    </div>
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -71,10 +83,12 @@
     </div>
     <CreateUser></CreateUser>
     <EditUser
-        v-if="user !== null"
         v-bind:user="selectedUser"
         @user-updated="success_message = 'Successfully edited user: ' + $event">
     </EditUser>
+    <ShowUser
+        v-bind:user="selectedUser">
+    </ShowUser>
 </template>
 
 
@@ -83,15 +97,18 @@
     import axios from 'axios'
     import Paginator from "@/components/utilities/Paginator.vue"
     import PaginatorDetails from "@/components/utilities/PaginatorDetails.vue"
-    import CreateUser from "@/components/users/CreateUser.vue"
+
+    import CreateUser from "./CreateUser.vue"
     import EditUser from './EditUser.vue'
+    import ShowUser from './ShowUser.vue'
 
     export default {
         components: {
             Paginator,
             PaginatorDetails,
             CreateUser,
-            EditUser
+            EditUser,
+            ShowUser
         },
         setup() {
             const results = ref(null)
