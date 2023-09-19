@@ -7,7 +7,7 @@
                     New user <i class="fas fa-plus"></i>
                 </button>
             </div>
-        
+
             <!-- Display success messages-->
             <div class="alert-success alert" role="alert" v-if="success_message !== null">
                 {{ success_message }}
@@ -37,29 +37,39 @@
                 </thead>
                 <tbody v-if="results !== null">
                     <tr v-for="user in results.data" key="user.id" class="tableData">
-                        <td class="tableData nameCol"> {{ user.name }} </td>
-                        <td class="tableData emailCol"> {{ user.email }} </td>
-                        <td class="tableData createdAtCol"> {{ user.created_at }} </td>
-                        <td class="tableData actionsCol"> 
+                        <td class="tableData nameCol">
+                            <div class="overflow-hidden"> <!-- reason: https://stackoverflow.com/questions/33150835/overflow-hidden-behind-padding -->
+                                {{ user.name }}
+                            </div>
+                        </td>
+                        <td class="tableData emailCol">
+                            <div class="overflow-hidden"> <!-- reason: https://stackoverflow.com/questions/33150835/overflow-hidden-behind-padding -->
+                                {{ user.email }}
+                            </div>
+                        </td>
+                        <td class="tableData createdAtCol">
+                            {{ user.created_at }}
+                        </td>
+                        <td class="tableData actionsCol">
                             <div class="icons">
                                 <!-- @media (min-width: 1280px) -->
                                 <a data-bs-toggle="modal" data-bs-target="#showUserModal" @click="selectedUser = user">
                                     <i class="fas fa-eye eyeIcon"></i>
                                 </a>
                                 <a data-bs-toggle="modal" data-bs-target="#editUserModal" @click="selectedUser = user">
-                                    <i class="fas fa-edit editIcon"></i>  
+                                    <i class="fas fa-edit editIcon"></i>
                                 </a>
                                 <a href="#navbar" @click="deleteUser(user)">
-                                    <i class="fas fa-trash-can trashIcon"></i>  
+                                    <i class="fas fa-trash-can trashIcon"></i>
                                 </a>
-                                
+
                                 <!-- @media (max-width: 1280px) -->
                                 <div class="dropdown show">
                                     <a class="ellipsisIcon" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-ellipsis ellipsisIcon"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        
+
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +164,7 @@
                         })
                 }
             }
-            
+
             onMounted(getUsers)
 
             return {
