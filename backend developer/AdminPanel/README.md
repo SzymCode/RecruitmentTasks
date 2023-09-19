@@ -8,7 +8,7 @@
 
 # AdminPanel
 
-This is a recruitment task project for ONX Center company.
+This is a recruitment task project for ONX Center company. [Preview!](http://adminpanel-szymcode-a7c075dcede4.herokuapp.com/home)
 
 
 <details><summary> <h2>  📖 Problem description  </summary>
@@ -98,6 +98,13 @@ create database adminpanel
 php artisan migrate:fresh --seed
 ```
 
+- You can also run factories to generate fake data.
+```bash
+php artisan tinker
+User::factory()->count(100)->create();
+Post::factory()->count(100)->create();      
+```
+
 <br/>
 </details>
 
@@ -116,3 +123,18 @@ php artisan serve
 <br/>
 
 </details>  
+
+
+<details><summary> <h2> ✅ Solved Problems  </summary>
+
+- [X] Single Page App
+
+- [X] CRUD for users and posts + tags
+
+- [X] Pagination
+
+- [X] Responsive design
+
+- [X] Live preview
+
+</details>
