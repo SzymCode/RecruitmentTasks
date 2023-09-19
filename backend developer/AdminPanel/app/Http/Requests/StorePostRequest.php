@@ -16,8 +16,7 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|min:5',
             'description' => 'required|min:20',
-            'created_at' => 'required|regex:/^\d{4}-\d{2}-\d{2}/',
-            'tags' => 'nullable|min:3'
+            'created_at' => 'required|regex:/^\d{4}-\d{2}-\d{2}/'
         ];
     }
 }

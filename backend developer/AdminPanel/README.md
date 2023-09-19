@@ -77,7 +77,7 @@ Twoje rozwiązanie będzie oceniane pod kątem:
 git clone -b admin-panel https://github.com/SzymCode/RecruitmentTasks.git
 ```
 
-- Install modules in **AdminPanel** directory.
+- Install modules in root directory.
 
 ```bash
 npm install
@@ -87,7 +87,7 @@ composer update
 ### **Make sure u have installed all modules!**
 
 
-- Change *.env.example* file to *.env* in **AdminPanel** directory, run XAMPP mysql server and create database.
+- Change *.env.example* file to *.env* in root directory, run XAMPP mysql server and create database.
 ```bash
 mysql -u root -p
 create database adminpanel

@@ -56,7 +56,8 @@
 
                         <!-- Buttons -->
                         <div class="modal-footer">
-                            <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                            <!-- @click.prevent="" prevents scrolling up after close modal -->
+                            <button class="btn btn-dark" @click.prevent="" data-bs-dismiss="modal">Close</button>
                             <button class="btn btn-primary" @click.prevent="storePost">Save changes</button>
                         </div>
                     </form>
@@ -73,12 +74,7 @@
 
     export default {
         setup() {
-            const data = ref({
-                title: '',
-                description: '',
-                tags: '',
-                created_at: ''
-            })
+            const data = ref({})
 
             const errors = ref([])
             const success_message = ref(null)

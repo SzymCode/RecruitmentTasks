@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "postinstall": "composer require laravel/ui"
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
