@@ -65,12 +65,20 @@
                                 </a>
 
                                 <!-- @media (max-width: 1280px) -->
-                                <div class="dropdown show">
-                                    <a class="ellipsisIcon" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis ellipsisIcon"></i>
-                                    </a>
+                                <a class="ellipsisIcon" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis ellipsisIcon"></i>
+                                </a>
+                                <div class="dropdown post-dropdown">    
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                
+                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#showPostModal" @click.prevent="selectedPost = post">
+                                            Details
+                                        </a></li>
+                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editPostModal" @click.prevent="selectedPost = post">
+                                            Edit post
+                                        </a></li>
+                                        <li><a class="dropdown-item" href="#header" @click="deletePost(post)">
+                                            Delete post
+                                        </a></li>
                                     </div>
                                 </div>
                             </div>

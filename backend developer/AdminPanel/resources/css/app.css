@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+/* Home styles */
 .contentContainer {
     max-width: 80%;
     margin-bottom: 16px; 
@@ -14,6 +15,7 @@
     margin: 5px 5px 10px 5px;
 }
 .table {
+    margin-top: -10px;
     white-space: nowrap;
     table-layout: fixed;
     width: 100%;
@@ -25,11 +27,8 @@
 td.tableData {
     vertical-align: middle;
 }
-.paginator {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-}
+
+/* Alerts styles*/
 .alert {
     margin: 10px 10px 0 10px;
 }
@@ -39,6 +38,8 @@ td.tableData {
 .alert-danger, .alert-success {
     padding: 11px 11px 11px 13px;
 }
+
+/* Modal & dropdown styles */
 .modal-header {
     white-space: nowrap;
     overflow: hidden;
@@ -79,7 +80,14 @@ input.form-control {
 label {
     margin-bottom: 10px;
 }
-
+.dropdown-menu {
+    padding: 0;
+    z-index: 10;
+}
+.dropdown-item:hover {
+    background-color: rgb(165, 216, 248);
+}
+/* Icons styles */
 .icons {
     display: flex;
     align-items: center;
@@ -98,11 +106,10 @@ label {
     display: flex;
 }
 
-
+/* Column styles */
 .nameCol {
     width: 55%;
 }
-
 .createdAtCol {
     width: 30%;
 }
@@ -111,15 +118,25 @@ label {
 }
 .actionsCol {
     width: 8%;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
 }
 .titleCol, .descriptionCol {
     text-overflow: ellipsis;
 }
 
-
+/* Pagination styles */
+.paginator {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
 .page-dots {
     display: none;
 }
+
+
+
 @media (min-width: 640px) {
     .page-dots {
         display: flex;
@@ -163,8 +180,6 @@ label {
     }
 }
 
-
-
 @media (min-width: 1536px) {
     .icons {
         gap: 10px;
@@ -175,7 +190,6 @@ label {
     .eyeIcon, .editIcon, .trashIcon {
         display: flex;
     }
-
     .nameCol {
         width: 45%;
     }
@@ -184,6 +198,9 @@ label {
     }
     .actionsCol {
         width: 14.5%;
+    }
+    .user-dropdown, .post-dropdown {
+        display: none;
     }
 }
 
