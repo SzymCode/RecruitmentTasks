@@ -19,18 +19,18 @@
 
         <ul class="pagination">
             <!-- Pagination numbers & dots -->
-            <li class="page-item" v-if="results.current_page > 5">
+            <li class="page-item page-dots" v-if="results.current_page > 2">
                 <span class="page-link">...</span>
             </li>
             <li class="page-item numbers"
                 v-for="num in results.last_page"
                 :key="num"
                 :class="{ active: num === results.current_page }">
-                <a class="page-link" href="#" v-if="num > results. current_page - 5 && num < results.current_page + 5" @click.prevent="$emit('get-page', num)">
+                <a class="page-link" href="#" v-if="num > results. current_page - 2 && num < results.current_page + 2" @click.prevent="$emit('get-page', num)">
                     {{ num }}
                 </a>
             </li>
-            <li class="page-item" v-if="results.current_page < results.last_page - 5">
+            <li class="page-item page-dots" v-if="results.current_page < results.last_page - 2">
                 <span class="page-link">...</span>
             </li>
         </ul>
