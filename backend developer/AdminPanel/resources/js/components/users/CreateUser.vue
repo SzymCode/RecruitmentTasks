@@ -30,32 +30,32 @@
                 <div class="modal-body">
                     <form action="#">
                         <div class="form-group row">
-                            <label class="col-3">Name</label>
-                            <div class="col-9">
+                            <label class="col-4">Name</label>
+                            <div class="col-8">
                                 <input type="text" class="form-control" v-model="data.name">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-3">Email</label>
-                            <div class="col-9">
+                            <label class="col-4">Email</label>
+                            <div class="col-8">
                                 <input type="text" class="form-control" v-model="data.email">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-3">Role</label>
-                            <div class="col-9">
+                            <label class="col-4">Role</label>
+                            <div class="col-8">
                                 <input type="text" class="form-control" v-model="data.role">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-3">Password</label>
-                            <div class="col-9">
+                            <label class="col-4">Password</label>
+                            <div class="col-8">
                                 <input type="password" class="form-control" v-model="data.password">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-3">Confirm Password</label>
-                            <div class="col-9">
+                            <label class="col-4">Confirm Password</label>
+                            <div class="col-8">
                                 <input type="password" class="form-control" v-model="data.confirm_password">
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                             setTimeout(() => {
                                 danger_message.value = null
                             }, 1500)
-                         }
+                        }
                         for (const key in error.response.data.errors) {
                             errors.value.push(error.response.data.errors[key][0])
                         }
