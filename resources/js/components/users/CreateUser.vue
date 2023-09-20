@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true" @keydown.enter.prevent="">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <!-- Modal header -->
@@ -8,17 +8,17 @@
                 </div>
 
                 <!-- Display success messages-->
-                <div class="alert-success alert" role="alert" v-if="success_message !== null">
+                <div class="alert-success alert modalAlerts" role="alert" v-if="success_message !== null">
                     {{ success_message }}
                 </div>
 
                 <!-- Display danger messages -->
-                <div class="alert-danger alert" role="alert" v-if="danger_message !== null">
+                <div class="alert-danger alert modalAlerts" role="alert" v-if="danger_message !== null">
                     {{ danger_message }}
                 </div>
 
                 <!-- Display errors -->
-                <div class="alert alert-warning" role="alert" v-if="errors.length > 0">
+                <div class="alert alert-warning modalAlerts" role="alert" v-if="errors.length > 0">
                     <ul>
                         <li v-for="error in errors">
                             {{ error }}
@@ -32,31 +32,31 @@
                         <div class="form-group row">
                             <label class="col-4">Name</label>
                             <div class="col-8">
-                                <input type="text" class="form-control" v-model="data.name">
+                                <input type="text" class="form-control" v-model="data.name" @keyup.enter="storeUser">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-4">Email</label>
                             <div class="col-8">
-                                <input type="text" class="form-control" v-model="data.email">
+                                <input type="text" class="form-control" v-model="data.email" @keyup.enter="storeUser">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-4">Role</label>
                             <div class="col-8">
-                                <input type="text" class="form-control" v-model="data.role">
+                                <input type="text" class="form-control" v-model="data.role" @keyup.enter="storeUser">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-4">Password</label>
                             <div class="col-8">
-                                <input type="password" class="form-control" v-model="data.password">
+                                <input type="password" class="form-control" v-model="data.password" @keyup.enter="storeUser">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-4">Confirm Password</label>
                             <div class="col-8">
-                                <input type="password" class="form-control" v-model="data.confirm_password">
+                                <input type="password" class="form-control" v-model="data.confirm_password" @keyup.enter="storeUser">
                             </div>
                         </div>
 

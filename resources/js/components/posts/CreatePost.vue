@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+    <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true" @keydown.enter.prevent="">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <!-- Modal header -->
@@ -8,17 +8,17 @@
                 </div>
 
                 <!-- Display success messages-->
-                <div class="alert-success alert" role="alert" v-if="success_message !== null">
+                <div class="alert-success alert modalAlerts" role="alert" v-if="success_message !== null">
                     {{ success_message }}
                 </div>
 
                 <!-- Display danger messages -->
-                <div class="alert-danger alert" role="alert" v-if="danger_message !== null">
+                <div class="alert-danger alert modalAlerts" role="alert" v-if="danger_message !== null">
                     {{ danger_message }}
                 </div>
 
                 <!-- Display errors -->
-                <div class="alert alert-warning" role="alert" v-if="errors.length > 0">
+                <div class="alert alert-warning modalAlerts" role="alert" v-if="errors.length > 0">
                     <ul>
                         <li v-for="error in errors">
                             {{ error }}
@@ -32,25 +32,25 @@
                         <div class="form-group row">
                             <label class="col-3">Title</label>
                             <div class="col-9">
-                                <input type="text" class="form-control" v-model="data.title">
+                                <input type="text" class="form-control" v-model="data.title" @keyup.enter="storePost">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-3">Description</label>
                             <div class="col-9">
-                                <input type="text" class="form-control" v-model="data.description">
+                                <input type="text" class="form-control" v-model="data.description" @keyup.enter="storePost">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-3">Created At</label>
                             <div class="col-9">
-                                <input type="date" class="form-control" v-model="data.created_at">
+                                <input type="date" class="form-control" v-model="data.created_at" @keyup.enter="storePost">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-3">Tags</label>
                             <div class="col-9">
-                                <input type="text" class="form-control" v-model="data.tags">
+                                <input type="text" class="form-control" v-model="data.tags" @keyup.enter="storePost">
                             </div>
                         </div>
 

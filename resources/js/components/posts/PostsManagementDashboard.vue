@@ -3,20 +3,27 @@
         <div class="card-body">
             <section id="header">
                 <div class="header">
-                    <h3>Manage Posts</h3>
+                    <h3 class="textHeader">Manage Posts</h3>
                     <button type="button" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#postModal">
                         New post <i class="fas fa-plus"></i>
                     </button>
                 </div>
+                <input
+                    v-model="searchQuery"
+                    @input="performSearch"
+                    type="text"
+                    class="form-control searchInput"
+                    placeholder="Search by title"
+                />
             </section>
 
             <!-- Display success messages -->
-            <div class="alert-success alert" role="alert" v-if="success_message !== null">
+            <div class="alert-success alert homeAlert" role="alert" v-if="success_message !== null">
                 {{ success_message }}
             </div>
 
             <!-- Display danger messages -->
-            <div class="alert-danger alert" role="alert" v-if="danger_message !== null">
+            <div class="alert-danger alert homeAlert" role="alert" v-if="danger_message !== null">
                 {{ danger_message }}
             </div>
             <br>
@@ -86,8 +93,13 @@
                     </tr>
                 </tbody>
             </table>
-            <div v-else>
-                Loading data or no data available...
+            <div class="noFoundMessage">
+                <div v-if="results && searchQuery && results.data.length === 0">
+                    No posts found with title containing "{{ searchQuery }}"
+                </div>
+                <div v-if="results  && results.data.length === 0 && !searchQuery">
+                    Loading data or no data available...
+                </div>
             </div>
             <Paginator
                 v-if="results !== null"
@@ -180,9 +192,14 @@
             }
 
             function performSearch() {
-                params.value.page = 1;
-                params.value.search = searchQuery.value;
-                getPosts();
+                params.value.page = 1
+                console.log(params.value)
+                const trimmedSearchQuery = searchQuery.value.trim()
+
+                if (trimmedSearchQuery !== ' ' || '') {
+                    params.value.title_contains = trimmedSearchQuery
+                    getPosts()
+                }
             }
             onMounted(getPosts)
 

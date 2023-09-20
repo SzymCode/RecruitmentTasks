@@ -4,7 +4,7 @@
 /* Home styles */
 .contentContainer {
     max-width: 80%;
-    margin-bottom: 16px; 
+    margin-bottom: 16px;
 }
 .card {
     margin-top: 16px;
@@ -13,9 +13,12 @@
     justify-content: space-between;
     display: flex;
     margin: 5px 5px 10px 5px;
+    vertical-align: middle;
+}
+.textHeader {
+    padding-top: 5px;
 }
 .table {
-    margin-top: -10px;
     white-space: nowrap;
     table-layout: fixed;
     width: 100%;
@@ -30,10 +33,12 @@ td.tableData {
 
 /* Alerts styles*/
 .alert {
-    margin: 10px 10px 0 10px;
+    position: relative;
+    top: 15px;
+    margin: 0 10px;
 }
 .alert-warning {
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
 .alert-danger, .alert-success {
     padding: 11px 11px 11px 13px;
@@ -46,6 +51,9 @@ td.tableData {
 }
 .modal-footer {
     margin-bottom: -15px;
+}
+.modalAlerts {
+    margin-bottom: 15px;
 }
 .details {
     text-align: center;
@@ -76,6 +84,7 @@ input.form-control {
 }
 .btn {
     padding: 0 10px;
+    max-height: 35px;
 }
 label {
     margin-bottom: 10px;
@@ -87,6 +96,19 @@ label {
 .dropdown-item:hover {
     background-color: rgb(165, 216, 248);
 }
+.noFoundMessage {
+    width: 100%;
+    text-align: center;
+}
+.homeAlert {
+    margin: 0;
+}
+.searchInput {
+    position: relative;
+    max-width: 400px;
+    top: 10px;
+}
+
 /* Icons styles */
 .icons {
     display: flex;
@@ -104,6 +126,13 @@ label {
 }
 .ellipsisIcon {
     display: flex;
+}
+.eyeIcon {
+    position: relative;
+    top: 1px;
+}
+.fa-plus {
+    margin-left: 7px;
 }
 
 /* Column styles */
@@ -134,7 +163,6 @@ label {
 .page-dots {
     display: none;
 }
-
 
 
 @media (min-width: 640px) {

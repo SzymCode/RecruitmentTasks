@@ -2,19 +2,26 @@
     <div class="card">
         <div class="card-body">
             <div class="header">
-                <h3>Manage Users</h3>
+                <h3 class="textHeader">Manage Users</h3>
                 <button type="button" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#userModal">
                     New user <i class="fas fa-plus"></i>
                 </button>
             </div>
+            <input
+                v-model="searchQuery"
+                @input="performSearch"
+                type="text"
+                class="form-control searchInput"
+                placeholder="Search by name"
+            />
 
             <!-- Display success messages-->
-            <div class="alert-success alert" role="alert" v-if="success_message !== null">
+            <div class="alert-success alert homeAlert" role="alert" v-if="success_message !== null">
                 {{ success_message }}
             </div>
 
             <!-- Display danger messages-->
-            <div class="alert-danger alert" role="alert" v-if="danger_message !== null">
+            <div class="alert-danger alert homeAlert" role="alert" v-if="danger_message !== null">
                 {{ danger_message }}
             </div>
             <br>
@@ -85,8 +92,13 @@
                     </tr>
                 </tbody>
             </table>
-            <div v-else>
-                Loading data or no data available...
+            <div class="noFoundMessage">
+                <div v-if="results && searchQuery && results.data.length === 0">
+                    No users found with name containing "{{ searchQuery }}"
+                </div>
+                <div v-if="results  && results.data.length === 0 && !searchQuery">
+                    Loading data or no data available...
+                </div>
             </div>
             <Paginator
                 v-if="results !== null"
@@ -134,6 +146,7 @@
             const success_message = ref(null)
             const danger_message = ref(null)
             const selectedUser = ref(null)
+            const searchQuery = ref('')
 
 
             function getUsers() {
@@ -149,6 +162,16 @@
             function getPage(event) {
                 params.value.page = event
                 getUsers()
+            }
+            function performSearch() {
+                params.value.page = 1
+                console.log(params.value)
+                const trimmedSearchQuery = searchQuery.value.trim()
+
+                if (trimmedSearchQuery !== ' ' || '') {
+                    params.value.name_contains = trimmedSearchQuery
+                    getUsers()
+                }
             }
 
             function deleteUser(user) {
@@ -185,7 +208,9 @@
                 success_message,
                 danger_message,
                 selectedUser,
-                deleteUser
+                searchQuery,
+                deleteUser,
+                performSearch
             }
         }
     }
