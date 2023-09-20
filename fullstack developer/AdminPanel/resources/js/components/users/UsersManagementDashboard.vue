@@ -3,7 +3,12 @@
         <div class="card-body">
             <div class="header">
                 <h3 class="textHeader">Manage Users</h3>
-                <button type="button" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#userModal">
+                <button
+                    type="button"
+                    class="btn btn-success float-right"
+                    data-bs-toggle="modal"
+                    data-bs-target="#userModal"
+                >
                     New user <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -15,16 +20,16 @@
                 placeholder="Search by name"
             />
 
-            <!-- Display success messages-->
+            <!-- Display success messages -->
             <div class="alert-success alert homeAlert" role="alert" v-if="success_message !== null">
                 {{ success_message }}
             </div>
 
-            <!-- Display danger messages-->
+            <!-- Display danger messages -->
             <div class="alert-danger alert homeAlert" role="alert" v-if="danger_message !== null">
                 {{ danger_message }}
             </div>
-            <br>
+            <br />
 
             <!-- Table -->
             <table class="table table-hover" v-if="results && results.data">
@@ -36,30 +41,35 @@
                 </colgroup>
                 <thead>
                     <tr>
-                        <th class="nameCol">Name</th>
-                        <th class="emailCol">Email</th>
-                        <th class="createdAtCol">User Since</th>
+                        <th class="nameCol titleHeader" @click="sortByColumn('name')">
+                            Name
+                            <span v-if="sortBy === 'name:az'">&ensp;▲</span>
+                            <span v-if="sortBy === 'name:za'">&ensp;▼</span>
+                        </th>
+                        <th class="emailCol titleHeader" @click="sortByColumn('email')">
+                            Email
+                            <span v-if="sortBy === 'email:az'">&ensp;▲</span>
+                            <span v-if="sortBy === 'email:za'">&ensp;▼</span>
+                        </th>
+                        <th class="createdAtCol titleHeader" @click="sortByColumn('created_at')">
+                            User Since
+                            <span v-if="sortBy === 'created_at:az'">&ensp;▲</span>
+                            <span v-if="sortBy === 'created_at:za'">&ensp;▼</span>
+                        </th>
                         <th class="actionsCol"></th>
                     </tr>
                 </thead>
                 <tbody v-if="results !== null">
-                    <tr v-for="user in results.data" key="user.id" class="tableData">
+                    <tr v-for="user in sortedUsers" :key="user.id" class="tableData">
                         <td class="tableData nameCol">
-                            <div class="overflow-hidden"> <!-- reason: https://stackoverflow.com/questions/33150835/overflow-hidden-behind-padding -->
-                                {{ user.name }}
-                            </div>
+                            <div class="overflow-hidden">{{ user.name }}</div>
                         </td>
                         <td class="tableData emailCol">
-                            <div class="overflow-hidden"> <!-- reason: https://stackoverflow.com/questions/33150835/overflow-hidden-behind-padding -->
-                                {{ user.email }}
-                            </div>
+                            <div class="overflow-hidden">{{ user.email }}</div>
                         </td>
-                        <td class="tableData createdAtCol">
-                            {{ user.created_at }}
-                        </td>
+                        <td class="tableData createdAtCol">{{ user.created_at }}</td>
                         <td class="tableData actionsCol">
                             <div class="icons">
-                                <!-- @media (min-width: 1280px) -->
                                 <a data-bs-toggle="modal" data-bs-target="#showUserModal" @click="selectedUser = user">
                                     <i class="fas fa-eye eyeIcon"></i>
                                 </a>
@@ -70,21 +80,14 @@
                                     <i class="fas fa-trash-can trashIcon"></i>
                                 </a>
 
-                                <!-- @media (max-width: 1280px) -->
                                 <a class="ellipsisIcon" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis ellipsisIcon"></i>
                                 </a>
                                 <div class="dropdown user-dropdown">
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#showUserModal" @click.prevent="selectedUser = user">
-                                            Details
-                                        </a></li>
-                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editUserModal" @click.prevent="selectedUser = user">
-                                            Edit user
-                                        </a></li>
-                                        <li><a class="dropdown-item" href="#navbar" @click="deleteUser(user)">
-                                            Delete user
-                                        </a></li>
+                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#showUserModal" @click.prevent="selectedUser = user">Details</a></li>
+                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editUserModal" @click.prevent="selectedUser = user">Edit user</a></li>
+                                        <li><a class="dropdown-item" href="#navbar" @click="deleteUser(user)">Delete user</a></li>
                                     </div>
                                 </div>
                             </div>
@@ -96,38 +99,35 @@
                 <div v-if="results && searchQuery && results.data.length === 0">
                     No users found with name containing "{{ searchQuery }}"
                 </div>
-                <div v-if="results  && results.data.length === 0 && !searchQuery">
+                <div v-if="results && results.data.length === 0 && !searchQuery">
                     Loading data or no data available...
                 </div>
             </div>
             <Paginator
                 v-if="results !== null"
                 v-bind:results="results"
-                v-on:get-page="getPage">
-            </Paginator>
+                v-on:get-page="getPage"
+            ></Paginator>
             <PaginatorDetails
                 v-if="results !== null"
-                v-bind:results="results">
-            </PaginatorDetails>
+                v-bind:results="results"
+            ></PaginatorDetails>
         </div>
     </div>
     <CreateUser></CreateUser>
     <EditUser
         v-bind:user="selectedUser"
-        @user-updated="success_message = 'Successfully edited user: ' + $event">
-    </EditUser>
-    <ShowUser
-        v-bind:user="selectedUser">
-    </ShowUser>
+        @user-updated="success_message = 'Successfully edited user: ' + $event"
+    ></EditUser>
+    <ShowUser v-bind:user="selectedUser"></ShowUser>
 </template>
 
 
 <script>
-    import { ref, onMounted } from 'vue'
+    import { ref, onMounted, computed } from 'vue'
     import axios from 'axios'
     import Paginator from "@/components/utilities/Paginator.vue"
     import PaginatorDetails from "@/components/utilities/PaginatorDetails.vue"
-
     import CreateUser from "./CreateUser.vue"
     import EditUser from './EditUser.vue'
     import ShowUser from './ShowUser.vue'
@@ -147,7 +147,7 @@
             const danger_message = ref(null)
             const selectedUser = ref(null)
             const searchQuery = ref('')
-
+            const sortBy = ref('name:az')
 
             function getUsers() {
                 axios.get('/data/users', { params: params.value })
@@ -163,6 +163,7 @@
                 params.value.page = event
                 getUsers()
             }
+
             function performSearch() {
                 params.value.page = 1
                 console.log(params.value)
@@ -185,19 +186,42 @@
                                 success_message.value = null
                             }, 1500)
                         })
-                        .catch(errors => {
+                        .catch(error => {
                             if (error.response.status === 500) {
-                                errors.value = ["HTTP 500: Internal Server Error"]
+                                danger_message.value = "HTTP 500: Internal Server Error"
                             }
-                            else if(errors.response.status === 403 || 401 && !422) {
+                            else if (error.response.status === 403 || error.response.status === 401 || error.response.status === 422) {
                                 danger_message.value = "Unauthorized access."
-                                setTimeout(() => {
-                                    danger_message.value = null
-                                }, 1500)
                             }
+                            setTimeout(() => {
+                                danger_message.value = null
+                            }, 1500)
                         })
                 }
             }
+
+            function sortByColumn(column) {
+                if (sortBy.value.startsWith(column)) {
+                    sortBy.value = sortBy.value.endsWith(':az') ? column + ':za' : column + ':az'
+                } else {
+                    sortBy.value = column + ':az'
+                }
+            }
+
+            const sortedUsers = computed(() => {
+                if (results.value && results.value.data) {
+                    const sortedData = [...results.value.data]
+                    const [column, order] = sortBy.value.split(':')
+                    sortedData.sort((user1, user2) => {
+                        const value1 = column === 'name' ? user1[column] : column === 'email' ? user1[column] : user1['created_at']
+                        const value2 = column === 'name' ? user2[column] : column === 'email' ? user2[column] : user2['created_at']
+                        const sortOrder = order === 'az' ? 1 : -1
+                        return sortOrder * value1.localeCompare(value2)
+                    })
+                    return sortedData
+                }
+                return []
+            })
 
             onMounted(getUsers)
 
@@ -210,7 +234,10 @@
                 selectedUser,
                 searchQuery,
                 deleteUser,
-                performSearch
+                performSearch,
+                sortBy,
+                sortByColumn,
+                sortedUsers
             }
         }
     }
