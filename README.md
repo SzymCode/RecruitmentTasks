@@ -60,7 +60,7 @@ Twoje rozwiązanie będzie oceniane pod kątem:
 • Implementacji autoryzacji i autentykacji.
 • Umiejętności pracy z PHP (Laravel) i Vue.js.
 • Wydajności i responsywności aplikacji.
-• Sposób na testowanie aplikacji ( szczególna uwagę przywiązujemy do testów)
+• Sposób na testowanie aplikacji (szczególną uwagę przywiązujemy do testów).
 ```
 
 <br/>
@@ -98,13 +98,6 @@ create database adminpanel
 php artisan migrate:fresh --seed
 ```
 
-- You can also run factories to generate fake data.
-```bash
-php artisan tinker
-User::factory()->count(100)->create();
-Post::factory()->count(100)->create();      
-```
-
 <br/>
 </details>
 
@@ -125,15 +118,42 @@ php artisan serve
 </details>  
 
 
+
+<details><summary> <h2>  ❓ Factories & Tests  </summary>
+
+- Run factories to generate fake data.
+```bash
+php artisan tinker
+User::factory()->count(100)->create();
+Post::factory()->count(100)->create();      
+```
+
+- Run backend tests.
+```bash
+php artisan test tests/Feature/PostsControllerTest.php
+php artisan test tests/Feature/UsersControllerTest.php
+```
+
+<br/>
+
+</details>
+
+
 <details><summary> <h2> ✅ Solved Problems  </summary>
 
 - [X] Single Page App
 
-- [X] CRUD for users and posts + tags
+- [X] Responsive design
+
+- [X] CRUD for users and posts
+
+- [X] Search, filter and sort functionalities
+
+- [X] Prevent SQL injection attack
+
+- [X] Backend tests 
 
 - [X] Pagination
-
-- [X] Responsive design
 
 - [X] Live preview
 
