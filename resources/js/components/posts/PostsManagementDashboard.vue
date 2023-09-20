@@ -43,32 +43,32 @@
                     <tr v-for="post in results.data" :key="post.id">
                         <td class="tableData titleCol"> {{ post.title }} </td>
                         <td class="tableData descriptionCol"> {{ post.description }} </td>
-                        <td class="tableData tagsCol"> 
+                        <td class="tableData tagsCol">
                             <div v-if="post.tags && post.tags.length > 0" class="tags">
                                 <div v-for="tag in post.tags.split(', ')" :key="tag" class="tag">
                                     {{ tag }}
                                 </div>
-                            </div> 
+                            </div>
                         </td>
                         <td class="tableData postDateCol"> {{ post.created_at }} </td>
-                        <td class="tableData actionsCol"> 
+                        <td class="tableData actionsCol">
                             <div class="icons">
-                                <!-- @media (min-width: 1280px) -->                                
+                                <!-- @media (min-width: 1280px) -->
                                 <a data-bs-toggle="modal" data-bs-target="#showPostModal" @click="selectedPost = post">
                                     <i class="fas fa-eye eyeIcon"></i>
                                 </a>
                                 <a data-bs-toggle="modal" data-bs-target="#editPostModal" @click="selectedPost = post">
-                                    <i class="fas fa-edit editIcon"></i>  
+                                    <i class="fas fa-edit editIcon"></i>
                                 </a>
                                 <a href="#header" @click="deletePost(post)">
-                                    <i class="fas fa-trash-can trashIcon"></i>  
+                                    <i class="fas fa-trash-can trashIcon"></i>
                                 </a>
 
                                 <!-- @media (max-width: 1280px) -->
                                 <a class="ellipsisIcon" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis ellipsisIcon"></i>
                                 </a>
-                                <div class="dropdown post-dropdown">    
+                                <div class="dropdown post-dropdown">
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#showPostModal" @click.prevent="selectedPost = post">
                                             Details
@@ -166,7 +166,10 @@
                             }, 1500)
                         })
                         .catch(error => {
-                            if(error.response.status === 403) {
+                            if (error.response.status === 500) {
+                                errors.value = ["HTTP 500: Internal Server Error"]
+                            }
+                            else if (error.response.status === 403 || 401 && !422) {
                                 danger_message.value = "Unauthorized access."
                                 setTimeout(() => {
                                     danger_message.value = null
@@ -175,7 +178,7 @@
                         })
                 }
             }
-            
+
             function performSearch() {
                 params.value.page = 1;
                 params.value.search = searchQuery.value;
