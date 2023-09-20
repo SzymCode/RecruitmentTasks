@@ -13,13 +13,15 @@
                         New post <i class="fas fa-plus"></i>
                     </button>
                 </div>
-                <input
-                    v-model="searchQuery"
-                    @input="performSearch"
-                    type="text"
-                    class="form-control searchInput"
-                    placeholder="Search by title"
-                />
+                <div class="input-group mb-3">
+                    <input
+                        v-model="searchQuery"
+                        @input="performSearch"
+                        type="text"
+                        class="form-control searchInput"
+                        placeholder="Search by title"
+                    />
+                </div>
             </section>
 
             <!-- Display success messages -->
@@ -64,11 +66,26 @@
                             <span v-if="sortBy === 'created_at:az'">&ensp;▲</span>
                             <span v-if="sortBy === 'created_at:za'">&ensp;▼</span>
                         </th>
-                        <th class="actionsCol"></th>
+                        <th class="actionsCol">
+                            <a id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-filter filterIcon"></i>
+                            </a>
+                            <div class="dropdown">
+                                <div class="dropdown-menu tagsFilterDropdown" aria-labelledby="dropdownMenuLink">
+                                    <input
+                                        v-model="tagFilter"
+                                        @input="filterTags"
+                                        type="text"
+                                        class="form-control tagFilterInput"
+                                        placeholder="Filter Tags"
+                                    />
+                                </div>
+                            </div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody v-if="results !== null">
-                    <tr v-for="post in sortedPosts" :key="post.id">
+                    <tr v-for="post in filteredPosts" :key="post.id">
                         <td class="tableData titleCol"> {{ post.title }} </td>
                         <td class="tableData descriptionCol"> {{ post.description }} </td>
                         <td class="tableData tagsCol">
@@ -121,10 +138,10 @@
                 </tbody>
             </table>
             <div class="noFoundMessage">
-                <div v-if="results && searchQuery && results.data.length === 0">
+                <div v-if="results && searchQuery && filteredPosts.length === 0">
                     No posts found with title containing "{{ searchQuery }}"
                 </div>
-                <div v-if="results && results.data.length === 0 && !searchQuery">
+                <div v-if="results && filteredPosts.length === 0 && !searchQuery">
                     Loading data or no data available...
                 </div>
             </div>
@@ -173,6 +190,7 @@
             const selectedPost = ref(null)
             const searchQuery = ref('')
             const sortBy = ref('tags:az')
+            const tagFilter = ref('')
 
             function getPosts() {
                 axios.get('/data/posts', { params: params.value })
@@ -193,7 +211,7 @@
             function deletePost(post) {
                 let confirm = window.confirm("Are you sure you want to delete " + post.title + " from the system?")
                 if (confirm) {
-                    axios.post('/data/posts/' + post.id, { _method: 'DELETE'})
+                    axios.post('/data/posts/' + post.id, { _method: 'DELETE' })
                         .then(response => {
                             getPosts()
                             success_message.value = "Successfully deleted post: " + post.title + "."
@@ -214,6 +232,7 @@
                         })
                 }
             }
+
             function performSearch() {
                 params.value.page = 1;
                 const trimmedSearchQuery = searchQuery.value.trim();
@@ -231,19 +250,26 @@
                 else {
                     sortBy.value = column + ':az'
                 }
-            }
 
-            const sortedPosts = computed(() => {
-                if (results.value && results.value.data) {
-                    const sortedData = [...results.value.data]
-                    const [column, order] = sortBy.value.split(':')
-                    sortedData.sort((post1, post2) => {
-                        const value1 = column === 'tags' ? (post1[column] || '').toLowerCase() : post1[column]
-                        const value2 = column === 'tags' ? (post2[column] || '').toLowerCase() : post2[column]
-                        const sortOrder = order === 'az' ? 1 : -1
+                if (column === 'title' || column === 'description' || column === 'created_at' || column === 'tags') {
+                    results.value.data.sort((post1, post2) => {
+                        const sortOrder = sortBy.value.endsWith(':az') ? 1 : -1
+                        const value1 = (column === 'tags' ? (post1[column] || '').toLowerCase() : post1[column]).toLowerCase()
+                        const value2 = (column === 'tags' ? (post2[column] || '').toLowerCase() : post2[column]).toLowerCase()
                         return sortOrder * value1.localeCompare(value2)
                     })
-                    return sortedData
+                }
+
+                filteredPosts.value = results.value.data.filter((post) => {
+                    return tagFilter.value === '' || (post.tags && post.tags.toLowerCase().includes(tagFilter.value.toLowerCase()))
+                })
+            }
+
+            const filteredPosts = computed(() => {
+                if (results.value && results.value.data) {
+                    return results.value.data.filter((post) => {
+                        return tagFilter.value === '' || (post.tags && post.tags.toLowerCase().includes(tagFilter.value.toLowerCase()))
+                    })
                 }
                 return []
             })
@@ -260,9 +286,10 @@
                 searchQuery,
                 sortBy,
                 deletePost,
-                sortedPosts,
+                filteredPosts,
                 sortByColumn,
-                performSearch
+                performSearch,
+                tagFilter
             }
         }
     }
