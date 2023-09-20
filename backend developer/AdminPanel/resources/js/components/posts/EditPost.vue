@@ -11,7 +11,7 @@
                 <div class="alert-success alert" role="alert" v-if="success_message !== null">
                     {{ success_message }}
                 </div>
-                
+
                 <!-- Display danger messages -->
                 <div class="alert-danger alert" role="alert" v-if="danger_message !== null">
                     {{ danger_message }}
@@ -107,13 +107,19 @@
                         }, 1500)
                     })
                     .catch((error) => {
-                        if(error.response.status === 403) {
-                            danger_message.value = "Unauthorized access."
+                        if (error.response.status === 500) {
+                            danger_message.value = "HTTP 500: Probably post with this title has already been taken."
                             setTimeout(() => {
                                 danger_message.value = null
                             }, 1500)
+                        } 
+                        else if (error.response.status === 403 || 401 && !422) {
+                            danger_message.value = 'Unauthorized access.'
+                            setTimeout(() => {
+                                danger_message.value = null;
+                            }, 1500)
                         }
-                        if (error.response.status === 422) {
+                        else if (error.response.status === 422) {
                             for (const key in error.response.data.errors) {
                                 errors.value.push(error.response.data.errors[key][0])
                             }

@@ -67,7 +67,7 @@
                                 <a class="ellipsisIcon" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis ellipsisIcon"></i>
                                 </a>
-                                <div class="dropdown user-dropdown">    
+                                <div class="dropdown user-dropdown">
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#showUserModal" @click.prevent="selectedUser = user">
                                             Details
@@ -163,7 +163,10 @@
                             }, 1500)
                         })
                         .catch(errors => {
-                            if(errors.response.status === 403) {
+                            if (error.response.status === 500) {
+                                errors.value = ["HTTP 500: Internal Server Error"]
+                            }
+                            else if(errors.response.status === 403 || 401 && !422) {
                                 danger_message.value = "Unauthorized access."
                                 setTimeout(() => {
                                     danger_message.value = null
