@@ -4,7 +4,12 @@
             <section id="header">
                 <div class="header">
                     <h3 class="textHeader">Manage Posts</h3>
-                    <button type="button" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#postModal">
+                    <button
+                        type="button"
+                        class="btn btn-success float-right"
+                        data-bs-toggle="modal"
+                        data-bs-target="#postModal"
+                    >
                         New post <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -26,7 +31,7 @@
             <div class="alert-danger alert homeAlert" role="alert" v-if="danger_message !== null">
                 {{ danger_message }}
             </div>
-            <br>
+            <br />
 
             <!-- Table -->
             <table class="table table-hover" v-if="results && results.data">
@@ -39,15 +44,31 @@
                 </colgroup>
                 <thead>
                     <tr>
-                        <th class="titleCol">Title</th>
-                        <th class="descriptionCol">Description</th>
-                        <th class="tagsCol">Tags</th>
-                        <th class="postDateCol">Post Date</th>
+                        <th class="titleCol titleHeader" @click="sortByColumn('title')">
+                            Title 
+                            <span v-if="sortBy === 'title:az'">&ensp;▲</span>
+                            <span v-if="sortBy === 'title:za'">&ensp;▼</span>
+                        </th>
+                        <th class="descriptionCol titleHeader" @click="sortByColumn('description')">
+                            Description 
+                            <span v-if="sortBy === 'description:az'">&ensp;▲</span>
+                            <span v-if="sortBy === 'description:za'">&ensp;▼</span>
+                        </th>
+                        <th class="tagsCol titleHeader" @click="sortByColumn('tags')">
+                            Tags 
+                            <span v-if="sortBy === 'tags:az'">&ensp;▲</span>
+                            <span v-if="sortBy === 'tags:za'">&ensp;▼</span>
+                        </th>
+                        <th class="postDateCol titleHeader" @click="sortByColumn('created_at')">
+                            Post Date 
+                            <span v-if="sortBy === 'created_at:az'">&ensp;▲</span>
+                            <span v-if="sortBy === 'created_at:za'">&ensp;▼</span>
+                        </th>
                         <th class="actionsCol"></th>
                     </tr>
                 </thead>
-                <tbody v-if="results !==null">
-                    <tr v-for="post in results.data" :key="post.id">
+                <tbody v-if="results !== null">
+                    <tr v-for="post in sortedPosts" :key="post.id">
                         <td class="tableData titleCol"> {{ post.title }} </td>
                         <td class="tableData descriptionCol"> {{ post.description }} </td>
                         <td class="tableData tagsCol">
@@ -77,15 +98,21 @@
                                 </a>
                                 <div class="dropdown post-dropdown">
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#showPostModal" @click.prevent="selectedPost = post">
-                                            Details
-                                        </a></li>
-                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editPostModal" @click.prevent="selectedPost = post">
-                                            Edit post
-                                        </a></li>
-                                        <li><a class="dropdown-item" href="#header" @click="deletePost(post)">
-                                            Delete post
-                                        </a></li>
+                                        <li>
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#showPostModal" @click.prevent="selectedPost = post">
+                                                Details
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editPostModal" @click.prevent="selectedPost = post">
+                                                Edit post
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#header" @click="deletePost(post)">
+                                                Delete post
+                                            </a>
+                                        </li>
                                     </div>
                                 </div>
                             </div>
@@ -97,35 +124,32 @@
                 <div v-if="results && searchQuery && results.data.length === 0">
                     No posts found with title containing "{{ searchQuery }}"
                 </div>
-                <div v-if="results  && results.data.length === 0 && !searchQuery">
+                <div v-if="results && results.data.length === 0 && !searchQuery">
                     Loading data or no data available...
                 </div>
             </div>
             <Paginator
                 v-if="results !== null"
                 v-bind:results="results"
-                v-on:get-page="getPage">
-            </Paginator>
+                v-on:get-page="getPage"
+            ></Paginator>
             <PaginatorDetails
                 v-if="results !== null"
-                v-bind:results="results">
-            </PaginatorDetails>
+                v-bind:results="results"
+            ></PaginatorDetails>
         </div>
     </div>
     <CreatePost></CreatePost>
     <EditPost
         v-bind:post="selectedPost"
-        @post-updated="success_message = 'Successfully edited user: ' + $event">
-    </EditPost>
-    <ShowPost
-        v-bind:post="selectedPost">
-    </ShowPost>
+        @post-updated="success_message = 'Successfully edited user: ' + $event"
+    ></EditPost>
+    <ShowPost v-bind:post="selectedPost"></ShowPost>
 </template>
-
 
 <script>
     import axios from 'axios'
-    import { ref, onMounted } from 'vue'
+    import { ref, onMounted, computed } from 'vue'
     import Paginator from "@/components/utilities/Paginator.vue"
     import PaginatorDetails from "@/components/utilities/PaginatorDetails.vue"
 
@@ -147,8 +171,8 @@
             const success_message = ref(null)
             const danger_message = ref(null)
             const selectedPost = ref(null)
-            const searchQuery = ref('');
-
+            const searchQuery = ref('')
+            const sortBy = ref('tags:az')
 
             function getPosts() {
                 axios.get('/data/posts', { params: params.value })
@@ -190,17 +214,40 @@
                         })
                 }
             }
-
             function performSearch() {
-                params.value.page = 1
-                console.log(params.value)
-                const trimmedSearchQuery = searchQuery.value.trim()
-
-                if (trimmedSearchQuery !== ' ' || '') {
-                    params.value.title_contains = trimmedSearchQuery
-                    getPosts()
+                params.value.page = 1;
+                const trimmedSearchQuery = searchQuery.value.trim();
+        
+                if (trimmedSearchQuery !== '' || ' ') {
+                params.value.title_contains = trimmedSearchQuery;
+                getPosts();
                 }
             }
+
+            function sortByColumn(column) {
+                if (sortBy.value.startsWith(column)) {
+                    sortBy.value = sortBy.value.endsWith(':az') ? column + ':za' : column + ':az'
+                } 
+                else {
+                    sortBy.value = column + ':az'
+                }
+            }
+
+            const sortedPosts = computed(() => {
+                if (results.value && results.value.data) {
+                    const sortedData = [...results.value.data]
+                    const [column, order] = sortBy.value.split(':')
+                    sortedData.sort((post1, post2) => {
+                        const value1 = column === 'tags' ? (post1[column] || '').toLowerCase() : post1[column]
+                        const value2 = column === 'tags' ? (post2[column] || '').toLowerCase() : post2[column]
+                        const sortOrder = order === 'az' ? 1 : -1
+                        return sortOrder * value1.localeCompare(value2)
+                    })
+                    return sortedData
+                }
+                return []
+            })
+
             onMounted(getPosts)
 
             return {
@@ -211,7 +258,10 @@
                 danger_message,
                 selectedPost,
                 searchQuery,
+                sortBy,
                 deletePost,
+                sortedPosts,
+                sortByColumn,
                 performSearch
             }
         }

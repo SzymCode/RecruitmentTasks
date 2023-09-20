@@ -30,7 +30,11 @@
 td.tableData {
     vertical-align: middle;
 }
-
+.titleHeader:hover {
+    background: rgb(240, 240, 240);
+    color: rgb(0, 0, 180);
+    cursor: pointer;
+}
 /* Alerts styles*/
 .alert {
     position: relative;
@@ -107,6 +111,13 @@ label {
     position: relative;
     max-width: 400px;
     top: 10px;
+}
+.descriptionInput {
+    height: 100px;
+    resize: none;
+    white-space: inherit;
+    line-height: 20px; 
+    margin-bottom: 10px;
 }
 
 /* Icons styles */
@@ -205,6 +216,9 @@ label {
     }
     .createdAtCol, .postDateCol {
         width: 23%;
+    }
+    .paginator {
+        margin-top: 3.5%;
     }
 }
 

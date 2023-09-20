@@ -38,7 +38,7 @@
                         <div class="form-group row">
                             <label class="col-3">Description</label>
                             <div class="col-9">
-                                <input type="text" class="form-control" v-model="data.description" @keyup.enter="storePost">
+                                <textarea class="form-control descriptionInput" v-model="data.description" @keyup.enter="storePost"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
