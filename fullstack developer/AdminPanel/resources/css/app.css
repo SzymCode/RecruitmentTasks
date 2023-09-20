@@ -119,7 +119,15 @@ label {
     line-height: 20px; 
     margin-bottom: 10px;
 }
-
+.tagsFilterDropdown {
+    visibility: hidden;
+}
+.tagFilterInput {
+    visibility: visible;
+    position: relative;
+    left: 4px;
+    border: 1px solid gray;
+}
 /* Icons styles */
 .icons {
     display: flex;
@@ -145,7 +153,12 @@ label {
 .fa-plus {
     margin-left: 7px;
 }
-
+.filterIcon {
+    margin-top: -20px;
+    font-size: 17px;
+    color: black;
+    display: flex;
+}
 /* Column styles */
 .nameCol {
     width: 55%;
@@ -250,6 +263,10 @@ label {
     .ellipsisIcon {
         position: relative;
         left: 3px
+    }
+    .filterIcon {
+        position: relative;
+        left: 8px;
     }
 }
 @media (max-width: 640px) {
