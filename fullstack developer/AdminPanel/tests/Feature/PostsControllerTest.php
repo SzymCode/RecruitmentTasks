@@ -8,7 +8,7 @@ class PostsControllerTest extends TestCase
 {
     use DatabaseTransactions; // https://stackoverflow.com/questions/51776768/laravel-reset-database-after-test
 
-    public function test_index_returns_posts()
+    public function test_index_method_returns_posts()
     {
         $adminUser = User::factory()->create(['role' => 'admin']);
         $this->actingAs($adminUser);
@@ -21,7 +21,7 @@ class PostsControllerTest extends TestCase
             ->assertJsonStructure(['results']);
     }
 
-    public function test_store_creates_post()
+    public function test_store_method_creates_post()
     {
         $adminUser = User::factory()->create(['role' => 'admin']);
         $this->actingAs($adminUser);
@@ -46,7 +46,7 @@ class PostsControllerTest extends TestCase
         ]);
     }
 
-    public function test_update_updates_post()
+    public function test_update_method_updates_post()
     {
         $adminUser = User::factory()->create(['role' => 'admin']);
         $this->actingAs($adminUser);
@@ -73,7 +73,7 @@ class PostsControllerTest extends TestCase
         ]);
     }
 
-    public function test_delete_deletes_post()
+    public function test_delete_method_deletes_post()
     {
         $adminUser = User::factory()->create(['role' => 'admin']);
         $this->actingAs($adminUser);
