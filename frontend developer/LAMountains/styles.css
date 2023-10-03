@@ -1,3 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+  --white: #FFFFFF;
+  --blue: #404E6C;
+  --lightblue: #8A9AB7;
+}
+
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+.navbar, ul, li, a {
+  padding: 0;
+  transition: all 0.3s;
+  color: var(--white);
+}
+.navbar {
+  padding: 0 15px;
+}
+.customContainer {
+  width: 99%;
+  padding: 7px;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+}
+.logo, li {
+  cursor: pointer;
+}
+.logo {
+  width: 43px;
+  height: 43px;
+}
+.scrolledLogo {
+  display: none;
+}
+li {
+  display: inline-block;
+  letter-spacing: .1rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  width: fit-content;
+  margin-top: auto;
+  vertical-align: middle;
+  position: relative;
+  top: 5px;
+  margin-left: 20px;
+}
+a {
+  text-decoration: none;
+}
+.image-container {
+  overflow: hidden;
+  max-height: 50vh;
+}
+.hero-image, .history-image {
+  width: 100%;
+  min-height: 460px;
+}
+.hero-image {
+  min-width: 480px;
+}
+.history-image {
+  min-width: 600px;
+}
+.teamContainer {
+  height: 180px;
+}
+.mountainContainer {
+  background: var(--blue);
+  height: 40px;
+}
+footer {
+  background: var(--blue);
+  max-height: 74px;
+  padding-top: 9px;
+  padding-bottom: 8px;
+}
+footer li {
+  color: var(--lightblue);
+  border: 0;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+
+@media (min-width: 992px) {
+  .image-container {
+    max-height: 100vh;
+  }
+  .customContainer {
+    max-width: 960px;
+  }
+  li {
+    margin-left: 49px;
+    font-size: 16px;
+  }
+}
+
+
+@media (min-width: 1400px) {
+  .customContainer {
+    max-width: 1240px;
+  }
 }
