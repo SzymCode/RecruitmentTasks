@@ -2,7 +2,7 @@
 
 # GiardDesign
 
-This is a recruitment task project for adRespect company. &emsp;[Preview](https://szymcode.github.io/RecruitmentTasks/)
+This is a recruitment task project for [adRespect](https://adrespect.pl/) company. [Preview](https://szymcode.github.io/RecruitmentTasks/)
 
 
 <details><summary> <h2>  📖 Problem description  </summary>

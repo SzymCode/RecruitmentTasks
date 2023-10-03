@@ -8,7 +8,7 @@
 
 # AdminPanel
 
-This is a recruitment task project for ONX Center company. [Preview!](http://adminpanel-szymcode-a7c075dcede4.herokuapp.com/home)
+This is a recruitment task project for [ONX Center](https://onx.com.pl/) company. [Preview!](http://adminpanel-szymcode-a7c075dcede4.herokuapp.com/home)
 
 
 <details><summary> <h2>  📖 Problem description  </summary>
