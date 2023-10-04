@@ -9,7 +9,6 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <script src="scripts/handleNavbar.js"></script>
-
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,14 +19,16 @@
           <img src="images/logo.png" class="logo" alt=""/>
           <img src="images/scrolled-logo.png" class="scrolledLogo" alt=""/>
         </a>
-        <ul>
-          <li>
+        <ul class="navbar-items">
+          <li class="navbar-item">
             <a href="#history">
               <i>01. HISTORY</i>
             </a>
           </li>
-          <li>
-            <i><a href="#team">02. TEAM</a></i>
+          <li class="navbar-item">
+            <a href="#team">
+              <i>02. TEAM</i>
+            </a>
           </li>
         </ul>
       </div>
@@ -41,28 +42,59 @@
     </section>
     <section id="history">
       <div class="image-container">
+        <div class="textContainer">
+          <div class="customContainer gridContainer">
+            <div class="div-header">
+              <h1 class="number-header header-01">01.</h1>
+              <span class="history-header">HISTORY</span>
+            </div>
+            <p class="history-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ante viverra, rutrum erat rutrum, consectetur mi.
+              Proin at maximus est. Nullam purus ex, iaculis sed erat sed, bladit tincidunt quam. Cras scelerisque id quam sed dignissim.
+              Pellentesque urna nunc, gravida quis hendrerit ac, tristique ut quam, Vivamus suscipit dignissim tortor nec congue.
+            </p>
+          </div>
+        </div>
         <img src="images/history-image.png" class="history-image" alt=""/>
       </div>
     </section>
     <section id="team">
-      <div class="customContainer teamContainer">
-
+      <div class="teamContainer">
+        <div class="customContainer">
+          <div class="div-header">
+            <h1 class="number-header header-02">02.</h1>
+            <span class="climb-header">CLIMB</span>
+          </div>
+          <p class="climb-text">
+            Cras scelerisque id quam sed dignissim Pellentesque urna nunc, gravida nunc, gravida quis hendrerit ac,
+            tristique ut quam. Vivamus suscipit dignissim tortor nec congue.
+          </p>
+        </div>
       </div>
       <div class="mountainContainer">
-
+        <div class="customContainer">
+          <ul class="mountain-items">
+            <li class="mountain-item mountain-item-1">
+              MOUNTAIN 1
+            </li>
+            <li class="mountain-item mountain-item-2">
+              MOUNTAIN 2
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="image-container">
-        <img src="images/climb-image.png" class="history-image" alt=""/>
+        <img src="images/climb-image.png" class="climb-image" alt=""/>
       </div>
     </section>
   </main>
   <footer>
     <div class="customContainer">
       <img src="images/footer-logo.png" class="footerLogo" alt=""/>
-      <ul>
-          <li>
-              <i>COPYRIGHT 2016. ALL RIGHTS RESERVED.</i>
-          </li>
+      <ul class="footer-items">
+        <li class="footer-item">
+          <i>COPYRIGHT 2016. ALL RIGHTS RESERVED.</i>
+        </li>
       </ul>
     </div>
   </footer>
