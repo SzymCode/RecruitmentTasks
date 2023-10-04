@@ -1,31 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
 :root {
   --white: #FFFFFF;
   --blue: #404E6C;
-  --lightblue: #8A9AB7;
+  --blue2: #414f6b;
+  --lightblue: #61759E;
+  --lightgray: #7A89A1;
 }
 
 * {
   box-sizing: border-box;
 }
-.navbar, ul, li, a {
+a {
+  text-decoration: none;
+}
+li {
+  display: inline-block;
+  text-decoration: none;
+  letter-spacing: .1rem;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: auto;
+  vertical-align: middle;
+}
+
+/* CURSOR POINTER */
+.logo,
+.navbar-item,
+.mountain-item {
+  cursor: pointer;
+}
+
+/* POSITION RELATIVE */
+li,
+.image-container,
+.number-header,
+.history-header,
+.climb-header,
+.history-text,
+.climb-text,
+.mountain-item {
+  position: relative;
+}
+
+/* POSITION ABSOLUTE */
+.textContainer {
+  position: absolute;
+}
+
+/* OSWALD FONT */
+.history-header,
+.climb-header,
+.number-header,
+.mountain-item {
+  font-family: 'Oswald', sans-serif;
+}
+
+/* LATO FONT */
+li,
+.history-text,
+.climb-text {
+  font-family: 'Lato', sans-serif;
+}
+
+/* NAVBAR STYLES */
+.navbar {
   padding: 0;
   transition: all 0.3s;
   color: var(--white);
-}
-.navbar {
-  padding: 0 15px;
-}
-.customContainer {
-  width: 99%;
-  padding: 7px;
-  display: flex;
-  margin: auto;
-  justify-content: space-between;
-}
-.logo, li {
-  cursor: pointer;
 }
 .logo {
   width: 43px;
@@ -34,75 +76,216 @@
 .scrolledLogo {
   display: none;
 }
-li {
+.navbar-item i {
+  color: var(--white);
+}
+.navbar-items {
   display: inline-block;
-  letter-spacing: .1rem;
-  font-family: 'Lato', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
+  margin: 0;
+  padding-left: 0;
+}
+.navbar-item {
+  top: 5px;
+  padding-right: 5px;
+  margin-left: 15px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   width: fit-content;
-  margin-top: auto;
-  vertical-align: middle;
-  position: relative;
-  top: 5px;
-  margin-left: 20px;
+  font-size: 12px;
 }
-a {
-  text-decoration: none;
+
+/* MAIN STYLES */
+.div-header {
+  display: flex;
 }
-.image-container {
+.number-header {
+  font-size: 150px;
+  font-weight: bold;
+  color: var(--lightgray);
+}
+.header-01, .header-02 {
+  margin-top: -12px;
+}
+.history-header,
+.climb-header {
+  font-weight: bold;
+  top: 75px;
+  right: 31px;
+  font-size: 32px;
+  color: var(--blue2);
+}
+.history-text {
+  left: 0;
+  padding: 0 30px 0 0;
+  font-size: 17px;
+  margin-top: -15px;
+  font-weight: 400;
+}
+.climb-text {
+  top: -10px;
+  padding-left: 5px;
+  font-size: 17px;
+  font-weight: 300;
+}
+.mountain-items {
+  padding: 0;
+}
+.mountain-item {
+  padding-top: 2px;
+  width: 140px;
+  height: 40px;
+  text-align: center;
+  letter-spacing: 0;
+  font-size: 22px;
+}
+.mountain-item-1 {
+  background: var(--lightgray);
+  color: var(--blue);
+  text-decoration: 2px underline;
+  text-underline-position: under;
+}
+.mountain-item-2 {
+  background: var(--blue);
+  color: var(--lightgray);
+}
+/* FOOTER STYLES */
+footer {
+  background: var(--blue);
+  max-height: 74px;
   overflow: hidden;
-  max-height: 50vh;
 }
-.hero-image, .history-image {
+.footer-item{
+  color: var(--lightblue);
+  border: 0;
+  text-decoration: none;
+  font-weight: 900;
+  padding-top: 10px;
+  font-size: 11px;
+  text-align: right;
+}
+.footerLogo {
+  height: 43px;
+  margin: 8px;
+}
+
+/* CONTAINER STYLES */
+.customContainer {
+  width: 99%;
+  padding: 7px;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+}
+.textContainer {
+  top: 25px;
+  left: 15px;
+  height: auto;
   width: 100%;
-  min-height: 460px;
 }
-.hero-image {
-  min-width: 480px;
+.textContainer .customContainer {
+  padding: 0;
 }
-.history-image {
-  min-width: 600px;
+.teamContainer .customContainer {
+  display: inline-block;
+}
+.mountainContainer .customContainer {
+  padding: 0;
+}
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+}
+.gridContainer > *:nth-child(2) {
+  max-height: 100px
 }
 .teamContainer {
-  height: 180px;
+  height: 300px;
 }
 .mountainContainer {
   background: var(--blue);
   height: 40px;
 }
-footer {
-  background: var(--blue);
-  max-height: 74px;
-  padding-top: 9px;
-  padding-bottom: 8px;
+
+/* IMAGE STYLES */
+.image-container {
+  overflow: hidden;
+  max-height: 100vh;
 }
-footer li {
-  color: var(--lightblue);
-  border: 0;
-  text-decoration: none;
-  font-weight: 900;
+.hero-image,
+.history-image,
+.climb-image {
+  width: 100%;
+}
+.history-image {
+  min-height: 500px;
+  min-width: 1430px;
+}
+.hero-image {
+  min-height: 430px;
+  min-width: 460px;
+}
+.climb-image {
+  min-height: 400px;
+  min-width: 1200px;
 }
 
-
-@media (min-width: 992px) {
-  .image-container {
-    max-height: 100vh;
+@media (min-width: 552px) {
+  .navbar-item {
+    font-size: 16px;
   }
+  .teamContainer {
+    height: 270px;
+  }
+  .footer-items {
+    padding-top: 7px;
+  }
+  .footer-item {
+    font-size: 13px;
+  }
+}
+@media (min-width: 768px) {
+  .teamContainer {
+    max-height: 180px;
+  }
+  .teamContainer .customContainer {
+    display: flex;
+  }
+  .climb-text {
+    top: 50px;
+  }
+  .header-02 {
+    margin-left: 15px;
+  }
+}
+@media (min-width: 992px) {
   .customContainer {
     max-width: 960px;
+    padding: 7px 0 7px 22px;
   }
-  li {
+  .textContainer {
+    top: 49px;
+    left: 0;
+  }
+  .history-text {
+    margin-left: 74px;
+  }
+  .navbar-item {
     margin-left: 49px;
     font-size: 16px;
   }
+  .footerLogo {
+    margin-left: 0;
+  }
+  .footer-item {
+    padding-right: 0;
+  }
 }
-
-
-@media (min-width: 1400px) {
-  .customContainer {
-    max-width: 1240px;
+@media (min-width: 1600px) {
+  .textContainer {
+    top: 100px;
+    left: 0;
   }
 }
