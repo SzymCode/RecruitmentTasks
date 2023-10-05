@@ -47,7 +47,6 @@ li,
 .textContainer {
   position: absolute;
 }
-
 /* OSWALD FONT */
 .history-header,
 .climb-header,
@@ -208,6 +207,17 @@ footer {
   background: var(--blue);
   height: 40px;
 }
+.carouselContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(64, 78, 108, 0.8)
+}
+.carouselContainer .customContainer {
+  padding: 0;
+  align-items: center;
+  text-align: center;
+}
 
 /* IMAGE STYLES */
 .image-container {
@@ -232,7 +242,47 @@ footer {
   min-width: 1200px;
 }
 
-@media (min-width: 552px) {
+/* CAROUSEL STYLES */
+.carousel-inner {
+  flex-direction: row;
+  justify-content: center;
+}
+.carousel-item {
+  padding: 25px 0 35px 0;;
+  max-height: 196px;
+  min-height: 135px;
+}
+.carousel-item img {
+  margin: 0;
+  width: 140px;
+}
+.carouselImageContainer {
+  display: inline-block;
+  width: 140px;
+  overflow: hidden;
+}
+.carousel-indicators [data-bs-target] {
+  width: 100%;
+  height: 7px;
+  margin: 0;
+  text-align: center;
+}
+.carousel-indicators {
+  bottom: 7px;
+  margin: 0;
+  gap: 6px;
+}
+.carousel-indicators button {
+  padding: 0;
+  max-width: 7px;
+  max-height: 7px;
+  border-radius: 100%;
+}
+#desktop-carousel {
+  display: none;
+}
+
+@media (min-width: 600px) {
   .navbar-item {
     font-size: 16px;
   }
@@ -244,6 +294,12 @@ footer {
   }
   .footer-item {
     font-size: 13px;
+  }
+  #desktop-carousel {
+    display: inherit;
+  }
+  #mobile-carousel {
+    display: none;
   }
 }
 @media (min-width: 768px) {
@@ -259,8 +315,21 @@ footer {
   .header-02 {
     margin-left: 15px;
   }
+  .carousel-item img {
+    width: 180px;
+  }
 }
+
 @media (min-width: 992px) {
+  .carousel-item {
+    padding: 25px 0 35px 0;
+    max-height: 196px;
+    min-height: 196px;
+  }
+  .carousel-item img {
+    width: 220px;
+    margin: 0 3px;
+  }
   .customContainer {
     max-width: 960px;
     padding: 7px 0 7px 22px;

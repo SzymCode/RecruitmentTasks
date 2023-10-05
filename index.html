@@ -8,16 +8,16 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <script src="scripts/handleNavbar.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <script src="assets/scripts/handleNavbar.js"></script>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
   <header>
     <nav class="navbar fixed-top">
       <div class="customContainer">
         <a href="#hero">
-          <img src="images/logo.png" class="logo" alt=""/>
-          <img src="images/scrolled-logo.png" class="scrolledLogo" alt=""/>
+          <img src="assets/images/logo.png" class="logo" alt=""/>
+          <img src="assets/images/scrolled-logo.png" class="scrolledLogo" alt=""/>
         </a>
         <ul class="navbar-items">
           <li class="navbar-item">
@@ -34,12 +34,14 @@
       </div>
     </nav>
   </header>
+
   <main>
     <section id="hero">
       <div class="image-container">
-        <img src="images/hero-image.png" class="hero-image" alt=""/>
+        <img src="assets/images/hero-image.png" class="hero-image" alt=""/>
       </div>
     </section>
+
     <section id="history">
       <div class="image-container">
         <div class="textContainer">
@@ -55,9 +57,94 @@
             </p>
           </div>
         </div>
-        <img src="images/history-image.png" class="history-image" alt=""/>
+        <img src="assets/images/history-image.png" class="history-image" alt=""/>
+        <div class="carouselContainer">
+          <!-- DESKTOP CAROUSEL -->
+          <div id="desktop-carousel" class="carousel slide">
+            <div class="customContainer">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="assets/images/group8.png" alt="">
+                  <img src="assets/images/group10.png" alt="">
+                  <img src="assets/images/group8.png" alt="">
+                  <img src="assets/images/group10.png" alt="">
+                </div>
+                <div class="carousel-item">
+                  <img src="assets/images/group8.png" alt="">
+                  <img src="assets/images/group10.png" alt="">
+                  <img src="assets/images/group8.png" alt="">
+                  <img src="assets/images/group10.png" alt="">
+                </div>
+                <div class="carousel-item">
+                  <img src="assets/images/group8.png" alt="">
+                  <img src="assets/images/group10.png" alt="">
+                  <img src="assets/images/group8.png" alt="">
+                  <img src="assets/images/group10.png" alt="">
+                </div>
+                <div class="carousel-indicators">
+                  <button data-bs-target="#desktop-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button data-bs-target="#desktop-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button data-bs-target="#desktop-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#desktop-carousel" data-bs-slide="prev">
+                <span class="" aria-hidden="true"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#desktop-carousel" data-bs-slide="next">
+                <span class="" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- MOBILE CAROUSEL -->
+          <div id="mobile-carousel" class="carousel slide">
+            <div class="customContainer">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="assets/images/group8.png" alt="">
+                  <img src="assets/images/group10.png" alt="">
+                </div>
+                <div class="carousel-item">
+                  <img src="assets/images/group8.png" alt="">
+                  <img src="assets/images/group10.png" alt="">
+                </div>
+                <div class="carousel-item">
+                  <img src="assets/images/group8.png" alt="">
+                  <img src="assets/images/group10.png" alt="">
+                </div>
+                <div class="carousel-item">
+                  <img src="assets/images/group8.png" alt="">
+                  <img src="assets/images/group10.png" alt="">
+                </div>
+                <div class="carousel-item">
+                  <img src="assets/images/group8.png" alt="">
+                  <img src="assets/images/group10.png" alt="">
+                </div>
+                <div class="carousel-item">
+                  <img src="assets/images/group8.png" alt="">
+                  <img src="assets/images/group10.png" alt="">
+                </div>
+                <div class="carousel-indicators">
+                  <button data-bs-target="#mobile-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button data-bs-target="#mobile-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button data-bs-target="#mobile-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button data-bs-target="#mobile-carousel" data-bs-slide-to="3" aria-label="Slide 3"></button>
+                  <button data-bs-target="#mobile-carousel" data-bs-slide-to="4" aria-label="Slide 4"></button>
+                  <button data-bs-target="#mobile-carousel" data-bs-slide-to="5" aria-label="Slide 5"></button>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#mobile-carousel" data-bs-slide="prev">
+                <span class="" aria-hidden="true"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#mobile-carousel" data-bs-slide="next">
+                <span class="" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+
     <section id="team">
       <div class="teamContainer">
         <div class="customContainer">
@@ -84,13 +171,14 @@
         </div>
       </div>
       <div class="image-container">
-        <img src="images/climb-image.png" class="climb-image" alt=""/>
+        <img src="assets/images/climb-image.png" class="climb-image" alt=""/>
       </div>
     </section>
   </main>
+
   <footer>
     <div class="customContainer">
-      <img src="images/footer-logo.png" class="footerLogo" alt=""/>
+      <img src="assets/images/footer-logo.png" class="footerLogo" alt=""/>
       <ul class="footer-items">
         <li class="footer-item">
           <i>COPYRIGHT 2016. ALL RIGHTS RESERVED.</i>
