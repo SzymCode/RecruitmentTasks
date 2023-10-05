@@ -44,21 +44,24 @@ li,
 }
 
 /* POSITION ABSOLUTE */
-.textContainer {
+.textContainer,
+.mountain-info {
   position: absolute;
 }
 /* OSWALD FONT */
 .history-header,
 .climb-header,
 .number-header,
-.mountain-item {
+.mountain-item,
+.shedule-header {
   font-family: 'Oswald', sans-serif;
 }
 
 /* LATO FONT */
 li,
 .history-text,
-.climb-text {
+.climb-text,
+.shedule-li {
   font-family: 'Lato', sans-serif;
 }
 
@@ -79,7 +82,6 @@ li,
   color: var(--white);
 }
 .navbar-items {
-  display: inline-block;
   margin: 0;
   padding-left: 0;
 }
@@ -147,6 +149,38 @@ li,
   background: var(--blue);
   color: var(--lightgray);
 }
+.mountain-info {
+  top: 20px;
+  width: 90%;
+  min-height: 229px;
+  background: var(--white);
+  opacity: 0.7;
+}
+.shedule-header {
+  margin-top: 13px;
+  margin-left: 40px;
+}
+.shedule-ul {
+  padding: 10px 20px;
+}
+#shedule-list li {
+  font-weight: normal;
+  min-height: 21px;
+  justify-content: space-between;
+}
+#shedule-list p {
+  margin: 0;
+}
+.element2 {
+  display: none;
+}
+.element1 {
+  display: flex;
+}
+.desktop-mountain {
+  display: none;
+}
+
 /* FOOTER STYLES */
 footer {
   background: var(--blue);
@@ -207,11 +241,15 @@ footer {
   background: var(--blue);
   height: 40px;
 }
+.mountainInfoContainer {
+  justify-content: center;
+  margin-bottom: -20px;
+}
 .carouselContainer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: rgba(64, 78, 108, 0.8)
+  background: rgba(65, 79, 107, 0.8);
 }
 .carouselContainer .customContainer {
   padding: 0;
@@ -226,8 +264,10 @@ footer {
 }
 .hero-image,
 .history-image,
-.climb-image {
+.mountain-image-1,
+.mountain-image-2 {
   width: 100%;
+  height: 100%;
 }
 .history-image {
   min-height: 500px;
@@ -237,10 +277,18 @@ footer {
   min-height: 430px;
   min-width: 460px;
 }
-.climb-image {
-  min-height: 400px;
+.mountain-image-1,
+.mountain-image-2 {
+  min-height: 410px;
   min-width: 1200px;
 }
+.mountain-images {
+  max-height: 450px;
+}
+.mountain-image-2 {
+  display: none;
+}
+
 
 /* CAROUSEL STYLES */
 .carousel-inner {
@@ -253,8 +301,9 @@ footer {
   min-height: 135px;
 }
 .carousel-item img {
-  margin: 0;
-  width: 140px;
+  margin: 0 3px;
+  width: 135px;
+  opacity: 1;
 }
 .carouselImageContainer {
   display: inline-block;
@@ -282,7 +331,29 @@ footer {
   display: none;
 }
 
+@media (min-width: 430px) {
+  .mountain-info {
+    top: 101px;
+    width: 355px;
+    height: 229px;
+  }
+  .mountainInfoContainer {
+    justify-content: space-between;
+  }
+  .shedule-ul {
+    padding: 10px 40px;
+  }
+  .mountain-info {
+    left: 5%;
+  }
+  .mountain-images {
+    max-height: 500px;
+  }
+}
 @media (min-width: 600px) {
+  .navbar-items {
+    display: inline-block;
+  }
   .navbar-item {
     font-size: 16px;
   }
@@ -301,6 +372,12 @@ footer {
   #mobile-carousel {
     display: none;
   }
+  .mountain-info {
+    left: 10%;
+  }
+  .mountain-images {
+    max-height: 550px;
+  }
 }
 @media (min-width: 768px) {
   .teamContainer {
@@ -316,7 +393,10 @@ footer {
     margin-left: 15px;
   }
   .carousel-item img {
-    width: 180px;
+    width: 175px;
+  }
+  .mountain-images {
+    max-height: 600px;
   }
 }
 
@@ -328,7 +408,7 @@ footer {
   }
   .carousel-item img {
     width: 220px;
-    margin: 0 3px;
+    margin: 0 5px;
   }
   .customContainer {
     max-width: 960px;
@@ -350,6 +430,17 @@ footer {
   }
   .footer-item {
     padding-right: 0;
+  }
+  .mountain-info {
+    left: unset;
+  }
+}
+@media (min-width: 1200px) {
+  .desktop-mountain {
+    display: inherit;
+  }
+  #accordionExample {
+    display: none;
   }
 }
 @media (min-width: 1600px) {

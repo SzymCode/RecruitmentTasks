@@ -7,22 +7,22 @@ $(document).ready(function() {
 
   $(window).scroll(function() {
     if ($(window).scrollTop() > 0) {
+      img.hide();
+      scrolledImg.show();
       navbar.css({
         'background': '#FFF',
         'padding': '8px 0',
         'boxShadow': '0 0 8px 0 rgba(224, 223, 223, 1)'
       });
-      img.css('display', 'none');
-      scrolledImg.css('display', 'inherit');
       is.add(lis).css('color', '#404E6C');
     } else {
+      img.show();
+      scrolledImg.hide();
       navbar.css({
         'background': 'transparent',
         'padding': '',
         'boxShadow': ''
       });
-      img.css('display', 'inherit');
-      scrolledImg.css('display', 'none');
       is.add(lis).css('color', '#FFF');
     }
   });
