@@ -9,8 +9,11 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <script src="assets/scripts/handleNavbar.js"></script>
+  <script src="assets/scripts/handleSheduleList.js"></script>
+  <script src="assets/scripts/handleTabs.js"></script>
   <link rel="stylesheet" href="assets/styles.css">
 </head>
+
 <body>
   <header>
     <nav class="navbar fixed-top">
@@ -158,7 +161,7 @@
           </p>
         </div>
       </div>
-      <div class="mountainContainer">
+      <div class="mountainContainer desktop-mountain">
         <div class="customContainer">
           <ul class="mountain-items">
             <li class="mountain-item mountain-item-1">
@@ -170,21 +173,32 @@
           </ul>
         </div>
       </div>
-      <div class="image-container">
-        <img src="assets/images/climb-image.png" class="climb-image" alt=""/>
+      <div class="image-container mountain-images desktop-mountain">
+        <img src="assets/images/mountain-image-1.png" class="mountain-image-1" alt=""/>
+        <img src="assets/images/mountain-image-2.png" class="mountain-image-2" alt=""/>
+        <div class="customContainer mountainInfoContainer">
+          <div class="mountain-info">
+            <h1 class="shedule-header">SHEDULE</h1>
+            <ul class="shedule-ul" id="shedule-list">
+              <!-- Shedule list in handleSheduleList.js-->
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="customContainer">
-      <img src="assets/images/footer-logo.png" class="footerLogo" alt=""/>
-      <ul class="footer-items">
-        <li class="footer-item">
-          <i>COPYRIGHT 2016. ALL RIGHTS RESERVED.</i>
-        </li>
-      </ul>
-    </div>
-  </footer>
+  <section id="footer">
+    <footer>
+      <div class="customContainer">
+        <img src="assets/images/footer-logo.png" class="footerLogo" alt=""/>
+        <ul class="footer-items">
+          <li class="footer-item">
+            <i>COPYRIGHT 2016. ALL RIGHTS RESERVED.</i>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </section>
 </body>
 </html>
