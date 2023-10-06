@@ -1,6 +1,7 @@
-function renderDivs(elements, classPrefix) {
-  var ulElement = document.getElementById("shedule-list");
-  elements.forEach(function(item, index) {
+function renderDivs(elements, classPrefix, targetId) {
+  var ulElement = document.getElementById(targetId);
+
+  elements.forEach(function (item) {
     var liElement = document.createElement("li");
     var dateParagraph = document.createElement("p");
     var textParagraph = document.createElement("p");
@@ -36,6 +37,10 @@ document.addEventListener("DOMContentLoaded", function() {
     ["9 Feb 2017", "Vestibulum viverra"]
   ];
 
-  renderDivs(elements1, "element1");
-  renderDivs(elements2, "element2");
+  renderDivs(elements1, "element1", "shedule-list");
+  renderDivs(elements2, "element2", "shedule-list");
+  renderDivs(elements1, "element1", "shedule-list1");
+  renderDivs(elements2, "element2", "shedule-list1");
+  renderDivs(elements1, "element1", "shedule-list2");
+  renderDivs(elements2, "element2", "shedule-list2");
 });

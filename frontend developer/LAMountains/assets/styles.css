@@ -133,8 +133,9 @@ li,
 }
 .mountain-item {
   padding-top: 2px;
-  width: 140px;
+  width: 150px;
   height: 40px;
+  border: 0;
   text-align: center;
   letter-spacing: 0;
   font-size: 22px;
@@ -152,6 +153,8 @@ li,
 .mountain-info {
   top: 20px;
   width: 90%;
+  margin: auto;
+  padding-top: 10px;
   min-height: 229px;
   background: var(--white);
   opacity: 0.7;
@@ -163,7 +166,9 @@ li,
 .shedule-ul {
   padding: 10px 20px;
 }
-#shedule-list li {
+#shedule-list li,
+.accordion .element1,
+.accordion .element2 {
   font-weight: normal;
   min-height: 21px;
   justify-content: space-between;
@@ -180,7 +185,41 @@ li,
 .desktop-mountain {
   display: none;
 }
+.accordion-body {
+  padding: 0;
+  max-height: 410px;
+  overflow: hidden;
+}
+.accordion-header {
+  display: flex;
+  border-radius: 0;
+  justify-content: space-around;
+  margin: -1px;
+  background: var(--blue);
+}
+.accordion-header .mountain-item {
+  margin-bottom: 1px;
+  vertical-align: middle;
+}
+.accordion-item,
+.accordion-item:first-of-type .accordion-button {
+  border-radius: 0;
+}
+.accordion-button::after {
+  display: none;
+}
+.accordion .mountain-info {
+  position: relative;
+  top: -350px;
+}
+.accordion .element1 p,
+.accordion .element2 p {
+  margin: 0;
+}
 
+.accordion .mountain-info {
+  position: relative;
+}
 /* FOOTER STYLES */
 footer {
   background: var(--blue);
@@ -343,9 +382,6 @@ footer {
   .shedule-ul {
     padding: 10px 40px;
   }
-  .mountain-info {
-    left: 5%;
-  }
   .mountain-images {
     max-height: 500px;
   }
@@ -372,9 +408,6 @@ footer {
   #mobile-carousel {
     display: none;
   }
-  .mountain-info {
-    left: 10%;
-  }
   .mountain-images {
     max-height: 550px;
   }
@@ -397,6 +430,15 @@ footer {
   }
   .mountain-images {
     max-height: 600px;
+  }
+  .mountain-info {
+    padding-top: 3px;
+  }
+  .desktop-mountain {
+    display: inherit;
+  }
+  #accordionExample {
+    display: none;
   }
 }
 
@@ -434,13 +476,8 @@ footer {
   .mountain-info {
     left: unset;
   }
-}
-@media (min-width: 1200px) {
-  .desktop-mountain {
-    display: inherit;
-  }
-  #accordionExample {
-    display: none;
+  .mountain-item {
+    width: 140px;
   }
 }
 @media (min-width: 1600px) {
