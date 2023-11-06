@@ -10,4 +10,18 @@ use Stancl\Tenancy\Database\Concerns\HasDomains;
 class Tenant extends BaseTenant implements TenantWithDatabase
 {
     use HasDatabase, HasDomains;
+
+    protected $casts = [
+        'tenancy_db_username' => 'encrypted',
+        'tenancy_db_password' => 'encrypted',
+    ];
+
+    public static function getCustomColumns(): array
+    {
+        return [
+            'id',
+            'tenancy_db_username',
+            'tenancy_db_password',
+        ];
+    }
 }

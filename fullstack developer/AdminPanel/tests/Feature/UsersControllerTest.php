@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 use App\Models\User;
 
@@ -12,10 +13,15 @@ class UsersControllerTest extends TestCase
 
     public function test_index_method_returns_users()
     {
-        $adminUser = User::factory()->create(['role' => 'admin']);
+        $adminUser = User::factory()->create([
+            'role' => 'admin',
+            'password' => 'admin123'
+        ]);
         $this->actingAs($adminUser);
 
-        User::factory()->count(100)->create();
+        User::factory()->count(100)->create([
+            'password' => bcrypt('password')
+        ]);
         $response = $this->get('/data/users');
 
         $response->assertStatus(200)
@@ -24,7 +30,10 @@ class UsersControllerTest extends TestCase
 
     public function test_store_method_creates_user()
     {
-        $adminUser = User::factory()->create(['role' => 'admin']);
+        $adminUser = User::factory()->create([
+            'role' => 'admin',
+            'password' => bcrypt('password')
+        ]);
         $this->actingAs($adminUser);
 
         $userData = [
@@ -49,10 +58,15 @@ class UsersControllerTest extends TestCase
 
     public function test_update_method_updates_user()
     {
-        $adminUser = User::factory()->create(['role' => 'admin']);
+        $adminUser = User::factory()->create([
+            'role' => 'admin',
+            'password' => bcrypt('password')
+        ]);
         $this->actingAs($adminUser);
 
-        $userToUpdate = User::factory()->create();
+        $userToUpdate = User::factory()->create([
+            'password' => bcrypt('password')
+        ]);
         $newData = [
             'name' => 'Updated Name',
             'email' => 'updated_email@example.com',
@@ -77,10 +91,15 @@ class UsersControllerTest extends TestCase
     public function test_delete_method_deletes_user()
     {
 
-        $adminUser = User::factory()->create(['role' => 'admin']);
+        $adminUser = User::factory()->create([
+            'role' => 'admin',
+            'password' => bcrypt('password')
+        ]);
         $this->actingAs($adminUser);
 
-        $userToDelete = User::factory()->create();
+        $userToDelete = User::factory()->create([
+            'password' => bcrypt('password')
+        ]);
 
         $response = $this->delete("/data/users/{$userToDelete->id}");
 
@@ -93,7 +112,10 @@ class UsersControllerTest extends TestCase
 
     public function test_invalid_user_creation()
     {
-        $adminUser = User::factory()->create(['role' => 'admin']);
+        $adminUser = User::factory()->create([
+            'role' => 'admin',
+            'password' => bcrypt('password')
+        ]);
         $this->actingAs($adminUser);
 
         $invalidUserData = [
@@ -102,9 +124,9 @@ class UsersControllerTest extends TestCase
             'role' => 'u',
             'password' => '123',
         ];
-    
+
         $response = $this->post('/data/users', $invalidUserData);
-    
+
         $response->assertRedirect()
         ->assertSessionHasErrors([
             'name' => 'The name field must be at least 3 characters.',
@@ -113,14 +135,19 @@ class UsersControllerTest extends TestCase
             'password' => 'The password field must be at least 8 characters.',
         ]);
     }
-    
+
 
     public function test_unauthorized_user_action()
     {
-        $user = User::factory()->create(['role' => 'user']);
+        $user = User::factory()->create([
+            'role' => 'user',
+            'password' => bcrypt('password')
+        ]);
         $this->actingAs($user);
 
-        $userToUpdate = User::factory()->create();
+        $userToUpdate = User::factory()->create([
+            'password' => bcrypt('password')
+        ]);
         $newRoleData = ['role' => 'admin'];
 
         $response = $this->put("/data/users/{$userToUpdate->id}", $newRoleData);

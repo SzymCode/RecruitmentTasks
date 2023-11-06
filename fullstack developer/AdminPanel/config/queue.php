@@ -29,6 +29,15 @@ return [
     */
 
     'connections' => [
+        'connection' => 'adminpanel',
+
+        'adminpanel' => [
+            'driver' => 'database',
+            'table' => 'jobs',
+            'queue' => 'default',
+            'retry_after' => 90,
+            'central' => true,
+        ],
 
         'sync' => [
             'driver' => 'sync',
@@ -105,5 +114,5 @@ return [
         'database' => env('DB_CONNECTION', 'mysql'),
         'table' => 'failed_jobs',
     ],
-
+    
 ];
