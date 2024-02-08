@@ -1,14 +1,7 @@
-<div align="center">
+# AdminPanel  <div> ![PHP](https://img.shields.io/badge/PHP-%23777BB4.svg?style=flat&logo=php&logoColor=white) [![JavaScript](https://shields.io/badge/JavaScript-black?logo=JavaScript&logoColor=F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) ![Laravel](https://img.shields.io/badge/Laravel-%23FF2D20.svg?style=flat&logo=laravel&logoColor=white) ![Vue.js](https://img.shields.io/badge/Vue.js-%234FC08D.svg?style=flat&logo=vue.js&logoColor=white) [![Tailwind CSS](https://img.shields.io/badge/-Tailwind-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/) [![Bootstrap](https://img.shields.io/badge/Bootstrap-%237952b3.svg?logo=bootstrap&logoColor=white&style=flat)](https://getbootstrap.com/) </div>
 
-![PHP](https://img.shields.io/badge/PHP-%234F5B93.svg?style=for-the-badge&logo=php&logoColor=white)
-![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)
-![Vue.js](https://img.shields.io/badge/vue.js-%234FC08D.svg?style=for-the-badge&logo=vue.js&logoColor=white)
-
-</div>
-
-# AdminPanel
-
-This is a recruitment task project for [ONX Center](https://onx.com.pl/) company. [Preview!](http://adminpanel-szymcode-a7c075dcede4.herokuapp.com/home)
+This is a recruitment task project for [ONX Center](https://onx.com.pl/) company. \
+[Preview!](http://adminpanel-szymcode-a7c075dcede4.herokuapp.com/home)
 
 
 <details><summary> <h2>  📖 Problem description  </summary>
