@@ -1,16 +1,3 @@
-# ExpensesApp
-The project code processes JSON data containing information about packages, creation dates, and document summaries.
+# ExpensesApp  <div>  [![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/) [![Django](https://img.shields.io/badge/Django-%23092e20.svg?logo=django&logoColor=white&style=flat)](https://www.djangoproject.com/) ![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white&style=plastic) ![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white&style=plastic) </div>
 
-
-
-<details><summary> <h2>  🚀 Installation </summary>
-
-• Clone this repository from expenses-app branch.
-
-```
-git clone -b expenses-app https://github.com/SzymCode/RecruitmentTasks.git
-```
-
-</details>
-
-
+This is a recruitment exercise project for [Parleto](https://www.parleto.io) company.
