@@ -1,35 +1,27 @@
-<div align="center">
-  
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)\
-<img src="https://img.shields.io/badge/node-18.15.0-blue"/>
-<img src="https://img.shields.io/badge/npm-9.6.5-brightgreen"/>
-![ts](https://flat.badgen.net/badge/-/TypeScript/blue?icon=typescript&label)</div>
+# DishForm  <div> ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white&style=plastic) ![React](https://img.shields.io/badge/React-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB&style=plastic) ![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white&style=plastic) ![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white&style=plastic) ![MUI](https://img.shields.io/badge/Material%20UI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white&style=plastic) ![Bootstrap](https://img.shields.io/badge/Bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white&style=plastic) </div>
 
-# DishFormReact
-This is a recruitment exercise project that focuses on building a Dish Form application. 
+This is a recruitment exercise project for [HexOcean](https://hexocean.com/) company.
 The Dish Form allows users to create and submit information about various dishes, including their names, preparation time, types, and additional details specific to each type of dish. </br>
-[Preview](https://dishform.herokuapp.com/)
+[Preview!](https://dishform.herokuapp.com/)
 
 <details><summary> <h2>  📖 Problem description  </summary>
-<b> Create a form that will contain the following fields: </b> </br>
-name - dish name (text field) </br>
-preparation_time - preparation time (duration field, would be nice if the input will be formatted like 00:00:00) </br>
-type - dish type (select field with the following options: pizza, soup, sandwich) </br> </br> 
 
-<b>  After selecting dish type, conditionally display other fields: </b> </br> 
-<i> for pizza: </i> </br>
- • no_of_slices - # of slices (number field) </br>
- • diameter - diameter (float field) </br>
+```
+Create a form that will contain the following fields:
+name - dish name (text field)
+preparation_time - preparation time (duration field, would be nice if the input will be formatted like 00:00:00)
+type - dish type (select field with the following options: pizza, soup, sandwich)
 
-<i> for soup: </i> </br>
- • spiciness_scale - spiciness scale (1-10) </br>
+After selecting dish type, conditionally display other fields:
+for pizza:
+ • no_of_slices - # of slices (number field)
+ • diameter - diameter (float field)
 
-<i> for sandwich: </i> </br>
- • slices_of_bread - number of slices of bread required (number field) </br> </br>
+for soup:
+ • spiciness_scale - spiciness scale (1-10)
+
+for sandwich:
+ • slices_of_bread - number of slices of bread required (number field)
 
 All fields should be required (fields depending on the dish type should be required conditionally based on what type of dish is selected).
 
@@ -47,6 +39,7 @@ Example response:
   "type": "pizza",
   "id": 1
 }
+```
 
 </details>
 
@@ -55,11 +48,7 @@ Example response:
 
 • First make sure u have installed latest versions of [ReactJS, NodeJS,](https://www.tutorialspoint.com/reactjs/reactjs_environment_setup.htm)
 
-• Clone this repository from dish-form branch.
-
-```
-git clone -b dish-form https://github.com/SzymCode/RecruitmentTasks.git
-```
+• Clone this repository.
 
 • Install modules using npm install in **dish-form** directory.
 
@@ -99,7 +88,7 @@ npm start
 
 - [X] Validation handling
 
-- [X] MUI
+- [X] Material UI
 
 - [X] TypeScript
 
