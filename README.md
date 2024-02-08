@@ -1,6 +1,6 @@
-# Los Angeles Mountains
+# Los Angeles Mountains <div>  [![JavaScript](https://shields.io/badge/JavaScript-black?logo=JavaScript&logoColor=F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) [![HTML5](https://img.shields.io/badge/HTML5-%23e34f26.svg?logo=html5&logoColor=white&style=flat)](https://developer.mozilla.org/en-US/docs/Web/HTML) [![CSS3](https://img.shields.io/badge/CSS3-%231572b6.svg?logo=css3&logoColor=white&style=flat)](https://developer.mozilla.org/en-US/docs/Web/CSS)  [![Bootstrap](https://img.shields.io/badge/Bootstrap-%237952b3.svg?logo=bootstrap&logoColor=white&style=flat)](https://getbootstrap.com/)  </div>
 
-This is a recruitment task project for [Coalition Technologies](https://coalitiontechnologies.com/) company. [Preview!](https://la-mountains-szymcode.vercel.app/)
+This is a recruitment task project for [Coalition Technologies](https://coalitiontechnologies.com/) company. [Preview](https://la-mountains-szymcode.vercel.app/)
 
 
 <details><summary> <h2>  📖 Problem description  </summary>
