@@ -1,4 +1,4 @@
-# DivideToJSON
+# DivideToJSON <div> [![JavaScript](https://shields.io/badge/JavaScript-black?logo=JavaScript&logoColor=F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) </div>
 
 This is a recruitment task project for [MindPal](https://mindpal.co) company.
 
