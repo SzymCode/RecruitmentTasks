@@ -1,49 +1,20 @@
-# RecruitmentTasks
-This repository contains my solutions for the recruitment tasks. Each task is organized in a separate folder, categorized by job position.
+# DivideToJSON
 
-<table>
-  <tr>
-    <td>no.</td>
-    <td align="center">backend developer</td>
-    <td align="center">frontend developer</td>
-    <td align="center">fullstack developer</td>
-  </tr>
-  <tr>
-    <td>1.</td>
-    <td>
-      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/backend%20developer/ExpensesApp">	
-        ExpensesApp
-      </a>	
-    </td>
-    <td>
-      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/DishForm">
-        DishForm
-      </a>
-    </td>
-    <td>
-      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/fullstack%20developer/AdminPanel">	
-        AdminPanel
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td>2.</td>
-    <td></td>
-    <td>
-      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/GiardDesign">
-        GiardDesign
-      </a>
-    </td>
-    <td></td>
-  </tr>  
-  <tr>
-    <td>3.</td>
-    <td></td>
-    <td>      
-      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/LAMountains">
-        LAMountains
-      </a>  
-    </td>
-    <td></td>
-  </tr>  
-</table>
+This is a recruitment task project for [MindPal](https://mindpal.co) company.
+
+
+<details><summary> <h2>  🚀 Installation & Run  </summary>
+
+• Clone this repository from divide-to-json branch.
+
+```
+git clone -b divide-to-json https://github.com/SzymCode/RecruitmentTasks.git
+```
+
+• Run index.js using node:
+
+```
+node index.js
+```
+
+</details>
