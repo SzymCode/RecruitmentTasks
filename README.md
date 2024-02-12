@@ -16,8 +16,8 @@ This repository contains my solutions for the recruitment tasks. Each task is or
       </a>	
     </td>
     <td>
-      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/DishForm">
-        DishForm
+      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/DiffJSON">
+        DiffJSON
       </a>
     </td>
     <td>
@@ -30,6 +30,16 @@ This repository contains my solutions for the recruitment tasks. Each task is or
     <td>2.</td>
     <td></td>
     <td>      
+      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/DishForm">
+        DishForm
+      </a>
+    </td>
+    <td></td>
+  </tr>  
+  <tr>
+    <td>3.</td>
+    <td></td>
+    <td>      
       <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/DivideToJSON">
         DivideToJSON
       </a>  
@@ -37,7 +47,7 @@ This repository contains my solutions for the recruitment tasks. Each task is or
     <td></td>
   </tr>  
   <tr>
-    <td>3.</td>
+    <td>4.</td>
     <td></td>
     <td>
       <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/GiardDesign">
@@ -47,7 +57,7 @@ This repository contains my solutions for the recruitment tasks. Each task is or
     <td></td>
   </tr>  
   <tr>
-    <td>4.</td>
+    <td>5.</td>
     <td></td>
     <td>      
       <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/LAMountains">
