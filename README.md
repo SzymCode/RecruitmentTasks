@@ -1,9 +1,10 @@
-# DivideToJSON
+# DivideToJSON <div> [![JavaScript](https://shields.io/badge/JavaScript-black?logo=JavaScript&logoColor=F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) </div>
 
 This is a recruitment task project for [MindPal](https://mindpal.co) company.
 
-
-<details><summary> <h2>  🚀 Installation & Run  </summary>
+<br>
+<details><summary> 🚀 Installation & Run </summary>
+<br>
 
 • Clone this repository from divide-to-json branch.
 
