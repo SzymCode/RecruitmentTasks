@@ -2,9 +2,10 @@
 
 This is a recruitment task project for [Coalition Technologies](https://coalitiontechnologies.com/) company. [Preview](https://la-mountains-szymcode.vercel.app/)
 
-
-<details><summary> <h2>  📖 Problem description  </summary>
-
+<br>
+<details><summary> 📖 Problem description </summary>
+<br>
+  
 ```
 Please do your best to convert the PSD to HTML that is provided below.
 
@@ -15,11 +16,12 @@ On mobile, the tabs should be converted to an accordion.
 History, team - these are internal links in the page to their respective sections.
 ```
 
-
+<br>
 </details>
 
 
-<details><summary> <h2>  🚀 Installation & Run  </summary>
+<details><summary> 🚀 Installation & Run </summary>
+<br>
 
 • Clone this repository from la-mountains branch.
 
