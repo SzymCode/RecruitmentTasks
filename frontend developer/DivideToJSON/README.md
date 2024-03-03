@@ -2,8 +2,9 @@
 
 This is a recruitment task project for [MindPal](https://mindpal.co) company.
 
-
-<details><summary> <h2>  🚀 Installation & Run  </summary>
+<br>
+<details><summary> 🚀 Installation & Run </summary>
+<br>
 
 • Clone this repository from divide-to-json branch.
 
