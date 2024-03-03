@@ -135,7 +135,6 @@ php artisan test tests/Feature/UsersControllerTest.php
 
 
 <details><summary> ✅ Solved Problems  </summary>
-<br/>
     
 - [X] Single Page App
 
