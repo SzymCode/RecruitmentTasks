@@ -4,8 +4,10 @@ This is a recruitment task project for [ONX Center](https://onx.com.pl/) company
 [Preview!](http://adminpanel-szymcode-a7c075dcede4.herokuapp.com/home)
 
 
-<details><summary> <h2>  📖 Problem description  </summary>
-
+<br>
+<details><summary> 📖 Problem description </summary>
+<br>
+    
 ```
 Twoim zadaniem jest stworzenie zaawansowanego panelu administracyjnego do
 zarządzania treściami na stronie internetowej. Aplikacja powinna być oparta na frameworku
@@ -56,12 +58,13 @@ Twoje rozwiązanie będzie oceniane pod kątem:
 • Sposób na testowanie aplikacji (szczególną uwagę przywiązujemy do testów).
 ```
 
-<br/>
+<br>
 </details>
 
 
-<details><summary> <h2>  🛠️ Installation  </summary>
-
+<details><summary> 🛠️ Installation </summary>
+<br>
+    
 - First make sure u have installed latest versions of [Laravel](https://laravel.com/), [Vue.js](https://vuejs.org/), [XAMPP](https://www.apachefriends.org/pl/index.html) and [Composer](https://getcomposer.org/).
 
 - Clone this repository from admin-panel branch.
@@ -91,13 +94,12 @@ create database adminpanel
 php artisan migrate:fresh --seed
 ```
 
-<br/>
+<br>
 </details>
 
 
-<details><summary> <h2>  🚀 Run  </summary>
-
-<br/>
+<details><summary> 🚀 Run </summary>
+<br>
 
 - root directory:
 
@@ -106,14 +108,15 @@ npm run dev
 php artisan serve
 ```
 
-<br/>
+<br>
 
 </details>  
 
 
 
-<details><summary> <h2>  ❓ Factories & Tests  </summary>
-
+<details><summary> ❓ Factories & Tests </summary>
+<br/>
+    
 - Run factories to generate fake data.
 ```bash
 php artisan tinker
@@ -128,12 +131,12 @@ php artisan test tests/Feature/UsersControllerTest.php
 ```
 
 <br/>
-
 </details>
 
 
-<details><summary> <h2> ✅ Solved Problems  </summary>
-
+<details><summary> ✅ Solved Problems  </summary>
+<br/>
+    
 - [X] Single Page App
 
 - [X] Responsive design
