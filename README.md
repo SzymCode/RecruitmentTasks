@@ -3,8 +3,9 @@
 
 This is a recruitment task project for [adRespect](https://adrespect.pl/) company. [Preview](https://szymcode.github.io/RecruitmentTasks/)
 
-
-<details><summary> <h2>  📖 Problem description  </summary>
+<br>
+<details><summary> 📖 Problem description </summary>
+<br>
 
 ```
 Informacje:
@@ -40,11 +41,12 @@ Zadanie powinno zostać umieszczone na:
   - Profilu github.
 ```
 
-
+<br>
 </details>
 
 
-<details><summary> <h2>  🚀 Installation & Run  </summary>
+<details><summary> 🚀 Installation & Run </summary>
+<br>
 
 • Clone this repository from giard-design branch.
 
@@ -54,12 +56,11 @@ git clone -b giard-design https://github.com/SzymCode/RecruitmentTasks.git
 
 • Open index.html in your browser.
 
+<br>
 </details>
 
-<details><summary>  <h2>  📁 Tree View  </summary>
-
-<br/>
-
+<details><summary> 📁 Tree View </summary>
+<br>
 
 ```bash
   GiardDesign
@@ -85,9 +86,10 @@ git clone -b giard-design https://github.com/SzymCode/RecruitmentTasks.git
   └── tailwind.config.js
 ```
 
+<br>
 </details>
 
-<details><summary> <h2> ✅ Solved Problems  </summary>
+<details><summary> ✅ Solved Problems </summary>
 
 <h2> Informacje</h5>
   
