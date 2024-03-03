@@ -4,7 +4,9 @@ This is a recruitment exercise project for [HexOcean](https://hexocean.com/) com
 The Dish Form allows users to create and submit information about various dishes, including their names, preparation time, types, and additional details specific to each type of dish. </br>
 [Preview!](https://dishform.herokuapp.com/)
 
-<details><summary> <h2>  📖 Problem description  </summary>
+<br>
+<details><summary> 📖 Problem description </summary>
+<br>
 
 ```
 Create a form that will contain the following fields:
@@ -41,16 +43,22 @@ Example response:
 }
 ```
 
+<br>
 </details>
 
 
-<details><summary> <h2>  🛠️ Installation  </summary>
-
+<details><summary> 🛠️ Installation </summary>
+<br>
+ 
 • First make sure u have installed latest versions of [ReactJS, NodeJS,](https://www.tutorialspoint.com/reactjs/reactjs_environment_setup.htm)
 
-• Clone this repository.
+• Clone this repository from dish-form branch.
 
-• Install modules using npm install in **dish-form** directory.
+```
+git clone -b dish-from https://github.com/SzymCode/RecruitmentTasks.git
+```
+
+• Install modules in **dish-form** directory.
 
 ```bash
 npm install
@@ -58,29 +66,34 @@ npm install
 
 ### **Make sure u have installed all modules!**
 
+<br>
 </details>
 
 
-<details><summary> <h2>  🚀 Run  </summary>
-
+<details><summary> 🚀 Run </summary>
+<br>
+ 
 • **dish-form** directory:
 
 ```bash
 npm start
 ```
 
+<br>
 </details>  
 
 
-<details><summary> <h2> ❓ Usage  </summary>
-
+<details><summary> ❓ Usage  </summary>
+<br>
+ 
 • **localhost:3000** - Dish Form page
 
+<br>
 </details>  
 
 
 
-<details><summary> <h2> ✅ Solved Problems  </summary>
+<details><summary> ✅ Solved Problems  </summary>
 
 - [X] Completed dish form with variations
 
