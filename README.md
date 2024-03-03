@@ -2,8 +2,9 @@
 
 This is a recruitment task project for [MicroStrategy](https://www.microstrategy.com/pl) company.
 
-
-<details><summary> <h2>  🚀 Installation & Run  </summary>
+<br>
+<details><summary> 🚀 Installation & Run  </summary>
+<br>
 
 • Clone this repository from diff-json branch.
 
