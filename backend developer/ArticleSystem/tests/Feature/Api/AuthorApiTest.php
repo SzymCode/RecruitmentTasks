@@ -2,8 +2,6 @@
 
 use App\Models\Author;
 use App\Models\News;
-use App\Services\AuthorService;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Artisan;
 
 beforeEach(function () {
@@ -11,21 +9,33 @@ beforeEach(function () {
 });
 
 describe('200', function () {
-    test('return top authors of last week', function () {
+    test('show top authors of the last week', function () {
         Author::factory()->count(10)->has(News::factory()->count(5))->create(['created_at' => now()->subWeek()]);
 
-        $authorService = new AuthorService();
+        $response = $this->getJson(route('authors.top-authors-api'));
 
-        $topAuthors = $authorService->getTopAuthorsLastWeek();
+        $response->assertOk();
 
-        $authorKeys = ['id', 'name', 'created_at', 'updated_at'];
+        $response->assertJsonStructure([
+            '*' => [
+                'author' => [
+                    'id',
+                    'name',
+                    'created_at',
+                    'updated_at',
+                ],
+                'news_count',
+            ],
+        ]);
 
-        $this->assertInstanceOf(Collection::class, $topAuthors);
-        $this->assertCount(3, $topAuthors);
-        foreach ($topAuthors as $authorData) {
-            $this->assertArrayHasKey('author', $authorData);
-            $this->assertArrayHasKey('news_count', $authorData);
-            $this->assertEquals($authorKeys, array_keys($authorData['author']));
-        }
+        $response->assertJsonCount(3, '*');
+
+        $response->assertJson(function ($json) {
+            foreach ($json as $author) {
+                $author->has('author')
+                    ->has('news_count')
+                    ->etc();
+            }
+        });
     });
 });

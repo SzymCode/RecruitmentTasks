@@ -9,10 +9,10 @@ beforeEach(function () {
     $this->controller = app()->makeWith(NewsController::class, ['service' => app()->make(NewsService::class)]);
 });
 
-it('runs show by id method successfully', function () {
+it('runs api method show by id successfully', function () {
     $user = News::factory()->create();
 
-    $response = $this->controller->getNewsById($user->id);
+    $response = $this->controller->getNewsByIdApi($user->id);
 
     expect($response->getStatusCode())->toEqual(200);
     expect($response->getData(true)['id'])->toEqual($user->id);
@@ -22,10 +22,10 @@ it('runs show by id method successfully', function () {
     expect($response->getData(true)['updated_at'])->toEqual($user->updated_at);
 });
 
-it('runs show news by author method successfully', function () {
+it('runs api method show news by author successfully', function () {
     $author = Author::factory()->create();
 
-    $response = $this->controller->getNewsByAuthor($author->id);
+    $response = $this->controller->getNewsByAuthorApi($author->id);
 
     $responseData = json_decode($response->getContent(), true);
 

@@ -9,10 +9,10 @@ beforeEach(function () {
     $this->controller = app()->makeWith(AuthorController::class, ['service' => app()->make(AuthorService::class)]);
 });
 
-it('runs top authors of the last week method successfully', function () {
+it('runs api method top authors of the last week successfully', function () {
     $authorsWithNews = Author::factory()->count(3)->create();
 
-    $response = $this->controller->getTopAuthorsLastWeek();
+    $response = $this->controller->getTopAuthorsLastWeekApi();
 
     $this->assertInstanceOf(JsonResponse::class, $response);
 

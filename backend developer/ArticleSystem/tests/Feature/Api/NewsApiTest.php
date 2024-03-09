@@ -13,7 +13,7 @@ describe('200', function () {
     test('show news by id', function () {
         $expectedNews = News::findOrFail(1);
 
-        $response = $this->getJson(route('news.show', 1));
+        $response = $this->getJson(route('news.show-api', 1));
 
         $response->assertOk()
             ->assertJsonStructure([
@@ -38,7 +38,7 @@ describe('200', function () {
 
         $author->news()->attach($news->pluck('id'));
 
-        $response = $this->getJson(route('news.show-by-author', $author->id));
+        $response = $this->getJson(route('news.show-by-author-api', $author->id));
 
         $expectedData = $news->map(function ($article) {
             return [

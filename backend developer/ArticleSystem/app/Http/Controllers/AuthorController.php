@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\AuthorService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Contracts\View\View;
 
 class AuthorController extends Controller
 {
@@ -14,7 +15,14 @@ class AuthorController extends Controller
         $this->service = $service;
     }
 
-    public function getTopAuthorsLastWeek(): JsonResponse
+    public function getTopAuthorsLastWeek(): View
+    {
+        $authors = $this->service->getTopAuthorsLastWeek();
+
+        return view('authors.top_authors', ['authors' => $authors]);
+    }
+
+    public function getTopAuthorsLastWeekApi(): JsonResponse
     {
         $result = $this->service->getTopAuthorsLastWeek();
 

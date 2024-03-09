@@ -17,12 +17,15 @@ use App\Http\Controllers\NewsController;
 |
 */
 
+Route::prefix('authors')->controller(AuthorController::class)->group(function () {
+    Route::get('/top-authors','getTopAuthorsLastWeekApi')
+        ->name('authors.top-authors-api');
+});
 
-Route::get('/top-authors-last-week', [AuthorController::class, 'getTopAuthorsLastWeek']);
 
 Route::prefix('news')->controller(NewsController::class)->group(function () {
-    Route::get('/{id}', 'getNewsById')
-        ->name('news.show');
-    Route::get('/author/{authorId}', 'getNewsByAuthor')
-        ->name('news.show-by-author');
+    Route::get('/{id}', 'getNewsByIdApi')
+        ->name('news.show-api');
+    Route::get('/author/{authorId}', 'getNewsByAuthorApi')
+        ->name('news.show-by-author-api');
 });

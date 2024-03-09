@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use App\Services\NewsService;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 
 class NewsController extends Controller
@@ -14,17 +16,32 @@ class NewsController extends Controller
         $this->service = $service;
     }
 
-    public function getNewsById($id): JsonResponse
+    public function getNewsById($id): View
+    {
+        $result = $this->service->getNewsById($id);
+
+        return view('news.show', $result);
+    }
+
+    public function getNewsByIdApi($id): JsonResponse
     {
         $result = $this->service->getNewsById($id);
 
         return response()->json($result);
     }
 
-    public function getNewsByAuthor($authorId): JsonResponse
+    public function getNewsByAuthor($authorId): View
     {
-        $result = $this->service->getNewsByAuthor($authorId);
+        $author = Author::findOrFail($authorId);
+        $news = $this->service->getNewsByAuthor($authorId);
 
-        return response()->json($result);
+        return view('news.by_author', ['news' => $news, 'author' => $author]);
+    }
+
+    public function getNewsByAuthorApi($authorId): JsonResponse
+    {
+        $news = $this->service->getNewsByAuthor($authorId);
+
+        return response()->json($news);
     }
 }

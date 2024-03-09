@@ -16,7 +16,6 @@ uses(Tests\TestCase::class)
         $this->artisan('migrate:fresh');
     })
     ->in('Feature', 'Unit');
-
 /*
 |--------------------------------------------------------------------------
 | Expectations
