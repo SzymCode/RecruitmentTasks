@@ -28,17 +28,4 @@ class NewsFactory extends Factory
             'description' => $this->faker->paragraph,
         ];
     }
-
-    /**
-     * Configure the model factory.
-     *
-     * @return $this
-     */
-    public function configure(): static
-    {
-        return $this->afterCreating(function (News $news) {
-            $authors = Author::factory()->create();
-            $news->update(['authors' => $authors->pluck('id')->toArray()]);
-        });
-    }
 }

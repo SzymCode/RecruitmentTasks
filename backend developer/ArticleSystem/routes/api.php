@@ -1,7 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\NewsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::get('/top-authors-last-week', [AuthorController::class, 'getTopAuthorsLastWeek']);
+
+Route::prefix('news')->controller(NewsController::class)->group(function () {
+    Route::get('/{id}', 'getNewsById')
+        ->name('news.show');
+    Route::get('/author/{authorId}', 'getNewsByAuthor')
+        ->name('news.show-by-author');
 });

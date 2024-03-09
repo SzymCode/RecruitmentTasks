@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Author;
+use App\Models\News;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AuthorFactory extends Factory
@@ -24,5 +25,13 @@ class AuthorFactory extends Factory
         return [
             'name' => $this->faker->name,
         ];
+    }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Author $author) {
+            $news = News::factory()->count(random_int(1, 15))->create();
+            $author->news()->attach($news);
+        });
     }
 }

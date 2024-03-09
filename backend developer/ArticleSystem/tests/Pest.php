@@ -43,7 +43,4 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
-{
-    // ..
-}
+// Also used this solution here: https://github.com/SzymCode/DataManager/blob/main/tests/Pest.php

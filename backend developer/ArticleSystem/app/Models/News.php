@@ -2,20 +2,26 @@
 
 namespace App\Models;
 
-use DateTime;
+use App\Contracts\NewsShouldReceiveFields;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @property int id
  * @property string title
  * @property string description
- * @property array authors
- * @property DateTime created_at
- * @property DateTime updated_at
+ * @property string created_at
+ * @property string updated_at
+ * @property BelongsToMany authors
+ * @property int getId
+ * @property string getTitle
+ * @property string getDescription
+ * @property string getCreatedAt
+ * @property string getUpdatedAt
  */
 
-class News extends Model
+class News extends Model implements NewsShouldReceiveFields
 {
     use HasFactory;
 
@@ -25,13 +31,33 @@ class News extends Model
     protected $fillable = [
         'title',
         'description',
-        'authors'
     ];
 
-    /**
-     * @var array
-     */
-    protected $casts = [
-        'authors' => 'array',
-    ];
+    public function authors(): BelongsToMany
+    {
+        return $this->belongsToMany(Author::class);
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    public function getCreatedAt(): string
+    {
+        return $this->created_at;
+    }
+    public function getUpdatedAt(): string
+    {
+        return $this->updated_at;
+    }
 }
+
