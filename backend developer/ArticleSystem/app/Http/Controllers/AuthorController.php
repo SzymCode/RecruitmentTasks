@@ -15,6 +15,26 @@ class AuthorController extends Controller
         $this->service = $service;
     }
 
+    /**
+     *  CRUD methods
+     */
+    public function index(): View
+    {
+        $results = $this->service->getAll();
+
+        return view('authors.index', ['authors' => $results]);
+    }
+    public function indexApi(): JsonResponse
+    {
+        $results = $this->service->getAll();
+
+        return response()->json($results);
+    }
+
+
+    /**
+     *  3. Get top 3 authors that wrote the most articles last week
+     */
     public function getTopAuthorsLastWeek(): View
     {
         $authors = $this->service->getTopAuthorsLastWeek();

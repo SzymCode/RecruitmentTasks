@@ -10,6 +10,23 @@ beforeEach(function () {
 });
 
 describe('200', function () {
+    test('authorized index api', function () {
+        News::factory(3)->create();
+
+        $this->getJson(route('news.index-api'))
+            ->assertOk()
+            ->assertJsonStructure([
+                '*' => [
+                    'id',
+                    'title',
+                    'description',
+                    'created_at',
+                    'updated_at'
+                ],
+            ]);
+    });
+
+
     test('show news by id', function () {
         $expectedNews = News::findOrFail(1);
 

@@ -17,11 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('authors')->controller(AuthorController::class)->group(function () {
+    Route::get('/', 'index')
+        ->name('authors.index');
     Route::get('/top-authors','getTopAuthorsLastWeek')
         ->name('authors.top-authors');
 });
 
 Route::prefix('news')->controller(NewsController::class)->group(function () {
+    Route::get('/', 'index')
+        ->name('news.index');
     Route::get('/{id}', 'getNewsById')
         ->name('news.show');
     Route::get('/author/{authorId}', 'getNewsByAuthor')

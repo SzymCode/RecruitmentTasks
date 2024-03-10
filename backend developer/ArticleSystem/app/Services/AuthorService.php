@@ -7,6 +7,18 @@ use App\Transformers\AuthorTransformer;
 
 class AuthorService
 {
+    public function __construct(private Author $model){}
+
+    public function getAll(): array
+    {
+        $model = $this->model->all();
+
+        return fractal()
+            ->collection($model)
+            ->transformWith(new AuthorTransformer())
+            ->toArray()['data'];
+    }
+
     public function getTopAuthorsLastWeek()
     {
         $oneWeekAgo = now()->subWeek();

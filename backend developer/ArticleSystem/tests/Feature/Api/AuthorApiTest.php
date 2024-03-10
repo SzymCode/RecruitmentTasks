@@ -9,33 +9,45 @@ beforeEach(function () {
 });
 
 describe('200', function () {
+    test('authorized index api', function () {
+        Author::factory(3)->create();
+
+        $this->getJson(route('authors.index-api'))
+            ->assertOk()
+            ->assertJsonStructure([
+                '*' => [
+                    'id',
+                    'name',
+                    'created_at',
+                    'updated_at'
+                ],
+            ]);
+    });
+
     test('show top authors of the last week', function () {
         Author::factory()->count(10)->has(News::factory()->count(5))->create(['created_at' => now()->subWeek()]);
 
         $response = $this->getJson(route('authors.top-authors-api'));
 
-        $response->assertOk();
-
-        $response->assertJsonStructure([
-            '*' => [
-                'author' => [
-                    'id',
-                    'name',
-                    'created_at',
-                    'updated_at',
+        $response->assertOk()
+            ->assertJsonStructure([
+                '*' => [
+                    'author' => [
+                        'id',
+                        'name',
+                        'created_at',
+                        'updated_at',
+                    ],
+                    'news_count',
                 ],
-                'news_count',
-            ],
-        ]);
-
-        $response->assertJsonCount(3, '*');
-
-        $response->assertJson(function ($json) {
-            foreach ($json as $author) {
-                $author->has('author')
-                    ->has('news_count')
-                    ->etc();
-            }
-        });
+            ])
+            ->assertJsonCount(3, '*')
+            ->assertJson(function ($json) {
+                foreach ($json as $author) {
+                    $author
+                        ->has('author')
+                        ->has('news_count');
+                }
+            });
     });
 });

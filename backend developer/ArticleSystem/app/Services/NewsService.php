@@ -9,6 +9,16 @@ class NewsService
 {
     public function __construct(private News $model){}
 
+    public function getAll(): array
+    {
+        $model = $this->model->all();
+
+        return fractal()
+            ->collection($model)
+            ->transformWith(new NewsTransformer())
+            ->toArray()['data'];
+    }
+
     public function getNewsById($id)
     {
         $model = $this->model->findOrFail($id);

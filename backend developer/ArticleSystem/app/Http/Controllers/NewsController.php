@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewsRequest;
 use App\Models\Author;
 use App\Services\NewsService;
 use Illuminate\Contracts\View\View;
@@ -16,6 +17,27 @@ class NewsController extends Controller
         $this->service = $service;
     }
 
+    /**
+     *  CRUD methods
+     */
+    public function index(): View
+    {
+        $results = $this->service->getAll();
+
+        return view('news.index', ['news' => $results]);
+    }
+    public function indexApi(): JsonResponse
+    {
+        $results = $this->service->getAll();
+
+        return response()->json($results);
+    }
+
+
+    /**
+     *  1. Get article by some id
+     *  2. Get all articles for given author
+     */
     public function getNewsById($id): View
     {
         $result = $this->service->getNewsById($id);
