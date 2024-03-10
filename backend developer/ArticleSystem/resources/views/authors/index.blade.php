@@ -11,6 +11,18 @@
     <div class="card">
         <h1>Authors List</h1>
 
+        <button onclick="toggleForm()">Add Author</button>
+
+        <form id="createForm" method="POST" action="{{ route('authors.store') }}" style="display: none;">
+            @csrf
+            <div>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name"><br>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
         @foreach ($authors as $item)
             <div>
                 <strong>Name:</strong> {{ $item['name'] }}<br>
@@ -26,5 +38,11 @@
             </div>
         @endforeach
     </div>
+    <script>
+        function toggleForm() {
+            let form = document.getElementById("createForm");
+            form.style.display = form.style.display === "none" ? "block" : "none";
+        }
+    </script>
 </body>
 </html>

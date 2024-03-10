@@ -21,6 +21,8 @@ Route::prefix('authors')->controller(AuthorController::class)->group(function ()
         ->name('authors.index');
     Route::delete('/{id}', 'destroy')
         ->name('authors.delete');
+    Route::post('/', 'store')
+        ->name('authors.store');
     Route::get('/top-authors','getTopAuthorsLastWeek')
         ->name('authors.top-authors');
 });
@@ -28,6 +30,8 @@ Route::prefix('authors')->controller(AuthorController::class)->group(function ()
 Route::prefix('news')->controller(NewsController::class)->group(function () {
     Route::get('/', 'index')
         ->name('news.index');
+    Route::post('/', 'store')
+        ->name('news.store');
     Route::get('/{id}', 'getNewsById')
         ->name('news.show');
     Route::delete('/{id}', 'destroy')

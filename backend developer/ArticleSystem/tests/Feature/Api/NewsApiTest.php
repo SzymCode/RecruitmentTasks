@@ -25,6 +25,22 @@ describe('200', function () {
                 ],
             ]);
     });
+    test('store api', function () {
+        $data = [
+            'title' => 'Example Title',
+            'description' => 'Example Description'
+        ];
+
+        $this->postJson(route('news.store-api', $data))
+            ->assertOk()
+            ->assertJsonStructure([
+                'id',
+                'title',
+                'description',
+                'created_at',
+                'updated_at'
+            ]);
+    });
     test('destroy api', function () {
         $news = News::factory()->create();
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewsRequest;
 use App\Models\Author;
 use App\Services\NewsService;
 use Illuminate\Contracts\View\View;
@@ -28,6 +29,14 @@ class NewsController extends Controller
 
         return view('news.index', ['news' => $news]);
     }
+    public function store(NewsRequest $request): RedirectResponse
+    {
+        $input = $request->validated();
+
+        $this->service->create($input);
+
+        return redirect()->back()->with('success', 'News created successfully.');
+    }
     public function destroy($id): RedirectResponse
     {
         $this->service->delete($id);
@@ -44,6 +53,13 @@ class NewsController extends Controller
         $results = $this->service->getAll();
 
         return response()->json($results);
+    }
+    public function storeApi(NewsRequest $request): JsonResponse
+    {
+        $input = $request->validated();
+        $result = $this->service->create($input);
+
+        return response()->json($result);
     }
     public function destroyApi($id): JsonResponse
     {

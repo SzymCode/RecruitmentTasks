@@ -11,6 +11,23 @@
     <div class="card">
         <h1>News List</h1>
 
+        <button onclick="toggleForm()">Add News</button>
+
+        <form id="postForm" method="POST" action="{{ route('news.store') }}" style="display: none;">
+            @csrf
+            <div>
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title"><br>
+            </div>
+
+            <div>
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description"></textarea><br>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
         @foreach ($news as $item)
             <div>
                 <strong>Title:</strong> {{ $item['title'] }}<br>
@@ -27,5 +44,12 @@
             </div>
         @endforeach
     </div>
+
+    <script>
+        function toggleForm() {
+            let form = document.getElementById("postForm");
+            form.style.display = form.style.display === "none" ? "block" : "none";
+        }
+    </script>
 </body>
 </html>

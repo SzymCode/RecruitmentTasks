@@ -23,6 +23,20 @@ describe('200', function () {
                 ],
             ]);
     });
+    test('store api', function () {
+        $data = [
+            'name' => 'Example Name',
+        ];
+
+        $this->postJson(route('authors.store-api', $data))
+            ->assertOk()
+            ->assertJsonStructure([
+                'id',
+                'name',
+                'created_at',
+                'updated_at'
+            ]);
+    });
     test('destroy api', function () {
         $author = Author::factory()->create();
 
@@ -33,6 +47,7 @@ describe('200', function () {
             ]);
         $this->assertDatabaseMissing('authors', ['id' => $author->id]);
     });
+
 
     test('show top authors of the last week', function () {
         Author::factory()->count(10)->has(News::factory()->count(5))->create(['created_at' => now()->subWeek()]);

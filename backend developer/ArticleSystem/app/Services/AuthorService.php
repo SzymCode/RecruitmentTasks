@@ -18,7 +18,15 @@ class AuthorService
             ->transformWith(new AuthorTransformer())
             ->toArray()['data'];
     }
+    public function create(array $data): array
+    {
+        $model = $this->model::create($data);
 
+        return fractal()
+            ->item($model)
+            ->transformWith(new AuthorTransformer())
+            ->toArray()['data'];
+    }
     public function delete($id)
     {
         $model = $this->model->findOrFail($id);

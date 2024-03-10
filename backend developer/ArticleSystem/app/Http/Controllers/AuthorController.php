@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthorRequest;
 use App\Services\AuthorService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Contracts\View\View;
@@ -25,6 +26,14 @@ class AuthorController extends Controller
 
         return view('authors.index', ['authors' => $results]);
     }
+    public function store(AuthorRequest $request): RedirectResponse
+    {
+        $input = $request->validated();
+
+        $this->service->create($input);
+
+        return redirect()->back()->with('success', 'Author created successfully.');
+    }
     public function destroy($id): RedirectResponse
     {
         $this->service->delete($id);
@@ -40,6 +49,14 @@ class AuthorController extends Controller
         $results = $this->service->getAll();
 
         return response()->json($results);
+    }
+    public function storeApi(AuthorRequest $request): JsonResponse
+    {
+        $input = $request->validated();
+
+        $result = $this->service->create($input);
+
+        return response()->json($result);
     }
     public function destroyApi($id): JsonResponse
     {
