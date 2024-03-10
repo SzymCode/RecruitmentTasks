@@ -1,5 +1,23 @@
 @import 'variables';
 
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
 body {
     background: $body-bg;
+}
+h1 {
+    margin-top: $h1-margin-top;
+}
+.card {
+    width: $card-width;
+    margin: $card-margin;
+    padding: $card-padding;
+    background: $card-bg;
+    border: $card-border;
+    border-radius: $card-border-radius;
+    transition: $card-transition;
+    font-family: $primary-font-family;
+}
+.card:hover {
+    box-shadow: $card-hover-box-shadow;
 }
