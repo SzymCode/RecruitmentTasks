@@ -9,7 +9,7 @@ beforeEach(function () {
 });
 
 describe('200', function () {
-    test('authorized index api', function () {
+    test('index api', function () {
         Author::factory(3)->create();
 
         $this->getJson(route('authors.index-api'))
@@ -22,6 +22,16 @@ describe('200', function () {
                     'updated_at'
                 ],
             ]);
+    });
+    test('destroy api', function () {
+        $author = Author::factory()->create();
+
+        $this->deleteJson(route('authors.delete-api', $author->id))
+            ->assertOk()
+            ->assertJsonFragment([
+                'deleted' => true
+            ]);
+        $this->assertDatabaseMissing('authors', ['id' => $author->id]);
     });
 
     test('show top authors of the last week', function () {

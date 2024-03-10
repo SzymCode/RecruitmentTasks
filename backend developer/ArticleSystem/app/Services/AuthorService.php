@@ -19,6 +19,13 @@ class AuthorService
             ->toArray()['data'];
     }
 
+    public function delete($id)
+    {
+        $model = $this->model->findOrFail($id);
+
+        $model->delete();
+    }
+
     public function getTopAuthorsLastWeek()
     {
         $oneWeekAgo = now()->subWeek();

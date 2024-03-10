@@ -19,6 +19,13 @@ class NewsService
             ->toArray()['data'];
     }
 
+    public function delete($id)
+    {
+        $model = $this->model->findOrFail($id);
+
+        $model->delete();
+    }
+
     public function getNewsById($id)
     {
         $model = $this->model->findOrFail($id);

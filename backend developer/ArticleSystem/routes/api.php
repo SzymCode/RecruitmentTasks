@@ -20,6 +20,8 @@ use App\Http\Controllers\NewsController;
 Route::prefix('authors')->controller(AuthorController::class)->group(function () {
     Route::get('/', 'indexApi')
         ->name('authors.index-api');
+    Route::delete('/{id}', 'destroyApi')
+        ->name('authors.delete-api');
     Route::get('/top-authors','getTopAuthorsLastWeekApi')
         ->name('authors.top-authors-api');
 });
@@ -30,6 +32,8 @@ Route::prefix('news')->controller(NewsController::class)->group(function () {
         ->name('news.index-api');
     Route::get('/{id}', 'getNewsByIdApi')
         ->name('news.show-api');
+    Route::delete('/{id}', 'destroyApi')
+        ->name('news.delete-api');
     Route::get('/author/{authorId}', 'getNewsByAuthorApi')
         ->name('news.show-by-author-api');
 });

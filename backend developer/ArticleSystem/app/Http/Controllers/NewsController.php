@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\NewsRequest;
 use App\Models\Author;
 use App\Services\NewsService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 
 class NewsController extends Controller
 {
@@ -18,21 +18,41 @@ class NewsController extends Controller
     }
 
     /**
-     *  CRUD methods
+     *  CRUD methods with views
      */
     public function index(): View
     {
         $results = $this->service->getAll();
 
-        return view('news.index', ['news' => $results]);
+        $news = collect($results);
+
+        return view('news.index', ['news' => $news]);
     }
+    public function destroy($id): RedirectResponse
+    {
+        $this->service->delete($id);
+
+        return redirect()->back()->with('success', 'News deleted successfully.');
+    }
+
+
+    /**
+     *  CRUD methods for only API requests
+     */
     public function indexApi(): JsonResponse
     {
         $results = $this->service->getAll();
 
         return response()->json($results);
     }
+    public function destroyApi($id): JsonResponse
+    {
+        $this->service->delete($id);
 
+        return response()->json([
+            'deleted' => true,
+        ]);
+    }
 
     /**
      *  1. Get article by some id
@@ -44,7 +64,6 @@ class NewsController extends Controller
 
         return view('news.show', $result);
     }
-
     public function getNewsByIdApi($id): JsonResponse
     {
         $result = $this->service->getNewsById($id);
@@ -59,7 +78,6 @@ class NewsController extends Controller
 
         return view('news.by_author', ['news' => $news, 'author' => $author]);
     }
-
     public function getNewsByAuthorApi($authorId): JsonResponse
     {
         $news = $this->service->getNewsByAuthor($authorId);

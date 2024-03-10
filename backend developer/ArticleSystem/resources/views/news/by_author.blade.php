@@ -9,9 +9,7 @@
 </head>
 <body>
     <div class="card">
-        <h1>News by Author</h1>
-
-        <h2>{{ $author['name'] }}'s Articles</h2>
+        <h1>{{ $author['name'] }}'s Articles</h1>
 
         @foreach ($news as $index => $item)
             <div>
@@ -19,6 +17,11 @@
                 <strong>Description:</strong> {{ $item['description'] }}<br>
                 <strong>Published At:</strong> {{ $item['created_at'] }}<br>
                 <strong>ID:</strong> {{ $item['id'] }}<br>
+                <form method="POST" action="{{ route('news.delete', $item['id']) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Delete</button>
+                </form>
                 <br>
             </div>
         @endforeach

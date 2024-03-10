@@ -10,7 +10,7 @@ beforeEach(function () {
 });
 
 describe('200', function () {
-    test('authorized index api', function () {
+    test('index api', function () {
         News::factory(3)->create();
 
         $this->getJson(route('news.index-api'))
@@ -24,6 +24,16 @@ describe('200', function () {
                     'updated_at'
                 ],
             ]);
+    });
+    test('destroy api', function () {
+        $news = News::factory()->create();
+
+        $this->deleteJson(route('news.delete-api', $news->id))
+            ->assertOk()
+            ->assertJsonFragment([
+                'deleted' => true
+            ]);
+        $this->assertDatabaseMissing('news', ['id' => $news->id]);
     });
 
 

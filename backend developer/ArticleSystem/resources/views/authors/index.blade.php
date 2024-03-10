@@ -17,6 +17,11 @@
                 <strong>Created At:</strong> {{ $item['created_at'] }}<br>
                 <strong>Updated At:</strong> {{ $item['updated_at'] }}<br>
                 <strong>ID:</strong> {{ $item['id'] }}<br>
+                <form method="POST" action="{{ route('authors.delete', $item['id']) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Delete</button>
+                </form>
                 <br>
             </div>
         @endforeach

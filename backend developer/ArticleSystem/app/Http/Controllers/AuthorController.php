@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\AuthorService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class AuthorController extends Controller
 {
@@ -16,7 +17,7 @@ class AuthorController extends Controller
     }
 
     /**
-     *  CRUD methods
+     *  CRUD methods with views
      */
     public function index(): View
     {
@@ -24,11 +25,29 @@ class AuthorController extends Controller
 
         return view('authors.index', ['authors' => $results]);
     }
+    public function destroy($id): RedirectResponse
+    {
+        $this->service->delete($id);
+
+        return redirect()->back()->with('success', 'Author deleted successfully.');
+    }
+
+    /**
+     *  CRUD methods for only API requests
+     */
     public function indexApi(): JsonResponse
     {
         $results = $this->service->getAll();
 
         return response()->json($results);
+    }
+    public function destroyApi($id): JsonResponse
+    {
+        $this->service->delete($id);
+
+        return response()->json([
+            'deleted' => true,
+        ]);
     }
 
 
@@ -41,7 +60,6 @@ class AuthorController extends Controller
 
         return view('authors.top_authors', ['authors' => $authors]);
     }
-
     public function getTopAuthorsLastWeekApi(): JsonResponse
     {
         $result = $this->service->getTopAuthorsLastWeek();

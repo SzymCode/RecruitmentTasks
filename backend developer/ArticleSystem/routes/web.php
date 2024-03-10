@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('authors')->controller(AuthorController::class)->group(function () {
     Route::get('/', 'index')
         ->name('authors.index');
+    Route::delete('/{id}', 'destroy')
+        ->name('authors.delete');
     Route::get('/top-authors','getTopAuthorsLastWeek')
         ->name('authors.top-authors');
 });
@@ -28,6 +30,8 @@ Route::prefix('news')->controller(NewsController::class)->group(function () {
         ->name('news.index');
     Route::get('/{id}', 'getNewsById')
         ->name('news.show');
+    Route::delete('/{id}', 'destroy')
+        ->name('news.delete');
     Route::get('/author/{authorId}', 'getNewsByAuthor')
         ->name('news.show-by-author');
 });
