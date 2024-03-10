@@ -1,0 +1,11 @@
+@import '../variables/components/textarea_variables';
+
+textarea {
+    width: $textarea-width;
+    margin: $textarea-margin;
+    padding: $textarea-padding;
+    min-width: $textarea-width;
+    max-width: $textarea-width;
+    min-height: $textarea-min-height;
+    max-height: $textarea-max-height;
+}

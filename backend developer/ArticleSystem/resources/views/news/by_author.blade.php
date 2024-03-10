@@ -20,7 +20,7 @@
                 <form method="POST" action="{{ route('news.delete', $item['id']) }}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <button type="submit" class="dangerButton">Delete</button>
                 </form>
                 <br>
             </div>

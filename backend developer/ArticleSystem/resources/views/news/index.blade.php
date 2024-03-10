@@ -13,7 +13,9 @@
         <h1>News List</h1>
 
         <div>
-            <button onclick="toggleForm()">Add News</button>
+            <button onclick="toggleForm('post')" class="successButton">
+                Add News
+            </button>
         </div>
     </div>
 
@@ -29,7 +31,9 @@
             <textarea id="description" name="description"></textarea><br>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="successButton">
+            Submit
+        </button>
     </form>
 
     @foreach ($news as $item)
@@ -42,41 +46,54 @@
                 <strong>ID:</strong> {{ $item['id'] }}<br>
             </div>
             <div class="itemButtons">
-                <button onclick="toggleEditForm('{{ $item['id'] }}')">Edit</button>
+                <div>
+                    <button onclick="toggleForm('update', '{{ $item['id'] }}')" class="infoButton">
+                        Edit
+                    </button>
+                </div>
                 <form method="POST" action="{{ route('news.delete', $item['id']) }}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <button type="submit" class="dangerButton">
+                        Delete
+                    </button>
                 </form>
             </div>
             <br>
         </div>
-        <form id="editForm{{ $item['id'] }}" method="POST" action="{{ route('news.update', $item['id']) }}" style="display: none;" class="editForm">
+        <form id="updateForm{{ $item['id'] }}" method="POST" action="{{ route('news.update', $item['id']) }}" style="display: none;" class="updateForm">
             @csrf
             @method('PUT')
             <div>
-                <label for="editTitle{{ $item['id'] }}">Title:</label><br>
-                <input type="text" id="editTitle{{ $item['id'] }}" name="title" value="{{ $item['title'] }}"><br>
+                <label for="updateTitle{{ $item['id'] }}">Title:</label><br>
+                <input type="text" id="updateTitle{{ $item['id'] }}" name="title" value="{{ $item['title'] }}"><br>
             </div>
 
             <div>
-                <label for="editDescription{{ $item['id'] }}">Description:</label><br>
-                <textarea id="editDescription{{ $item['id'] }}" name="description">{{ $item['description'] }}</textarea><br>
+                <label for="updateDescription{{ $item['id'] }}">Description:</label><br>
+                <textarea id="updateDescription{{ $item['id'] }}" name="description">{{ $item['description'] }}</textarea><br>
             </div>
 
-            <button type="submit">Update</button>
+            <button type="submit" class="successButton">
+                Update
+            </button>
         </form>
     @endforeach
 </div>
 
 <script>
-    function toggleForm() {
-        let form = document.getElementById("postForm");
-        form.style.display = form.style.display === "none" ? "block" : "none";
-    }
-
-    function toggleEditForm(newsId) {
-        let form = document.getElementById("editForm" + newsId);
+    function toggleForm(method, newsId = null) {
+        let form;
+        switch (method) {
+            case "post":
+                form = document.getElementById("postForm");
+                break;
+            case "update":
+                form = document.getElementById("updateForm" + newsId);
+                break;
+            default:
+                return;
+        }
         form.style.display = form.style.display === "none" ? "block" : "none";
     }
 </script>

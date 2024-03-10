@@ -1,54 +1,8 @@
-@import 'variables';
-
 @import url('https://fonts.bunny.net/css?family=Nunito');
 
-body {
-    background: $body-bg;
-}
-h1 {
-    margin-top: $h1-margin-top;
-}
-.card {
-    width: $card-width;
-    margin: $card-margin;
-    padding: $card-padding;
-    background: $card-bg;
-    border: $card-border;
-    border-radius: $card-border-radius;
-    transition: $card-transition;
-    font-family: $primary-font-family;
-}
-.card:hover {
-    box-shadow: $card-hover-box-shadow;
-}
-.cardHeader {
-    display: $card-header-display;
-    justify-content: $card-header-justify-content;
-}
-.item {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.itemButtons {
-    display: flex;
-    gap: 5px;
-}
-.editForm,
-.postForm {
-    margin-bottom: 50px;
-}
-input,
-textarea {
-    width: 100%;
-    margin-bottom: 10px;
-}
-textarea {
-    min-width: 702px;
-    max-width: 702px;
-    min-height: 40px;
-    max-height: 500px;
-}
-.editForm {
-    display: flex;
-}
+@import 'styles/buttons';
+@import 'styles/card';
+@import 'styles/form';
+@import 'styles/input';
+@import 'styles/item';
+@import 'styles/textarea';
