@@ -21,3 +21,34 @@ h1 {
 .card:hover {
     box-shadow: $card-hover-box-shadow;
 }
+.cardHeader {
+    display: $card-header-display;
+    justify-content: $card-header-justify-content;
+}
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.itemButtons {
+    display: flex;
+    gap: 5px;
+}
+.editForm,
+.postForm {
+    margin-bottom: 50px;
+}
+input,
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+textarea {
+    min-width: 702px;
+    max-width: 702px;
+    min-height: 40px;
+    max-height: 500px;
+}
+.editForm {
+    display: flex;
+}

@@ -41,6 +41,29 @@ describe('200', function () {
                 'updated_at'
             ]);
     });
+    test('update api', function () {
+        $news = News::factory()->create();
+
+        $data = [
+            'title' => 'Example Title',
+            'description' => 'Example Description'
+        ];
+
+        $this->putJson(route('news.update-api', $news->id), $data)
+            ->assertOk()
+            ->assertJsonStructure([
+                'id',
+                'title',
+                'description',
+                'created_at',
+                'updated_at'
+            ])
+            ->assertJsonFragment([
+                'title' => $data['title'],
+                'description' => $data['description']
+            ]);
+    });
+
     test('destroy api', function () {
         $news = News::factory()->create();
 

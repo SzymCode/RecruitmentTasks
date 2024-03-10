@@ -34,6 +34,14 @@ class AuthorController extends Controller
 
         return redirect()->back()->with('success', 'Author created successfully.');
     }
+    public function update(AuthorRequest $request, $id): RedirectResponse
+    {
+        $input = $request->validated();
+
+        $this->service->update($id, $input);
+
+        return redirect()->back()->with('success', 'Author updated successfully.');
+    }
     public function destroy($id): RedirectResponse
     {
         $this->service->delete($id);
@@ -55,6 +63,14 @@ class AuthorController extends Controller
         $input = $request->validated();
 
         $result = $this->service->create($input);
+
+        return response()->json($result);
+    }
+    public function updateApi(AuthorRequest $request, $id): JsonResponse
+    {
+        $input = $request->validated();
+
+        $result = $this->service->update($id, $input);
 
         return response()->json($result);
     }

@@ -24,6 +24,8 @@ Route::prefix('authors')->controller(AuthorController::class)->group(function ()
         ->name('authors.delete-api');
     Route::post('/', 'storeApi')
         ->name('authors.store-api');
+    Route::put('/{id}', 'updateApi')
+        ->name('authors.update-api');
     Route::get('/top-authors','getTopAuthorsLastWeekApi')
         ->name('authors.top-authors-api');
 });
@@ -36,6 +38,8 @@ Route::prefix('news')->controller(NewsController::class)->group(function () {
         ->name('news.show-api');
     Route::post('/', 'storeApi')
         ->name('news.store-api');
+    Route::put('/{id}', 'updateApi')
+        ->name('news.update-api');
     Route::delete('/{id}', 'destroyApi')
         ->name('news.delete-api');
     Route::get('/author/{authorId}', 'getNewsByAuthorApi')

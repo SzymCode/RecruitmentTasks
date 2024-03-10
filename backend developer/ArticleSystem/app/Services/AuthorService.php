@@ -27,6 +27,17 @@ class AuthorService
             ->transformWith(new AuthorTransformer())
             ->toArray()['data'];
     }
+    public function update($id, array $data): array
+    {
+        $model = $this->model::findOrFail($id);
+
+        $model->update($data);
+
+        return fractal()
+            ->item($model->fresh())
+            ->transformWith(new AuthorTransformer())
+            ->toArray()['data'];
+    }
     public function delete($id)
     {
         $model = $this->model->findOrFail($id);

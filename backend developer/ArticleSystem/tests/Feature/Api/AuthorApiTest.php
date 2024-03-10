@@ -37,6 +37,25 @@ describe('200', function () {
                 'updated_at'
             ]);
     });
+    test('update api', function () {
+        $author = Author::factory()->create();
+
+        $data = [
+            'name' => 'Example Name',
+        ];
+
+        $this->putJson(route('authors.update-api', $author->id), $data)
+            ->assertOk()
+            ->assertJsonStructure([
+                'id',
+                'name',
+                'created_at',
+                'updated_at'
+            ])
+            ->assertJsonFragment([
+                'name' => $data['name'],
+            ]);
+    });
     test('destroy api', function () {
         $author = Author::factory()->create();
 

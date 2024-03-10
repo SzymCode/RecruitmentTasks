@@ -37,6 +37,14 @@ class NewsController extends Controller
 
         return redirect()->back()->with('success', 'News created successfully.');
     }
+    public function update(NewsRequest $request, $id): RedirectResponse
+    {
+        $input = $request->validated();
+
+        $this->service->update($id, $input);
+
+        return redirect()->back()->with('success', 'News updated successfully.');
+    }
     public function destroy($id): RedirectResponse
     {
         $this->service->delete($id);
@@ -58,6 +66,14 @@ class NewsController extends Controller
     {
         $input = $request->validated();
         $result = $this->service->create($input);
+
+        return response()->json($result);
+    }
+    public function updateApi(NewsRequest $request, $id): JsonResponse
+    {
+        $input = $request->validated();
+
+        $result = $this->service->update($id, $input);
 
         return response()->json($result);
     }
