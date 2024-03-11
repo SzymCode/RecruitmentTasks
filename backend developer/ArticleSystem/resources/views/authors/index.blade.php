@@ -8,6 +8,9 @@
         </h1>
 
         <div>
+            <a href="/authors/top-authors">
+                Top Authors
+            </a>
             <button onclick="toggleForm('post')" class="successButton">
                 Add Author
             </button>

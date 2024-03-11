@@ -21,6 +21,10 @@
     justify-content: $card-header-justify-content;
 }
 
+.cardHeader a {
+    margin-right: $card-header-a-margin-right;
+}
+
 .card h1 {
     margin-top: $card-h1-margin-top;
 }

@@ -1,6 +1,8 @@
 @import "../variables/components/form_variables";
 
-.updateForm,
-.postForm {
+.postForm,
+.searchByAuthorForm,
+.searchByIdForm,
+.updateForm {
     margin-bottom: $update-post-form-margin-bottom;
 }
