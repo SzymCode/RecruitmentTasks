@@ -11,8 +11,8 @@ This repository contains my solutions for the recruitment tasks. Each task is or
   <tr>
     <td>1.</td>
     <td>
-      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/backend%20developer/ExpensesApp">	
-        ExpensesApp
+      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/backend%20developer/ArticleSystem">	
+        ArticleSystem
       </a>	
     </td>
     <td>
@@ -28,7 +28,11 @@ This repository contains my solutions for the recruitment tasks. Each task is or
   </tr>
   <tr>
     <td>2.</td>
-    <td></td>
+    <td>
+      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/backend%20developer/ExpensesApp">	
+        ExpensesApp
+      </a>
+    </td>
     <td>      
       <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/DishForm">
         DishForm
