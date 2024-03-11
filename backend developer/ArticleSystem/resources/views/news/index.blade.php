@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArticleSystem</title>
+@extends('layouts.app')
 
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-</head>
-<body>
+@section('content')
 <div class="card">
     <div class="cardHeader">
-        <h1>News List</h1>
+        <h1>
+            News List
+        </h1>
 
         <div>
             <button onclick="toggleForm('post')" class="successButton">
@@ -19,16 +14,26 @@
         </div>
     </div>
 
-    <form id="postForm" method="POST" action="{{ route('news.store') }}" style="display: none;" class="postForm">
+    <form
+        id="postForm"
+        method="POST"
+        action="{{ route('news.store') }}"
+        style="display: none;"
+        class="postForm"
+    >
         @csrf
         <div>
-            <label for="title">Title:</label><br>
-            <input type="text" id="title" name="title"><br>
+            <label for="title">
+                Title:
+            </label>
+            <input type="text" id="title" name="title">
         </div>
 
         <div>
-            <label for="description">Description:</label><br>
-            <textarea id="description" name="description"></textarea><br>
+            <label for="description">
+                Description:
+            </label>
+            <textarea id="description" name="description"></textarea>
         </div>
 
         <button type="submit" class="successButton">
@@ -39,19 +44,51 @@
     @foreach ($news as $item)
         <div class="item">
             <div class="itemData">
-                <strong>Title:</strong> {{ $item['title'] }}<br>
-                <strong>Description:</strong> {{ $item['description'] }}<br>
-                <strong>Created At:</strong> {{ $item['created_at'] }}<br>
-                <strong>Updated At:</strong> {{ $item['updated_at'] }}<br>
-                <strong>ID:</strong> {{ $item['id'] }}<br>
+                <div>
+                    <strong>
+                        Title:
+                    </strong>
+                    {{ $item['title'] }}
+                </div>
+                <div>
+                    <strong>
+                        Description:
+                    </strong>
+                    {{ $item['description'] }}
+                </div>
+                <div>
+                    <strong>
+                        Created At:
+                    </strong>
+                    {{ $item['created_at'] }}
+                </div>
+                <div>
+                    <strong>
+                        Updated At:
+                    </strong>
+                    {{ $item['updated_at'] }}
+                </div>
+
+                <div>
+                    <strong>
+                        ID:
+                    </strong>
+                    {{ $item['id'] }}
+                </div>
             </div>
             <div class="itemButtons">
                 <div>
-                    <button onclick="toggleForm('update', '{{ $item['id'] }}')" class="infoButton">
+                    <button
+                        onclick="toggleForm('update', '{{ $item['id'] }}')"
+                        class="infoButton"
+                    >
                         Edit
                     </button>
                 </div>
-                <form method="POST" action="{{ route('news.delete', $item['id']) }}">
+                <form
+                    method="POST"
+                    action="{{ route('news.delete', $item['id']) }}"
+                >
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="dangerButton">
@@ -60,26 +97,39 @@
                 </form>
             </div>
             <br>
+            <form
+                id="updateForm{{ $item['id'] }}"
+                method="POST"
+                action="{{ route('news.update', $item['id']) }}"
+                style="display: none;"
+                class="updateForm"
+            >
+                @csrf
+                @method('PUT')
+                <div>
+                    <label for="updateTitle{{ $item['id'] }}">
+                        Title:
+                    </label>
+                    <input type="text" id="updateTitle{{ $item['id'] }}" name="title" value="{{ $item['title'] }}">
+                </div>
+
+                <div>
+                    <label for="updateDescription{{ $item['id'] }}">
+                        Description:
+                    </label>
+                    <textarea id="updateDescription{{ $item['id'] }}" name="description">
+                        {{ $item['description'] }}
+                    </textarea>
+                </div>
+
+                <button type="submit" class="successButton">
+                    Update
+                </button>
+            </form>
         </div>
-        <form id="updateForm{{ $item['id'] }}" method="POST" action="{{ route('news.update', $item['id']) }}" style="display: none;" class="updateForm">
-            @csrf
-            @method('PUT')
-            <div>
-                <label for="updateTitle{{ $item['id'] }}">Title:</label><br>
-                <input type="text" id="updateTitle{{ $item['id'] }}" name="title" value="{{ $item['title'] }}"><br>
-            </div>
-
-            <div>
-                <label for="updateDescription{{ $item['id'] }}">Description:</label><br>
-                <textarea id="updateDescription{{ $item['id'] }}" name="description">{{ $item['description'] }}</textarea><br>
-            </div>
-
-            <button type="submit" class="successButton">
-                Update
-            </button>
-        </form>
     @endforeach
 </div>
+@endsection
 
 <script>
     function toggleForm(method, newsId = null) {
@@ -97,5 +147,3 @@
         form.style.display = form.style.display === "none" ? "block" : "none";
     }
 </script>
-</body>
-</html>

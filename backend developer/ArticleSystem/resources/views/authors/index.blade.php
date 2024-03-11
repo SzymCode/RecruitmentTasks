@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArticleSystem</title>
+@extends('layouts.app')
 
-    @vite(['resources/sass/app.scss', 'resources/js/utils/handleToggleForm.js'])
-</head>
-<body>
-<div class="card">
+@section('content')
+    <div class="card">
     <div class="cardHeader">
-        <h1>Authors List</h1>
+        <h1>
+            Authors List
+        </h1>
 
         <div>
             <button onclick="toggleForm('post')" class="successButton">
@@ -19,11 +14,25 @@
         </div>
     </div>
 
-    <form id="postForm" method="POST" action="{{ route('authors.store') }}" style="display: none;" class="postForm">
+    <form
+        id="postForm"
+        method="POST"
+        action="{{ route('authors.store') }}"
+        style="display: none;"
+        class="postForm"
+    >
         @csrf
         <div>
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name"><br>
+            <label for="name">
+                Name:
+            </label>
+            <br>
+            <input
+                type="text"
+                id="name"
+                name="name"
+            >
+            <br>
         </div>
 
         <button type="submit" class="successButton">
@@ -34,10 +43,30 @@
     @foreach ($authors as $item)
         <div class="item">
             <div class="itemData">
-                <strong>Name:</strong> {{ $item['name'] }}<br>
-                <strong>Created At:</strong> {{ $item['created_at'] }}<br>
-                <strong>Updated At:</strong> {{ $item['updated_at'] }}<br>
-                <strong>ID:</strong> {{ $item['id'] }}<br>
+                <div>
+                    <strong>
+                        Name:
+                    </strong>
+                    {{ $item['name'] }}
+                </div>
+                <div>
+                    <strong>
+                        Created At:
+                    </strong>
+                    {{ $item['created_at'] }}
+                </div>
+                <div>
+                    <strong>
+                        Updated At:
+                    </strong>
+                    {{ $item['updated_at'] }}
+                </div>
+                <div>
+                    <strong>
+                        ID:
+                    </strong>
+                    {{ $item['id'] }}
+                </div>
             </div>
             <div class="itemButtons">
                 <div>
@@ -54,21 +83,31 @@
                 </form>
             </div>
             <br>
-        </div>
-        <form id="updateForm{{ $item['id'] }}" method="POST" action="{{ route('authors.update', $item['id']) }}" style="display: none;" class="updateForm">
-            @csrf
-            @method('PUT')
-            <div>
-                <label for="updateName{{ $item['id'] }}">Name:</label><br>
-                <input type="text" id="updateName{{ $item['id'] }}" name="name" value="{{ $item['name'] }}"><br>
-            </div>
+            <form
+                id="updateForm{{ $item['id'] }}"
+                method="POST"
+                action="{{ route('authors.update', $item['id']) }}"
+                style="display: none;"
+                class="updateForm"
+            >
+                @csrf
+                @method('PUT')
+                <div>
+                    <label for="updateName{{ $item['id'] }}">
+                        Name:
+                    </label>
+                    <input type="text" id="updateName{{ $item['id'] }}" name="name" value="{{ $item['name'] }}">
+                </div>
 
-            <button type="submit" class="successButton">
-                Update
-            </button>
-        </form>
+                <button type="submit" class="successButton">
+                    Update
+                </button>
+            </form>
+        </div>
     @endforeach
 </div>
+@endsection
+
 <script>
     function toggleForm(method, newsId = null) {
         let form;
@@ -85,5 +124,3 @@
         form.style.display = form.style.display === "none" ? "block" : "none";
     }
 </script>
-</body>
-</html>

@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/', [AuthorController::class, 'index']);
+
 Route::prefix('authors')->controller(AuthorController::class)->group(function () {
     Route::get('/', 'index')
         ->name('authors.index');

@@ -1,23 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArticleSystem</title>
+@extends('layouts.app')
 
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-</head>
-<body>
+@section('content')
     <div class="card">
-        <h1>Top Authors of Last Week</h1>
+        <div class="cardHeader">
+            <h1>
+                Top Authors of Last Week
+            </h1>
+        </div>
 
         @foreach ($authors as $index => $author)
-            <div>
-                <strong>{{ $index + 1 }}. Author:</strong> {{ $author['author']['name'] }}<br>
-                <strong>News Count:</strong> {{ $author['news_count'] }}
-                <br>
+            <div class="item">
+                <div class="itemData">
+                    <div>
+                        <strong>
+                            {{ $index + 1 }}. Author:
+                        </strong>
+                        {{ $author['author']['name'] }}
+                    </div>
+                    <div>
+                        <strong>
+                            News Count:
+                        </strong>
+                        {{ $author['news_count'] }}
+                    </div>
+                    <br>
+                </div>
             </div>
         @endforeach
     </div>
-</body>
-</html>
+@endsection
