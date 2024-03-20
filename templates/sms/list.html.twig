@@ -40,24 +40,24 @@
                 <div class="card" id="createSmsCard" style="display: none;">
                     <form id="createSmsForm" onsubmit="submitCreateForm()">
                         <div class="form-group">
-                            <label for="sender">Sender:</label>
-                            <input type="text" id="sender" name="sender" class="form-control">
+                            <label for="createSender">Sender:</label>
+                            <input type="text" id="createSender" name="sender" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="receiver">Receiver:</label>
-                            <input type="text" id="receiver" name="receiver" class="form-control">
+                            <label for="createReceiver">Receiver:</label>
+                            <input type="text" id="createReceiver" name="receiver" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="receivedDate">Received Date:</label>
-                            <input type="text" id="receivedDate" name="receivedDate" class="form-control">
+                            <label for="createReceivedDate">Received Date:</label>
+                            <input type="text" id="createReceivedDate" name="receivedDate" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="subject">Subject:</label>
-                            <input type="text" id="subject" name="subject" class="form-control">
+                            <label for="createSubject">Subject:</label>
+                            <input type="text" id="createSubject" name="subject" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="content">Content:</label>
-                            <textarea id="content" name="content" class="form-control"></textarea>
+                            <label for="createContent">Content:</label>
+                            <textarea id="createContent" name="content" class="form-control"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Create SMS</button>
                     </form>
@@ -171,6 +171,7 @@
 
             await axios.get(`/api/sms/${id}`)
                 .then(function (response) {
+                    console.log(response)
                     let sms = response.data;
                     document.getElementById('id').value = sms.id;
                     document.getElementById('sender').value = sms.sender;
@@ -197,15 +198,15 @@
         }
 
         function toggleCreateForm() {
-            var createSmsCard = document.getElementById('createSmsCard');
+            let createSmsCard = document.getElementById('createSmsCard');
             if (createSmsCard.style.display === 'none') {
                 document.getElementById('smsCard').style.display = 'none';
+                document.getElementById('editSmsCard').style.display = 'none';
+
                 createSmsCard.style.display = 'block';
             } else {
                 createSmsCard.style.display = 'none';
                 document.getElementById('smsCard').style.display = 'block';
-
-
             }
         }
 
