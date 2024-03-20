@@ -52,6 +52,11 @@ class SMSController extends AbstractController
 
         return $this->emailService->saveSMS($sender, $receiver, $subject, $content);
     }
+    #[Route("/api/sms/{id}", methods: 'GET')]
+    public function fetchSmsById(int $id): array | Response
+    {
+        return $this->emailService->fetchSMSById($id);
+    }
     #[Route("/api/sms/{id}", methods: 'PUT')]
     public function updateSMS(Request $request, int $id): JsonResponse | Response
     {

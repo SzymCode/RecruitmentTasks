@@ -48,6 +48,26 @@ class EmailService
         }
     }
 
+    public function fetchSMSById(int $id): JsonResponse | Response
+    {
+        try {
+            $mail = $this->mailbox->getMail($id);
+
+            $data = [
+                'id' => $mail->id,
+                'sender' => $mail->fromAddress,
+                'receiver' => $mail->toString,
+                'received_date' => date('Y-m-d H:i:s', strtotime($mail->date)),
+                'subject' => $mail->subject,
+                'content' => $mail->textPlain
+            ];
+
+            return new JsonResponse($data, Response::HTTP_OK);
+        } catch (Exception $e) {
+            return new JsonResponse(['error' => 'An error occurred: ' . $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
     public function fetchAndSaveSMS($criteria = null): JsonResponse | Response
     {
         try {
