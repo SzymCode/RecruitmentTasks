@@ -15,6 +15,7 @@
                             <thead>
                             <tr>
                                 <th>Sender</th>
+                                <th>Receiver</th>
                                 <th>Received Date</th>
                                 <th>Content</th>
                             </tr>
@@ -44,6 +45,7 @@
                     var row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${sms.sender}</td>
+                        <td>${sms.receiver}</td>
                         <td>${sms.received_date}</td>
                         <td>${sms.content}</td>
                     `;
