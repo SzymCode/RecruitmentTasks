@@ -103,8 +103,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        function fetchSMS () {
-            axios.get('/api/sms')
+        async function fetchSMS () {
+            await axios.get('/api/sms')
                 .then(function (response) {
                     let smsList = response.data;
                     let smsTableBody = document.querySelector('#smsList tbody');
@@ -130,11 +130,25 @@
                         `;
                         smsTableBody.appendChild(row);
                     });
+
+                    setInterval(sendIntervalData, 5000);
                 })
                 .catch(function (error) {
                     console.error('Error fetching SMS messages:', error);
                 });
+
         }
+
+        function sendIntervalData() {
+            axios.get('/api/sms', {})
+                .then(response => {
+                    console.log('POST request sent successfully:', response);
+                })
+                .catch(error => {
+                    console.error('Failed to send POST request:', error);
+                });
+        }
+
 
         function submitEditForm(event) {
             event.preventDefault();
