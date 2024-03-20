@@ -6,53 +6,74 @@ use Exception;
 use PhpImap\Mailbox;
 use App\Entity\SMS;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class EmailService
 {
-    private EntityManagerInterface $entityManager;
+    protected EntityManagerInterface $entityManager;
+    private Mailbox $mailbox;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
+
+        $server = $_ENV['IMAP_SERVER'];
+        $port = $_ENV['IMAP_PORT'];
+        $username = $_ENV['IMAP_USERNAME'];
+        $password = $_ENV['IMAP_PASSWORD'];
+
+        $mailboxPath = "{imap.$server:$port/imap/ssl}INBOX";
+
+        if (!defined('OP_READONLY')) {
+            define('OP_READONLY', 0);
+        }
+
+        $this->mailbox = new Mailbox($mailboxPath, $username, $password, null, 'UTF-8');
     }
 
-
-    public function fetchAndSaveSMS($criteria = null): Response
+    public function testConnectionWithInfo(): JsonResponse | Response
     {
         try {
-            $server = $_ENV['IMAP_SERVER'];
-            $port = $_ENV['IMAP_PORT'];
-            $username = $_ENV['IMAP_USERNAME'];
-            $password = $_ENV['IMAP_PASSWORD'];
+            $mailboxInfo = $this->mailbox->getMailboxInfo();
 
-            $mailboxPath = "{imap.$server:$port/imap/ssl}INBOX";
+            return new JsonResponse([
+                'Connection' => 'OK',
+                'Mailbox info' => $mailboxInfo
+            ]);
 
-            if (!defined('OP_READONLY')) {
-                define('OP_READONLY', 0);
-            }
-
-            $mailbox = new Mailbox($mailboxPath, $username, $password, null, 'UTF-8');
-
-            $mailIds = $mailbox->searchMailbox($criteria);
-
-            foreach ($mailIds as $mailId) {
-                $mail = $mailbox->getMail($mailId);
-
-                $sms = new SMS();
-                $sms->setSender($mail->fromAddress);
-                $sms->setReceivedDate($mail->date);
-                $sms->setContent($mail->textPlain);
-
-                $this->entityManager->persist($sms);
-            }
-
-            $this->entityManager->flush();
-
-            return new Response('Fetched SMS data successfully!');
         } catch (Exception $e) {
             return new Response('An error occurred: ' . $e->getMessage());
         }
     }
 
+    public function fetchAndSaveSMS($criteria = null): JsonResponse | Response
+    {
+        try {
+            $mailIds = $this->mailbox->searchMailbox($criteria);
+
+            $mails = [];
+            foreach ($mailIds as $mailId) {
+                $mail = $this->mailbox->getMail($mailId);
+
+                $mails[] = [
+                    'sender' => $mail->fromAddress,
+                    'received_date' => date('Y-m-d H:i:s', strtotime($mail->date)),
+                    'content' => $mail->textPlain
+                ];
+
+                $sms = new SMS();
+                $sms->setSender($mail->fromAddress);
+                $sms->setReceivedDate($mail->date);
+                $sms->setContent($mail->textPlain);
+                $this->entityManager->persist($sms);
+            }
+
+            $this->entityManager->flush();
+
+            return new JsonResponse($mails);
+        } catch (Exception $e) {
+            return new Response('An error occurred: ' . $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }
