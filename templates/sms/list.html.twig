@@ -7,6 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <button class="btn btn-primary" onclick="fetchSMS()">Fetch SMS</button>
+                <button class="btn btn-primary" onclick="toggleCreateForm()">Create New SMS</button>
                 <br><br>
 
                 <div class="card" id="smsCard">
@@ -36,7 +37,33 @@
                     </div>
                 </div>
 
-                <div class="card mt-4" id="editSmsCard" style="display: none;">
+                <div class="card" id="createSmsCard" style="display: none;">
+                    <form id="createSmsForm" onsubmit="submitCreateForm()">
+                        <div class="form-group">
+                            <label for="sender">Sender:</label>
+                            <input type="text" id="sender" name="sender" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="receiver">Receiver:</label>
+                            <input type="text" id="receiver" name="receiver" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="receivedDate">Received Date:</label>
+                            <input type="text" id="receivedDate" name="receivedDate" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" name="subject" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Content:</label>
+                            <textarea id="content" name="content" class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create SMS</button>
+                    </form>
+                </div>
+
+                <div class="card" id="editSmsCard" style="display: none;">
                     <div class="card-header">
                         <h1 class="card-title">Edit SMS</h1>
                     </div>
@@ -152,6 +179,33 @@
                 })
                 .catch((error) => {
                     console.error(error);
+                });
+        }
+
+        function toggleCreateForm() {
+            var createSmsCard = document.getElementById('createSmsCard');
+            if (createSmsCard.style.display === 'none') {
+                document.getElementById('smsCard').style.display = 'none';
+                createSmsCard.style.display = 'block';
+            } else {
+                createSmsCard.style.display = 'none';
+                document.getElementById('smsCard').style.display = 'block';
+
+
+            }
+        }
+
+        function submitCreateForm(event) {
+            event.preventDefault();
+
+            const formData = new FormData(document.getElementById('createSmsForm'));
+
+            axios.post(`/api/sms`, formData)
+                .then(response => {
+                    console.log('SMS created successfully:', response);
+                })
+                .catch(error => {
+                    console.error('Failed to create SMS:', error);
                 });
         }
     </script>
