@@ -55,9 +55,11 @@ class EmailService
             $mails = [];
             foreach ($mailIds as $mailId) {
                 $mail = $this->mailbox->getMail($mailId);
+                $header = $this->mailbox->getMailHeader($mailId);
 
                 $mails[] = [
                     'sender' => $mail->fromAddress,
+                    'receiver' => $header->toString,
                     'received_date' => date('Y-m-d H:i:s', strtotime($mail->date)),
                     'content' => $mail->textPlain
                 ];

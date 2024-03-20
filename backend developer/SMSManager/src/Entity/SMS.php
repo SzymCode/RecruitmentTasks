@@ -17,6 +17,9 @@ class SMS
     private ?string $sender = null;
 
     #[ORM\Column(length: 255)]
+    private ?string $receiver = null;
+
+    #[ORM\Column(length: 255)]
     private ?string $receivedDate = null;
 
     #[ORM\Column(length: 5000)]
@@ -35,6 +38,18 @@ class SMS
     public function setSender(string $sender): static
     {
         $this->sender = $sender;
+
+        return $this;
+    }
+
+    public function getReceiver(): ?string
+    {
+        return $this->receiver;
+    }
+
+    public function setReceiver(string $receiver): static
+    {
+        $this->receiver = $receiver;
 
         return $this;
     }
