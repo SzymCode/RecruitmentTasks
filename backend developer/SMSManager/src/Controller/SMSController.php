@@ -36,6 +36,22 @@ class SMSController extends AbstractController
     {
         return $this->emailService->fetchAndSaveSMS('UNSEEN');
     }
+    #[Route("/api/sms", methods: 'POST')]
+    public function saveSMS(Request $request): Response
+    {
+        $data = json_decode($request->getContent(), true);
+
+        $sender = $data['sender'] ?? null;
+        $receiver = $data['receiver'] ?? null;
+        $subject = $data['subject'] ?? null;
+        $content = $data['content'] ?? null;
+
+        if (!$sender || !$receiver) {
+            return new JsonResponse(['error' => 'Missing required data.'], Response::HTTP_BAD_REQUEST);
+        }
+
+        return $this->emailService->saveSMS($sender, $receiver, $subject, $content);
+    }
     #[Route("/api/sms/{id}", methods: 'PUT')]
     public function updateSMS(Request $request, int $id): JsonResponse | Response
     {
@@ -65,22 +81,5 @@ class SMSController extends AbstractController
     public function listSMS(): Response
     {
         return $this->render('sms/list.html.twig');
-    }
-
-    #[Route("/sms", methods: 'POST')]
-    public function saveSMS(Request $request): Response
-    {
-        $data = json_decode($request->getContent(), true);
-
-        $sender = $data['sender'] ?? null;
-        $receiver = $data['receiver'] ?? null;
-        $subject = $data['subject'] ?? null;
-        $content = $data['content'] ?? null;
-
-        if (!$sender || !$receiver) {
-            return new JsonResponse(['error' => 'Missing required data.'], Response::HTTP_BAD_REQUEST);
-        }
-
-        return $this->emailService->saveSMS($sender, $receiver, $subject, $content);
     }
 }
