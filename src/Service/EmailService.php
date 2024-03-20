@@ -61,12 +61,15 @@ class EmailService
                     'sender' => $mail->fromAddress,
                     'receiver' => $header->toString,
                     'received_date' => date('Y-m-d H:i:s', strtotime($mail->date)),
+                    'subject' => $mail->subject,
                     'content' => $mail->textPlain
                 ];
 
                 $sms = new SMS();
                 $sms->setSender($mail->fromAddress);
+                $sms->setReceiver($header->toString);
                 $sms->setReceivedDate($mail->date);
+                $sms->setSubject($mail->subject);
                 $sms->setContent($mail->textPlain);
                 $this->entityManager->persist($sms);
             }
