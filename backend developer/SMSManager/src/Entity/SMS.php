@@ -22,6 +22,9 @@ class SMS
     #[ORM\Column(length: 255)]
     private ?string $receivedDate = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $subject = null;
+
     #[ORM\Column(length: 5000)]
     private ?string $content = null;
 
@@ -66,12 +69,24 @@ class SMS
         return $this;
     }
 
+    public function getSubject(): ?string
+    {
+        return $this->subject;
+    }
+
+    public function setSubject(?string $subject): ?static
+    {
+        $this->subject = $subject;
+
+        return $this;
+    }
+
     public function getContent(): ?string
     {
         return $this->content;
     }
 
-    public function setContent(string $content): static
+    public function setContent(?string $content): static
     {
         $this->content = $content;
 
