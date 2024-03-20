@@ -59,6 +59,7 @@ class EmailService
                 $header = $this->mailbox->getMailHeader($mailId);
 
                 $mails[] = [
+                    'id' => $mail->id,
                     'sender' => $mail->fromAddress,
                     'receiver' => $header->toString,
                     'received_date' => date('Y-m-d H:i:s', strtotime($mail->date)),
@@ -141,13 +142,7 @@ class EmailService
     public function deleteSMS(int $id): Response
     {
         try {
-            $sms = $this->entityManager->getRepository(SMS::class)->find($id);
-            if (!$sms) {
-                return new Response('SMS not found.', Response::HTTP_NOT_FOUND);
-            }
-
-            $this->entityManager->remove($sms);
-            $this->entityManager->flush();
+            $this->mailbox->deleteMail($id);
 
             return new Response('SMS deleted successfully.', Response::HTTP_OK);
         } catch (Exception $e) {

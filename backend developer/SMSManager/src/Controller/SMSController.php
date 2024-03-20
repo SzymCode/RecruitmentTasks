@@ -43,11 +43,7 @@ class SMSController extends AbstractController
     #[Route("/sms", methods: 'GET')]
     public function listSMS(): Response
     {
-        $smsList = $this->fetchAllSMS();
-
-        return $this->render('sms/list.html.twig', [
-            'smsList' => $smsList,
-        ]);
+        return $this->render('sms/list.html.twig');
     }
 
     #[Route("/sms", methods: 'POST')]
