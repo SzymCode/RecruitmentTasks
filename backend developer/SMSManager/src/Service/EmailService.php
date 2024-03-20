@@ -6,6 +6,7 @@ use Exception;
 use PhpImap\Mailbox;
 use App\Entity\SMS;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class EmailService
 {
@@ -17,7 +18,7 @@ class EmailService
     }
 
 
-    public function fetchAndSaveSMS(): void
+    public function fetchAndSaveSMS($criteria = null): Response
     {
         try {
             $server = $_ENV['IMAP_SERVER'];
@@ -33,8 +34,6 @@ class EmailService
 
             $mailbox = new Mailbox($mailboxPath, $username, $password, null, 'UTF-8');
 
-            $criteria = 'UNSEEN';
-
             $mailIds = $mailbox->searchMailbox($criteria);
 
             foreach ($mailIds as $mailId) {
@@ -49,8 +48,10 @@ class EmailService
             }
 
             $this->entityManager->flush();
+
+            return new Response('Fetched SMS data successfully!');
         } catch (Exception $e) {
-            echo 'An error occurred: ' . $e->getMessage();
+            return new Response('An error occurred: ' . $e->getMessage());
         }
     }
 
