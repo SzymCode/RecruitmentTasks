@@ -59,7 +59,7 @@ class EmailService
                 $header = $this->mailbox->getMailHeader($mailId);
 
                 $mails[] = [
-                    'id' => $mail->id,
+                    'id' => $mailId,
                     'sender' => $mail->fromAddress,
                     'receiver' => $header->toString,
                     'received_date' => date('Y-m-d H:i:s', strtotime($mail->date)),
