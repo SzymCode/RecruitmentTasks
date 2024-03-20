@@ -22,3 +22,10 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    secit_pl.imap:
+        class: PhpImap\Mailbox
+        arguments:
+            $imapPath: '{imap.iq.pl:993/imap/ssl}INBOX'
+            $password: 'sLdVcoRBu23ltiRIrwVt'
+            $attachmentsDir: '%kernel.project_dir%/var/mail_attachments'
+            $serverEncoding: 'UTF-8'
