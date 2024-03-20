@@ -142,7 +142,7 @@
         function sendIntervalData() {
             axios.get('/api/sms', {})
                 .then(response => {
-                    console.log('POST request sent successfully:', response);
+                    console.log('Fetch request sent successfully:', response);
                 })
                 .catch(error => {
                     console.error('Failed to send POST request:', error);
