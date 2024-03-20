@@ -62,7 +62,7 @@ class SMS
         return $this->receivedDate;
     }
 
-    public function setReceivedDate(string $receivedDate): static
+    public function setReceivedDate(?string $receivedDate): static
     {
         $this->receivedDate = $receivedDate;
 

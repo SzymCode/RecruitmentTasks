@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use DateTime;
 use Exception;
 use PhpImap\Mailbox;
 use App\Entity\SMS;
@@ -40,10 +41,10 @@ class EmailService
             return new JsonResponse([
                 'Connection' => 'OK',
                 'Mailbox info' => $mailboxInfo
-            ]);
+            ], Response::HTTP_OK);
 
         } catch (Exception $e) {
-            return new Response('An error occurred: ' . $e->getMessage());
+            return new Response('An error occurred: ' . $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -71,12 +72,84 @@ class EmailService
                 $sms->setReceivedDate($mail->date);
                 $sms->setSubject($mail->subject);
                 $sms->setContent($mail->textPlain);
+
                 $this->entityManager->persist($sms);
             }
 
             $this->entityManager->flush();
 
-            return new JsonResponse($mails);
+            return new JsonResponse($mails, Response::HTTP_OK);
+        } catch (Exception $e) {
+            return new Response('An error occurred: ' . $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    /**
+     *  Save
+     */
+    public function saveSMS(string $sender, string $receiver, string $subject = null, string $content = null): Response
+    {
+        try {
+            $sms = new SMS();
+            $sms->setSender($sender);
+            $sms->setReceiver($receiver);
+            $sms->setReceivedDate((new DateTime())->format('Y-m-d H:i:s'));
+            $sms->setSubject($subject);
+            $sms->setContent($content);
+
+            $this->entityManager->persist($sms);
+            $this->entityManager->flush();
+
+            return new Response('SMS created successfully.', Response::HTTP_OK);
+        } catch (Exception $e) {
+            return new Response('An error occurred: ' . $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     *  Update
+     */
+    public function updateSMS(int $id, string $sender, string $receiver, string $subject = null, string $content = null): Response
+    {
+        try {
+            $sms = $this->entityManager->getRepository(SMS::class)->find($id);
+            if (!$sms) {
+                return new Response('SMS not found.', Response::HTTP_NOT_FOUND);
+            }
+
+            $sms->setSender($sender);
+            $sms->setReceiver($receiver);
+            if ($subject !== null) {
+                $sms->setSubject($subject);
+            }
+            if ($content !== null) {
+                $sms->setContent($content);
+            }
+
+            $this->entityManager->flush();
+
+            return new Response('SMS updated successfully.', Response::HTTP_OK);
+        } catch (Exception $e) {
+            return new Response('An error occurred: ' . $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     *  Delete
+     */
+    public function deleteSMS(int $id): Response
+    {
+        try {
+            $sms = $this->entityManager->getRepository(SMS::class)->find($id);
+            if (!$sms) {
+                return new Response('SMS not found.', Response::HTTP_NOT_FOUND);
+            }
+
+            $this->entityManager->remove($sms);
+            $this->entityManager->flush();
+
+            return new Response('SMS deleted successfully.', Response::HTTP_OK);
         } catch (Exception $e) {
             return new Response('An error occurred: ' . $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
