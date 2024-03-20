@@ -36,6 +36,27 @@ class SMSController extends AbstractController
     {
         return $this->emailService->fetchAndSaveSMS('UNSEEN');
     }
+    #[Route("/api/sms/{id}", methods: 'PUT')]
+    public function updateSMS(Request $request, int $id): JsonResponse | Response
+    {
+        $data = json_decode($request->getContent(), true);
+
+        $sender = $data['sender'] ?? null;
+        $receiver = $data['receiver'] ?? null;
+        $subject = $data['subject'] ?? null;
+        $content = $data['content'] ?? null;
+
+        if (!$sender || !$receiver) {
+            return new JsonResponse(['error' => 'Missing required data.'], Response::HTTP_BAD_REQUEST);
+        }
+
+        return $this->emailService->updateSMS($id, $sender, $receiver, $subject, $content);
+    }
+    #[Route("/api/sms/{id}", methods: 'DELETE')]
+    public function deleteSMS(int $id): Response
+    {
+        return $this->emailService->deleteSMS($id);
+    }
 
     /**
      *  Other CRUD routes
@@ -61,29 +82,5 @@ class SMSController extends AbstractController
         }
 
         return $this->emailService->saveSMS($sender, $receiver, $subject, $content);
-    }
-
-
-    #[Route("/sms/{id}", methods: 'PUT')]
-    public function updateSMS(Request $request, int $id): JsonResponse | Response
-    {
-        $data = json_decode($request->getContent(), true);
-
-        $sender = $data['sender'] ?? null;
-        $receiver = $data['receiver'] ?? null;
-        $subject = $data['subject'] ?? null;
-        $content = $data['content'] ?? null;
-
-        if (!$sender || !$receiver) {
-            return new JsonResponse(['error' => 'Missing required data.'], Response::HTTP_BAD_REQUEST);
-        }
-
-        return $this->emailService->updateSMS($id, $sender, $receiver, $subject, $content);
-    }
-
-    #[Route("/sms/{id}", methods: 'DELETE')]
-    public function deleteSMS(int $id): Response
-    {
-        return $this->emailService->deleteSMS($id);
     }
 }

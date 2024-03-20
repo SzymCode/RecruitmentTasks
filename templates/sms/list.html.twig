@@ -9,7 +9,7 @@
                 <button class="btn btn-primary" onclick="fetchSMS()">Fetch SMS</button>
                 <br><br>
 
-                <div class="card">
+                <div class="card" id="smsCard">
                     <div class="card-header">
                         <h1 class="card-title">SMS List</h1>
                     </div>
@@ -35,6 +35,41 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="card mt-4" id="editSmsCard" style="display: none;">
+                    <div class="card-header">
+                        <h1 class="card-title">Edit SMS</h1>
+                    </div>
+                    <div class="card-body">
+                        <form id="editSmsForm" onsubmit="submitEditForm()">
+                            <div class="form-group">
+                                <label for="id">id:</label>
+                                <input type="text" id="id" name="id" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="sender">Sender:</label>
+                                <input type="text" id="sender" name="sender" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="receiver">Receiver:</label>
+                                <input type="text" id="receiver" name="receiver" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="receivedDate">Received Date:</label>
+                                <input type="text" id="receivedDate" name="receivedDate" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject:</label>
+                                <input type="text" id="subject" name="subject" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="content">Content:</label>
+                                <textarea id="content" name="content" class="form-control"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -52,12 +87,15 @@
                     smsList.forEach(function (sms) {
                         let row = document.createElement('tr');
                         row.innerHTML = `
-                            <td>${sms.sender}</td>
-                            <td>${sms.receiver}</td>
-                            <td>${sms.received_date}</td>
-                            <td>${sms.subject}</td>
-                            <td>${sms.content}</td>
-                            <td>
+                            <td class="no-wrap">${sms.sender}</td>
+                            <td class="no-wrap">${sms.receiver}</td>
+                            <td class="no-wrap">${sms.received_date}</td>
+                            <td class="no-wrap">${sms.subject}</td>
+                            <td class="smsContent">${sms.content}</td>
+                            <td class="buttonsCollumn">
+                                <button class="btn btn-success smsButton" onclick="showEditCard(${sms.id})">
+                                    <i class="fas fa-pen"> </i>
+                                </button>
                                 <button class="btn btn-danger smsButton" onclick="deleteSMS(${sms.id})">
                                     <i class="fas fa-trash-can"> </i>
                                 </button>
@@ -71,8 +109,44 @@
                 });
         }
 
+        function submitEditForm(event) {
+            event.preventDefault();
+
+            const formData = new FormData(document.getElementById('editSmsForm'));
+
+            const id = document.getElementById('editSmsForm').action.split('/').pop();
+
+            axios.put(`/api/sms/${id}`, formData)
+                .then(response => {
+                    console.log('Update successful:', response);
+                })
+                .catch(error => {
+                    console.error('Update failed:', error);
+                });
+        }
+
+        async function showEditCard(id) {
+            document.getElementById('smsCard').style.display = 'none';
+
+            await axios.get(`/api/sms/${id}`)
+                .then(function (response) {
+                    let sms = response.data;
+                    document.getElementById('id').value = sms.id;
+                    document.getElementById('sender').value = sms.sender;
+                    document.getElementById('receiver').value = sms.receiver;
+                    document.getElementById('receivedDate').value = sms.received_date;
+                    document.getElementById('subject').value = sms.subject;
+                    document.getElementById('content').value = sms.content;
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+
+            document.getElementById('editSmsCard').style.display = 'block';
+        }
+
         function deleteSMS(id) {
-            axios.delete(`/sms/${id}`)
+            axios.delete(`/api/sms/${id}`)
                 .then(() => {
                     location.reload();
                 })
