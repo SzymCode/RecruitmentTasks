@@ -38,7 +38,11 @@ This repository contains my solutions for the recruitment tasks. Each task is or
         DishForm
       </a>
     </td>
-    <td></td>
+    <td>
+      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/fullstack%20developer/LinkhouseBlog">
+        LinkhouseBlog
+      </a>  
+    </td>
   </tr>  
   <tr>
     <td>3.</td>
