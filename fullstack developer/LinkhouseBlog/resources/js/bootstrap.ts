@@ -8,11 +8,11 @@ import 'bootstrap';
 declare const window: Window & typeof globalThis;
 declare global {
     interface Window {
-        axios: any;
+        axios: Axios;
     }
 }
 
-import axios from 'axios';
+import axios, { Axios } from 'axios';
 
 window.axios = axios;
 
