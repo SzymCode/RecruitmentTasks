@@ -4,7 +4,8 @@
     "build": "vite build",
     "dev": "vite",
     "lint": "eslint \"resources/**/**/*.{ts,vue}\" --fix",
-    "write": "prettier --write resources"
+    "write": "prettier --write resources",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.6",
@@ -17,6 +18,7 @@
     "bootstrap": "^5.2.3",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.24.0",
+    "husky": "^9.0.11",
     "laravel-vite-plugin": "^1.0",
     "prettier": "3.2.5",
     "sass": "^1.56.1",
