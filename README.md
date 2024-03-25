@@ -43,9 +43,9 @@ This repository contains my solutions for the recruitment tasks. Each task is or
   <tr>
     <td>3.</td>
     <td>
-      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/backend%20developer/SMSManager">	
-        SMSManager
-      </a>
+      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/backend%20developer/FizzBuzz">
+        FizzBuzz
+      </a>  
     </td>
     <td>      
       <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/DivideToJSON">
@@ -56,7 +56,11 @@ This repository contains my solutions for the recruitment tasks. Each task is or
   </tr>  
   <tr>
     <td>4.</td>
-    <td></td>
+    <td>
+      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/backend%20developer/SMSManager">	
+        SMSManager
+      </a>
+    </td>
     <td>
       <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/frontend%20developer/GiardDesign">
         GiardDesign
