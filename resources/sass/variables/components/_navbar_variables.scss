@@ -1,16 +1,13 @@
 // MyNavbar
 $my-nav-width: 100%;
 $my-nav-height: 123px;
-$my-nav-padding: 39px 20px;
+$my-nav-padding: 28px 20px;
 $my-nav-display: flex;
 $my-nav-align-items: center;
 
-// MyNavbar container
-$my-nav-container-display: flex;
-$my-nav-container-justify-content: space-between;
-
 // Logo
 $logo-height: 30px;
+$logo-margin-bottom: 8px;
 
 // MyNavbar right side
 $my-nav-right-side-display: flex;
@@ -26,3 +23,6 @@ $navbar-toggler-border: none;
 // .nav-link
 $nav-link-font-weight: 600;
 $nav-link-hover-text-decoration: underline;
+
+// Min width 768px
+$my-nav-padding-sm: 38px 60px;

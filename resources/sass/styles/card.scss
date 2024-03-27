@@ -1,0 +1,14 @@
+@import '../variables/components/card_variables';
+
+@import '../variables/base/media_variables';
+
+.articlesCard {
+    margin: $articles-card-margin;
+}
+
+// Min width 768px
+@media (min-width: $min-width-sm) {
+    .articlesCard {
+        margin: $articles-card-margin-sm;
+    }
+}

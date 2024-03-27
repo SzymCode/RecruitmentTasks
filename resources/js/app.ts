@@ -26,8 +26,10 @@ app.component('Button', Button)
 /**
  *  Components
  */
+import Articles from './components/Articles.vue'
 import MyNavbar from './components/MyNavbar.vue'
 
+app.component('articles', Articles)
 app.component('my-navbar', MyNavbar)
 
 /**
