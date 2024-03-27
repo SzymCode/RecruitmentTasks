@@ -8,9 +8,9 @@ const app = createApp({})
 /**
  *  Components
  */
-import ExampleComponent from './components/ExampleComponent.vue'
+import MyNavbar from './components/MyNavbar.vue'
 
-app.component('example-component', ExampleComponent)
+app.component('my-navbar', MyNavbar)
 
 /**
  *  App uses & mount

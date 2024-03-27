@@ -1,8 +1,17 @@
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
 
-// Variables
-@import 'variables';
-
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+// Styles
+@import 'styles/navbar';
+
+// Variables
+@import 'variables/app_variables';
+
+#app {
+    height: $app-height;
+    background-color: $app-bg-color;
+    background-image: $app-bg-image;
+}
