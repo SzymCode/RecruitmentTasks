@@ -3,19 +3,30 @@
 @import '../variables/base/color_variables';
 @import '../variables/base/font_variables';
 
-.myNav {
-    width: $my-nav-width;
-    height: $my-nav-height;
+.navbar {
+    padding: $my-nav-padding;
     background: $primary-bg-color;
-    display: $my-nav-display;
-    align-items: $my-nav-align-items;
 }
-.myNavContainer {
-    display: $my-nav-container-display;
-    justify-content: $my-nav-container-justify-content;
-}
+
 .logo {
     height: $logo-height;
+}
+
+.myNavRightSide {
+    display: $my-nav-right-side-display;
+    gap: $my-nav-right-side-gap;
+}
+nav .collapse {
+    gap: $nav-collapse-gap;
+}
+.navbar-toggler {
+    padding: $navbar-toggler-padding;
+    border: $navbar-toggler-border;
+}
+.navbar-toggler,
+.navbarTogglerIcon {
+    color: $primary-text-color !important;
+    font-size: $font-size-xl;
 }
 .nav-link {
     color: $primary-text-color !important;

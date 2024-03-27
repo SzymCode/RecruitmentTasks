@@ -1,0 +1,12 @@
+@import '../variables/components/icon_variables';
+
+@import '../variables/base/color_variables';
+@import '../variables/base/font_variables';
+
+.pi {
+    cursor: $pi-cursor;
+}
+.searchIcon {
+    color: $primary-text-color;
+    font-size: $font-size-lg;
+}

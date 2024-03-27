@@ -4,7 +4,13 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
+// PrimeIcons
+@import 'primeicons/primeicons.css';
+
 // Styles
+@import 'styles/form';
+@import 'styles/icon';
+@import 'styles/input_text';
 @import 'styles/navbar';
 
 // Variables
