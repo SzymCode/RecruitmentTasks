@@ -9,6 +9,7 @@
     margin-top: $search-form-margin-top;
 }
 
+// Min width 768px
 @media (min-width: $min-width-sm) {
     .searchForm {
         margin-top: $search-form-margin-top-sm;
