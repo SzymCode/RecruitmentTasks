@@ -1,0 +1,27 @@
+@import '../variables/components/navbar_variables';
+
+@import '../variables/base/color_variables';
+@import '../variables/base/font_variables';
+
+.myNav {
+    width: $my-nav-width;
+    height: $my-nav-height;
+    background: $primary-bg-color;
+    display: $my-nav-display;
+    align-items: $my-nav-align-items;
+}
+.myNavContainer {
+    display: $my-nav-container-display;
+    justify-content: $my-nav-container-justify-content;
+}
+.logo {
+    height: $logo-height;
+}
+.nav-link {
+    color: $primary-text-color !important;
+    font-size: $font-size-base;
+    font-weight: $nav-link-font-weight;
+}
+.nav-link:hover {
+    text-decoration: $nav-link-hover-text-decoration;
+}
