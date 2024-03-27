@@ -1,0 +1,16 @@
+@import '../variables/components/form_variables';
+
+@import '../variables/base/media_variables';
+
+.searchForm {
+    display: $search-form-display;
+    align-items: $search-form-align-items;
+    gap: $search-form-gap;
+    margin-top: $search-form-margin-top;
+}
+
+@media (min-width: $min-width-sm) {
+    .searchForm {
+        margin-top: $search-form-margin-top-sm;
+    }
+}
