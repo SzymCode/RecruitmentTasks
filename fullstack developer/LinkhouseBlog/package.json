@@ -26,5 +26,8 @@
         "vite": "5.0",
         "vue": "3.2.37"
     },
-    "type": "module"
+    "type": "module",
+    "dependencies": {
+        "primevue": "^3.50.0"
+    }
 }
