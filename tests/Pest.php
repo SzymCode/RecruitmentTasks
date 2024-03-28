@@ -11,10 +11,11 @@
 |
 */
 
-uses(
-    Tests\TestCase::class,
-    // Illuminate\Foundation\Testing\RefreshDatabase::class,
-)->in('Feature');
+uses(Tests\TestCase::class)
+    ->beforeEach(function () {
+        $this->artisan('migrate:fresh');
+    })
+    ->in('Feature', 'Unit');
 
 /*
 |--------------------------------------------------------------------------
