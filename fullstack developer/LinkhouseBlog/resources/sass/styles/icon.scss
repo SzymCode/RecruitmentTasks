@@ -7,6 +7,9 @@
     cursor: $pi-cursor;
 }
 .searchIcon {
-    color: $secondary-text-color;
     font-size: $font-size-lg;
+    transition: $search-icon-transition;
+}
+.searchIcon:hover {
+    color: $orange-text-color;
 }

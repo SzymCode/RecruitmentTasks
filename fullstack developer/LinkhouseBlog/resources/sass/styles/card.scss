@@ -2,13 +2,25 @@
 
 @import '../variables/base/media_variables';
 
+.headerContainer {
+    display: $header-container-display;
+    padding: $header-container-padding;
+}
 .p-card-header {
     padding-top: $p-card-header-padding-top;
-    padding-left: $p-card-header-padding-left;
     margin-bottom: $p-card-header-margin-bottom;
 }
 .articlesCard {
     margin: $articles-card-margin;
+}
+
+// Min width 600px
+@media (min-width: $min-width-xs) {
+    .headerContainer {
+        display: $header-container-display-xs;
+        justify-content: $header-container-justify-content-xs;
+        padding: $header-container-padding-xs;
+    }
 }
 
 // Min width 768px
