@@ -19,10 +19,6 @@
                         <a class="nav-link" href="/"> Articles </a>
                     </li>
                 </ul>
-                <form class="searchForm" id="searchForm">
-                    <InputText class="searchInput" placeholder="Search..." />
-                    <i class="pi pi-search searchIcon" />
-                </form>
             </div>
         </div>
     </nav>

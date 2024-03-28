@@ -2,7 +2,17 @@
     <div class="container">
         <Card class="articlesCard">
             <template #header>
-                <h2>Articles</h2>
+                <div class="headerContainer">
+                    <h2>Articles</h2>
+
+                    <form class="searchForm" id="searchForm">
+                        <InputText
+                            class="searchInput"
+                            placeholder="Search..."
+                        />
+                        <i class="pi pi-search searchIcon" />
+                    </form>
+                </div>
             </template>
             <template #content>
                 <DataTable

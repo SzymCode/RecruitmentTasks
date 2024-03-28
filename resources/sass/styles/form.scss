@@ -6,12 +6,12 @@
     display: $search-form-display;
     align-items: $search-form-align-items;
     gap: $search-form-gap;
-    margin-top: $search-form-margin-top;
+    margin: $search-form-margin-y $search-form-margin-x;
 }
 
-// Min width 768px
-@media (min-width: $min-width-sm) {
+// Min width 600px
+@media (min-width: $min-width-xs) {
     .searchForm {
-        margin-top: $search-form-margin-top-sm;
+        margin: $search-form-margin-xs;
     }
 }

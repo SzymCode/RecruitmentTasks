@@ -1,5 +1,6 @@
 @import '../variables/components/paginator_variables';
 
+@import '../variables/base/color_variables';
 @import '../variables/base/font_variables';
 
 .p-paginator {
@@ -12,4 +13,10 @@
     min-height: $paginator-element-dimensions;
     max-width: $paginator-element-dimensions;
     min-width: $paginator-element-dimensions;
+    transition: $paginator-element-transition;
+}
+
+.p-paginator-element:hover {
+    color: $orange-text-color;
+    background-color: $secondary-orange-bg-color;
 }
