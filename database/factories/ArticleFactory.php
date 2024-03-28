@@ -26,7 +26,7 @@ class ArticleFactory extends Factory
             'title' => $this->faker->sentence,
             'link' => $this->faker->url,
             'description' => $this->faker->paragraph,
-            'category' => $this->faker->word,
+            'category' => json_encode($this->faker->words(2)),
             'pub_date' => $this->faker->dateTime()->format('Y-m-d H:i:s'),
         ];
     }

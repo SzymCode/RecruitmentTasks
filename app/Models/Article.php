@@ -34,6 +34,17 @@ class Article extends Model implements ArticleShouldReceiveFields
         'pub_date'
     ];
 
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'category' => 'array',
+    ];
+
+
     public function getId(): int
     {
         return $this->id;
