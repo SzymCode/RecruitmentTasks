@@ -13,6 +13,7 @@ import Card from 'primevue/card'
 import Column from 'primevue/column'
 import DataTable from 'primevue/datatable'
 import Dialog from 'primevue/dialog'
+import Dropdown from 'primevue/dropdown'
 import InputText from 'primevue/inputtext'
 
 // eslint-disable-next-line vue/no-reserved-component-names
@@ -21,6 +22,7 @@ app.component('Button', Button)
     .component('Column', Column)
     .component('DataTable', DataTable)
     .component('Dialog', Dialog)
+    .component('Dropdown', Dropdown)
     .component('InputText', InputText)
 
 /**
