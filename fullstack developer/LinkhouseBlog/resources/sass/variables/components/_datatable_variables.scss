@@ -1,8 +1,6 @@
-$p-column-title-whitespace: nowrap;
+$td-cursor: pointer;
+$td-whitespace: nowrap;
+$td-overflow: hidden;
+$td-padding-right: 30px;
+
 $tablet-desktop-columns-display: none;
-
-// Min width 768px
-$tablet-column-display-sm: table-cell;
-
-// Min width 1200px
-$desktop-column-display-xl: table-cell;

@@ -1,31 +1,14 @@
 @import '../variables/components/datatable_variables';
 
 @import '../variables/base/color_variables';
-@import '../variables/base/media_variables';
 
-.p-column-title {
-    white-space: $p-column-title-whitespace;
+td {
+    cursor: $td-cursor;
+    white-space: $td-whitespace !important;
+    overflow: $td-overflow !important;
+    padding-right: $td-padding-right;
 }
 .p-highlight,
 .p-highlight .p-icon {
     color: $orange-text-color;
-}
-
-.tabletColumn,
-.desktopColumn {
-    display: $tablet-desktop-columns-display;
-}
-
-// Min width 768px
-@media (min-width: $min-width-sm) {
-    .tabletColumn {
-        display: $tablet-column-display-sm;
-    }
-}
-
-// Min width 1200px
-@media (min-width: $min-width-xl) {
-    .desktopColumn {
-        display: $desktop-column-display-xl;
-    }
 }

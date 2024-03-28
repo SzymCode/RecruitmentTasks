@@ -15,7 +15,8 @@ class ArticleTransformer extends TransformerAbstract
             'title' => $model->getTitle(),
             'description' => $model->getDescription(),
             'link' => $model->getLink(),
-            'pub_date' => $model->getPubDate(),
+            'category' => $model->getCategory(),
+            'pub_date' => $model->getPubDate()
         ];
     }
 }
