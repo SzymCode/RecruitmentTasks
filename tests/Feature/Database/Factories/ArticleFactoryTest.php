@@ -13,7 +13,7 @@ it('creates record successfully', function () {
         'title' => $article->title,
         'link' => $article->link,
         'description' => $article->description,
-        'category' => $article->category,
+        'category' => json_encode($article->category),
         'pub_date' => $article->pub_date,
     ]);
 });
@@ -29,7 +29,7 @@ it('creates multiple records successfully', function () {
             'title' => $article->title,
             'link' => $article->link,
             'description' => $article->description,
-            'category' => $article->category,
+            'category' => json_encode($article->category),
             'pub_date' => $article->pub_date,
         ]);
     }

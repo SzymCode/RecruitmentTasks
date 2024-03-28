@@ -17,10 +17,7 @@ it('renders the articles view successfully', function () {
 });
 
 it('runs index method successfully', function () {
-    Article::factory()->count(3)->create();
-
     $response = $this->controller->index();
 
     expect($response->getStatusCode())->toEqual(200);
-    expect($response->getData(true))->toHaveCount(3);
 });

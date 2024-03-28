@@ -2,20 +2,38 @@
 
 namespace App\Services;
 
-use App\Models\Article;
 use App\Transformers\ArticleTransformer;
-use Illuminate\Http\JsonResponse;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 
 readonly class ArticleService
 {
-    public function __construct(private Article $model) {}
-
-    public function getAll(): array
+    public function getAll(): array|GuzzleException
     {
-        $model = $this->model->all();
+        $client = new Client();
+
+        $response = $client->get('https://linkhouse.pl/feed/');
+
+        $xmlData = $response->getBody()->getContents();
+        $articles = [];
+
+        $xmlObject = simplexml_load_string($xmlData);
+
+        foreach ($xmlObject->channel->item as $item) {
+            $article = [
+                'guid' => (string) $item->guid,
+                'title' => (string) $item->title,
+                'link' => (string) $item->link,
+                'description' => (string) $item->description,
+                'category' => (string) $item->category,
+                'pub_date' => (string) $item->pubDate,
+            ];
+
+            $articles[] = $article;
+        }
 
         return fractal()
-            ->collection($model)
+            ->collection($articles)
             ->transformWith(new ArticleTransformer())
             ->toArray()['data'];
     }

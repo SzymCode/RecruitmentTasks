@@ -29,12 +29,6 @@
                         class="guidColumn"
                     />
                     <Column
-                        field="link"
-                        :sortable="true"
-                        header="Link"
-                        class="linkColumn"
-                    />
-                    <Column
                         field="pub_date"
                         :sortable="true"
                         header="Publication Date"
