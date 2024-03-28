@@ -2,6 +2,11 @@
 
 @import '../variables/base/media_variables';
 
+.p-card-header {
+    padding-top: $p-card-header-padding-top;
+    padding-left: $p-card-header-padding-left;
+    margin-bottom: $p-card-header-margin-bottom;
+}
 .articlesCard {
     margin: $articles-card-margin;
 }

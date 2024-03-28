@@ -1,0 +1,15 @@
+@import '../variables/components/paginator_variables';
+
+@import '../variables/base/font_variables';
+
+.p-paginator {
+    font-size: $font-size-small;
+    padding-top: $paginator-padding-top;
+    margin-bottom: $paginator-margin-bottom;
+}
+.p-paginator-element {
+    max-height: $paginator-element-dimensions;
+    min-height: $paginator-element-dimensions;
+    max-width: $paginator-element-dimensions;
+    min-width: $paginator-element-dimensions;
+}

@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('link');
             $table->text('description');
             $table->string('pub_date');
-            $table->json('category')->nullable();
+            $table->string('category')->nullable();
             $table->timestamps();
         });
     }
