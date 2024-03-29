@@ -1,0 +1,6 @@
+@import '../variables/components/modal_variables';
+
+.showModal {
+    max-width: $show-modal-max-width;
+    margin: $show-modal-margin;
+}

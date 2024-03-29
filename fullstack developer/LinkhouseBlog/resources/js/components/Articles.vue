@@ -33,6 +33,7 @@
                     stripedRows
                     paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
                     currentPageReportTemplate="{first} to {last} of {totalRecords}"
+                    @row-click="openModal($event.data)"
                 >
                     <Column
                         field="title"
@@ -62,14 +63,41 @@
             </template>
         </Card>
     </div>
+    <Dialog
+        modal
+        :visible="visibleShow"
+        v-if="selectedArticle"
+        class="showModal"
+    >
+        <template #header>
+            <h3>{{ selectedArticle.title }}</h3>
+        </template>
+        <div>
+            <p><strong>Guid:</strong> {{ selectedArticle.guid }}</p>
+            <p>
+                <strong>Description:</strong> {{ selectedArticle.description }}
+            </p>
+            <p>
+                <strong>Publication Date:</strong>
+                {{ selectedArticle.pub_date }}
+            </p>
+            <p><strong>Category:</strong> {{ selectedArticle.category }}</p>
+        </div>
+        <a :href="selectedArticle.link">{{ selectedArticle.link }}</a>
+
+        <template #footer>
+            <Button @click="closeModal" label="Close" class="myButton" />
+        </template>
+    </Dialog>
 </template>
 
 <script setup lang="ts">
-import { articleApiMethods } from '../utils'
+import { articleApiMethods, useDialog } from '../utils'
 import { ref, onMounted } from 'vue'
 import { ArticleInterface } from '@/js/types'
 
 const { results: fetchedArticles, getAllArticles } = articleApiMethods()
+const { visibleShow, selectedArticle, openModal, closeModal } = useDialog()
 
 const searchTerm = ref('')
 const articles = ref<ArticleInterface[]>([])

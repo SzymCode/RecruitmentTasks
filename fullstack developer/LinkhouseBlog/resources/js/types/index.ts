@@ -3,6 +3,7 @@
  */
 export { ArticleApiMethodsInterface as ArticleApiMethodsInterface } from './handleInterfaces'
 export { ArticleInterface as ArticleInterface } from './handleInterfaces'
+export { UseDialogInterface as UseDialogInterface } from './handleInterfaces'
 
 /**
  *  Functions types

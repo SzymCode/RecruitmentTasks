@@ -8,12 +8,15 @@
 @import 'primeicons/primeicons.css';
 
 // Styles
+@import 'styles/button';
 @import 'styles/card';
 @import 'styles/container';
 @import 'styles/datatable';
 @import 'styles/dropdown';
 @import 'styles/form';
+@import 'styles/icon';
 @import 'styles/input_text';
+@import 'styles/modal';
 @import 'styles/navbar';
 @import 'styles/paginator';
 
@@ -21,7 +24,8 @@
 @import 'variables/app_variables';
 
 #app {
-    height: $app-height;
+    min-height: $app-height;
     background-color: $app-bg-color;
     background-image: $app-bg-image;
+    padding-bottom: $app-padding-bottom;
 }

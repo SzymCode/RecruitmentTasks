@@ -6,7 +6,7 @@ import {
     GetAllArticlesAxiosFunctionType,
     GetAllArticlesFunctionType,
     ArticleInterface,
-} from '../../types'
+} from '@/js/types'
 
 export default function articleApiMethods(): ArticleApiMethodsInterface {
     const results: Ref<ArticleInterface[] | undefined> = ref([])
