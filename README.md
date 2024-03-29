@@ -77,6 +77,12 @@ Uwagi:
 
 - First make sure u have installed latest versions of [PHP](https://www.php.net), [Laravel](https://laravel.com/), [Vue.js](https://vuejs.org/), [Node.js](https://nodejs.org/en), [npm](https://www.npmjs.com), [XAMPP](https://www.apachefriends.org/pl/index.html) and [Composer](https://getcomposer.org/)
 
+- I recommend use [nvm](https://github.com/nvm-sh/nvm/blob/master/README.md) for install latest supported versions of [Node.js](https://nodejs.org/en) and [npm](https://www.npmjs.com), 
+
+```
+nvm use --lts
+```
+
 - Clone this repository from linkhouse-blog branch.
 
 ```
@@ -107,6 +113,12 @@ create database linkhouse_blog
 <details><summary> &nbsp;<img src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/97_Docker_logo_logos-512.png" height=20/> &nbsp;Docker </summary> 
 
 - First make sure u have installed latest versions of [PHP](https://www.php.net), [Laravel](https://laravel.com/), [Vue.js](https://vuejs.org/), [Node.js](https://nodejs.org/en), [npm](https://www.npmjs.com), [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com)
+
+- I recommend use [nvm](https://github.com/nvm-sh/nvm/blob/master/README.md) for install latest supported versions of [Node.js](https://nodejs.org/en) and [npm](https://www.npmjs.com), 
+
+```
+nvm use --lts
+```
 
 - Clone this repository from linkhouse-blog branch.
 
@@ -176,7 +188,7 @@ Possible problem:
 <details><summary> Migrations </summary>
 <br>
 
-Run migrations with seed
+Run migrations (optional with seed)
 ```bash
 php artisan migrate:fresh --seed
 ```
@@ -189,6 +201,8 @@ php artisan migrate:fresh --seed
     
 Run all backend tests:
 ```bash
+docker compose exec laravel.test bash    # this command open sail container's bash, then run command bellow
+
 ./vendor/bin/pest
 ```
 
