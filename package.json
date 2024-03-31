@@ -9,7 +9,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prepare": "husky install",
-    "write": "npx prettier src --write"
+    "write": "npx prettier src --write",
+    "check": "npx prettier src --check"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.2",
