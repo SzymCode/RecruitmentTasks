@@ -56,7 +56,11 @@ This repository contains my solutions for the recruitment tasks. Each task is or
         DivideToJSON
       </a>  
     </td>
-    <td></td>
+    <td>
+      <a href="https://github.com/SzymCode/RecruitmentTasks/tree/main/fullstack%20developer/TagManager">
+        TagManager
+      </a>  
+    </td>
   </tr>  
   <tr>
     <td>4.</td>
