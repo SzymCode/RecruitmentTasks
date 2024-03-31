@@ -1,30 +1,31 @@
-# React + TypeScript + Vite
+# TagManager <div> [![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white&style=plastic)](https://www.typescriptlang.org) [![React](https://shields.io/badge/React-black?logo=react&style=for-the-badge%22)](https://react.dev) [![Redux](https://img.shields.io/badge/Redux-764ABC?logo=redux&logoColor=white)](https://redux.js.org) [![Chakra UI](https://img.shields.io/badge/Chakra%20UI-319795?logo=chakra-ui&logoColor=white)](https://chakra-ui.com/) </div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a recruitment task project for [Mediporta](https://www.mediporta.pl) company.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<br>
+<details><summary> 📖 Problem description </summary>
+<br>
+    
+```
+Treść zadania: Przygotować w React interfejs użytkownika przeglądarki tagów udostępnianych przez API StackOverflow (https://api.stackexchange.com/docs).
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Założenia projektu:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- stronicowana tabela lub lista tagów wraz liczbą powiązanych postów (pole count)
+- liczba elementów na stronie konfigurowalna przez pole liczbowe nad tabelą/listą
+- wybór pola i kierunku sortowania przez element UI własnego wyboru/projektu
+- przygotować odpowiednie stany dla etapu ładowania danych i błędów przy pobieraniu
+- wykorzystać gotową bibliotekę komponentów UI, np. MUI
+- wykorzystać gotowe biblioteki do zarządzania stanem i pobierania danych (wybór wedle uznania, stosownie do stopnia komplikacji projektu i z myślą o jak najszybszej realizacji zadania)
+- przygotować Storybook do prezentacji wykorzystanych komponentów składowych aplikacji
+- rozwiązanie opublikować w repozytorium GitHub
+- całość powinna się uruchamiać wyłącznie po wykonaniu komend "npm ci", "npm start", "npm run storybook"
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+<br>
+</details>
+
+
