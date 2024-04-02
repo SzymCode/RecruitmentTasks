@@ -1,31 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { CircularProgress, Center, Highlight } from '@chakra-ui/react'
 
 import TagTable from './components/TagTable'
+import { useTagsApiRequest } from './utils'
+import { API_URL } from './constants'
 
-const API_URL =
-    'https://api.stackexchange.com/2.3/tags?order=desc&sort=popular&site=stackoverflow'
-
-const App: React.FC = () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const [tags, setTags] = useState<any[]>([])
-    const [loading, setLoading] = useState<boolean>(true)
-    const [error, setError] = useState<string | null>(null)
-
-    useEffect(() => {
-        fetch(API_URL)
-            .then((response) => {
-                return response.json()
-            })
-            .then((data) => {
-                setTags(data.items)
-                setLoading(false)
-            })
-            .catch((error) => {
-                setError(error.toString())
-                setLoading(false)
-            })
-    }, [])
+export default function App(): React.JSX.Element {
+    const { tags, error, loading } = useTagsApiRequest(API_URL)
 
     return (
         <Center h="100vh">
@@ -43,11 +24,21 @@ const App: React.FC = () => {
                 >
                     {error}
                 </Highlight>
-            ) : (
+            ) : tags ? (
                 <TagTable tags={tags} />
+            ) : (
+                <Highlight
+                    styles={{
+                        px: '3',
+                        py: '2',
+                        rounded: 'full',
+                        bg: 'red.100',
+                    }}
+                    query="Cant find error"
+                >
+                    Cant find error
+                </Highlight>
             )}
         </Center>
     )
 }
-
-export default App
