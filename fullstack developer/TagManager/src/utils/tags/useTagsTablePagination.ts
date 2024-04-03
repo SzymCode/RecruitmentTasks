@@ -28,6 +28,8 @@ export default function useTagsTablePagination(
             const parsedValue = parseInt(value, 10)
             if (!isNaN(parsedValue)) {
                 dispatch(setItemsPerPage(parsedValue))
+                const newTotalPages = Math.ceil(tags.length / parsedValue)
+                dispatch(setTotalPages(newTotalPages))
             }
         }
     }
