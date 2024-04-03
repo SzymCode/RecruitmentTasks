@@ -1,6 +1,7 @@
 import { ReduxDataStateInterface } from '@/types'
 
 export const initialDataState: ReduxDataStateInterface = {
+    itemsPerPage: 10,
     tags: null,
     loading: true,
     error: null,

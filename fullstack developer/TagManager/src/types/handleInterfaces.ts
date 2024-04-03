@@ -1,4 +1,5 @@
 import {
+    SET_ITEMS_PER_PAGE,
     SET_CURRENT_PAGE,
     SET_TOTAL_PAGES,
     SET_ERROR,
@@ -9,6 +10,10 @@ import {
 /**
  *  Actions
  */
+export interface SetItemsPerPageActionInterface {
+    type: typeof SET_ITEMS_PER_PAGE
+    payload: number
+}
 export interface SetCurrentPageActionInterface {
     type: typeof SET_CURRENT_PAGE
     payload: number
@@ -53,12 +58,15 @@ export interface TablePaginationInterface {
     currentTags?: TagInterface[]
     handlePrevPage: () => void
     handleNextPage: () => void
+    handleChangeItemsPerPage: (value: string) => void
+    itemsPerPage: number | null
 }
 
 /**
  *  Redux data
  */
 export interface ReduxDataStateInterface {
+    itemsPerPage: number | null
     tags: TagInterface[] | null
     loading: boolean
     error: string | null

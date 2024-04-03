@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 
 import { ActionTypes, ReduxDataStateInterface } from '@/types'
 import {
+    SET_ITEMS_PER_PAGE,
     SET_TAGS,
     SET_LOADING,
     SET_ERROR,
@@ -15,6 +16,15 @@ const mainReducer = (
     action: ActionTypes
 ): ReduxDataStateInterface => {
     switch (action.type) {
+        case SET_ITEMS_PER_PAGE:
+            return {
+                ...state,
+                itemsPerPage:
+                    typeof action.payload === 'number' ||
+                    action.payload === null
+                        ? action.payload
+                        : state.itemsPerPage,
+            }
         case SET_TAGS:
             return {
                 ...state,

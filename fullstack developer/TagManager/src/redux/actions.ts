@@ -4,6 +4,7 @@ import {
     SetLoadingActionInterface,
     SetTagsActionInterface,
     SetTotalPagesActionInterface,
+    SetItemsPerPageActionInterface,
     TagInterface,
 } from '@/types'
 import {
@@ -12,8 +13,19 @@ import {
     SET_ERROR,
     SET_LOADING,
     SET_TAGS,
+    SET_ITEMS_PER_PAGE,
 } from '@/constants'
 
+export function setItemsPerPage(
+    itemsPerPage: number
+): SetItemsPerPageActionInterface {
+    return {
+        type: SET_ITEMS_PER_PAGE,
+        payload: itemsPerPage,
+    }
+}
+
+// Your existing action creators
 export function setCurrentPage(
     currentPage: number
 ): SetCurrentPageActionInterface {
