@@ -61,8 +61,14 @@ npm ci
 <details><summary> 🚀 Run </summary>
 <br>
 
-- root directory:
+- run project:
 
 ```bash
 npm run dev
 ```
+
+- StoryBook:
+```bash
+npm run storybook
+```
+
