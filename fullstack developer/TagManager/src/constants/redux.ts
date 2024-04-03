@@ -1,4 +1,4 @@
-import { ReduxDataStateInterface } from '../types'
+import { ReduxDataStateInterface } from '@/types'
 
 export const initialDataState: ReduxDataStateInterface = {
     tags: null,

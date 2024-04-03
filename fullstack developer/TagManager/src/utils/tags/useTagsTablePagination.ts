@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { AppDispatch, RootState } from '../../redux'
-import { setCurrentPage, setTotalPages } from '../../redux'
-import { TablePaginationInterface, TagInterface } from '../../types'
+import { TablePaginationInterface, TagInterface } from '@/types'
+import { AppDispatch, RootState, setCurrentPage, setTotalPages } from '@/redux'
 
 export default function useTagsTablePagination(
     tags: TagInterface[],

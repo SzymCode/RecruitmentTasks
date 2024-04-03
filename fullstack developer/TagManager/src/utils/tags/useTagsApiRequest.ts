@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { RootState, AppDispatch } from '../../redux'
-import { setLoading, setError, setTags } from '../../redux'
-import { TagsApiInterface } from '../../types'
+import { TagsApiInterface } from '@/types'
+import { RootState, AppDispatch, setLoading, setError, setTags } from '@/redux'
 
 export default function useTagsApiRequest(url: string): TagsApiInterface {
     const dispatch = useDispatch<AppDispatch>()
