@@ -1,2 +1,2 @@
 web: heroku-php-apache2 public/
-release: yes yes |php artisan migrate:fresh
+release: php artisan migrate:fresh --force
