@@ -30,3 +30,39 @@ Założenia projektu:
 </details>
 
 
+
+<details><summary> 🛠️ Installation </summary>
+    
+- First make sure u have installed latest versions of [Node.js](https://nodejs.org/en) and [npm](https://www.npmjs.com)
+
+- I recommend use [nvm](https://github.com/nvm-sh/nvm/blob/master/README.md) for install latest supported versions of [Node.js](https://nodejs.org/en) and [npm](https://www.npmjs.com), 
+
+```
+nvm use --lts
+```
+
+- Clone this repository from tag-manager branch.
+
+```
+git clone -b tag-manager https://github.com/SzymCode/RecruitmentTasks.git
+```
+
+- Install modules in root directory.
+
+```bash
+npm ci
+```
+
+### **Make sure u have installed all modules!**
+<br>
+</details>
+
+
+<details><summary> 🚀 Run </summary>
+<br>
+
+- root directory:
+
+```bash
+npm run dev
+```
