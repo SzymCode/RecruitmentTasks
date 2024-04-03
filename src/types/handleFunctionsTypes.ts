@@ -1,4 +1,6 @@
 import {
+    SetSortByActionInterface,
+    SetSortOrderActionInterface,
     SetCurrentPageActionInterface,
     SetErrorActionInterface,
     SetLoadingActionInterface,
@@ -12,3 +14,9 @@ export type ActionTypes =
     | SetErrorActionInterface
     | SetCurrentPageActionInterface
     | SetTotalPagesActionInterface
+    | SetSortByActionInterface
+    | SetSortOrderActionInterface
+
+export type SortActionTypes =
+    | SetSortByActionInterface
+    | SetSortOrderActionInterface

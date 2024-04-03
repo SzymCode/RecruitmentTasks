@@ -6,6 +6,7 @@ import {
     SetTotalPagesActionInterface,
     SetItemsPerPageActionInterface,
     TagInterface,
+    SortActionTypes,
 } from '@/types'
 import {
     SET_CURRENT_PAGE,
@@ -14,7 +15,19 @@ import {
     SET_LOADING,
     SET_TAGS,
     SET_ITEMS_PER_PAGE,
+    SET_SORT_BY,
+    SET_SORT_ORDER,
 } from '@/constants'
+
+export const setSortBy = (sortBy: string | null): SortActionTypes => ({
+    type: SET_SORT_BY,
+    payload: sortBy,
+})
+
+export const setSortOrder = (sortOrder: 'asc' | 'desc'): SortActionTypes => ({
+    type: SET_SORT_ORDER,
+    payload: sortOrder,
+})
 
 export function setItemsPerPage(
     itemsPerPage: number

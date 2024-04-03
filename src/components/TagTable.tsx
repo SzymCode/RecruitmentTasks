@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react'
 
 import { TagInterface, TagTableInterface } from '@/types'
-import { useTagsTablePagination } from '@/utils'
+import { useSortTags, useTagsTablePagination } from '@/utils'
 
 export default function TagTable({
     tags,
@@ -26,11 +26,13 @@ export default function TagTable({
         currentPage,
         totalPages,
         currentTags,
-        handlePrevPage,
-        handleNextPage,
         itemsPerPage,
         handleChangeItemsPerPage,
+        handlePrevPage,
+        handleNextPage,
     } = useTagsTablePagination(tags)
+
+    const { handleSortBy, sortBy, sortOrder, sortTags } = useSortTags()
 
     return (
         <VStack
@@ -65,12 +67,30 @@ export default function TagTable({
                     >
                         <Thead>
                             <Tr>
-                                <Th>Tag Name</Th>
-                                <Th>Count</Th>
+                                <Th
+                                    onClick={() => handleSortBy('name')}
+                                    cursor="pointer"
+                                >
+                                    Tag Name{' '}
+                                    {sortBy === 'name' &&
+                                        (sortOrder && sortOrder === 'asc'
+                                            ? '↑'
+                                            : '↓')}
+                                </Th>
+                                <Th
+                                    onClick={() => handleSortBy('count')}
+                                    cursor="pointer"
+                                >
+                                    Count{' '}
+                                    {sortBy === 'count' &&
+                                        (sortOrder && sortOrder === 'asc'
+                                            ? '↑'
+                                            : '↓')}
+                                </Th>
                             </Tr>
                         </Thead>
                         <Tbody>
-                            {currentTags!.map((tag: TagInterface) => (
+                            {sortTags(currentTags!).map((tag: TagInterface) => (
                                 <Tr key={tag.name}>
                                     <Td padding="10px 20px">{tag.name}</Td>
                                     <Td padding="10px 20px">{tag.count}</Td>

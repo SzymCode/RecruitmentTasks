@@ -7,4 +7,6 @@ export const initialDataState: ReduxDataStateInterface = {
     error: null,
     currentPage: 1,
     totalPages: 1,
+    sortBy: null,
+    sortOrder: null,
 }

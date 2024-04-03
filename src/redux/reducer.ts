@@ -8,6 +8,8 @@ import {
     SET_ERROR,
     SET_CURRENT_PAGE,
     SET_TOTAL_PAGES,
+    SET_SORT_BY,
+    SET_SORT_ORDER,
     initialDataState,
 } from '@/constants'
 
@@ -62,6 +64,23 @@ const mainReducer = (
                     typeof action.payload === 'number'
                         ? action.payload
                         : state.totalPages,
+            }
+        case SET_SORT_BY:
+            return {
+                ...state,
+                sortBy:
+                    typeof action.payload === 'string' ||
+                    typeof action.payload === 'number'
+                        ? String(action.payload)
+                        : null,
+            }
+        case SET_SORT_ORDER:
+            return {
+                ...state,
+                sortOrder:
+                    action.payload === 'asc' || action.payload === 'desc'
+                        ? action.payload
+                        : null,
             }
         default:
             return state

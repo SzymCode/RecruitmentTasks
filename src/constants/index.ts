@@ -17,6 +17,12 @@ export { SET_ERROR } from './actions'
 export { SET_LOADING } from './actions'
 
 /**
+ *  Sort
+ */
+export { SET_SORT_BY } from './actions'
+export { SET_SORT_ORDER } from './actions'
+
+/**
  *  Tags
  */
 export { SET_TAGS } from './actions'

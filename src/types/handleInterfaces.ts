@@ -1,4 +1,6 @@
 import {
+    SET_SORT_BY,
+    SET_SORT_ORDER,
     SET_ITEMS_PER_PAGE,
     SET_CURRENT_PAGE,
     SET_TOTAL_PAGES,
@@ -10,6 +12,16 @@ import {
 /**
  *  Actions
  */
+export interface SetSortByActionInterface {
+    type: typeof SET_SORT_BY
+    payload: string | null
+}
+
+export interface SetSortOrderActionInterface {
+    type: typeof SET_SORT_ORDER
+    payload: 'asc' | 'desc'
+}
+
 export interface SetItemsPerPageActionInterface {
     type: typeof SET_ITEMS_PER_PAGE
     payload: number
@@ -63,6 +75,16 @@ export interface TablePaginationInterface {
 }
 
 /**
+ *  Sort
+ */
+export interface SortTagsInterface {
+    sortBy: string | null
+    sortOrder: 'asc' | 'desc' | null
+    sortTags: (tags: TagInterface[]) => TagInterface[]
+    handleSortBy: (field: string) => void
+}
+
+/**
  *  Redux data
  */
 export interface ReduxDataStateInterface {
@@ -72,6 +94,8 @@ export interface ReduxDataStateInterface {
     error: string | null
     currentPage: number
     totalPages: number
+    sortBy: string | null
+    sortOrder: 'asc' | 'desc' | null
 }
 
 /**
