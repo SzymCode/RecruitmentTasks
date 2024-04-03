@@ -20,8 +20,8 @@ import { TagInterface, TagTableInterface } from '@/types'
 import { useSortTags, useTagsTablePagination } from '@/utils'
 
 export default function TagTable({
-                                     tags,
-                                 }: TagTableInterface): React.JSX.Element {
+    tags,
+}: TagTableInterface): React.JSX.Element {
     const {
         currentPage,
         totalPages,
@@ -94,7 +94,12 @@ export default function TagTable({
                             </Tr>
                         </Thead>
                         <Tbody>
-                            {sortTags(currentTags!).map((tag: TagInterface) => (
+                            {sortTags(
+                                currentPage,
+                                itemsPerPage!,
+                                tags,
+                                currentTags
+                            ).map((tag: TagInterface) => (
                                 <Tr key={tag.name}>
                                     <Td padding="10px 20px">{tag.name}</Td>
                                     <Td padding="10px 20px">{tag.count}</Td>
