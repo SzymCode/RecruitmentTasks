@@ -2,6 +2,7 @@
 
 This is a recruitment task project for [Mediporta](https://www.mediporta.pl) company.
 
+[Preview!](http://tagmanager.szymco.de)
 
 <br>
 <details><summary> 📖 Problem description </summary>
