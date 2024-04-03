@@ -10,6 +10,7 @@ export type { ActionTypes as ActionTypes } from './handleFunctionsTypes.ts'
 /**
  *  Actions
  */
+export type { SetItemsPerPageActionInterface as SetItemsPerPageActionInterface } from './handleInterfaces.ts'
 export type { SetCurrentPageActionInterface as SetCurrentPageActionInterface } from './handleInterfaces.ts'
 export type { SetTotalPagesActionInterface as SetTotalPagesActionInterface } from './handleInterfaces.ts'
 export type { SetErrorActionInterface as SetErrorActionInterface } from './handleInterfaces.ts'

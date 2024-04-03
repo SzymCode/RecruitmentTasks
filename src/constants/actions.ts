@@ -1,3 +1,4 @@
+export const SET_ITEMS_PER_PAGE: string = 'SET_ITEMS_PER_PAGE'
 export const SET_CURRENT_PAGE: string = 'SET_CURRENT_PAGE'
 export const SET_TOTAL_PAGES: string = 'SET_TOTAL_PAGES'
 export const SET_ERROR: string = 'SET_ERROR'

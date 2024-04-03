@@ -6,6 +6,7 @@ export { API_URL } from './api'
 /**
  *  Pages
  */
+export { SET_ITEMS_PER_PAGE } from './actions'
 export { SET_CURRENT_PAGE } from './actions'
 export { SET_TOTAL_PAGES } from './actions'
 

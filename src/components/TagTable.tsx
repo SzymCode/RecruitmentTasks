@@ -13,12 +13,11 @@ import {
     Card,
     Heading,
     Center,
+    Input,
 } from '@chakra-ui/react'
 
 import { TagInterface, TagTableInterface } from '@/types'
 import { useTagsTablePagination } from '@/utils'
-
-const ITEMS_PER_PAGE: number = 10
 
 export default function TagTable({
     tags,
@@ -29,12 +28,32 @@ export default function TagTable({
         currentTags,
         handlePrevPage,
         handleNextPage,
-    } = useTagsTablePagination(tags, ITEMS_PER_PAGE)
+        itemsPerPage,
+        handleChangeItemsPerPage,
+    } = useTagsTablePagination(tags)
 
     return (
-        <VStack align="stretch" spacing="4" backgroundColor="white" padding="4">
+        <VStack
+            align="stretch"
+            spacing="4"
+            backgroundColor="white"
+            padding="4"
+            position="absolute"
+            top="100px"
+            paddingBottom="100px"
+        >
             <Card padding="20px 80px" gap="20px">
                 <Heading margin="auto">Tags</Heading>
+                <Center>
+                    <Input
+                        type="number"
+                        value={itemsPerPage === null ? '' : itemsPerPage}
+                        onChange={(e) =>
+                            handleChangeItemsPerPage(e.target.value)
+                        }
+                        placeholder="Items per page"
+                    />
+                </Center>
                 <Center>
                     <Table
                         variant="striped"

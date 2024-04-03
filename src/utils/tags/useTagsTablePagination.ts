@@ -1,25 +1,36 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { setItemsPerPage, setCurrentPage, setTotalPages } from '@/redux'
 import { TablePaginationInterface, TagInterface } from '@/types'
-import { AppDispatch, RootState, setCurrentPage, setTotalPages } from '@/redux'
+import { AppDispatch, RootState } from '@/redux'
 
 export default function useTagsTablePagination(
-    tags: TagInterface[],
-    ITEMS_PER_PAGE: number
+    tags: TagInterface[]
 ): TablePaginationInterface {
     const dispatch = useDispatch<AppDispatch>()
 
-    const { currentPage, loading, totalPages } = useSelector(
+    const { itemsPerPage, currentPage, loading, totalPages } = useSelector(
         (state: RootState) => state.data
     )
 
-    useEffect((): void => {
-        if (tags) {
-            const calculatedTotalPages = Math.ceil(tags.length / ITEMS_PER_PAGE)
+    useEffect(() => {
+        if (tags && itemsPerPage !== null && itemsPerPage >= 10) {
+            const calculatedTotalPages = Math.ceil(tags.length / itemsPerPage)
             dispatch(setTotalPages(calculatedTotalPages))
         }
-    }, [dispatch, tags, ITEMS_PER_PAGE])
+    }, [dispatch, tags, itemsPerPage])
+
+    function handleChangeItemsPerPage(value: string) {
+        if (value === '') {
+            dispatch(setItemsPerPage(null!))
+        } else {
+            const parsedValue = parseInt(value, 10)
+            if (!isNaN(parsedValue)) {
+                dispatch(setItemsPerPage(parsedValue))
+            }
+        }
+    }
 
     function handlePrevPage(): void {
         dispatch(setCurrentPage(Math.max(currentPage - 1, 1)))
@@ -30,8 +41,8 @@ export default function useTagsTablePagination(
     }
 
     let currentTags: TagInterface[] = []
-    const lastIndex: number = currentPage * ITEMS_PER_PAGE
-    const firstIndex: number = lastIndex - ITEMS_PER_PAGE
+    const lastIndex: number = currentPage * (itemsPerPage || 10)
+    const firstIndex: number = lastIndex - (itemsPerPage || 10)
 
     if (tags) {
         currentTags = tags.slice(firstIndex, lastIndex)
@@ -44,5 +55,7 @@ export default function useTagsTablePagination(
         currentTags,
         handlePrevPage,
         handleNextPage,
+        handleChangeItemsPerPage,
+        itemsPerPage,
     }
 }

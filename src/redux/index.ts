@@ -1,6 +1,7 @@
 /**
  *  Actions
  */
+export { setItemsPerPage as setItemsPerPage } from './actions'
 export { setCurrentPage as setCurrentPage } from './actions'
 export { setTotalPages as setTotalPages } from './actions'
 export { setTags as setTags } from './actions'
