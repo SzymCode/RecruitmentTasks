@@ -5,14 +5,14 @@ import {
     SetTagsActionInterface,
     SetTotalPagesActionInterface,
     TagInterface,
-} from '../types'
+} from '@/types'
 import {
     SET_CURRENT_PAGE,
     SET_TOTAL_PAGES,
     SET_ERROR,
     SET_LOADING,
     SET_TAGS,
-} from '../constants'
+} from '@/constants'
 
 export function setCurrentPage(
     currentPage: number

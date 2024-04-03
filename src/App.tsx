@@ -1,9 +1,9 @@
 import React from 'react'
 import { CircularProgress, Center, Highlight } from '@chakra-ui/react'
 
-import TagTable from './components/TagTable'
-import { useTagsApiRequest } from './utils'
-import { API_URL } from './constants'
+import { TagTable } from '@/components'
+import { API_URL } from '@/constants'
+import { useTagsApiRequest } from '@/utils'
 
 export default function App(): React.JSX.Element {
     const { tags, error, loading } = useTagsApiRequest(API_URL)

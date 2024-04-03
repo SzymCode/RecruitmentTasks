@@ -15,8 +15,8 @@ import {
     Center,
 } from '@chakra-ui/react'
 
-import { TagInterface, TagTableInterface } from '../types'
-import { useTagsTablePagination } from '../utils'
+import { TagInterface, TagTableInterface } from '@/types'
+import { useTagsTablePagination } from '@/utils'
 
 const ITEMS_PER_PAGE: number = 10
 

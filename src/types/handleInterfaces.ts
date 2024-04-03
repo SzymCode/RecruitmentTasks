@@ -4,7 +4,7 @@ import {
     SET_ERROR,
     SET_LOADING,
     SET_TAGS,
-} from '../constants'
+} from '@/constants'
 
 /**
  *  Actions

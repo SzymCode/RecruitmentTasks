@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux'
+
+import { ActionTypes, ReduxDataStateInterface } from '@/types'
 import {
     SET_TAGS,
     SET_LOADING,
@@ -6,8 +8,7 @@ import {
     SET_CURRENT_PAGE,
     SET_TOTAL_PAGES,
     initialDataState,
-} from '../constants'
-import { ActionTypes, ReduxDataStateInterface } from '../types'
+} from '@/constants'
 
 const mainReducer = (
     state: ReduxDataStateInterface = initialDataState,

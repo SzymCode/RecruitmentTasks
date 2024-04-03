@@ -4,7 +4,7 @@ import {
     SetLoadingActionInterface,
     SetTagsActionInterface,
     SetTotalPagesActionInterface,
-} from '../types'
+} from '@/types'
 
 export type ActionTypes =
     | SetTagsActionInterface
