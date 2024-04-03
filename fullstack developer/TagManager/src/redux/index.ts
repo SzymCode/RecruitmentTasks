@@ -1,6 +1,8 @@
 /**
  *  Actions
  */
+export { setSortBy as setSortBy } from './actions'
+export { setSortOrder as setSortOrder } from './actions'
 export { setItemsPerPage as setItemsPerPage } from './actions'
 export { setCurrentPage as setCurrentPage } from './actions'
 export { setTotalPages as setTotalPages } from './actions'

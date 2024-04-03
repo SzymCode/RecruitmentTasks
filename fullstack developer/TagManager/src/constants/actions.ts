@@ -1,3 +1,5 @@
+export const SET_SORT_BY = 'SET_SORT_BY'
+export const SET_SORT_ORDER = 'SET_SORT_ORDER'
 export const SET_ITEMS_PER_PAGE: string = 'SET_ITEMS_PER_PAGE'
 export const SET_CURRENT_PAGE: string = 'SET_CURRENT_PAGE'
 export const SET_TOTAL_PAGES: string = 'SET_TOTAL_PAGES'
