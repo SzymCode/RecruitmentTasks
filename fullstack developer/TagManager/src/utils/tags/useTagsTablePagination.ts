@@ -25,11 +25,14 @@ export default function useTagsTablePagination(
         if (value === '') {
             dispatch(setItemsPerPage(null!))
         } else {
-            const parsedValue = parseInt(value, 10)
-            if (!isNaN(parsedValue)) {
-                dispatch(setItemsPerPage(parsedValue))
-                const newTotalPages = Math.ceil(tags.length / parsedValue)
-                dispatch(setTotalPages(newTotalPages))
+            let parsedValue = parseInt(value, 10)
+            parsedValue = Math.max(parsedValue, 1)
+            const newItemsPerPage = Math.min(parsedValue, tags.length)
+            dispatch(setItemsPerPage(newItemsPerPage))
+            const newTotalPages = Math.ceil(tags.length / newItemsPerPage)
+            dispatch(setTotalPages(newTotalPages))
+            if (currentPage > newTotalPages) {
+                dispatch(setCurrentPage(newTotalPages))
             }
         }
     }
