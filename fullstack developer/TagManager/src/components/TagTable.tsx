@@ -20,8 +20,8 @@ import { TagInterface, TagTableInterface } from '@/types'
 import { useSortTags, useTagsTablePagination } from '@/utils'
 
 export default function TagTable({
-    tags,
-}: TagTableInterface): React.JSX.Element {
+                                     tags,
+                                 }: TagTableInterface): React.JSX.Element {
     const {
         currentPage,
         totalPages,
@@ -48,11 +48,15 @@ export default function TagTable({
                 <Heading margin="auto">Tags</Heading>
                 <Center>
                     <Input
-                        type="number"
+                        type="text"
                         value={itemsPerPage === null ? '' : itemsPerPage}
-                        onChange={(e) =>
-                            handleChangeItemsPerPage(e.target.value)
-                        }
+                        onChange={(e) => {
+                            const value = e.target.value
+
+                            if (value === '' || /^\d+$/.test(value)) {
+                                handleChangeItemsPerPage(value)
+                            }
+                        }}
                         placeholder="Items per page"
                     />
                 </Center>
