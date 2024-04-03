@@ -7,10 +7,15 @@ export default function useSortTags(): SortTagsInterface {
     const { sortBy, sortOrder } = useSelector((state: RootState) => state.data)
     const dispatch = useDispatch<AppDispatch>()
 
-    function sortTags(tags: TagInterface[]): TagInterface[] {
-        if (sortBy === null) return tags
+    function sortTags(
+        currentPage: number,
+        itemsPerPage: number,
+        tags: TagInterface[],
+        currentTags?: TagInterface[]
+    ): TagInterface[] {
+        if (sortBy === null) return currentTags!.slice()
 
-        return tags.slice().sort((a, b) => {
+        const sortingTags = tags.slice().sort((a, b) => {
             if (sortBy === 'name') {
                 const comparison = a.name.localeCompare(b.name)
                 return sortOrder === 'asc' ? comparison : -comparison
@@ -21,6 +26,15 @@ export default function useSortTags(): SortTagsInterface {
             }
             return 0
         })
+
+        const startIndex = (currentPage - 1) * itemsPerPage
+        const endIndex = Math.min(
+            startIndex + itemsPerPage,
+            startIndex + 10,
+            sortingTags.length
+        )
+
+        return sortingTags.slice(startIndex, endIndex)
     }
 
     function handleSortBy(field: string): void {

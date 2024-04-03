@@ -80,7 +80,12 @@ export interface TablePaginationInterface {
 export interface SortTagsInterface {
     sortBy: string | null
     sortOrder: 'asc' | 'desc' | null
-    sortTags: (tags: TagInterface[]) => TagInterface[]
+    sortTags: (
+        currentPage: number,
+        itemsPerPage: number,
+        tags: TagInterface[],
+        currentTags?: TagInterface[]
+    ) => TagInterface[]
     handleSortBy: (field: string) => void
 }
 
