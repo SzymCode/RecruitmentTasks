@@ -15,8 +15,10 @@ export default function useTagsTablePagination(
     )
 
     useEffect(() => {
-        if (tags && itemsPerPage !== null && itemsPerPage >= 10) {
-            const calculatedTotalPages = Math.ceil(tags.length / itemsPerPage)
+        if (tags && (itemsPerPage === null || itemsPerPage <= 10)) {
+            const calculatedTotalPages = Math.ceil(
+                tags.length / (itemsPerPage || 10)
+            )
             dispatch(setTotalPages(calculatedTotalPages))
         }
     }, [dispatch, tags, itemsPerPage])
