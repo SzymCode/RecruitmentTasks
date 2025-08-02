@@ -7,17 +7,16 @@
   "license": "MIT",
   "require": {
     "php": "^8.3",
-    "laravel/framework": "12.0.0",
-    "laravel/tinker": "2.10.1"
+    "laravel/framework": "11.5.0"
   },
   "require-dev": {
-    "fakerphp/faker": "1.23.0",
-    "laravel/pail": "1.2.2",
-    "laravel/pint": "1.24.0",
-    "laravel/sail": "1.44.0",
-    "mockery/mockery": "1.6.10",
-    "nunomaduro/collision": "8.7.0",
-    "pestphp/pest": "3.8.0"
+    "fakerphp/faker": "1.22.0",
+    "laravel/pint": "1.22.0",
+    "laravel/sail": "1.30",
+    "mockery/mockery": "1.6.12",
+    "nunomaduro/collision": "8.1.1",
+    "pestphp/pest": "2.34.8",
+    "pestphp/pest-plugin-laravel": "2.4.0"
   },
   "autoload": {
     "psr-4": {
@@ -34,7 +33,7 @@
   "scripts": {
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-      "@php artisan package:discover --ansi"
+      "@php artisan package:discover --ansi || true"
     ],
     "post-update-cmd": [
       "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
@@ -42,16 +41,7 @@
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
     ],
-    "post-create-project-cmd": [
-      "@php artisan key:generate --ansi",
-      "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
-      "@php artisan migrate --graceful --ansi"
-    ],
-    "dev": [
-      "Composer\\Config::disableProcessTimeout",
-      "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
-    ],
-    "test": ["@php artisan config:clear --ansi", "@php artisan test"]
+    "post-create-project-cmd": ["@php artisan key:generate --ansi"]
   },
   "extra": {
     "laravel": {
@@ -59,6 +49,9 @@
     }
   },
   "config": {
+    "platform": {
+      "php": "8.3.0"
+    },
     "optimize-autoloader": true,
     "preferred-install": "dist",
     "sort-packages": true,
