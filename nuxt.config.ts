@@ -1,3 +1,5 @@
+import { defineNuxtConfig } from 'nuxt/config'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -61,5 +63,12 @@ export default defineNuxtConfig({
         'element-case': 'off'
       }
     }
-  }
+  },
+  // Production: Laravel serves prebuilt Nuxt app
+  // Development: Nuxt serves app with its own routes
+  routeRules: process.env.APP_ENV === 'production'
+    ? {}
+    : {
+      '/': { redirect: { to: '/home', statusCode: 301 } }
+    },
 })
