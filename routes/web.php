@@ -12,7 +12,7 @@ Route::prefix('/')->group(function () {
  */
 function serveNuxtFile($path, $contentType = 'text/html')
 {
-    if (!file_exists($path)) {
+    if (! file_exists($path)) {
         return response()->json(['error' => 'File not found'], 404);
     }
 
@@ -53,7 +53,7 @@ Route::get('/_nuxt/{path}', function ($path) {
     ];
     $extension = pathinfo($path, PATHINFO_EXTENSION);
 
-    return serveNuxtFile(base_path('public/build/_nuxt/' . $path), $mimeTypes[$extension] ?? 'application/octet-stream');
+    return serveNuxtFile(base_path('public/build/_nuxt/'.$path), $mimeTypes[$extension] ?? 'application/octet-stream');
 })->where('path', '.*');
 
 Route::get('/_fonts/{path}', function ($path) {
@@ -66,7 +66,7 @@ Route::get('/_fonts/{path}', function ($path) {
         default => 'application/octet-stream'
     };
 
-    return serveNuxtFile(base_path('public/build/_fonts/' . $path), $mimeType);
+    return serveNuxtFile(base_path('public/build/_fonts/'.$path), $mimeType);
 })->where('path', '.*');
 
 Route::get('/{any}', function ($any) {
@@ -78,4 +78,3 @@ Route::get('/{any}', function ($any) {
 
     return response()->json(['error' => 'Page not found'], 404);
 })->where('any', '^(?!api/|logout).+');
-
