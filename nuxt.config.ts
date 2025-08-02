@@ -17,13 +17,13 @@ export default defineNuxtConfig({
     'nuxt-link-checker',
     'nuxt-og-image',
     'nuxt-schema-org',
-    'nuxt-seo-utils'
+    'nuxt-seo-utils',
   ],
   ssr: true,
   nitro: {
     prerender: {
       routes: ['/home'],
-      crawlLinks: true
+      crawlLinks: true,
     },
     output: {
       publicDir: './public/build',
@@ -49,26 +49,25 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          api: "modern",
+          api: 'modern',
         },
-      }
-    }
+      },
+    },
   },
-  components: [
-    { path: '~/components', extensions: ['vue'] }
-  ],
+  components: [{ path: '~/components', extensions: ['vue'] }],
   htmlValidator: {
     options: {
       rules: {
-        'element-case': 'off'
-      }
-    }
+        'element-case': 'off',
+      },
+    },
   },
   // Production: Laravel serves prebuilt Nuxt app
   // Development: Nuxt serves app with its own routes
-  routeRules: process.env.APP_ENV === 'production'
-    ? {}
-    : {
-      '/': { redirect: { to: '/home', statusCode: 301 } }
-    },
+  routeRules:
+    process.env.APP_ENV === 'production'
+      ? {}
+      : {
+          '/': { redirect: { to: '/home', statusCode: 301 } },
+        },
 })
