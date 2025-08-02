@@ -23,7 +23,6 @@ export default defineNuxtConfig({
     compressPublicAssets: true,
   },
   srcDir: 'nuxt',
-  publicDir: './public',
   app: {
     head: {
       htmlAttrs: {
@@ -61,4 +60,5 @@ export default defineNuxtConfig({
       : {
           '/': { redirect: { to: '/home', statusCode: 301 } },
         },
-})
+  // biome-ignore lint/suspicious/noExplicitAny: Nuxt config complexity
+} as any)
