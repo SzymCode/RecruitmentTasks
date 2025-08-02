@@ -20,16 +20,23 @@ export default defineNuxtConfig({
   ssr: true,
   nitro: {
     prerender: {
-      routes: ['/'],
+      routes: ['/home'],
       crawlLinks: true
-    }
+    },
+    output: {
+      publicDir: './public/build',
+    },
+    minify: true,
+    compressPublicAssets: true,
   },
+  srcDir: 'nuxt',
+  publicDir: './public',
   app: {
     head: {
       htmlAttrs: {
         lang: 'en',
       },
-      title: 'NuxtStarter',
+      title: 'PatientManager',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
