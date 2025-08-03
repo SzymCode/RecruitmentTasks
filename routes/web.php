@@ -10,28 +10,32 @@ Route::prefix('/')->group(function () {
 /**
  *  Nuxt files integration - my own functionality
  */
-function serveNuxtFile($path, $contentType = 'text/html')
-{
-    if (! file_exists($path)) {
-        return response()->json(['error' => 'File not found'], 404);
-    }
+if (! function_exists('serveNuxtFile')) {
+    function serveNuxtFile($path, $contentType = 'text/html')
+    {
+        if (! file_exists($path)) {
+            return response()->json(['error' => 'File not found'], 404);
+        }
 
-    return response()->file($path, [
-        'Content-Type' => $contentType,
-        'Cache-Control' => $contentType === 'text/html' ? 'no-cache, no-store, must-revalidate' : 'public, max-age=31536000',
-        'Pragma' => 'no-cache',
-        'Expires' => '0',
-        'Access-Control-Allow-Origin' => '*',
-        'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
-        'Access-Control-Allow-Headers' => 'Content-Type, Authorization, X-Requested-With, X-XSRF-TOKEN, Referer-Slug',
-        'Access-Control-Allow-Credentials' => 'true',
-        'Access-Control-Expose-Headers' => '*',
-    ]);
+        return response()->file($path, [
+            'Content-Type' => $contentType,
+            'Cache-Control' => $contentType === 'text/html' ? 'no-cache, no-store, must-revalidate' : 'public, max-age=31536000',
+            'Pragma' => 'no-cache',
+            'Expires' => '0',
+            'Access-Control-Allow-Origin' => '*',
+            'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers' => 'Content-Type, Authorization, X-Requested-With, X-XSRF-TOKEN, Referer-Slug',
+            'Access-Control-Allow-Credentials' => 'true',
+            'Access-Control-Expose-Headers' => '*',
+        ]);
+    }
 }
 
-function serveNuxtPage($page)
-{
-    return serveNuxtFile(base_path("public/build/{$page}.html"));
+if (! function_exists('serveNuxtPage')) {
+    function serveNuxtPage($page)
+    {
+        return serveNuxtFile(base_path("public/build/{$page}.html"));
+    }
 }
 
 Route::get('/_payload.json', fn () => serveNuxtFile(base_path('public/build/_payload.json'), 'application/json'));

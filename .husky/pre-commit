@@ -3,4 +3,3 @@ npm run check
 npm run slint
 npm run typeslint
 npm run test
-./vendor/bin/pest
