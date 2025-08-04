@@ -12,7 +12,7 @@ class PatientFactory extends Factory
         $data = [
             'name' => $this->faker->name(),
             'surname' => $this->faker->lastName(),
-            'sex' => $this->faker->randomElement(['M', 'F']),
+            'sex' => $this->faker->randomElement(['m', 'f']),
             'birth_date' => $this->faker->dateTimeBetween('-100 years', '-10 years')->format('Y-m-d'),
         ];
 

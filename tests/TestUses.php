@@ -28,7 +28,9 @@ if (env('DB_DATABASE') === 'database/database.sqlite') {
             'Database/Factories',
             'Database/Migrations',
 
+            'Feature/Api',
             'Feature/Controllers',
+            'Feature/Middleware',
             'Feature/Services',
             'Feature/Traits'
         );

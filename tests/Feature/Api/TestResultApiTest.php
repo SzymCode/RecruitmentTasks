@@ -5,25 +5,20 @@ use App\Models\Patient;
 use App\Models\TestResult;
 
 beforeEach(function (): void {
-    $patient = Patient::factory()->create([
-        'name' => 'Szymon',
-        'surname' => 'Radomski',
-        'sex' => 'M',
-        'birth_date' => '1970-01-01',
-    ]);
+    $this->patient = Patient::factory()->create(patientData);
 
-    $order = Order::factory()->create([
-        'patient_id' => $patient->id,
+    $this->order = Order::factory()->create([
+        'patient_id' => $this->patient->getId(),
     ]);
 
     TestResult::factory(2)->create([
-        'order_id' => $order->id,
+        'order_id' => $this->order->getId(),
     ]);
 });
 
 describe('200', function (): void {
     test('can get test results', function (): void {
-        $response = $this->getJson('/api/test-results');
+        $response = withPatientToken($this->patient)->getJson('/api/test-results');
 
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -47,5 +42,13 @@ describe('200', function (): void {
                     ],
                 ],
             ]);
+    });
+});
+
+describe('401', function (): void {
+    test('can\'t get test results', function (): void {
+        $this->getJson('/api/test-results')
+            ->assertStatus(401)
+            ->assertJson(['message' => 'Unauthenticated.']);
     });
 });

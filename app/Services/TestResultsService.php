@@ -2,6 +2,9 @@
 
 namespace App\Services;
 
+use App\Http\Resources\OrderResource;
+use App\Http\Resources\PatientResource;
+use App\Http\Resources\TestResultResource;
 use App\Models\Order;
 use App\Models\Patient;
 
@@ -16,26 +19,17 @@ class TestResultsService
             ->get();
 
         $formattedOrders = $orders->map(function ($order) {
-            return [
-                'orderId' => (string) $order->id,
+            $orderData = (new OrderResource($order))->resolve();
+
+            return array_merge($orderData, [
                 'results' => $order->testResults->map(function ($testResult) {
-                    return [
-                        'name' => $testResult->test_name,
-                        'value' => (string) $testResult->test_value,
-                        'reference' => $testResult->test_reference,
-                    ];
+                    return (new TestResultResource($testResult))->resolve();
                 })->toArray(),
-            ];
+            ]);
         })->toArray();
 
         return [
-            'patient' => [
-                'id' => $patient->id,
-                'name' => $patient->name,
-                'surname' => $patient->surname,
-                'sex' => $patient->sex,
-                'birthDate' => $patient->birth_date->format('Y-m-d'),
-            ],
+            'patient' => (new PatientResource($patient))->resolve(),
             'orders' => $formattedOrders,
         ];
     }
