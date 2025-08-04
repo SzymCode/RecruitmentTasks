@@ -1,5 +1,5 @@
-import Lara from '@primeuix/themes/lara'
 import { defineNuxtConfig } from 'nuxt/config'
+import ALAB_PRESET from './nuxt/primevue_preset'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -59,7 +59,7 @@ export default defineNuxtConfig({
     autoImport: true,
     options: {
       theme: {
-        preset: Lara,
+        preset: ALAB_PRESET,
       },
       ripple: true,
     },

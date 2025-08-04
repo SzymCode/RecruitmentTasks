@@ -1,5 +1,6 @@
 <template>
   <div id="index">
-    <welcome />
+    <navbar />
+    <contact />
   </div>
 </template>

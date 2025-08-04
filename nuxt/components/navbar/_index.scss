@@ -1,0 +1,36 @@
+.navbar {
+    background: var(--p-white);
+    box-shadow: 0 0 .5em 0 var(--p-gray-300);
+    padding: .5em 0;
+
+    &-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-header {
+        display: flex;
+        width: min-content;
+        transition: color 0.3s ease;
+        text-decoration: none;
+        color: var(--p-primary-800);
+
+        h1 {
+            font-family: $font-family-inter;
+            font-size: $font-size-md;
+            font-weight: 600;
+        }
+
+        &:hover {
+            color: var(--p-primary-500);
+        }
+    }
+
+    &-login-button {
+        background: var(--p-primary-800);
+        border: 1px solid var(--p-primary-800);
+        color: var(--p-white);
+        font-size: $font-size-sm;
+    }
+}
