@@ -1,3 +1,4 @@
+import Lara from '@primeuix/themes/lara'
 import { defineNuxtConfig } from 'nuxt/config'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -5,10 +6,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   modules: [
-    '@nuxt/fonts',
+    '@nuxt/icon',
     '@nuxt/test-utils/module',
+    '@nuxtjs/google-fonts',
     '@nuxtjs/html-validator',
     '@nuxtjs/stylelint-module',
+    '@primevue/nuxt-module',
   ],
   ssr: true,
   nitro: {
@@ -51,6 +54,27 @@ export default defineNuxtConfig({
         'element-case': 'off',
       },
     },
+  },
+  primevue: {
+    autoImport: true,
+    options: {
+      theme: {
+        preset: Lara,
+      },
+      ripple: true,
+    },
+  },
+  googleFonts: {
+    families: {
+      Inter: '300..700',
+      Nunito: '300..700',
+    },
+    display: 'swap',
+    subsets: ['latin'],
+  },
+  icon: {
+    prefix: 'i-prime',
+    mode: 'css',
   },
   // Production: Laravel serves prebuilt Nuxt app
   // Development: Nuxt serves app with its own routes
