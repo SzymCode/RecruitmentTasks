@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Schema;
 
-it('can create test_results table', function (): void {
+test('can create test_results table', function (): void {
     expect(Schema::hasTable('test_results'))->toBeTrue()
         ->and(Schema::hasColumns('test_results', [
             'id',
@@ -15,7 +15,7 @@ it('can create test_results table', function (): void {
         ]))->toBeTrue();
 });
 
-it('can be rolled back', function (): void {
+test('can be rolled back', function (): void {
     $this->artisan('migrate:rollback');
 
     expect(Schema::hasTable('test_results'))->toBeFalse();

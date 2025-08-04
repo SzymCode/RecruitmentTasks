@@ -8,7 +8,7 @@ beforeEach(function (): void {
     $this->model = TestResult::factory()->create();
 });
 
-it('can be created', function (): void {
+test('can be created', function (): void {
     expect($this->model)->toBeInstanceOf(TestResult::class);
 });
 

@@ -7,7 +7,7 @@ beforeEach(function (): void {
     $this->model = Patient::factory()->create();
 });
 
-it('can be created', function (): void {
+test('can be created', function (): void {
     expect($this->model)->toBeInstanceOf(Patient::class);
 });
 
@@ -39,7 +39,7 @@ describe('Instance', function (): void {
     test('can get birth_date', function (): void {
         expect($this->model->getBirthDate())
             ->toBeString()
-            ->toBe($this->model->birth_date->toDateTimeString());
+            ->toBe($this->model->birth_date->format('Y-m-d'));
     });
 
     test('can get created_at', function (): void {

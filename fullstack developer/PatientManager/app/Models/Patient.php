@@ -4,8 +4,9 @@ namespace App\Models;
 
 use App\Contracts\PatientContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
  * @property int id
@@ -23,8 +24,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string getCreatedAt()
  * @property string getUpdatedAt()
  * @property Order[] orders
+ * @property string getJWTIdentifier()
+ * @property array getJWTCustomClaims()
  */
-class Patient extends Model implements PatientContract
+class Patient extends Authenticatable implements JWTSubject, PatientContract
 {
     use HasFactory;
 
@@ -59,12 +62,12 @@ class Patient extends Model implements PatientContract
 
     public function getSex(): string
     {
-        return $this->sex;
+        return strtolower($this->sex);
     }
 
     public function getBirthDate(): string
     {
-        return $this->birth_date->toDateTimeString();
+        return $this->birth_date->format('Y-m-d');
     }
 
     public function getCreatedAt(): string
@@ -83,5 +86,18 @@ class Patient extends Model implements PatientContract
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
+    }
+
+    /**
+     * JWTSubject methods
+     */
+    public function getJWTIdentifier(): string
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(): array
+    {
+        return [];
     }
 }

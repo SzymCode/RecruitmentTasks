@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int patient_id
  * @property string created_at
  * @property string updated_at
- * @property int getOrderId()
+ * @property int getId()
  * @property int getPatientId()
  * @property string getCreatedAt()
  * @property string getUpdatedAt()
