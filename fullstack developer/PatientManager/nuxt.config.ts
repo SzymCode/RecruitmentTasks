@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
+import path from 'path'
 import ALAB_PRESET from './nuxt/primevue_preset'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config

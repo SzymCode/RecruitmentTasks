@@ -1,26 +1,26 @@
 <template>
   <div class="navbar">
     <div class="navbar-container container">
-        <NuxtLink to="/">
-          <img src="/alab-laboratoria.svg" alt="logo" class="navbar-container-logo" />
-        </NuxtLink>
-        <div class="navbar-container-links">
-          <Button 
-            v-for="link in links" 
-            :key="link.name"
-            text 
-            rounded 
-            class="navbar-container-links-button"
-            :class="{ 'p-button-active': $route.path === link.to }"
-            @click="navigateTo(link.to)"
-          >
-            <Icon 
-              :name="link.icon" 
-              :style="{ color: $route.path === link.to ? 'var(--p-primary-500)' : 'var(--p-neutral-800)' }" 
-            />
-          </Button>   
-        </div>
-        <logout class="navbar-container-logout" />
+      <NuxtLink to="/" class="navbar-container-link">
+        <img src="/alab-laboratoria.svg" alt="logo" class="navbar-container-logo" />
+      </NuxtLink>
+      <div class="navbar-container-links">
+        <Button 
+          v-for="link in links" 
+          :key="link.name"
+          text 
+          rounded 
+          class="navbar-container-links-button"
+          :class="{ 'p-button-active': $route.path === link.to }"
+          @click="navigateTo(link.to)"
+        >
+          <Icon 
+            :name="link.icon" 
+            :style="{ color: $route.path === link.to ? 'var(--p-primary-500)' : 'var(--p-neutral-800)' }" 
+          />
+        </Button>   
+      </div>
+      <logout class="navbar-container-logout" />
     </div>
   </div>
 </template>
