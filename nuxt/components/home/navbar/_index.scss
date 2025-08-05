@@ -1,0 +1,33 @@
+.home-navbar {
+  background: var(--p-white);
+  box-shadow: 0 0 .5em 0 var(--p-gray-300);
+  padding: 0;
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-header {
+    display: flex;
+    width: min-content;
+    text-decoration: none;
+
+    h1 {
+      font-family: $font-family-inter;
+      font-size: $font-size-md;
+      font-weight: 600;
+      transition: color 0.3s ease;
+      color: var(--p-primary-800);
+
+      &:hover {
+        color: var(--p-primary-500);
+      }
+    }
+  }
+
+  &-login-button {
+    font-size: $font-size-sm;
+  }
+}

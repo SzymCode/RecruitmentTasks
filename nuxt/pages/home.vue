@@ -1,6 +1,6 @@
 <template>
   <div id="index">
-    <navbar />
-    <contact />
+    <home-navbar />
+    <home-contact />
   </div>
 </template>

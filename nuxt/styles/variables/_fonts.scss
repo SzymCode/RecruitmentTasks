@@ -3,8 +3,9 @@ $font-family-inter: 'Inter', sans-serif;
 $font-family-nunito: 'Nunito', sans-serif;
 
 // Font sizes
-$font-size-sm: clamp(.75em, 1.5vw, 1em);
-$font-size-md: clamp(1em, 2vw, 1.5em);
+$font-size-xs: clamp(.8em, 1vw, .9em);
+$font-size-sm: clamp(.9em, 1.5vw, 1em);
+$font-size-md: clamp(1.35em, 2vw, 1.5em);
 $font-size-lg: clamp(1.5em, 3vw, 2em);
 $font-size-xl: clamp(1.5em, 2.5vw, 2em);
 $font-size-xxl: clamp(2em, 3vw, 2.5em);

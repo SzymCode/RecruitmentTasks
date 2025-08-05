@@ -47,10 +47,7 @@ class AuthService
     {
         try {
             $token = JWTAuth::getToken();
-
-            if ($token) {
-                JWTAuth::invalidate($token);
-            }
+            JWTAuth::invalidate($token);
 
             return response()->json(['message' => 'Successfully logged out']);
         } catch (\Exception $e) {

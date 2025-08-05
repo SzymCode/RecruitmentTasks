@@ -1,0 +1,64 @@
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+
+  .p-card-body {
+    padding: 1.5em;
+  }
+
+  &-title {
+    font-family: $font-family-inter;
+    font-size: $font-size-lg;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: .5em;
+    color: var(--p-primary-800);
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: .75em;
+  }
+
+  .p-floatlabel {
+    .p-inputtext {
+      width: 100%;
+    }
+
+
+    label {
+      font-size: $font-size-sm;
+
+      span {
+        font-size: $font-size-xs;
+        opacity: .5;
+      }
+    }
+
+    .p-inputtext.p-invalid+label {
+      color: var(--p-red-500);
+    }
+  }
+
+  &-button {
+    width: 100%;
+    margin-top: .5em;
+  }
+
+  @media (width >=768px) {
+    .p-card-body {
+      padding: 2em;
+    }
+
+    &-title {
+      margin-bottom: .75em;
+    }
+
+    &-content {
+      gap: 1em;
+    }
+  }
+}
