@@ -29,6 +29,7 @@ if (env('DB_DATABASE') === 'database/database.sqlite') {
             'Database/Migrations',
 
             'Feature/Api',
+            'Feature/Console',
             'Feature/Controllers',
             'Feature/Middleware',
             'Feature/Services',
