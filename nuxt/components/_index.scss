@@ -1,4 +1,12 @@
-@import 'dashboard/navbar', 'home/navbar', 'home/contact', 'loader', 'login/back-link', 'login/card', 'logout';
+@import 
+'dashboard/navbar', 
+'dashboard/results-table', 
+'home/navbar', 
+'home/contact', 
+'loader', 
+'login/back-link', 
+'login/card', 
+'logout';
 
 #login {
   display: flex;

@@ -1,0 +1,32 @@
+.results {
+    &-card {
+        margin: 4em 0;
+
+        .p-card-body {
+            padding-bottom: 0;
+        }
+    }
+
+    &-title {
+        display: flex;
+        justify-content: center;
+        font-size: $font-size-lg;
+        font-family: $font-family-inter;
+        font-weight: 600;
+        margin-top: 0;
+        margin-bottom: .5em;
+    }
+
+    &-data-table {
+        width: 100%;
+        text-wrap: nowrap;
+
+        .p-datatable-tbody {
+            height: 470px;
+        }
+        
+        .p-datatable-paginator-bottom {
+            border: none;
+        }
+    }
+}
