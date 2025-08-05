@@ -1,0 +1,46 @@
+.profile {
+  padding: 4em 0;
+
+  &-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &-card {
+    background: white;
+    border-radius: .5em;
+    box-shadow: 0 .25em .5em var(--p-neutral-200);
+  }
+
+  &-content {
+    padding: 1em 0 2em;
+
+    &-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 2rem;
+    }
+
+    &-title {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+      font-size: $font-size-lg;
+      font-weight: 600;
+    }
+
+    &-details {
+      margin: 0;
+      color: var(--text-color-secondary);
+      line-height: 1.6;
+    }
+
+    &-error {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-color-secondary);
+    }
+  }
+}

@@ -16,7 +16,7 @@
         >
           <Icon 
             :name="link.icon" 
-            :style="{ color: $route.path === link.to ? 'var(--p-primary-500)' : 'var(--p-neutral-800)' }" 
+            :style="{ color: $route.path === link.to ? 'var(--p-primary-500)' : '' }"   
           />
         </Button>   
       </div>

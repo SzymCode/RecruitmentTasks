@@ -25,14 +25,15 @@
       gap: 1em;
 
       &-button {
+        padding: .25em;
         display: flex;
         font-size: $font-size-md;
-        color: var(--p-neutral-800);
+        color: var(--text-color);
       }
     }
 
     &-logout {
-      color: var(--p-neutral-800);
+      color: var(--text-color);
     }
   }
 
