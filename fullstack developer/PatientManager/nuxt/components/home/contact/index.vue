@@ -7,7 +7,6 @@
       <p class="contact-container-description">
         If you found this task interesting, you can contact me via email or LinkedIn.
       </p>
-
       <div class="contact-container-links"> 
         <a v-for="link in links" :key="link.name" :href="link.href" target="_blank">
           <Icon :name="link.icon" />

@@ -1,1 +1,8 @@
-@import 'contact', 'navbar';
+@import 'dashboard/navbar', 'home/navbar', 'home/contact', 'loader', 'login/back-link', 'login/card', 'logout';
+
+#login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;    
+}

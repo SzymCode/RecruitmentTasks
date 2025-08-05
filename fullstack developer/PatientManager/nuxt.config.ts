@@ -34,7 +34,10 @@ export default defineNuxtConfig({
       title: 'PatientManager',
       meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1',
+        },
       ],
     },
   },
@@ -60,6 +63,9 @@ export default defineNuxtConfig({
     options: {
       theme: {
         preset: ALAB_PRESET,
+        options: {
+          darkModeSelector: false,
+        },
       },
       ripple: true,
     },
@@ -75,6 +81,12 @@ export default defineNuxtConfig({
   icon: {
     prefix: 'i-prime',
     mode: 'css',
+  },
+  runtimeConfig: {
+    public: {
+      appUrl: process.env.APP_URL,
+      apiUrl: process.env.API_URL,
+    },
   },
   // Production: Laravel serves prebuilt Nuxt app
   // Development: Nuxt serves app with its own routes

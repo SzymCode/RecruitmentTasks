@@ -15,5 +15,12 @@ class PatientSeeder extends Seeder
         $count = (env('APP_ENV') === 'production') ? 100 : 40;
 
         Patient::factory($count)->create();
+
+        Patient::create([
+            'name' => 'John',
+            'surname' => 'Smith',
+            'sex' => 'm',
+            'birth_date' => '2021-01-01',
+        ]);
     }
 }
