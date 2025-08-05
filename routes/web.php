@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/')->group(function () {
     Route::get('', fn () => redirect()->route('home'));
     Route::get('home', fn () => serveNuxtPage('home'))->name('home');
+    Route::get('login', fn () => serveNuxtPage('login'))->name('login');
+    Route::get('register', fn () => serveNuxtPage('register'))->name('register');
+    Route::get('dashboard', fn () => serveNuxtPage('dashboard'))->name('dashboard');
+    Route::get('profile', fn () => serveNuxtPage('profile'))->name('profile');
+    Route::get('settings', fn () => serveNuxtPage('settings'))->name('settings');
 });
 
 /**

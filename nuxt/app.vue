@@ -7,14 +7,13 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-
 const isCheckingAuth = ref(true)
+const route = useRoute()
+const protectedRoutes = ref(['/dashboard', '/profile', '/settings'])
+const currentPath = route.path
 
 onMounted(() => {
-  const currentPath = window.location.pathname
-
-  if (currentPath === '/login' || currentPath === '/dashboard') {
+  if (currentPath === '/login' || protectedRoutes.value.includes(currentPath)) {
     const authToken = localStorage.getItem('auth_token')
 
     if (authToken && currentPath === '/login') {
@@ -22,7 +21,7 @@ onMounted(() => {
       return
     }
 
-    if (!authToken && currentPath === '/dashboard') {
+    if (!authToken && protectedRoutes.value.includes(currentPath)) {
       window.location.href = '/login'
       return
     }
@@ -30,6 +29,24 @@ onMounted(() => {
 
   isCheckingAuth.value = false
 })
+
+watch(
+  () => route.path,
+  (newPath) => {
+    if (
+      newPath &&
+      protectedRoutes.value.includes(newPath) &&
+      import.meta.client
+    ) {
+      const authToken = localStorage.getItem('auth_token')
+
+      if (!authToken) {
+        window.location.href = '/login'
+      }
+    }
+  },
+  { immediate: true }
+)
 </script>
 
 
