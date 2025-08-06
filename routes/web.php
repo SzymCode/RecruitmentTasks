@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+/**
+ *  Laravel handle Nuxt routes on production
+ */
 Route::prefix('/')->group(function () {
     Route::get('', fn () => redirect()->route('home'));
     Route::get('home', fn () => serveNuxtPage('home'))->name('home');
