@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\CsvImportController;
+use App\Http\Controllers\ImportCsvController;
 use App\Models\Patient;
-use App\Services\CsvImportService;
+use App\Services\ImportCsvService;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 
 beforeEach(function (): void {
-    $this->csvImportService = mock(CsvImportService::class);
-    $this->controller = new CsvImportController($this->csvImportService);
+    $this->ImportCsvService = mock(ImportCsvService::class);
+    $this->controller = new ImportCsvController($this->ImportCsvService);
     $this->patient = Patient::factory()->create(patientData);
 });
 
@@ -22,7 +22,7 @@ describe('200', function (): void {
             'result_code' => 0,
         ];
 
-        $this->csvImportService->shouldReceive('importFromUploadedFile')
+        $this->ImportCsvService->shouldReceive('importFromUploadedFile')
             ->once()
             ->with($file)
             ->andReturn($expectedResult);
@@ -46,7 +46,7 @@ describe('422', function (): void {
             'result_code' => 1,
         ];
 
-        $this->csvImportService->shouldReceive('importFromUploadedFile')
+        $this->ImportCsvService->shouldReceive('importFromUploadedFile')
             ->once()
             ->with($file)
             ->andReturn($expectedResult);
@@ -68,7 +68,7 @@ describe('422', function (): void {
             'result_code' => 1,
         ];
 
-        $this->csvImportService->shouldReceive('importFromUploadedFile')
+        $this->ImportCsvService->shouldReceive('importFromUploadedFile')
             ->once()
             ->with($file)
             ->andReturn($expectedResult);
@@ -86,7 +86,7 @@ describe('500', function (): void {
     test('returns error when service throws exception', function (): void {
         $file = UploadedFile::fake()->create('test.csv', 100, 'text/csv');
 
-        $this->csvImportService->shouldReceive('importFromUploadedFile')
+        $this->ImportCsvService->shouldReceive('importFromUploadedFile')
             ->once()
             ->with($file)
             ->andThrow(new \Exception('Service error'));
@@ -101,7 +101,7 @@ describe('500', function (): void {
     test('returns error when file processing fails', function (): void {
         $file = UploadedFile::fake()->create('test.csv', 100, 'text/csv');
 
-        $this->csvImportService->shouldReceive('importFromUploadedFile')
+        $this->ImportCsvService->shouldReceive('importFromUploadedFile')
             ->once()
             ->with($file)
             ->andThrow(new \RuntimeException('File processing failed'));

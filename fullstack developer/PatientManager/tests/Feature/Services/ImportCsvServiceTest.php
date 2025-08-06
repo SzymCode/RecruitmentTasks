@@ -1,11 +1,11 @@
 <?php
 
-use App\Services\CsvImportService;
+use App\Services\ImportCsvService;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
 beforeEach(function (): void {
-    $this->service = app()->make(CsvImportService::class);
+    $this->service = app()->make(ImportCsvService::class);
     Storage::fake('local');
 });
 

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 
-class CsvImportService
+class ImportCsvService
 {
     public function importFromUploadedFile(UploadedFile $file): array
     {
@@ -32,7 +32,6 @@ class CsvImportService
             $command = new ImportCsvCommand;
             $command->setLaravel(app());
 
-            // Create input with proper argument definition
             $input = new ArrayInput(['file' => $fullPath]);
             $input->bind($command->getDefinition());
 
