@@ -6,7 +6,8 @@ export async function apiRequest(
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',
   data: Record<string, unknown> | null = null,
   id: string | number | null = null,
-  params: Record<string, unknown> = {}
+  params: Record<string, unknown> = {},
+  authorization?: string
 ) {
   const finalUrl = id ? `${url}/${id}` : url
   let xsrfTokenValue: string | undefined
@@ -27,6 +28,9 @@ export async function apiRequest(
   }
   if (xsrfTokenValue) {
     headers['X-XSRF-TOKEN'] = xsrfTokenValue
+  }
+  if (authorization) {
+    headers['Authorization'] = authorization
   }
 
   if (import.meta.client) {
