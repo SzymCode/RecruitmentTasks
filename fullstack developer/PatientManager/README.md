@@ -149,21 +149,17 @@ Kandydat powinien dostarczyć repozytorium GIT (np. link do GitHub/GitLab/Bitbuc
 git clone -b patient-manager https://github.com/SzymCode/RecruitmentTasks.git
 ```
 
-- Install modules in root directory.
-
+- Change *.env.example* file to *.env* in root directory
+  
 ```bash
 composer install
 sail up --build -d  # or ./vendor/bin/sail if you didn't define alias
-```
-
-- Change *.env.example* file to *.env* in root directory, run XAMPP mysql server and create database.
-
-```bash
 sail art key:generate
 sail art migrate:fresh --seed
 ```
 
 That's it! You can enter ```localhost:3000``` now.
+
 <br>
 </details>
 
@@ -175,6 +171,7 @@ That's it! You can enter ```localhost:3000``` now.
 2. Backend code format - ```sail pint```
 3. Frontend code format - ```npm run write```
 
+<br>
 </details>
 
 
